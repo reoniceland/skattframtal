@@ -1,0 +1,17 @@
+{
+  "name": "@reon-island/typescript-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "type": "module",
+  "files": [
+    "./base.json",
+    "./fastify.json",
+    "./next.json",
+    "./react-library.json",
+    "./fastifyv2.json",
+    "./dom.json",
+    "./react.json",
+    "./build.json"
+  ]
+}

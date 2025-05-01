@@ -1,0 +1,18 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs';
+
+import { Text } from '../Text/Text';
+import { Page } from './Page';
+
+<Meta title="Components/Page" component={Page} />
+
+# Page
+
+Used to wrap each project's app with this global wrapper component.
+
+<Canvas>
+  <Story name="Default">
+    <Page>
+      <Text>Page component</Text>
+    </Page>
+  </Story>
+</Canvas>

@@ -1,0 +1,3 @@
+{
+  "extends": ["@reon-island/typescript-config/base.json"]
+}

@@ -1,0 +1,18 @@
+{
+  "extends": ["@reon-island/typescript-config/react.json"],
+  "compilerOptions": {
+    "baseUrl": ".",
+    "allowJs": true,
+    "paths": {
+      "#/*": ["src/*"]
+    }
+  },
+  "include": [
+    "**/*.ts",
+    "**/*.tsx",
+    "**/*.js",
+    ".storybook/**/*",
+    "**/*.css.ts"
+  ],
+  "exclude": ["node_modules", "dist", "storybook-static"]
+}

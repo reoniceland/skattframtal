@@ -1,0 +1,17 @@
+{
+  "name": "@reon-island/repo-tools",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "exports": {
+    "./filesystem": "./src/filesystem.ts"
+  },
+  "scripts": {
+    "lint": "eslint .  --max-warnings 0",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@reon-island/eslint-config": "workspace:^",
+    "@reon-island/typescript-config": "workspace:^"
+  }
+}

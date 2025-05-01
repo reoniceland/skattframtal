@@ -1,0 +1,17 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "wix.vscode-import-cost",
+    "neotan.vscode-auto-restart-typescript-eslint-servers",
+    "dbaeumer.vscode-eslint",
+    "ms-vscode.vscode-typescript-next",
+    "firsttris.vscode-jest-runner",
+    "prisma.prisma",
+    "mattpocock.ts-error-translator",
+    "aaron-bond.better-comments",
+    "mikestead.dotenv",
+    "EditorConfig.EditorConfig",
+    "christian-kohler.path-intellisense",
+    "YoavBls.pretty-ts-errors"
+  ]
+}

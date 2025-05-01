@@ -3,18 +3,31 @@
   "private": true,
   "scripts": {
     "build": "turbo run build",
+    "check-types": "turbo run check-types",
     "dev": "turbo run dev",
-    "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "lint": "turbo run lint",
+    "nuke:node_modules": "rimraf --glob '**/node_modules'"
   },
   "devDependencies": {
-    "prettier": "^3.5.3",
-    "turbo": "^2.5.1",
-    "typescript": "5.8.2"
+    "@ianvs/prettier-plugin-sort-imports": "4.4.1",
+    "@reon-island/eslint-config": "workspace:*",
+    "@reon-island/typescript-config": "workspace:*",
+    "@types/eslint": "9.6.1",
+    "@types/node": "18.16.9",
+    "eslint": "9.20.1",
+    "husky": "9.1.7",
+    "knip": "5.48.0",
+    "prettier": "3.3.3",
+    "prettier-plugin-packagejson": "2.5.10",
+    "rimraf": "6.0.1",
+    "ts-node": "10.9.2",
+    "tsx": "4.17.0",
+    "turbo": "2.4.2",
+    "typescript": "5.5.4"
   },
   "packageManager": "pnpm@9.0.0",
   "engines": {
-    "node": ">=18"
+    "node": "20.15.0"
   }
 }

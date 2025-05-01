@@ -1,0 +1,23 @@
+{
+  "name": "@reon-island/types",
+  "private": true,
+  "sideEffects": false,
+  "type": "module",
+  "main": "./src/index.ts",
+  "scripts": {
+    "build-later": "vite build",
+    "build-storybook": "storybook build",
+    "dev-build": "vite build -w",
+    "lint": "eslint .",
+    "storybook": "storybook dev -p 6006 --no-open",
+    "test-storybook": "test-storybook",
+    "typecheck": "tsc"
+  },
+  "devDependencies": {
+    "@reon-island/eslint-config": "workspace:*",
+    "@reon-island/typescript-config": "workspace:*",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
+    "typescript": "5.5.4"
+  }
+}
