@@ -8,7 +8,8 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "nuke:node_modules": "rimraf --glob '**/node_modules'",
-    "storybook": "pnpm --filter @reon-island/ui-core storybook"
+    "storybook": "pnpm --filter @reon-island/ui-core storybook",
+    "typecheck": "turbo run typecheck"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "4.4.1",
