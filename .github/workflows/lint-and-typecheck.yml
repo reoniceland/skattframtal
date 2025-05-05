@@ -1,0 +1,29 @@
+name: Lint and Type Check
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  lint-and-typecheck:
+    runs-on: ubuntu-latest
+    name: Turbo Lint & Type Check
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 20.15.0
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run lint and typecheck with Turborepo
+        run: pnpm turbo run lint typecheck
