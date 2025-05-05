@@ -1,3 +1,4 @@
+# .github/workflows/lint-and-typecheck.yml
 name: Lint and Type Check
 
 on:
@@ -19,11 +20,14 @@ jobs:
           node-version: 20.15.0
           cache: 'pnpm'
 
-      - name: Install pnpm
-        run: npm install -g pnpm
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
+        with:
+          version: 9
+          run_install: false
 
       - name: Install dependencies
         run: pnpm install
 
-      - name: Run lint and typecheck with Turborepo
+      - name: Run lint and typecheck
         run: pnpm turbo run lint typecheck
