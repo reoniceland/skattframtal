@@ -1,3 +1,3 @@
 import { configs, defineConfig } from '@reon-island/eslint-config';
 
-export default defineConfig(...configs.base, ...configs.react);
+export default defineConfig(...configs.base);

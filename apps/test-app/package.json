@@ -2,10 +2,11 @@
   "name": "test-app",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "next build",
     "dev": "next dev",
-    "lint": "next lint",
+    "lint": "eslint .",
     "start": "next start"
   },
   "dependencies": {

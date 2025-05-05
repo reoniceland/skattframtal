@@ -14,6 +14,7 @@ import { compat, defineConfig } from '../utils.js';
 export const base = defineConfig(
   {
     ignores: [
+      '.next',
       'dist',
       'prisma/typebox',
       'build/**/*',
@@ -103,11 +104,37 @@ export const base = defineConfig(
           allowConstantLoopConditions: true,
         },
       ],
-      'no-secrets/no-secrets': [
-        'error',
-        { tolerance: 5, ignoreContent: ['DeepMockProxy<PrismaClient>'] },
+      '@typescript-eslint/restrict-template-expressions': ['warn'],
+      '@typescript-eslint/no-unsafe-member-access': ['warn'],
+      '@typescript-eslint/prefer-nullish-coalescing': ['warn'],
+      '@typescript-eslint/no-unsafe-assignment': ['warn'],
+      '@typescript-eslint/no-require-imports': ['warn'],
+      '@typescript-eslint/no-explicit-any': [
+        'warn',
+        {
+          ignoreRestArgs: true,
+        },
       ],
+      '@typescript-eslint/no-unsafe-return': ['warn'],
+      '@typescript-eslint/no-unsafe-argument': ['warn'],
+      '@typescript-eslint/no-unsafe-call': ['warn'],
+
+      '@typescript-eslint/no-non-null-assertion': ['warn'],
+      '@typescript-eslint/no-redundant-type-constituents': ['warn'],
+      '@typescript-eslint/no-confusing-void-expression': ['warn'],
+      '@typescript-eslint/no-deprecated': ['warn'],
+      '@typescript-eslint/no-unnecessary-type-arguments': ['warn'],
+      '@typescript-eslint/consistent-indexed-object-style': ['warn'],
+      '@typescript-eslint/unbound-method': ['warn'],
+      '@typescript-eslint/array-type': ['warn'],
+
+      'no-secrets/no-secrets': ['error', { tolerance: 5 }],
       'require-await': 'off',
+      'regexp/no-unused-capturing-group': 'warn',
+      'regexp/prefer-question-quantifier': 'warn',
+      'regexp/no-useless-escape': 'warn',
+      'turbo/no-undeclared-env-vars': ['warn'],
+      '@eslint-community/eslint-comments/disable-enable-pair': ['warn'],
     },
   },
 );

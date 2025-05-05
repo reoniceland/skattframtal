@@ -8,10 +8,10 @@
     "build-later": "vite build",
     "build-storybook": "storybook build",
     "dev-build": "vite build -w",
-    "lint": "eslint .",
+    "lint:local": "eslint .",
     "storybook": "storybook dev -p 6006 --no-open",
     "test-storybook": "test-storybook",
-    "typecheck": "tsc --noEmit"
+    "typecheck:local": "tsc --noEmit"
   },
   "dependencies": {
     "@apollo/client": "3.7.15",

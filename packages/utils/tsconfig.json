@@ -1,5 +1,5 @@
 {
-  "extends": ["@reon-island/typescript-config/react.json"],
+  "extends": ["@reon-island/typescript-config/base.json"],
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
