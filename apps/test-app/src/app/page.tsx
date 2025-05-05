@@ -1,7 +1,5 @@
 'use client';
 
-import '@reon-island/ui-core/src/styles/global.css';
-
 import { Button } from '@reon-island/ui-core';
 
 export default function Home() {
