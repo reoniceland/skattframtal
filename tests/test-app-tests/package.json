@@ -1,0 +1,24 @@
+{
+  "name": "test-app-tests",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "e2e:playwright-test": "playwright test src",
+    "e2e:test": "start-server-and-test \"cd ../../apps/test-app && pnpm start\" http://localhost:3000 \"playwright test\"",
+    "playwright:codegen": "playwright codegen",
+    "playwright:install": "playwright install"
+  },
+  "dependencies": {
+    "dotenv": "16.5.0",
+    "start-server-and-test": "2.0.5",
+    "test-app": "workspace:*"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "4.10.1",
+    "@playwright/test": "1.52.0",
+    "@reon-island/eslint-config": "workspace:*",
+    "@reon-island/typescript-config": "workspace:*",
+    "@types/node": "18.16.9",
+    "typescript": "5.5.4"
+  }
+}
