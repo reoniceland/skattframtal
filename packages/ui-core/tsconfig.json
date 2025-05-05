@@ -14,5 +14,10 @@
     ".storybook/**/*",
     "**/*.css.ts"
   ],
-  "exclude": ["node_modules", "dist", "storybook-static"]
+  "exclude": [
+    "node_modules",
+    "dist",
+    "storybook-static",
+    "src/lib/PhoneInput/CountryCodeSelect/Components/index.tsx"
+  ]
 }

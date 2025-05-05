@@ -1,4 +1,5 @@
 import { base } from './configs/base.js';
+import { next } from './configs/next.js';
 import { react } from './configs/react.js';
 import { storybook } from './configs/storybook.js';
 
@@ -8,4 +9,5 @@ export const configs = {
   base,
   react,
   storybook,
+  next,
 };

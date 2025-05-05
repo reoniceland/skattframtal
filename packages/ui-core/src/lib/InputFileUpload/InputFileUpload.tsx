@@ -151,7 +151,7 @@ export const UploadedFile = ({
 
   return (
     <Box
-      ref={ref}
+      ref={ref as React.Ref<HTMLElement>}
       display="flex"
       flexDirection="row"
       alignItems="center"

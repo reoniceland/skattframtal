@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useContext, useEffect, useState } from 'react';
 
 import type { Colors } from '@reon-island/ui-theme';

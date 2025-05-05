@@ -1,3 +1,5 @@
+'use client';
+
 import React, { Suspense, useEffect, useMemo, useState } from 'react';
 
 import type { IconProps, PlaceholderProps, SvgProps } from './types';

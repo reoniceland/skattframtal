@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 
 import type { TestSupport } from '@reon-island/ui-utils';

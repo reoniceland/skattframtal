@@ -11,4 +11,5 @@ export declare const configs: {
   base: FlatConfig.ConfigArray;
   react: FlatConfig.ConfigArray;
   storybook: FlatConfig.ConfigArray;
+  next: FlatConfig.ConfigArray;
 };

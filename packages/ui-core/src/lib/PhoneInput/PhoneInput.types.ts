@@ -1,13 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore make web strict
 
-import { GroupBase, Props } from 'react-select';
-
-import { Option as OptionType } from '../Select/Select.types';
+import type { GroupBase, Props } from 'react-select';
+import type { Option as OptionType } from '../Select/Select.types';
 
 type PropsFromSelectProps<Value> = Pick<
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore make web strict
   Props<OptionType<Value>, false, GroupBase<OptionType<Value>>>,
   | 'name'
   | 'options'
@@ -18,13 +15,14 @@ type PropsFromSelectProps<Value> = Pick<
   | 'placeholder'
   | 'defaultValue'
   | 'isSearchable'
-  | 'size'
-  | 'isCreatable'
-  | 'backgroundColor'
-  | 'ariaError'
   | 'isClearable'
-  | 'dataTestId'
->;
+> & {
+  size?: string;
+  isCreatable?: boolean;
+  backgroundColor?: string;
+  ariaError?: string;
+  dataTestId?: string;
+};
 
 export type CountryCodeSelectProps = PropsFromSelectProps<string> & {
   inputHasFocus?: boolean;

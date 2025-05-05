@@ -1,0 +1,30 @@
+{
+  "name": "test-app",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev",
+    "lint": "next lint",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@reon-island/ui-core": "workspace:*",
+    "@reon-island/ui-theme": "workspace:*",
+    "@reon-island/ui-utils": "workspace:*",
+    "@reon-island/vanilla-extract-utils": "workspace:*",
+    "@vanilla-extract/css": "1.17.1",
+    "@vanilla-extract/next-plugin": "2.4.10",
+    "next": "14.2.25",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
+  },
+  "devDependencies": {
+    "@reon-island/eslint-config": "workspace:*",
+    "@reon-island/typescript-config": "workspace:*",
+    "@types/node": "18.16.9",
+    "@types/react": "18.3.20",
+    "@types/react-dom": "18.3.6",
+    "typescript": "5.5.4"
+  }
+}

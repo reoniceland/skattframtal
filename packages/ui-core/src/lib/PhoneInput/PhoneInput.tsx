@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, SyntheticEvent, useRef, useState } from 'react';
 
 import cn from 'classnames';
@@ -286,6 +288,8 @@ export const PhoneInput = forwardRef(
                 <CountryCodeSelect
                   id={selectId}
                   name={selectId}
+                  ariaError={ariaError}
+                  isCreatable={false}
                   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
                   // @ts-ignore make web strict
                   onChange={(option) => {

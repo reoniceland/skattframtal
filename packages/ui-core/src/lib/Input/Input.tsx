@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useLayoutEffect, useRef, useState } from 'react';
 
 import type { UseBoxStylesProps } from '../Box/useBoxStyles';

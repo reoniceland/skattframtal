@@ -1,3 +1,5 @@
+'use client';
+
 import React, { MouseEvent, useEffect, useState } from 'react';
 import { LinkProps } from 'next/link';
 

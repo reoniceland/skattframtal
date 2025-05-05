@@ -1,5 +1,7 @@
 import React from 'react';
 
+import type { Option as OptionType } from '../../../Select/Select.types';
+
 import cn from 'classnames';
 import {
   components,
@@ -24,7 +26,6 @@ import {
 
 import { Box } from '../../../Box/Box';
 import { Icon } from '../../../IconRC/Icon';
-import { Option as OptionType } from '../../../Select/Select.types';
 import * as styles from '../CountryCodeSelect.css';
 
 export const Menu = (

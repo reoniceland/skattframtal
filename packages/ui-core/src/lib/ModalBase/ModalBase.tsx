@@ -1,3 +1,5 @@
+'use client';
+
 import React, { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
 
 import type { FC, ReactElement, Ref } from 'react';
