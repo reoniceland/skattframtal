@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const menu = style({
   padding: 0,
@@ -18,17 +18,17 @@ export const menu = style({
   borderTopWidth: 0,
   borderBottomLeftRadius: 6,
   borderBottomRightRadius: 6,
-});
+})
 
 export const blueBackgroundColor = style({
   backgroundColor: theme.color.blue100,
-});
+})
 
 export const open = style({
   zIndex: 10,
   opacity: 1,
-});
+})
 
 export const hidden = style({
   visibility: 'hidden',
-});
+})

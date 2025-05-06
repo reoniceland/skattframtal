@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Select } from './Select';
+import { withFigma } from '../../utils/withFigma'
+import { Select } from './Select'
 
 const config: Meta<typeof Select> = {
   component: Select,
@@ -37,18 +37,18 @@ const config: Meta<typeof Select> = {
     },
     icon: { description: 'Icon name' },
   },
-};
+}
 
-export default config;
-type SelectProps = StoryObj<typeof Select>;
+export default config
+type SelectProps = StoryObj<typeof Select>
 
 const Template = (args) => (
   <div style={{ height: 150, overflow: 'auto' }}>
     <Select {...args} />
   </div>
-);
+)
 
-export const Default: SelectProps = Template.bind({});
+export const Default: SelectProps = Template.bind({})
 Default.args = {
   name: 'Select',
   label: 'Select label text',
@@ -78,73 +78,73 @@ Default.args = {
   required: false,
   errorMessage: undefined,
   icon: undefined,
-};
+}
 
-export const BlueBackground = Template.bind({});
+export const BlueBackground = Template.bind({})
 BlueBackground.args = {
   ...Default.args,
   backgroundColor: 'blue',
-};
+}
 
-export const NoOptions = Template.bind({});
+export const NoOptions = Template.bind({})
 NoOptions.args = {
   ...Default.args,
   options: [],
   noOptionsMessage: 'No options',
-};
+}
 
-export const Multiple = Template.bind({});
+export const Multiple = Template.bind({})
 Multiple.args = {
   ...Default.args,
   isMulti: true,
-};
+}
 
-export const SizeSm = Template.bind({});
+export const SizeSm = Template.bind({})
 SizeSm.args = {
   ...Default.args,
   size: 'sm',
-};
+}
 
-export const SizeXs = Template.bind({});
+export const SizeXs = Template.bind({})
 SizeXs.args = {
   ...Default.args,
   size: 'xs',
-};
+}
 
-export const Disabled = Template.bind({});
+export const Disabled = Template.bind({})
 Disabled.args = {
   ...Default.args,
   isDisabled: true,
-};
+}
 
-export const Clearable = Template.bind({});
+export const Clearable = Template.bind({})
 Clearable.args = {
   ...Default.args,
   isClearable: true,
-};
+}
 
-export const Searchable = Template.bind({});
+export const Searchable = Template.bind({})
 Searchable.args = {
   ...Default.args,
   isSearchable: true,
   placeholder: 'Type to search',
-};
+}
 
-export const WithDifferentIcon = Template.bind({});
+export const WithDifferentIcon = Template.bind({})
 WithDifferentIcon.args = {
   ...Default.args,
   icon: 'ellipsisVertical',
-};
+}
 
-export const Required = Template.bind({});
+export const Required = Template.bind({})
 Required.args = {
   ...Default.args,
   required: true,
-};
+}
 
-export const HasError = Template.bind({});
+export const HasError = Template.bind({})
 HasError.args = {
   ...Default.args,
   hasError: true,
   errorMessage: 'This is an error message',
-};
+}

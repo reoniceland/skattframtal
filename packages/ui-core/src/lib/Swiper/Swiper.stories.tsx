@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { AlertMessage } from '../AlertMessage/AlertMessage';
-import { Swiper } from './Swiper';
+import { AlertMessage } from '../AlertMessage/AlertMessage'
+import { Swiper } from './Swiper'
 
 export default {
   title: 'Components/Swiper',
   component: Swiper,
-};
+}
 
 export const Default = () => (
   <Swiper>
@@ -21,4 +21,4 @@ export const Default = () => (
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus pellentesque amet, id tortor urna faucibus augue sit. Fames dignissim condimentum nibh ut in."
     />
   </Swiper>
-);
+)

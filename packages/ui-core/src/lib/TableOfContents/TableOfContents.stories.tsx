@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { TableOfContents } from './TableOfContents';
+import { Box } from '../Box/Box'
+import { TableOfContents } from './TableOfContents'
 
 export default {
   title: 'Navigation/TableOfContents',
   component: TableOfContents,
-};
+}
 
 export const TableOfContentsExample = () => (
   <Box paddingTop={3}>
@@ -23,4 +23,4 @@ export const TableOfContentsExample = () => (
       }
     />
   </Box>
-);
+)

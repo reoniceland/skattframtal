@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Stack } from '../Stack/Stack';
-import { Drawer } from './Drawer';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Stack } from '../Stack/Stack'
+import { Drawer } from './Drawer'
 
 export default {
   title: 'Components/Drawer',
   component: Drawer,
   parameters: withFigma('Drawer'),
-};
+}
 
 export const Default = () => {
   return (
@@ -21,8 +21,8 @@ export const Default = () => {
     >
       Hello world!
     </Drawer>
-  );
-};
+  )
+}
 
 export const PositionLeft = () => (
   <Drawer
@@ -33,7 +33,7 @@ export const PositionLeft = () => (
   >
     Hello world!
   </Drawer>
-);
+)
 
 export const OverflowScroll = () => (
   <Drawer
@@ -49,4 +49,4 @@ export const OverflowScroll = () => (
       ))}
     </Stack>
   </Drawer>
-);
+)

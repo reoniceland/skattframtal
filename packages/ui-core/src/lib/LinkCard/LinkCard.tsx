@@ -1,24 +1,24 @@
 /** @deprecated LinkCard has been deprecated in favor of TopicCard */
 
-import React, { ComponentPropsWithRef, forwardRef } from 'react';
+import React, { ComponentPropsWithRef, forwardRef } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { BoxProps } from '../Box/types';
-import { useDeprecatedComponent } from '../private/useDeprecatedComponent';
-import { Tag } from '../Tag/Tag';
-import { TagProps, TagVariant } from '../Tag/types';
-import { Text } from '../Text/Text';
-import * as styles from './LinkCard.css';
+import { Box } from '../Box/Box'
+import { BoxProps } from '../Box/types'
+import { useDeprecatedComponent } from '../private/useDeprecatedComponent'
+import { Tag } from '../Tag/Tag'
+import { TagProps, TagVariant } from '../Tag/types'
+import { Text } from '../Text/Text'
+import * as styles from './LinkCard.css'
 
 export interface LinkCardProps extends ComponentPropsWithRef<'div'> {
-  onClick?: () => void;
-  background?: BoxProps['background'];
-  tag?: string;
-  tagVariant?: TagVariant;
-  tagProps?: Omit<TagProps, 'children'>;
-  isFocused?: boolean;
+  onClick?: () => void
+  background?: BoxProps['background']
+  tag?: string
+  tagVariant?: TagVariant
+  tagProps?: Omit<TagProps, 'children'>
+  isFocused?: boolean
 }
 
 export const LinkCard = forwardRef<HTMLAnchorElement, LinkCardProps>(
@@ -37,7 +37,7 @@ export const LinkCard = forwardRef<HTMLAnchorElement, LinkCardProps>(
     }: LinkCardProps,
     ref,
   ) => {
-    useDeprecatedComponent('LinkCard', 'TopicCard');
+    useDeprecatedComponent('LinkCard', 'TopicCard')
 
     return (
       <Box
@@ -62,6 +62,6 @@ export const LinkCard = forwardRef<HTMLAnchorElement, LinkCardProps>(
           </Box>
         )}
       </Box>
-    );
+    )
   },
-);
+)

@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react'
 
-import throttle from 'lodash/throttle';
-import { useEvent } from 'react-use';
+import throttle from 'lodash/throttle'
+import { useEvent } from 'react-use'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-const { sm, md, lg, xl } = theme.breakpoints;
+const { sm, md, lg, xl } = theme.breakpoints
 
 type Breakpoints = {
-  [key in keyof typeof theme.breakpoints]: boolean;
-};
+  [key in keyof typeof theme.breakpoints]: boolean
+}
 
 const getDeviceBreakpoints = (width: number): Breakpoints => ({
   xs: width < sm,
@@ -19,7 +19,7 @@ const getDeviceBreakpoints = (width: number): Breakpoints => ({
   md: width >= md,
   lg: width >= lg,
   xl: width >= xl,
-});
+})
 
 /**
  * Helper hook to get the state of breakpoints
@@ -36,18 +36,18 @@ const getDeviceBreakpoints = (width: number): Breakpoints => ({
  * }
  */
 export const useBreakpoint = (): Breakpoints => {
-  const [breakpoint, setBreakpoint] = useState(() => getDeviceBreakpoints(lg));
+  const [breakpoint, setBreakpoint] = useState(() => getDeviceBreakpoints(lg))
 
   useEffect(() => {
-    setBreakpoint(getDeviceBreakpoints(window.innerWidth));
-  }, []);
+    setBreakpoint(getDeviceBreakpoints(window.innerWidth))
+  }, [])
 
   const calcInnerWidth = throttle(
     () => setBreakpoint(getDeviceBreakpoints(window.innerWidth)),
     200,
-  );
+  )
 
-  useEvent('resize', calcInnerWidth);
+  useEvent('resize', calcInnerWidth)
 
-  return breakpoint;
-};
+  return breakpoint
+}

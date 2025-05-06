@@ -1,7 +1,7 @@
-import { theme } from '@reon-island/ui-theme';
-import { hexToRgba } from '@reon-island/ui-utils';
+import { theme } from '@reon-island/ui-theme'
+import { hexToRgba } from '@reon-island/ui-utils'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const backdrop = style({
   position: 'fixed',
@@ -19,7 +19,7 @@ export const backdrop = style({
       opacity: 1,
     },
   },
-});
+})
 
 export const backdropColor = styleVariants({
   default: {
@@ -28,7 +28,7 @@ export const backdropColor = styleVariants({
   white: {
     backgroundColor: theme.color.white,
   },
-});
+})
 
 export const modal = style({
   width: '100%',
@@ -40,4 +40,4 @@ export const modal = style({
       opacity: 1,
     },
   },
-});
+})

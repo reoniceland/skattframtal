@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const container = style({
   display: 'flex',
@@ -15,7 +15,7 @@ export const container = style({
       transition: 'none',
     },
   },
-});
+})
 
 export const name = style({
   marginRight: 20,
@@ -27,8 +27,8 @@ export const name = style({
       whiteSpace: 'inherit',
     },
   },
-});
+})
 
 export const nameWithActiveSubSections = style({
   marginRight: 0,
-});
+})

@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Breadcrumbs } from './Breadcrumbs';
+import { withFigma } from '../../utils/withFigma'
+import { Breadcrumbs } from './Breadcrumbs'
 
 export default {
   title: 'Navigation/Breadcrumbs',
   component: Breadcrumbs,
   parameters: withFigma('Breadcrumbs'),
-};
+}
 
 export const Default = () => (
   <Breadcrumbs
@@ -18,4 +18,4 @@ export const Default = () => (
       { isTag: true, title: 'text tag' },
     ]}
   />
-);
+)

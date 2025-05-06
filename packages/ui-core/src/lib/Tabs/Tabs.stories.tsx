@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { Stack } from '../Stack/Stack';
-import { Typography } from '../Typography/Typography';
-import { Tabs } from './Tabs';
+import { withFigma } from '../../utils/withFigma'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { Stack } from '../Stack/Stack'
+import { Typography } from '../Typography/Typography'
+import { Tabs } from './Tabs'
 
 export default {
   component: Tabs,
   parameters: withFigma('Tabs'),
-};
+}
 
 const content1 = (
   <Stack space="gutter">
@@ -28,21 +28,21 @@ const content1 = (
       þegar taka fæðingarorlofs hefst.
     </Typography>
   </Stack>
-);
+)
 
 const content2 = (
   <Stack space="gutter">
     <Typography variant="h3">Second tab title</Typography>
     <Typography variant="p">Second tab content</Typography>
   </Stack>
-);
+)
 
 const content3 = (
   <Stack space="gutter">
     <Typography variant="h3">Third tab title</Typography>
     <Typography variant="p">Third tab content</Typography>
   </Stack>
-);
+)
 
 const tabs = [
   {
@@ -51,10 +51,10 @@ const tabs = [
   },
   { label: 'Second tab', content: content2 },
   { label: 'Third tab', content: content3 },
-];
+]
 
 export const Default = () => (
   <ContentBlock>
     <Tabs label="This is used as the aria-label as well" tabs={tabs} />
   </ContentBlock>
-);
+)

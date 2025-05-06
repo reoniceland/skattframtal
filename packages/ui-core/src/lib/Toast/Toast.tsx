@@ -1,44 +1,44 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 import {
   Slide,
   toast as toastify,
   ToastContainer as ToastifyContainer,
   ToastOptions,
-} from 'react-toastify';
+} from 'react-toastify'
 
-import { Box } from '../Box/Box';
-import { Icon } from '../IconRC/Icon';
-import { Text } from '../Text/Text';
-import * as toastStyles from './Toast.css';
+import { Box } from '../Box/Box'
+import { Icon } from '../IconRC/Icon'
+import { Text } from '../Text/Text'
+import * as toastStyles from './Toast.css'
 
 interface ToastProps {
-  hideProgressBar?: boolean;
-  timeout?: number;
-  closeButton?: boolean;
-  useKeyframeStyles?: boolean;
+  hideProgressBar?: boolean
+  timeout?: number
+  closeButton?: boolean
+  useKeyframeStyles?: boolean
 }
 
 const RenderMessage = ({
   message,
   type,
 }: {
-  message: string;
-  type: 'error' | 'success' | 'warning' | 'info';
+  message: string
+  type: 'error' | 'success' | 'warning' | 'info'
 }) => {
   const colors = {
     error: 'red400',
     success: 'mint400',
     warning: 'yellow600',
     info: 'blue400',
-  } as const;
+  } as const
   const icons = {
     error: 'warning',
     success: 'checkmarkCircle',
     warning: 'warning',
     info: 'informationCircle',
-  } as const;
+  } as const
 
   return (
     <Box display="flex" alignItems="center">
@@ -49,8 +49,8 @@ const RenderMessage = ({
         <Text variant="h5">{message}</Text>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
 export const ToastContainer: FC<ToastProps> = ({
   hideProgressBar = false,
@@ -76,15 +76,15 @@ export const ToastContainer: FC<ToastProps> = ({
         transition={Slide}
       />
     </div>
-  );
-};
+  )
+}
 
-type ToastType = 'success' | 'error' | 'info' | 'warning';
-type ToastFunction = (message: string, options?: ToastOptions) => void;
+type ToastType = 'success' | 'error' | 'info' | 'warning'
+type ToastFunction = (message: string, options?: ToastOptions) => void
 
 type Toast = {
-  [key in ToastType]: ToastFunction;
-};
+  [key in ToastType]: ToastFunction
+}
 
 export const toast: Toast = {
   success: (message, options) =>
@@ -101,4 +101,4 @@ export const toast: Toast = {
       <RenderMessage type="warning" message={message} />,
       options,
     ),
-};
+}

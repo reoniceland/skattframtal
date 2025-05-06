@@ -1,17 +1,17 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 
-import { Button } from 'reakit/Button';
+import { Button } from 'reakit/Button'
 
-import { Box } from '../Box/Box';
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
+import { Box } from '../Box/Box'
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
 
 interface Props {
-  tableOfContentsTitle: string;
-  headings: Array<{ headingTitle: string; headingId: string }>;
-  selectedHeadingId?: string;
-  onClick: (selectedHeadingId: string) => void;
+  tableOfContentsTitle: string
+  headings: Array<{ headingTitle: string; headingId: string }>
+  selectedHeadingId?: string
+  onClick: (selectedHeadingId: string) => void
 }
 
 export const TableOfContents: FC<React.PropsWithChildren<Props>> = ({
@@ -55,6 +55,6 @@ export const TableOfContents: FC<React.PropsWithChildren<Props>> = ({
       ))}
     </Stack>
   </Box>
-);
+)
 
-export default TableOfContents;
+export default TableOfContents

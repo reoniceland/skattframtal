@@ -1,7 +1,7 @@
-import type { StyleRule } from '@vanilla-extract/css';
-import type { Properties } from 'csstype';
+import type { StyleRule } from '@vanilla-extract/css'
+import type { Properties } from 'csstype'
 
-import mapValues from 'lodash/mapValues';
+import mapValues from 'lodash/mapValues'
 
 export const mapToStyleProperty = <
   Key extends string | number,
@@ -13,4 +13,4 @@ export const mapToStyleProperty = <
 ) =>
   mapValues(map, (value: Value) =>
     mapper ? mapper(value, propertyName) : { [propertyName]: value },
-  );
+  )

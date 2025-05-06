@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../../Box/Box';
-import * as styles from './GridContainer.css';
+import { Box } from '../../Box/Box'
+import * as styles from './GridContainer.css'
 
-type position = 'relative' | 'fixed' | 'absolute';
+type position = 'relative' | 'fixed' | 'absolute'
 interface Props {
-  className?: string;
-  id?: string;
-  position?: position | 'none';
+  className?: string
+  id?: string
+  position?: position | 'none'
 }
 
 export const GridContainer: FC<React.PropsWithChildren<Props>> = ({
@@ -20,14 +20,14 @@ export const GridContainer: FC<React.PropsWithChildren<Props>> = ({
   id,
   position = 'relative',
 }) => {
-  const pos: { position?: position } = {};
+  const pos: { position?: position } = {}
 
   if (position !== 'none') {
-    pos.position = position;
+    pos.position = position
   }
   return (
     <Box {...pos} className={cn(className, styles.root)} id={id}>
       {children}
     </Box>
-  );
-};
+  )
+}

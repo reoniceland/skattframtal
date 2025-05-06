@@ -1,14 +1,14 @@
 /** @deprecated Typography has been deprecated in favor of Text */
 
-import React from 'react';
+import React from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { ResponsiveSpace } from '../Box/useBoxStyles';
-import type { VariantTypes } from './Typography.css';
+import type { Colors } from '@reon-island/ui-theme'
+import type { ResponsiveSpace } from '../Box/useBoxStyles'
+import type { VariantTypes } from './Typography.css'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
+import { Box } from '../Box/Box'
 import {
   base,
   colors,
@@ -17,12 +17,12 @@ import {
   links as linksStyle,
   truncate as truncateStyle,
   variantStyles,
-} from './Typography.css';
+} from './Typography.css'
 
 export interface TypographyProps {
-  id?: string;
-  variant?: VariantTypes;
-  children?: React.ReactNode;
+  id?: string
+  variant?: VariantTypes
+  children?: React.ReactNode
   as?:
     | 'h1'
     | 'h2'
@@ -33,17 +33,17 @@ export interface TypographyProps {
     | 'span'
     | 'div'
     | 'label'
-    | 'caption';
-  color?: Colors;
-  truncate?: boolean;
-  links?: boolean;
-  paddingTop?: ResponsiveSpace;
-  paddingBottom?: ResponsiveSpace;
-  paddingY?: ResponsiveSpace;
-  marginTop?: ResponsiveSpace;
-  marginBottom?: ResponsiveSpace;
-  marginY?: ResponsiveSpace;
-  fontWeight?: keyof typeof fontWeightStyles;
+    | 'caption'
+  color?: Colors
+  truncate?: boolean
+  links?: boolean
+  paddingTop?: ResponsiveSpace
+  paddingBottom?: ResponsiveSpace
+  paddingY?: ResponsiveSpace
+  marginTop?: ResponsiveSpace
+  marginBottom?: ResponsiveSpace
+  marginY?: ResponsiveSpace
+  fontWeight?: keyof typeof fontWeightStyles
 }
 
 export const Typography = ({
@@ -63,7 +63,7 @@ export const Typography = ({
   as = 'p',
 }: TypographyProps) => {
   if (process.env.NODE_ENV === 'development') {
-    console.warn('Typography has been deprecated in favor of Text.');
+    console.warn('Typography has been deprecated in favor of Text.')
   }
 
   return (
@@ -90,5 +90,5 @@ export const Typography = ({
     >
       {children}
     </Box>
-  );
-};
+  )
+}

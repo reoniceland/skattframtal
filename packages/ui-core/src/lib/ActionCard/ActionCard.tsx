@@ -1,65 +1,65 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { ActionCardProps, BackgroundColor } from './types';
+import type { Colors } from '@reon-island/ui-theme'
+import type { ActionCardProps, BackgroundColor } from './types'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Hidden } from '../Hidden/Hidden';
-import { Icon } from '../IconRC/Icon';
-import { ProgressMeter } from '../ProgressMeter/ProgressMeter';
-import { Tag } from '../Tag/Tag';
-import { Text } from '../Text/Text';
-import { Tooltip } from '../Tooltip/Tooltip';
-import * as styles from './ActionCard.css';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Hidden } from '../Hidden/Hidden'
+import { Icon } from '../IconRC/Icon'
+import { ProgressMeter } from '../ProgressMeter/ProgressMeter'
+import { Tag } from '../Tag/Tag'
+import { Text } from '../Text/Text'
+import { Tooltip } from '../Tooltip/Tooltip'
+import * as styles from './ActionCard.css'
 
 const defaultCta = {
   variant: 'primary',
   icon: 'arrowForward',
   onClick: () => null,
   fluid: true,
-} as const;
+} as const
 
 const defaultTag = {
   variant: 'blue',
   outlined: true,
   label: '',
-} as const;
+} as const
 
 const defaultUnavailable = {
   active: false,
   label: '',
   message: '',
-} as const;
+} as const
 
 const backgroundMap: Record<BackgroundColor, Colors> = {
   blue: 'blue100',
   red: 'red100',
   white: 'white',
-};
+}
 const colorMap: Record<BackgroundColor, Colors> = {
   blue: 'blue600',
   red: 'red600',
   white: 'currentColor',
-};
+}
 
 const eyebrowMap: Record<BackgroundColor, Colors> = {
   blue: 'purple400',
   red: 'purple400',
   white: 'blue400',
-};
+}
 
 const borderMap: Record<BackgroundColor, Colors> = {
   blue: 'blue100',
   red: 'red200',
   white: 'blue200',
-};
+}
 
 const avatarMap: Record<BackgroundColor, { circle: Colors; text: Colors }> = {
   blue: { circle: 'blue200', text: 'blue400' },
   red: { circle: 'red200', text: 'red600' },
   white: { circle: 'blue100', text: 'blue400' },
-};
+}
 
 export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
   date,
@@ -76,23 +76,23 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
   focused = false,
   progressMeter,
 }) => {
-  const cta = { ...defaultCta, ..._cta };
-  const tag = { ...defaultTag, ..._tag };
-  const unavailable = { ...defaultUnavailable, ..._unavailable };
+  const cta = { ...defaultCta, ..._cta }
+  const tag = { ...defaultTag, ..._tag }
+  const unavailable = { ...defaultUnavailable, ..._unavailable }
 
-  const bgr = backgroundMap[backgroundColor];
-  const color = colorMap[backgroundColor];
-  const eyebrowColor = eyebrowMap[backgroundColor];
-  const avatarColors = avatarMap[backgroundColor];
-  const borderColor = borderMap[backgroundColor];
+  const bgr = backgroundMap[backgroundColor]
+  const color = colorMap[backgroundColor]
+  const eyebrowColor = eyebrowMap[backgroundColor]
+  const avatarColors = avatarMap[backgroundColor]
+  const borderColor = borderMap[backgroundColor]
 
-  const hasEyebrowElements = Boolean(date || eyebrow);
-  const hasCTAElements = Boolean(cta.label || unavailable.active);
-  const hasTag = Boolean(tag.label);
+  const hasEyebrowElements = Boolean(date || eyebrow)
+  const hasCTAElements = Boolean(cta.label || unavailable.active)
+  const hasTag = Boolean(tag.label)
 
   const renderAvatar = () => {
     if (!avatar || !heading) {
-      return null;
+      return null
     }
 
     return (
@@ -110,12 +110,12 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
           {getTitleAbbreviation(heading)}
         </Text>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderDisabled = () => {
     if (!unavailable.active) {
-      return null;
+      return null
     }
 
     return (
@@ -123,12 +123,12 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
         <Text variant="small">{unavailable.label}&nbsp;</Text>
         <Tooltip placement="top" as="button" text={unavailable.message} />
       </Box>
-    );
-  };
+    )
+  }
 
   const renderEyebrow = () => {
     if (!eyebrow) {
-      return null;
+      return null
     }
 
     return (
@@ -142,12 +142,12 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
           {eyebrow}
         </Text>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderDate = () => {
     if (!date) {
-      return null;
+      return null
     }
 
     return (
@@ -176,36 +176,36 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
           </Box>
         </Box>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderTag = () => {
     if (!tag.label) {
-      return null;
+      return null
     }
 
     const tagEl = (
       <Tag outlined={tag.outlined} variant={tag.variant} disabled>
         {tag.label}
       </Tag>
-    );
+    )
 
-    return tag.renderTag ? tag.renderTag(tagEl) : tagEl;
-  };
+    return tag.renderTag ? tag.renderTag(tagEl) : tagEl
+  }
 
   const renderCTA = () => {
     if (!cta.label || unavailable.active) {
-      return null;
+      return null
     }
 
     const isTextVariant =
-      cta.variant === 'text' || cta.buttonType?.variant === 'text';
+      cta.variant === 'text' || cta.buttonType?.variant === 'text'
 
     // varinat="text" buttons should be small
-    const smallButton = isTextVariant && _cta?.size === undefined;
+    const smallButton = isTextVariant && _cta?.size === undefined
 
     // variant="text" buttons should not full width on mobile
-    const intrinsicSize = isTextVariant && _cta?.fluid === undefined;
+    const intrinsicSize = isTextVariant && _cta?.fluid === undefined
 
     return (
       <Box
@@ -228,12 +228,12 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
           {cta.label}
         </Button>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderProgressMeter = () => {
     if (!progressMeter) {
-      return null;
+      return null
     }
 
     return (
@@ -258,14 +258,14 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
           variant={progressMeter.variant}
         />
       </Box>
-    );
-  };
+    )
+  }
 
   const headingEl = (
     <Text variant={headingVariant} color={color}>
       {heading}
     </Text>
-  );
+  )
 
   return (
     <Box
@@ -353,15 +353,15 @@ export const ActionCard: React.FC<React.PropsWithChildren<ActionCardProps>> = ({
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
 const getTitleAbbreviation = (title: string) => {
-  const words = title.split(' ');
-  let initials = words[0].substring(0, 1).toUpperCase();
+  const words = title.split(' ')
+  let initials = words[0].substring(0, 1).toUpperCase()
 
   if (words.length > 1)
-    initials += words[words.length - 1].substring(0, 1).toUpperCase();
+    initials += words[words.length - 1].substring(0, 1).toUpperCase()
 
-  return initials;
-};
+  return initials
+}

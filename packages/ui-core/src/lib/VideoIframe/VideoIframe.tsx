@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import * as styles from './VideoIframe.css';
+import * as styles from './VideoIframe.css'
 
 export interface VideoIframeProps {
-  src: string;
-  title?: string;
+  src: string
+  title?: string
 }
 
 export const VideoIframe = ({ src, title = 'video' }: VideoIframeProps) => (
@@ -20,4 +20,4 @@ export const VideoIframe = ({ src, title = 'video' }: VideoIframeProps) => (
       className={styles.iframe}
     />
   </div>
-);
+)

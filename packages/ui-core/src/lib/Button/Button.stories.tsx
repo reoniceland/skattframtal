@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react';
-import type { ButtonBaseProps } from './Button';
+import type { Meta, StoryObj } from '@storybook/react'
+import type { ButtonBaseProps } from './Button'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { Button } from './Button';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { Button } from './Button'
 
 const config: Meta<typeof Button> = {
   title: 'Core/Button',
@@ -50,14 +50,14 @@ const config: Meta<typeof Button> = {
     onBlur: { description: 'Button blur handler' },
     onFocus: { description: 'Button focus handler' },
   },
-};
+}
 
-export default config;
-type ButtonProps = StoryObj<ButtonBaseProps>;
+export default config
+type ButtonProps = StoryObj<ButtonBaseProps>
 
-const Template = (args) => <Button {...args} />;
+const Template = (args) => <Button {...args} />
 
-export const Default: ButtonProps = Template.bind({});
+export const Default: ButtonProps = Template.bind({})
 Default.args = {
   children: 'Button',
   size: 'default',
@@ -71,52 +71,52 @@ Default.args = {
   iconType: 'filled',
   preTextIcon: undefined,
   preTextIconType: 'filled',
-};
+}
 
-export const Ghost: ButtonProps = Template.bind({});
-Ghost.args = { ...Default.args, variant: 'ghost' };
+export const Ghost: ButtonProps = Template.bind({})
+Ghost.args = { ...Default.args, variant: 'ghost' }
 
-export const Text: ButtonProps = Template.bind({});
+export const Text: ButtonProps = Template.bind({})
 Text.args = {
   ...Default.args,
   variant: 'text',
   circle: undefined,
-};
+}
 
-export const Utility: ButtonProps = Template.bind({});
+export const Utility: ButtonProps = Template.bind({})
 Utility.args = {
   ...Default.args,
   variant: 'utility',
   circle: undefined,
-};
+}
 
-export const Fluid: ButtonProps = Template.bind({});
-Fluid.args = { ...Default.args, fluid: true };
+export const Fluid: ButtonProps = Template.bind({})
+Fluid.args = { ...Default.args, fluid: true }
 
-export const Disabled: ButtonProps = Template.bind({});
-Disabled.args = { ...Default.args, disabled: true };
+export const Disabled: ButtonProps = Template.bind({})
+Disabled.args = { ...Default.args, disabled: true }
 
-export const Loading: ButtonProps = Template.bind({});
-Loading.args = { ...Default.args, loading: true };
+export const Loading: ButtonProps = Template.bind({})
+Loading.args = { ...Default.args, loading: true }
 
-export const CircleButton: ButtonProps = Template.bind({});
+export const CircleButton: ButtonProps = Template.bind({})
 CircleButton.args = {
   circle: true,
   icon: 'arrowForward',
   title: 'Go forward',
-};
+}
 
-export const SizeSmall: ButtonProps = Template.bind({});
-SizeSmall.args = { ...Default.args, size: 'small' };
+export const SizeSmall: ButtonProps = Template.bind({})
+SizeSmall.args = { ...Default.args, size: 'small' }
 
-export const SizeLarge: ButtonProps = Template.bind({});
-SizeLarge.args = { ...Default.args, size: 'large' };
+export const SizeLarge: ButtonProps = Template.bind({})
+SizeLarge.args = { ...Default.args, size: 'large' }
 
-export const ColorSchemeDestructive: ButtonProps = Template.bind({});
+export const ColorSchemeDestructive: ButtonProps = Template.bind({})
 ColorSchemeDestructive.args = {
   ...Default.args,
   colorScheme: 'destructive',
-};
+}
 
 export const ColorSchemeNegative: React.FC<
   React.PropsWithChildren<ButtonProps>
@@ -124,23 +124,23 @@ export const ColorSchemeNegative: React.FC<
   <Box background="blue400" padding={4}>
     <Button colorScheme="negative">Button</Button>
   </Box>
-);
+)
 
-export const WithIcon: ButtonProps = Template.bind({});
+export const WithIcon: ButtonProps = Template.bind({})
 WithIcon.args = {
   ...Default.args,
   icon: 'arrowForward',
-};
+}
 
-export const WithIconPreText: ButtonProps = Template.bind({});
+export const WithIconPreText: ButtonProps = Template.bind({})
 WithIconPreText.args = {
   ...Default.args,
   preTextIcon: 'arrowBack',
-};
+}
 
-export const WithFilledIcon: ButtonProps = Template.bind({});
+export const WithFilledIcon: ButtonProps = Template.bind({})
 WithFilledIcon.args = {
   ...Default.args,
   icon: 'calendar',
   iconType: 'filled',
-};
+}

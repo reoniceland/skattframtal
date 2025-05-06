@@ -1,19 +1,19 @@
-import type { ReactNode } from 'react';
-import type { LinkColor } from '../Link';
+import type { ReactNode } from 'react'
+import type { LinkColor } from '../Link'
 
-import { Box } from '../../Box/Box';
-import { Icon } from '../../Icon/Icon';
-import { Text } from '../../Text/Text';
-import { Link } from '../Link';
-import * as styles from './ArrowLink.css';
+import { Box } from '../../Box/Box'
+import { Icon } from '../../Icon/Icon'
+import { Text } from '../../Text/Text'
+import { Link } from '../Link'
+import * as styles from './ArrowLink.css'
 
 interface ArrowLinkProps {
-  href?: string;
-  as?: string;
-  children?: ReactNode;
-  color?: LinkColor;
-  arrowHeight?: number;
-  onClick?: () => void;
+  href?: string
+  as?: string
+  children?: ReactNode
+  color?: LinkColor
+  arrowHeight?: number
+  onClick?: () => void
 }
 
 // ArrowLink has the "arrow" icon and a permanent custom underline.
@@ -42,4 +42,4 @@ export const ArrowLink: React.FC<React.PropsWithChildren<ArrowLinkProps>> = ({
       </span>
     </Text>
   </Box>
-);
+)

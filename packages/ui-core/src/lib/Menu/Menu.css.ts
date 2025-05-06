@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const container = style({
   overflowY: 'auto',
@@ -13,7 +13,7 @@ export const container = style({
       display: 'flex',
     },
   }),
-});
+})
 export const bg = style({
   display: 'none',
   '@media': {
@@ -39,7 +39,7 @@ export const bg = style({
       right: theme.spacing[15],
     },
   },
-});
+})
 
 export const mainContainer = style({
   position: 'relative',
@@ -50,7 +50,7 @@ export const mainContainer = style({
       maxWidth: 829,
     },
   }),
-});
+})
 export const searchContainer = style({
   width: '100%',
   ...themeUtils.responsiveStyle({
@@ -58,7 +58,7 @@ export const searchContainer = style({
       maxWidth: 342,
     },
   }),
-});
+})
 
 export const asideTop = style({
   position: 'relative',
@@ -88,7 +88,7 @@ export const asideTop = style({
       },
     },
   }),
-});
+})
 
 export const asideBottom = style({
   position: 'relative',
@@ -118,7 +118,7 @@ export const asideBottom = style({
       },
     },
   }),
-});
+})
 
 export const mainLinkContainer = style({
   ...themeUtils.responsiveStyle({
@@ -129,24 +129,24 @@ export const mainLinkContainer = style({
       columnFill: 'auto',
     },
   }),
-});
+})
 export const mainLinkOuter = style({
   paddingTop: theme.spacing[1],
   paddingBottom: theme.spacing[1],
   paddingLeft: theme.spacing[2],
   borderLeft: `1px solid ${theme.color.blue200}`,
-});
+})
 export const mainLink = style({
   transition: 'color .3s',
   ':hover': {
     textDecoration: 'none',
     color: theme.color.blue600,
   },
-});
+})
 export const asideLink = style({
   transition: 'color .3s',
   ':hover': {
     textDecoration: 'none',
     color: theme.color.blue400,
   },
-});
+})

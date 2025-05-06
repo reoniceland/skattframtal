@@ -1,27 +1,27 @@
-import React from 'react';
+import React from 'react'
 
-import type { Dispatch, ReactNode, SetStateAction } from 'react';
+import type { Dispatch, ReactNode, SetStateAction } from 'react'
 
-import { Box } from '../../Box/Box';
-import { Button } from '../../Button/Button';
-import { GridContainer } from '../../Grid/GridContainer/GridContainer';
-import { Icon } from '../../IconRC/Icon';
-import { ModalBase } from '../../ModalBase/ModalBase';
-import { Select } from '../../Select/Select';
-import { Stack } from '../../Stack/Stack';
-import { Text } from '../../Text/Text';
-import { UserAvatar } from '../../UserAvatar/UserAvatar';
-import * as styles from './UserDropdown.css';
+import { Box } from '../../Box/Box'
+import { Button } from '../../Button/Button'
+import { GridContainer } from '../../Grid/GridContainer/GridContainer'
+import { Icon } from '../../IconRC/Icon'
+import { ModalBase } from '../../ModalBase/ModalBase'
+import { Select } from '../../Select/Select'
+import { Stack } from '../../Stack/Stack'
+import { Text } from '../../Text/Text'
+import { UserAvatar } from '../../UserAvatar/UserAvatar'
+import * as styles from './UserDropdown.css'
 
 interface UserDropdownProps {
-  username?: string;
-  dropdownState: 'open' | 'closed';
-  language?: string;
-  dropdownItems?: ReactNode;
-  setDropdownState: Dispatch<SetStateAction<'closed' | 'open'>>;
+  username?: string
+  dropdownState: 'open' | 'closed'
+  language?: string
+  dropdownItems?: ReactNode
+  setDropdownState: Dispatch<SetStateAction<'closed' | 'open'>>
 
-  switchLanguage?: (...args: any[]) => void;
-  onLogout?: () => void;
+  switchLanguage?: (...args: any[]) => void
+  onLogout?: () => void
 }
 
 export const UserDropdown = ({
@@ -33,7 +33,7 @@ export const UserDropdown = ({
   switchLanguage,
   onLogout,
 }: UserDropdownProps) => {
-  const isVisible = dropdownState === 'open';
+  const isVisible = dropdownState === 'open'
 
   return (
     <ModalBase
@@ -46,7 +46,7 @@ export const UserDropdown = ({
       modalLabel={language === 'is' ? 'Notendavalmynd' : 'User account menu'}
       onVisibilityChange={(visibility: boolean) => {
         if (visibility !== isVisible) {
-          setDropdownState('closed');
+          setDropdownState('closed')
         }
       }}
     >
@@ -62,7 +62,7 @@ export const UserDropdown = ({
             <button
               className={styles.closeButton}
               onClick={() => {
-                setDropdownState('closed');
+                setDropdownState('closed')
               }}
             >
               <Icon icon="close" color="blue400" />
@@ -116,5 +116,5 @@ export const UserDropdown = ({
         </Box>
       </GridContainer>
     </ModalBase>
-  );
-};
+  )
+}

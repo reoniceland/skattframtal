@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import type { ApolloClient } from '@apollo/client';
-import type { Parameters, Preview } from '@storybook/react';
+import type { ApolloClient } from '@apollo/client'
+import type { Parameters, Preview } from '@storybook/react'
 
-import { ApolloProvider } from '@apollo/client';
-import { MockedProvider } from '@apollo/client/testing';
-import { FormProvider, useForm } from 'react-hook-form';
-import { IntlProvider } from 'react-intl';
+import { ApolloProvider } from '@apollo/client'
+import { MockedProvider } from '@apollo/client/testing'
+import { FormProvider, useForm } from 'react-hook-form'
+import { IntlProvider } from 'react-intl'
 
 export const parameters: Parameters = {
   viewMode: 'docs',
@@ -14,12 +14,12 @@ export const parameters: Parameters = {
   apolloClient: {
     MockedProvider,
   },
-};
+}
 
 const preview: Preview = {
   decorators: [
     (Story) => {
-      const hookFormData = useForm({ defaultValues: {} });
+      const hookFormData = useForm({ defaultValues: {} })
 
       return (
         <IntlProvider
@@ -35,9 +35,9 @@ const preview: Preview = {
             </ApolloProvider>
           </FormProvider>
         </IntlProvider>
-      );
+      )
     },
   ],
-};
+}
 
-export default preview;
+export default preview

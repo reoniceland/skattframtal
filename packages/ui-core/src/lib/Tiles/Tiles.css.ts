@@ -1,8 +1,8 @@
-import mapValues from 'lodash/mapValues';
+import mapValues from 'lodash/mapValues'
 
-import { Theme, themeUtils } from '@reon-island/ui-theme';
+import { Theme, themeUtils } from '@reon-island/ui-theme'
 
-import { styleVariants } from '@vanilla-extract/css';
+import { styleVariants } from '@vanilla-extract/css'
 
 const columnsWidths = {
   1: '100%',
@@ -11,19 +11,19 @@ const columnsWidths = {
   4: `${100 / 4}%`,
   5: `${100 / 5}%`,
   6: `${100 / 6}%`,
-} as const;
+} as const
 
-type ColumnWidths = Record<keyof typeof columnsWidths, string>;
+type ColumnWidths = Record<keyof typeof columnsWidths, string>
 const makeColumnsAtoms = (breakpoint: keyof Theme['breakpoints']) =>
   styleVariants(
     mapValues(columnsWidths, (width) =>
       themeUtils.responsiveStyle({ [breakpoint]: { flex: `0 0 ${width}` } }),
     ),
     `columns_${breakpoint}`,
-  ) as ColumnWidths;
+  ) as ColumnWidths
 
-export const columnsXs = makeColumnsAtoms('xs');
-export const columnsSm = makeColumnsAtoms('sm');
-export const columnsMd = makeColumnsAtoms('md');
-export const columnsLg = makeColumnsAtoms('lg');
-export const columnsXl = makeColumnsAtoms('xl');
+export const columnsXs = makeColumnsAtoms('xs')
+export const columnsSm = makeColumnsAtoms('sm')
+export const columnsMd = makeColumnsAtoms('md')
+export const columnsLg = makeColumnsAtoms('lg')
+export const columnsXl = makeColumnsAtoms('xl')

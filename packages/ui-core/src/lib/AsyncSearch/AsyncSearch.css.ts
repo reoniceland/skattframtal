@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css'
 
 export const wrapper = style({
   display: 'inline-block',
@@ -21,33 +21,33 @@ export const wrapper = style({
     borderColor: theme.color.mint400,
     opacity: 0,
   },
-});
+})
 
 export const menuContainer = style({
   position: 'relative',
-});
+})
 
 export const sizes = styleVariants({
   medium: {},
   large: {},
-});
+})
 
 export const focused = style({
   ':after': {
     opacity: 1,
   },
-});
+})
 
 export const hasError = style({
   boxShadow: `inset 0 0 0 1px ${theme.color.red600}`,
-});
+})
 
 export const open = style({
   ':after': {
     borderBottomWidth: 0,
     borderRadius: '6px 6px 0 0',
   },
-});
+})
 
 export const icon = style({
   position: 'absolute',
@@ -76,19 +76,19 @@ export const icon = style({
       borderStyle: 'solid',
     },
   },
-});
+})
 
 export const transparentBackground = style({
   '::before': {
     backgroundColor: 'transparent',
   },
-});
+})
 
 export const focusable = style({
   ':before': {
     opacity: 1,
   },
-});
+})
 
 export const iconSizes = styleVariants({
   medium: {
@@ -114,7 +114,7 @@ export const iconSizes = styleVariants({
       bottom: -10,
     },
   },
-});
+})
 
 export const loadingIcon = style({
   position: 'absolute',
@@ -133,7 +133,7 @@ export const loadingIcon = style({
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
   animationTimingFunction: 'linear',
-});
+})
 
 export const loadingIconSizes = styleVariants({
   medium: {
@@ -147,7 +147,7 @@ export const loadingIconSizes = styleVariants({
   large: {
     right: 26,
   },
-});
+})
 
 export const white = style({
   backgroundColor: theme.color.transparent,
@@ -160,4 +160,4 @@ export const white = style({
       borderWidth: 2,
     },
   },
-});
+})

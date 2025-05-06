@@ -1,43 +1,43 @@
-'use client';
+'use client'
 
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { InputBackgroundColor } from '../Input/types';
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { InputBackgroundColor } from '../Input/types'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { Icon } from '../IconRC/Icon';
-import { Text } from '../Text/Text';
-import { Tooltip } from '../Tooltip/Tooltip';
-import * as styles from './Checkbox.css';
+import { Box } from '../Box/Box'
+import { Icon } from '../IconRC/Icon'
+import { Text } from '../Text/Text'
+import { Tooltip } from '../Tooltip/Tooltip'
+import * as styles from './Checkbox.css'
 
 export interface CheckboxProps {
-  name?: string;
-  id?: string;
-  label?: React.ReactNode;
-  checked?: boolean;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  tooltip?: React.ReactNode;
-  hasError?: boolean;
-  errorMessage?: string;
-  value?: string;
-  defaultChecked?: boolean;
-  strong?: boolean;
-  filled?: boolean;
-  large?: boolean;
-  backgroundColor?: InputBackgroundColor;
-  labelVariant?: 'default' | 'small' | 'medium';
+  name?: string
+  id?: string
+  label?: React.ReactNode
+  checked?: boolean
+  disabled?: boolean
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  tooltip?: React.ReactNode
+  hasError?: boolean
+  errorMessage?: string
+  value?: string
+  defaultChecked?: boolean
+  strong?: boolean
+  filled?: boolean
+  large?: boolean
+  backgroundColor?: InputBackgroundColor
+  labelVariant?: 'default' | 'small' | 'medium'
   /** subLabel and rightContent can only be used if the 'large' prop set to true */
-  subLabel?: React.ReactNode;
-  rightContent?: React.ReactNode;
+  subLabel?: React.ReactNode
+  rightContent?: React.ReactNode
 }
 
 interface AriaError {
-  'aria-invalid': boolean;
-  'aria-describedby': string;
+  'aria-invalid': boolean
+  'aria-describedby': string
 }
 
 export const Checkbox = ({
@@ -61,34 +61,34 @@ export const Checkbox = ({
   filled = false,
   rightContent,
 }: CheckboxProps & TestSupport) => {
-  const errorId = `${id}-error`;
+  const errorId = `${id}-error`
   const ariaError = hasError
     ? {
         'aria-invalid': true,
         'aria-describedby': errorId,
       }
-    : {};
+    : {}
 
   const background =
-    backgroundColor && backgroundColor === 'blue' ? 'blue100' : undefined;
+    backgroundColor && backgroundColor === 'blue' ? 'blue100' : undefined
 
   // If defaultCheck is specified, we will use it as our initial state.
   const [internalChecked, setInternalChecked] = useState(
     defaultChecked !== undefined ? defaultChecked : false,
-  );
+  )
 
   // We need to know whether the component is controlled or not.
-  const isCheckedControlled = checkedFromProps !== undefined;
-  const checked = isCheckedControlled ? checkedFromProps : internalChecked;
+  const isCheckedControlled = checkedFromProps !== undefined
+  const checked = isCheckedControlled ? checkedFromProps : internalChecked
 
   const onChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (!isCheckedControlled) {
       // If the component is not controlled, we need to update its internal state.
-      setInternalChecked(event.target.checked);
+      setInternalChecked(event.target.checked)
     }
 
-    onChange?.(event);
-  };
+    onChange?.(event)
+  }
 
   return (
     <Box
@@ -180,5 +180,5 @@ export const Checkbox = ({
         )}
       </label>
     </Box>
-  );
-};
+  )
+}

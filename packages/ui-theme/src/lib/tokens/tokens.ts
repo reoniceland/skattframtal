@@ -1,11 +1,11 @@
-const figmaTokens = require('./figmaTokens.json');
+const figmaTokens = require('./figmaTokens.json')
 
 // Primitives
-const primitives = figmaTokens[0]['00 Primitives'].modes['Mode 1'];
-export const { color, font, radius, spacing } = primitives;
+const primitives = figmaTokens[0]['00 Primitives'].modes['Mode 1']
+export const { color, font, radius, spacing } = primitives
 
 // Color Tokens
-const colorTokensLight = figmaTokens[1]['01 Colors Tokens'].modes['Light Mode'];
+const colorTokensLight = figmaTokens[1]['01 Colors Tokens'].modes['Light Mode']
 export const {
   background,
   border,
@@ -13,10 +13,10 @@ export const {
   foreground,
   interactive,
   overlay,
-} = colorTokensLight;
+} = colorTokensLight
 
 // Typography Tokens
 export const typographyDesktopTokens =
-  figmaTokens[2]['02 Typography Tokens'].modes.Desktop;
+  figmaTokens[2]['02 Typography Tokens'].modes.Desktop
 export const typographyMobileTokens =
-  figmaTokens[2]['02 Typography Tokens'].modes.Mobile;
+  figmaTokens[2]['02 Typography Tokens'].modes.Mobile

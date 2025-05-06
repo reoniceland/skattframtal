@@ -1,0 +1,8 @@
+.prettierignore
+.gitignore
+.env*
+*.env
+*.env.*
+*.md
+*.env.example
+pnpm-lock.yaml

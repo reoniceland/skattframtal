@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const drawer = style({
   position: 'fixed',
@@ -23,7 +23,7 @@ export const drawer = style({
       width: 902,
     },
   }),
-});
+})
 
 export const position = styleVariants({
   left: {
@@ -34,11 +34,11 @@ export const position = styleVariants({
     right: 0,
     transform: 'translate3d(100%, 0, 0)',
   },
-});
+})
 
 export const closeButton = style({
   position: 'absolute',
   top: theme.spacing['2'],
   right: theme.spacing['2'],
   zIndex: 2,
-});
+})

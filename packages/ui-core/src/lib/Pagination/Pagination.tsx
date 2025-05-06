@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React, {
   FC,
@@ -7,44 +7,44 @@ import React, {
   useEffect,
   useMemo,
   useState,
-} from 'react';
+} from 'react'
 
-import cn from 'classnames';
-import uniq from 'lodash/uniq';
-import { useWindowSize } from 'react-use';
+import cn from 'classnames'
+import uniq from 'lodash/uniq'
+import { useWindowSize } from 'react-use'
 
-import { Colors, theme } from '@reon-island/ui-theme';
+import { Colors, theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Icon, IconTypes } from '../Icon/Icon';
-import * as styles from './Pagination.css';
+import { Box } from '../Box/Box'
+import { Icon, IconTypes } from '../Icon/Icon'
+import * as styles from './Pagination.css'
 
-type ColorMap = Record<keyof typeof styles.variants, Colors>;
+type ColorMap = Record<keyof typeof styles.variants, Colors>
 
 const IconColorMap: ColorMap = {
   blue: 'blue400',
   purple: 'purple400',
-};
+}
 
 const DisabledIconColorMap: ColorMap = {
   blue: 'blue300',
   purple: 'purple300',
-};
+}
 
 const range = (min: number, max: number): number[] =>
-  new Array(max - min + 1).fill(0).map((_, i) => min + i);
+  new Array(max - min + 1).fill(0).map((_, i) => min + i)
 
 export interface PaginationProps {
-  page: number;
-  totalPages?: number;
-  itemsPerPage?: number;
-  totalItems?: number;
-  variant?: keyof typeof styles.variants;
+  page: number
+  totalPages?: number
+  itemsPerPage?: number
+  totalItems?: number
+  variant?: keyof typeof styles.variants
   renderLink: (
     page: number,
     className: string,
     children: ReactNode,
-  ) => ReactNode;
+  ) => ReactNode
 }
 
 export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
@@ -55,19 +55,19 @@ export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
   variant = 'purple',
   renderLink,
 }) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const { width } = useWindowSize();
+  const [isMobile, setIsMobile] = useState(false)
+  const { width } = useWindowSize()
   useEffect(() => {
     if (width <= theme.breakpoints.sm) {
-      return setIsMobile(true);
+      return setIsMobile(true)
     }
-    setIsMobile(false);
-  }, [width]);
+    setIsMobile(false)
+  }, [width])
 
   const calculatedTotalPages =
     totalItems && itemsPerPage
       ? Math.ceil(totalItems / itemsPerPage)
-      : totalPages;
+      : totalPages
 
   const ranges = useMemo(() => {
     return uniq(
@@ -92,17 +92,17 @@ export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
         )
         .filter((p) => 1 <= p && p <= calculatedTotalPages)
         .sort((a, b) => a - b),
-    );
-  }, [page, calculatedTotalPages, isMobile]);
+    )
+  }, [page, calculatedTotalPages, isMobile])
 
   const renderEdgeLink = ({
     page,
     isActive,
     iconType,
   }: {
-    page: number;
-    isActive: boolean;
-    iconType: IconTypes;
+    page: number
+    isActive: boolean
+    iconType: IconTypes
   }) => {
     if (isActive) {
       return renderLink(
@@ -114,7 +114,7 @@ export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
           height={16}
           color={IconColorMap[variant]}
         />,
-      );
+      )
     }
 
     return (
@@ -126,8 +126,8 @@ export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
           color={DisabledIconColorMap[variant]}
         />
       </span>
-    );
-  };
+    )
+  }
 
   return (
     <Box
@@ -164,5 +164,5 @@ export const Pagination: FC<React.PropsWithChildren<PaginationProps>> = ({
         })}
       </div>
     </Box>
-  );
-};
+  )
+}

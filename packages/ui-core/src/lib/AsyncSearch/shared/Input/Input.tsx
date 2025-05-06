@@ -1,19 +1,19 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import type { InputHTMLAttributes } from 'react';
-import type { AsyncSearchSizes } from '../../AsyncSearch';
+import type { InputHTMLAttributes } from 'react'
+import type { AsyncSearchSizes } from '../../AsyncSearch'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Input.css';
+import * as styles from './Input.css'
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-  isOpen?: boolean;
-  colored?: boolean;
-  hasLabel?: boolean;
-  color?: 'white' | 'blueberry' | 'dark' | 'blue';
-  inputSize: AsyncSearchSizes;
-  hasError?: boolean;
+  isOpen?: boolean
+  colored?: boolean
+  hasLabel?: boolean
+  color?: 'white' | 'blueberry' | 'dark' | 'blue'
+  inputSize: AsyncSearchSizes
+  hasError?: boolean
 }
 
 export const Input = forwardRef<HTMLInputElement, InputProps>(
@@ -37,6 +37,6 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
         })}
         ref={ref}
       />
-    );
+    )
   },
-);
+)

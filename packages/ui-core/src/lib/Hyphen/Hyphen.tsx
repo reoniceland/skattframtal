@@ -1,16 +1,16 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'react'
 
-import type { Locale } from '@reon-island/types';
+import type { Locale } from '@reon-island/types'
 
-import Hypher from 'hypher';
+import Hypher from 'hypher'
 
-import en from './patterns/en';
-import is from './patterns/is';
+import en from './patterns/en'
+import is from './patterns/is'
 
 type HyphenateText = (
   content: string,
   options: { minLeft?: number; minRight?: number; locale?: Locale },
-) => string;
+) => string
 
 // TODO: import patterns dynamically
 export const hyphenateText: HyphenateText = (
@@ -18,25 +18,25 @@ export const hyphenateText: HyphenateText = (
   { minLeft, minRight, locale = 'is' },
 ) => {
   if (minLeft) {
-    is.leftmin = minLeft;
+    is.leftmin = minLeft
   }
   if (minRight) {
-    is.leftmin = minRight;
+    is.leftmin = minRight
   }
-  const h = new Hypher(locale === 'is' ? is : en);
-  const softHyphen = '\u00AD';
+  const h = new Hypher(locale === 'is' ? is : en)
+  const softHyphen = '\u00AD'
   return content.split(' ').reduce((text, word) => {
-    const hyphenedWord = h.hyphenate(word).join(softHyphen);
-    text += ' ' + hyphenedWord;
-    return text;
-  }, '');
-};
+    const hyphenedWord = h.hyphenate(word).join(softHyphen)
+    text += ' ' + hyphenedWord
+    return text
+  }, '')
+}
 
 export interface HyphenProps {
-  children: string;
-  minRight?: number;
-  minLeft?: number;
-  locale?: Locale;
+  children: string
+  minRight?: number
+  minLeft?: number
+  locale?: Locale
 }
 
 export const Hyphen = ({
@@ -48,8 +48,8 @@ export const Hyphen = ({
   const text = useMemo(
     () => hyphenateText(children, { minRight, minLeft, locale }),
     [minRight, minLeft, children],
-  );
-  return <>{text}</>;
-};
+  )
+  return <>{text}</>
+}
 
-export default Hyphen;
+export default Hyphen

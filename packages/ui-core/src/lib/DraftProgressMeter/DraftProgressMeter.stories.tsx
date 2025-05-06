@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import { DraftProgressMeter } from './DraftProgressMeter';
+import { DraftProgressMeter } from './DraftProgressMeter'
 
 export default {
   title: 'Components/DraftProgressMeter',
@@ -13,7 +13,7 @@ export default {
       },
     },
   },
-};
+}
 
 export const Default = () => {
   return (
@@ -22,8 +22,8 @@ export const Default = () => {
       draftTotalSteps={2}
       progressMessage="Þú hefur klárað 1 af 2 skrefum"
     />
-  );
-};
+  )
+}
 
 export const RedColorScheme = () => {
   return (
@@ -33,8 +33,8 @@ export const RedColorScheme = () => {
       progressMessage="Þú hefur klárað 1 af 2 skrefum"
       variant="red"
     />
-  );
-};
+  )
+}
 
 export const RoseColorScheme = () => {
   return (
@@ -44,5 +44,5 @@ export const RoseColorScheme = () => {
       progressMessage="Þú hefur klárað 1 af 2 skrefum"
       variant="rose"
     />
-  );
-};
+  )
+}

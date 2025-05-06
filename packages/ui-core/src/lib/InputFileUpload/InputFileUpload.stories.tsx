@@ -1,15 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { fileToObject, InputFileUpload, UploadFile } from './InputFileUpload';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { fileToObject, InputFileUpload, UploadFile } from './InputFileUpload'
 
 export default {
   title: 'Form/InputFileUpload',
   component: InputFileUpload,
   parameters: withFigma('InputFileUpload'),
-};
+}
 
 enum ActionTypes {
   ADD = 'ADD',
@@ -18,99 +18,99 @@ enum ActionTypes {
 }
 
 type Action = {
-  type: ActionTypes;
-  payload: any;
-};
+  type: ActionTypes
+  payload: any
+}
 
 const uploadFile = (file: UploadFile, dispatch: (action: Action) => void) => {
   return new Promise((resolve, reject) => {
-    const req = new XMLHttpRequest();
+    const req = new XMLHttpRequest()
 
     req.upload.addEventListener('progress', (event) => {
       if (event.lengthComputable) {
-        const percent = Math.round((event.loaded / event.total) * 100);
+        const percent = Math.round((event.loaded / event.total) * 100)
 
         dispatch({
           type: ActionTypes.UPDATE,
           payload: { file, status: 'uploading', percent },
-        });
+        })
       }
-    });
+    })
 
     req.upload.addEventListener('load', (event) => {
       dispatch({
         type: ActionTypes.UPDATE,
         payload: { file, status: 'done', percent: 100 },
-      });
-      resolve(req.response);
-    });
+      })
+      resolve(req.response)
+    })
 
     req.upload.addEventListener('error', (event) => {
       dispatch({
         type: ActionTypes.UPDATE,
         payload: { file, status: 'error', percent: 0 },
-      });
-      reject(req.response);
-    });
+      })
+      reject(req.response)
+    })
 
-    const formData = new FormData();
-    formData.append('file', file.originalFileObj || '', file.name);
+    const formData = new FormData()
+    formData.append('file', file.originalFileObj || '', file.name)
 
-    req.open('POST', 'http://localhost:5000/');
-    req.send(formData);
-  });
-};
+    req.open('POST', 'http://localhost:5000/')
+    req.send(formData)
+  })
+}
 
-const initialUploadFiles: UploadFile[] = [];
+const initialUploadFiles: UploadFile[] = []
 
 function reducer(state: UploadFile[], action: Action) {
   switch (action.type) {
     case ActionTypes.ADD:
-      return state.concat(action.payload.newFiles);
+      return state.concat(action.payload.newFiles)
 
     case ActionTypes.REMOVE:
       return state.filter(
         (file) => file.name !== action.payload.fileToRemove.name,
-      );
+      )
 
     case ActionTypes.UPDATE:
       return [
         ...state.map((file: UploadFile) => {
           if (file.name === action.payload.file.name) {
-            file.status = action.payload.status;
-            file.percent = action.payload.percent;
+            file.status = action.payload.status
+            file.percent = action.payload.percent
           }
-          return file;
+          return file
         }),
-      ];
+      ]
 
     default:
-      throw new Error();
+      throw new Error()
   }
 }
 
 export const Default = () => {
-  const [state, dispatch] = React.useReducer(reducer, initialUploadFiles);
-  const [error, setError] = useState<string | undefined>(undefined);
+  const [state, dispatch] = React.useReducer(reducer, initialUploadFiles)
+  const [error, setError] = useState<string | undefined>(undefined)
 
   const onChange = (newFiles: File[]) => {
-    const newUploadFiles = newFiles.map((f) => fileToObject(f));
+    const newUploadFiles = newFiles.map((f) => fileToObject(f))
 
-    setError(undefined);
+    setError(undefined)
 
     newUploadFiles.forEach((f: UploadFile) => {
       uploadFile(f, dispatch).catch((e) => {
-        setError('An error occurred uploading one or more files');
-      });
-    });
+        setError('An error occurred uploading one or more files')
+      })
+    })
 
     dispatch({
       type: ActionTypes.ADD,
       payload: {
         newFiles: newUploadFiles,
       },
-    });
-  };
+    })
+  }
 
   const remove = (fileToRemove: UploadFile) => {
     dispatch({
@@ -118,8 +118,8 @@ export const Default = () => {
       payload: {
         fileToRemove,
       },
-    });
-  };
+    })
+  }
 
   return (
     <ContentBlock>
@@ -135,8 +135,8 @@ export const Default = () => {
         />
       </Box>
     </ContentBlock>
-  );
-};
+  )
+}
 
 export const Disabled = () => {
   return (
@@ -157,5 +157,5 @@ export const Disabled = () => {
         />
       </Box>
     </ContentBlock>
-  );
-};
+  )
+}

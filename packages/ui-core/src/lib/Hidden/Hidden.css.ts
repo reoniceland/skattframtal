@@ -1,4 +1,4 @@
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const hiddenOnPrint = style({
   '@media': {
@@ -6,4 +6,4 @@ export const hiddenOnPrint = style({
       display: 'none !important',
     },
   },
-});
+})

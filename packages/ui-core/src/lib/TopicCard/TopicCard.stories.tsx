@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Accordion } from '../Accordion/Accordion';
-import { AccordionItem } from '../Accordion/AccordionItem/AccordionItem';
-import { Box } from '../Box/Box';
-import { GridColumn } from '../Grid/GridColumn/GridColumn';
-import { GridContainer } from '../Grid/GridContainer/GridContainer';
-import { GridRow } from '../Grid/GridRow/GridRow';
-import { TopicCard } from './TopicCard';
+import { Accordion } from '../Accordion/Accordion'
+import { AccordionItem } from '../Accordion/AccordionItem/AccordionItem'
+import { Box } from '../Box/Box'
+import { GridColumn } from '../Grid/GridColumn/GridColumn'
+import { GridContainer } from '../Grid/GridContainer/GridContainer'
+import { GridRow } from '../Grid/GridRow/GridRow'
+import { TopicCard } from './TopicCard'
 
 export default {
   title: 'Cards/TopicCard',
@@ -19,7 +19,7 @@ export default {
       },
     },
   },
-};
+}
 
 export const Default = () => (
   <GridContainer>
@@ -49,7 +49,7 @@ export const Default = () => (
       </GridColumn>
     </GridRow>
   </GridContainer>
-);
+)
 
 export const InsideAccordion = () => (
   <Accordion singleExpand>
@@ -59,4 +59,4 @@ export const InsideAccordion = () => (
       </TopicCard>
     </AccordionItem>
   </Accordion>
-);
+)

@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const gridRow = style({
   boxSizing: 'border-box',
@@ -16,4 +16,4 @@ export const gridRow = style({
       marginRight: `-${theme.grid.gutter.desktop / 2}px`,
     },
   },
-});
+})

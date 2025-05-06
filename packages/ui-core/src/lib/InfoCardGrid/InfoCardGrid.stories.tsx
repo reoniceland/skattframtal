@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { Meta, StoryObj } from '@storybook/react';
+import { Meta, StoryObj } from '@storybook/react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { InfoCardGrid } from './InfoCardGrid';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { InfoCardGrid } from './InfoCardGrid'
 
 const meta: Meta<typeof InfoCardGrid> = {
   title: 'Components/InfoCardGrid',
@@ -31,11 +31,11 @@ const meta: Meta<typeof InfoCardGrid> = {
     cardsBackground: 'white',
     cardsBorder: 'blue200',
   },
-};
+}
 
-export default meta;
+export default meta
 
-type Story = StoryObj<typeof InfoCardGrid>;
+type Story = StoryObj<typeof InfoCardGrid>
 
 const generateSimpleCard = (id: string | number) => ({
   id: `test-${id}`,
@@ -46,7 +46,7 @@ const generateSimpleCard = (id: string | number) => ({
     label: `test-${id}`,
     href: '/',
   },
-});
+})
 
 const generateDetailedCard = (id: string | number) => ({
   id: `test-${id}`,
@@ -88,14 +88,14 @@ const generateDetailedCard = (id: string | number) => ({
     label: `test-${id}`,
     href: '/',
   },
-});
+})
 
 const generateCards = (count: number, variant: 'simple' | 'detailed') => {
-  console.log(variant);
+  console.log(variant)
   return [...Array(count)].map((_, idx) =>
     variant === 'simple' ? generateSimpleCard(idx) : generateDetailedCard(idx),
-  );
-};
+  )
+}
 
 export const DetailedOneColumn: Story = {
   args: {
@@ -105,7 +105,7 @@ export const DetailedOneColumn: Story = {
     cardsBorder: 'blue200',
     columns: 1,
   },
-};
+}
 
 export const SimpleThreeColumn: Story = {
   args: {
@@ -114,4 +114,4 @@ export const SimpleThreeColumn: Story = {
     cardsBorder: 'blue200',
     columns: 3,
   },
-};
+}

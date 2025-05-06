@@ -1,12 +1,12 @@
-import type { StyleRule } from '@vanilla-extract/css';
+import type { StyleRule } from '@vanilla-extract/css'
 
-import isEqual from 'lodash/isEqual';
-import omit from 'lodash/omit';
+import isEqual from 'lodash/isEqual'
+import omit from 'lodash/omit'
 
-import * as color from './colors/colors';
-import { font, radius, spacing as spacingPrimitives } from './tokens/tokens';
+import * as color from './colors/colors'
+import { font, radius, spacing as spacingPrimitives } from './tokens/tokens'
 
-export const UNIT = 8;
+export const UNIT = 8
 
 // TODO: spacing will be further updated in the followup PR
 export const spacing = {
@@ -43,7 +43,7 @@ export const spacing = {
   p3: 14,
   p4: 16,
   p5: 18,
-};
+}
 
 export const zIndex = {
   below: -1,
@@ -55,7 +55,7 @@ export const zIndex = {
   belowModal: 19,
   modal: 20,
   aboveModal: 21,
-};
+}
 
 export const theme = {
   breakpoints: {
@@ -130,19 +130,19 @@ export const theme = {
   grid: {
     gutter: { desktop: 24, mobile: 12 },
   },
-};
+}
 
-export type Theme = typeof theme;
-export type Colors = keyof typeof color;
+export type Theme = typeof theme
+export type Colors = keyof typeof color
 
-type RequiredTokens = Pick<Theme, 'breakpoints'>;
-type StyleWithoutMediaQueries = Exclude<StyleRule['@media'], undefined>[string];
+type RequiredTokens = Pick<Theme, 'breakpoints'>
+type StyleWithoutMediaQueries = Exclude<StyleRule['@media'], undefined>[string]
 interface ResponsiveStyle {
-  xs?: StyleWithoutMediaQueries;
-  sm?: StyleWithoutMediaQueries;
-  md?: StyleWithoutMediaQueries;
-  lg?: StyleWithoutMediaQueries;
-  xl?: StyleWithoutMediaQueries;
+  xs?: StyleWithoutMediaQueries
+  sm?: StyleWithoutMediaQueries
+  md?: StyleWithoutMediaQueries
+  lg?: StyleWithoutMediaQueries
+  xl?: StyleWithoutMediaQueries
 }
 
 export const makeThemeUtils = (tokens: RequiredTokens) => {
@@ -154,14 +154,14 @@ export const makeThemeUtils = (tokens: RequiredTokens) => {
         : {
             [`screen and (min-width: ${tokens.breakpoints[breakpoint]}px)`]:
               styles,
-          };
+          }
 
   const mediaQuery = {
     sm: makeMediaQuery('sm'),
     md: makeMediaQuery('md'),
     lg: makeMediaQuery('lg'),
     xl: makeMediaQuery('xl'),
-  };
+  }
 
   const responsiveStyle = ({
     xs,
@@ -170,17 +170,17 @@ export const makeThemeUtils = (tokens: RequiredTokens) => {
     lg,
     xl,
   }: ResponsiveStyle): StyleRule => {
-    const xsStyles = omit(xs, '@media');
-    const smStyles = !sm || isEqual(sm, xsStyles) ? null : sm;
-    const mdStyles = !md || isEqual(md, xsStyles || smStyles) ? null : md;
+    const xsStyles = omit(xs, '@media')
+    const smStyles = !sm || isEqual(sm, xsStyles) ? null : sm
+    const mdStyles = !md || isEqual(md, xsStyles || smStyles) ? null : md
     const lgStyles =
-      !lg || isEqual(lg, xsStyles || smStyles || mdStyles) ? null : lg;
+      !lg || isEqual(lg, xsStyles || smStyles || mdStyles) ? null : lg
     const xlStyles =
       !xl || isEqual(xl, xsStyles || smStyles || mdStyles || lgStyles)
         ? null
-        : xl;
+        : xl
 
-    const hasMediaQueries = smStyles || mdStyles || lgStyles || xlStyles;
+    const hasMediaQueries = smStyles || mdStyles || lgStyles || xlStyles
 
     return {
       ...xsStyles,
@@ -194,10 +194,10 @@ export const makeThemeUtils = (tokens: RequiredTokens) => {
             },
           }
         : {}),
-    };
-  };
+    }
+  }
 
-  return { responsiveStyle };
-};
+  return { responsiveStyle }
+}
 
-export const themeUtils = makeThemeUtils(theme);
+export const themeUtils = makeThemeUtils(theme)

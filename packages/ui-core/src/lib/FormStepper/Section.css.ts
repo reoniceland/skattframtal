@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css'
 
 export const container = style({
   display: 'flex',
@@ -15,13 +15,13 @@ export const container = style({
       transition: 'none',
     },
   },
-});
+})
 
 globalStyle(`${container}:last-child .pl`, {
   // This is to overwrite a style that is set by JS and ensures there is no
   // line under the last step in the form stepper.
   height: '0!important',
-});
+})
 
 export const name = style({
   marginRight: 20,
@@ -33,11 +33,11 @@ export const name = style({
       whiteSpace: 'inherit',
     },
   },
-});
+})
 
 export const nameWithActiveSubSections = style({
   marginRight: 0,
-});
+})
 
 export const subSectionContainer = style({
   marginRight: 30,
@@ -49,7 +49,7 @@ export const subSectionContainer = style({
       marginRight: 0,
     },
   },
-});
+})
 
 export const subSectionContainerHidden = style({
   '@media': {
@@ -57,12 +57,12 @@ export const subSectionContainerHidden = style({
       display: 'none',
     },
   },
-});
+})
 
 export const subSectionInnerContainer = style({
   opacity: 0,
   transition: 'opacity .3s ease-in-out',
-});
+})
 
 export const subSectionList = style({
   display: 'flex',
@@ -73,8 +73,8 @@ export const subSectionList = style({
       flexDirection: 'column',
     },
   },
-});
+})
 
 export const historyDate = style({
   marginTop: '4px',
-});
+})

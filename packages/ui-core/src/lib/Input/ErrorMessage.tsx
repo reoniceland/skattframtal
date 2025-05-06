@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-import * as styles from './Input.css';
+import * as styles from './Input.css'
 
 interface Props {
-  id?: string;
-  children: ReactNode;
+  id?: string
+  children: ReactNode
 }
 
 export function ErrorMessage({ id, children }: Props) {
@@ -19,5 +19,5 @@ export function ErrorMessage({ id, children }: Props) {
     >
       {children}
     </div>
-  );
+  )
 }

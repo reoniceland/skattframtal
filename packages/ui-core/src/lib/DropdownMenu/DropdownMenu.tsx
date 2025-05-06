@@ -1,49 +1,49 @@
-import React from 'react';
+import React from 'react'
 
-import type { MouseEvent, ReactElement } from 'react';
-import type { MenuStateReturn } from 'reakit/Menu';
-import type { ButtonProps } from '../Button/types';
+import type { MouseEvent, ReactElement } from 'react'
+import type { MenuStateReturn } from 'reakit/Menu'
+import type { ButtonProps } from '../Button/types'
 
-import cn from 'classnames';
-import { Menu, MenuButton, MenuItem, useMenuState } from 'reakit/Menu';
+import cn from 'classnames'
+import { Menu, MenuButton, MenuItem, useMenuState } from 'reakit/Menu'
 
-import { useBoxStyles } from '../Box/useBoxStyles';
-import { Button } from '../Button/Button';
-import { getTextStyles } from '../Text/Text';
-import * as styles from './DropdownMenu.css';
-import { useMenuHoverProps } from './useMenuHoverProps';
+import { useBoxStyles } from '../Box/useBoxStyles'
+import { Button } from '../Button/Button'
+import { getTextStyles } from '../Text/Text'
+import * as styles from './DropdownMenu.css'
+import { useMenuHoverProps } from './useMenuHoverProps'
 
 export interface DropdownMenuProps {
   /**
    * Aria label for menu
    */
-  menuLabel?: string;
+  menuLabel?: string
   items: {
-    href?: string;
-    onClick?: (event: MouseEvent<HTMLElement>, menu: MenuStateReturn) => void;
-    title: string;
-    noStyle?: boolean;
+    href?: string
+    onClick?: (event: MouseEvent<HTMLElement>, menu: MenuStateReturn) => void
+    title: string
+    noStyle?: boolean
     render?: (
       element: ReactElement,
       index: number,
       className: string,
-    ) => ReactElement;
-  }[];
+    ) => ReactElement
+  }[]
   /**
    * Utility button text
    */
-  title?: string;
+  title?: string
   /**
    * Utility button icon
    */
-  icon?: ButtonProps['icon'];
-  iconType?: ButtonProps['iconType'];
-  disclosure?: ReactElement;
-  menuClassName?: string;
-  fixed?: boolean;
-  openOnHover?: boolean;
-  loading?: boolean;
-  disabled?: boolean;
+  icon?: ButtonProps['icon']
+  iconType?: ButtonProps['iconType']
+  disclosure?: ReactElement
+  menuClassName?: string
+  fixed?: boolean
+  openOnHover?: boolean
+  loading?: boolean
+  disabled?: boolean
 }
 
 export const DropdownMenu = ({
@@ -63,16 +63,16 @@ export const DropdownMenu = ({
     placement: 'bottom',
     gutter: 8,
     unstable_fixed: fixed,
-  });
+  })
 
-  const hoverProps = useMenuHoverProps(menu, openOnHover);
+  const hoverProps = useMenuHoverProps(menu, openOnHover)
   const menuBoxStyle = useBoxStyles({
     component: 'div',
     background: 'white',
     display: 'flex',
     flexDirection: 'column',
     borderRadius: 'large',
-  });
+  })
   const menuItemBoxStyle = useBoxStyles({
     component: 'button',
     display: 'flex',
@@ -82,10 +82,10 @@ export const DropdownMenu = ({
     paddingBottom: 2,
     cursor: 'pointer',
     width: 'full',
-  });
+  })
   const menuItemTextStyle = getTextStyles({
     variant: 'eyebrow',
-  });
+  })
   return (
     <>
       {disclosure ? (
@@ -113,19 +113,19 @@ export const DropdownMenu = ({
         {...hoverProps}
       >
         {items.map((item, index) => {
-          let anchorProps = {};
-          const render = item.render || ((i: ReactElement, _) => i);
+          let anchorProps = {}
+          const render = item.render || ((i: ReactElement, _) => i)
           if (item.href) {
             anchorProps = {
               href: item.href,
               as: 'a',
-            };
+            }
           }
           const classNames = cn(
             menuItemBoxStyle,
             menuItemTextStyle,
             styles.menuItem,
-          );
+          )
           return render(
             <MenuItem
               {...menu}
@@ -133,7 +133,7 @@ export const DropdownMenu = ({
               key={index}
               onClick={(event) => {
                 if (item.onClick) {
-                  item.onClick(event, menu);
+                  item.onClick(event, menu)
                 }
               }}
               className={cn({ [classNames]: !item.noStyle })}
@@ -142,11 +142,11 @@ export const DropdownMenu = ({
             </MenuItem>,
             index,
             classNames,
-          );
+          )
         })}
       </Menu>
     </>
-  );
-};
+  )
+}
 
-export default DropdownMenu;
+export default DropdownMenu

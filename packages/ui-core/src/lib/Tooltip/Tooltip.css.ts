@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/restrict-template-expressions */
 /* eslint-disable @typescript-eslint/no-unsafe-assignment */
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css'
 
 export const tooltip = style({
   display: 'inline-block',
@@ -27,7 +27,7 @@ export const tooltip = style({
       transform: 'translate3d(0, 0, 0)',
     },
   },
-});
+})
 
 export const icon = style({
   display: 'inline-block',
@@ -36,13 +36,13 @@ export const icon = style({
   backgroundColor: 'transparent',
   padding: 0,
   border: 0,
-});
+})
 
 export const fullWidth = style({
   maxWidth: '100%',
   whiteSpace: 'pre-line',
-});
+})
 
 globalStyle(`${icon}:hover path`, {
   fill: theme.color.blue400,
-});
+})

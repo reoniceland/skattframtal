@@ -1,3 +1,3 @@
-export * from './ToggleSwitchCheckbox';
-export * from './ToggleSwitchButton';
-export * from './ToggleSwitchLink';
+export * from './ToggleSwitchCheckbox'
+export * from './ToggleSwitchButton'
+export * from './ToggleSwitchLink'

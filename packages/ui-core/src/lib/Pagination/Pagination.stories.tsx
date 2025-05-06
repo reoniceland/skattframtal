@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { Pagination } from './Pagination';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { Pagination } from './Pagination'
 
 export default {
   title: 'Navigation/Pagination',
   component: Pagination,
   parameters: withFigma('Pagination'),
-};
+}
 
 export const Default = ({ totalPages }) => {
-  const [page, setPage] = useState(10);
+  const [page, setPage] = useState(10)
 
   return (
     <Pagination
@@ -27,9 +27,9 @@ export const Default = ({ totalPages }) => {
         </Box>
       )}
     />
-  );
-};
+  )
+}
 
 Default.args = {
   totalPages: 20,
-};
+}

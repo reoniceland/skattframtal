@@ -1,10 +1,10 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const hasLabel = style({
   padding: '16px 46px 0 16px',
-});
+})
 
 export const input = style({
   appearance: 'none',
@@ -33,7 +33,7 @@ export const input = style({
       color: theme.color.dark400,
     },
   },
-});
+})
 
 export const open = style({
   borderBottomLeftRadius: 0,
@@ -44,7 +44,7 @@ export const open = style({
       borderColor: theme.color.blue200,
     },
   },
-});
+})
 
 export const colored = style({
   background: theme.color.blue100,
@@ -54,7 +54,7 @@ export const colored = style({
       borderColor: theme.color.blue200,
     },
   },
-});
+})
 
 export const sizes = styleVariants({
   medium: {
@@ -93,7 +93,7 @@ export const sizes = styleVariants({
       },
     }),
   },
-});
+})
 
 export const white = style({
   backgroundColor: theme.color.transparent,
@@ -116,7 +116,7 @@ export const white = style({
       boxShadow: 'none',
     },
   },
-});
+})
 
 export const blueberry = style({
   backgroundColor: theme.color.transparent,
@@ -140,7 +140,7 @@ export const blueberry = style({
       border: 'none',
     },
   },
-});
+})
 
 export const blue = style({
   backgroundColor: theme.color.transparent,
@@ -164,7 +164,7 @@ export const blue = style({
       border: 'none',
     },
   },
-});
+})
 
 export const dark = style({
   backgroundColor: theme.color.transparent,
@@ -188,16 +188,16 @@ export const dark = style({
       border: 'none',
     },
   },
-});
+})
 
 export const hasError = style({
   borderColor: `${theme.color.red600}`,
   background: `${theme.color.red100}`,
-});
+})
 
 export const isCompanySearch = style({
   paddingTop: 32,
   paddingLeft: 20,
   paddingBottom: 8,
   fontWeight: theme.typography.medium,
-});
+})

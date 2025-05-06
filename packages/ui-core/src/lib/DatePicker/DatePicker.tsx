@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import * as React from 'react';
-import { forwardRef, useEffect, useRef, useState } from 'react';
+import * as React from 'react'
+import { forwardRef, useEffect, useRef, useState } from 'react'
 
-import type { ReactDatePickerProps } from 'react-datepicker';
-import type { InputProps } from '../Input/types';
-import type { DatePickerCustomHeaderProps, DatePickerProps } from './types';
+import type { ReactDatePickerProps } from 'react-datepicker'
+import type { InputProps } from '../Input/types'
+import type { DatePickerCustomHeaderProps, DatePickerProps } from './types'
 
-import cn from 'classnames';
-import getYear from 'date-fns/getYear';
-import en from 'date-fns/locale/en-US';
-import is from 'date-fns/locale/is';
-import range from 'lodash/range';
-import { default as ReactDatePicker, registerLocale } from 'react-datepicker';
-import { VisuallyHidden } from 'reakit';
+import cn from 'classnames'
+import getYear from 'date-fns/getYear'
+import en from 'date-fns/locale/en-US'
+import is from 'date-fns/locale/is'
+import range from 'lodash/range'
+import { default as ReactDatePicker, registerLocale } from 'react-datepicker'
+import { VisuallyHidden } from 'reakit'
 
 import {
   dateFormat,
   dateFormatWithTime,
   timeFormat,
-} from '@reon-island/constants';
+} from '@reon-island/constants'
 
-import { Icon } from '../IconRC/Icon';
-import { ErrorMessage } from '../Input/ErrorMessage';
-import { Input } from '../Input/Input';
-import { Text } from '../Text/Text';
-import * as styles from './DatePicker.css';
-import * as coreStyles from './react-datepicker.css';
+import { Icon } from '../IconRC/Icon'
+import { ErrorMessage } from '../Input/ErrorMessage'
+import { Input } from '../Input/Input'
+import { Text } from '../Text/Text'
+import * as styles from './DatePicker.css'
+import * as coreStyles from './react-datepicker.css'
 
 const languageConfig = {
   is: {
@@ -41,7 +41,7 @@ const languageConfig = {
     timeFormat: timeFormat.en,
     locale: en,
   },
-};
+}
 
 export const DatePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = ({
   name,
@@ -73,30 +73,30 @@ export const DatePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = ({
   readOnly = false,
   calendarStartDay = 0,
 }) => {
-  const [startDate, setStartDate] = useState<Date | null>(selected ?? null);
+  const [startDate, setStartDate] = useState<Date | null>(selected ?? null)
   const [datePickerState, setDatePickerState] = useState<'open' | 'closed'>(
     'closed',
-  );
-  const currentLanguage = languageConfig[locale];
-  const errorId = `${id}-error`;
+  )
+  const currentLanguage = languageConfig[locale]
+  const errorId = `${id}-error`
   const ariaError = hasError
     ? {
         'aria-invalid': true,
         'aria-describedby': errorId,
       }
-    : {};
+    : {}
 
   useEffect(() => {
     if (locale === 'en') {
-      registerLocale('en', en);
+      registerLocale('en', en)
     } else {
-      registerLocale('is', is);
+      registerLocale('is', is)
     }
-  }, [locale]);
+  }, [locale])
 
   useEffect(() => {
-    setStartDate(selected ?? null);
-  }, [selected]);
+    setStartDate(selected ?? null)
+  }, [selected])
 
   return (
     <div className={coreStyles.root} data-testid="datepicker">
@@ -130,16 +130,16 @@ export const DatePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = ({
           showPopperArrow={false}
           popperPlacement="bottom-start"
           onCalendarOpen={() => {
-            setDatePickerState('open');
-            handleOpenCalendar && handleOpenCalendar();
+            setDatePickerState('open')
+            handleOpenCalendar && handleOpenCalendar()
           }}
           onCalendarClose={() => {
-            setDatePickerState('closed');
-            handleCloseCalendar && handleCloseCalendar(startDate);
+            setDatePickerState('closed')
+            handleCloseCalendar && handleCloseCalendar(startDate)
           }}
           onChange={(date: Date) => {
-            setStartDate(date);
-            handleChange && handleChange(date);
+            setStartDate(date)
+            handleChange && handleChange(date)
           }}
           startDate={startDate}
           required={required}
@@ -180,14 +180,14 @@ export const DatePicker: React.FC<React.PropsWithChildren<DatePickerProps>> = ({
         )}
       </div>
     </div>
-  );
-};
+  )
+}
 
 const CustomInput = forwardRef<
   HTMLInputElement | HTMLTextAreaElement,
   InputProps & {
-    placeholderText?: string;
-    onInputClick?: ReactDatePickerProps['onInputClick'];
+    placeholderText?: string
+    onInputClick?: ReactDatePickerProps['onInputClick']
   }
 >(
   (
@@ -209,9 +209,9 @@ const CustomInput = forwardRef<
       placeholder={placeholderText}
     />
   ),
-);
+)
 
-const monthsIndex = [...Array(12).keys()];
+const monthsIndex = [...Array(12).keys()]
 
 const CustomHeader = ({
   date,
@@ -223,16 +223,16 @@ const CustomHeader = ({
   minYear,
   maxYear,
 }: DatePickerCustomHeaderProps) => {
-  const monthRef = useRef<HTMLSpanElement>(null);
-  const month = locale.localize ? locale.localize.month(date.getMonth()) : '';
+  const monthRef = useRef<HTMLSpanElement>(null)
+  const month = locale.localize ? locale.localize.month(date.getMonth()) : ''
   const months = monthsIndex.map((i) => {
     if (locale.localize) {
-      return locale.localize.month(i);
+      return locale.localize.month(i)
     }
-    return undefined;
-  });
+    return undefined
+  })
   const years =
-    minYear && maxYear && minYear < maxYear && range(minYear, maxYear + 1);
+    minYear && maxYear && minYear < maxYear && range(minYear, maxYear + 1)
   return (
     <div
       className={cn(styles.customHeaderContainer, 'date-picker-custom-header')}
@@ -256,7 +256,7 @@ const CustomHeader = ({
           className={styles.headerSelect}
           value={month}
           onChange={({ target: { value } }) => {
-            changeMonth(months.indexOf(value));
+            changeMonth(months.indexOf(value))
           }}
           style={{
             textAlign: 'center',
@@ -275,7 +275,7 @@ const CustomHeader = ({
             className={styles.headerSelect}
             value={date.getFullYear()}
             onChange={({ target: { value } }) => {
-              changeYear(parseInt(value));
+              changeYear(parseInt(value))
             }}
           >
             {years.map((option) => (
@@ -300,5 +300,5 @@ const CustomHeader = ({
         <Icon icon="chevronForward" type="outline" color="blue400" />
       </button>
     </div>
-  );
-};
+  )
+}

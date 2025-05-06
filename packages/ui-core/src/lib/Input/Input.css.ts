@@ -1,13 +1,13 @@
-import type { Theme } from '@reon-island/ui-theme';
+import type { Theme } from '@reon-island/ui-theme'
 
-import { recipe } from '@vanilla-extract/recipes';
-import mapValues from 'lodash/mapValues';
+import { recipe } from '@vanilla-extract/recipes'
+import mapValues from 'lodash/mapValues'
 
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import * as mixins from './Input.mixins';
+import * as mixins from './Input.mixins'
 
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css'
 
 export const container = recipe({
   base: {
@@ -60,9 +60,9 @@ export const container = recipe({
       },
     },
   ],
-});
+})
 
-export const containerSizes = styleVariants(mixins.containerSizes);
+export const containerSizes = styleVariants(mixins.containerSizes)
 
 export const input = recipe({
   base: {
@@ -103,14 +103,14 @@ export const input = recipe({
       },
     },
   },
-});
+})
 
-export const inputSize = styleVariants(mixins.inputSizes);
+export const inputSize = styleVariants(mixins.inputSizes)
 
 const backgroundColorRules = {
   white: theme.color.white,
   blue: theme.color.blue100,
-};
+}
 
 // To handle styling auto-fill states
 const makeInputBackground = (breakpoint: keyof Theme['breakpoints']) =>
@@ -127,15 +127,15 @@ const makeInputBackground = (breakpoint: keyof Theme['breakpoints']) =>
         },
       }),
     ),
-  );
+  )
 
-export const inputBackgroundXs = makeInputBackground('xs');
-export const inputBackgroundSm = makeInputBackground('sm');
-export const inputBackgroundMd = makeInputBackground('md');
-export const inputBackgroundLg = makeInputBackground('lg');
-export const inputBackgroundXl = makeInputBackground('xl');
+export const inputBackgroundXs = makeInputBackground('xs')
+export const inputBackgroundSm = makeInputBackground('sm')
+export const inputBackgroundMd = makeInputBackground('md')
+export const inputBackgroundLg = makeInputBackground('lg')
+export const inputBackgroundXl = makeInputBackground('xl')
 
-export const errorMessage = style(mixins.errorMessage);
+export const errorMessage = style(mixins.errorMessage)
 
 export const label = recipe({
   base: {
@@ -152,20 +152,20 @@ export const label = recipe({
       true: mixins.labelDisabledEmptyInput,
     },
   },
-});
+})
 
-export const labelSizes = styleVariants(mixins.labelSizes);
+export const labelSizes = styleVariants(mixins.labelSizes)
 
 export const isRequiredStar = style({
   color: theme.color.red600,
-});
+})
 
 export const aside = style({
   display: 'flex',
   alignSelf: 'stretch',
   alignItems: 'center',
   justifyContent: 'flex-end',
-});
+})
 
 export const inputButton = recipe({
   base: {
@@ -241,7 +241,7 @@ export const inputButton = recipe({
       },
     },
   },
-});
+})
 
 export const iconWrapper = recipe({
   base: {
@@ -262,7 +262,7 @@ export const iconWrapper = recipe({
       },
     },
   },
-});
+})
 
 export const spinner = style({
   width: 24,
@@ -281,7 +281,7 @@ export const spinner = style({
   animationDuration: '1.5s',
   animationIterationCount: 'infinite',
   animationTimingFunction: 'linear',
-});
+})
 
 export const icon = recipe({
   base: {
@@ -334,4 +334,4 @@ export const icon = recipe({
       },
     },
   },
-});
+})

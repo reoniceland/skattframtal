@@ -1,7 +1,7 @@
 import React from 'react'
 
-import { Button } from '../Button/Button'
 import { withFigma } from '../../utils/withFigma'
+import { Button } from '../Button/Button'
 import { DialogPrompt } from './DialogPrompt'
 
 export default {

@@ -1,27 +1,27 @@
-'use client';
+'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import useComponentSize from '@rehooks/component-size';
+import useComponentSize from '@rehooks/component-size'
 
-import { Box } from '../Box/Box';
-import { Hidden } from '../Hidden/Hidden';
-import { Text } from '../Text/Text';
-import * as styles from './Section.css';
-import { SectionNumber } from './SectionNumber/SectionNumber';
-import * as types from './types';
+import { Box } from '../Box/Box'
+import { Hidden } from '../Hidden/Hidden'
+import { Text } from '../Text/Text'
+import * as styles from './Section.css'
+import { SectionNumber } from './SectionNumber/SectionNumber'
+import * as types from './types'
 
 export const HistorySection: FC<
   React.PropsWithChildren<{
-    theme?: types.FormStepperThemes;
-    section: string;
-    sectionIndex: number;
-    isComplete?: boolean;
-    isLast?: boolean;
-    date?: string;
-    description?: React.ReactNode;
+    theme?: types.FormStepperThemes
+    section: string
+    sectionIndex: number
+    isComplete?: boolean
+    isLast?: boolean
+    date?: string
+    description?: React.ReactNode
   }>
 > = ({
   theme = types.FormStepperThemes.PURPLE,
@@ -32,18 +32,18 @@ export const HistorySection: FC<
   isComplete = false,
   isLast = false,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { height: activeHeight } = useComponentSize(containerRef);
-  const [containerHeight, setContainerHeight] = useState(0);
-  const isClient = typeof window === 'object';
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { height: activeHeight } = useComponentSize(containerRef)
+  const [containerHeight, setContainerHeight] = useState(0)
+  const isClient = typeof window === 'object'
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient) return
 
     if (containerRef.current) {
-      setContainerHeight(activeHeight);
+      setContainerHeight(activeHeight)
     }
-  }, [isClient, activeHeight]);
+  }, [isClient, activeHeight])
 
   return (
     <Box ref={containerRef} className={styles.container}>
@@ -88,7 +88,7 @@ export const HistorySection: FC<
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default HistorySection;
+export default HistorySection

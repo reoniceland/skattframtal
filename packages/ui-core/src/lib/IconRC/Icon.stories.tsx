@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import type { Icon as IconType, Type } from './iconMap';
+import type { Icon as IconType, Type } from './iconMap'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Input } from '../Input/Input';
-import { Tabs } from '../Tabs/Tabs';
-import { Icon } from './Icon';
-import iconMap from './iconMap';
+import { Box } from '../Box/Box'
+import { Input } from '../Input/Input'
+import { Tabs } from '../Tabs/Tabs'
+import { Icon } from './Icon'
+import iconMap from './iconMap'
 
 const description = `
 Icons are generated from [Ionicons Designer Pack](https://ionicons.com/).
@@ -16,7 +16,7 @@ Icons are generated from [Ionicons Designer Pack](https://ionicons.com/).
 When adding icons in development navigate to the \`Icon\` directory and run \`npx @svgr/cli --title-prop --typescript --template ./iconTemplate.js -d icons [src-dir]\`
 
 Generating single icons \`npx @svgr/cli --title-prop --typescript --template ./iconTemplate.js --out-dir ./icons [src-icon]\` for more options check out [SVGR options](https://react-svgr.com/docs/options/)
-`;
+`
 
 export default {
   title: 'Core/Icon',
@@ -36,18 +36,18 @@ export default {
       },
     },
   },
-};
+}
 
-const Template = (args) => <Icon {...args} />;
+const Template = (args) => <Icon {...args} />
 
-export const Default = Template.bind({});
-Default.args = { icon: 'arrowForward' };
+export const Default = Template.bind({})
+Default.args = { icon: 'arrowForward' }
 
-const iconKeys = Object.keys(iconMap);
+const iconKeys = Object.keys(iconMap)
 
 const getTabs = (search) =>
   iconKeys.map((typeKey: Type) => {
-    const iconKeys = Object.keys(iconMap[typeKey]);
+    const iconKeys = Object.keys(iconMap[typeKey])
     return {
       label: typeKey,
       content: (
@@ -62,20 +62,20 @@ const getTabs = (search) =>
                 <Box padding={2} display="inlineBlock">
                   <Icon title={iconKey} type={typeKey} icon={iconKey} />
                 </Box>,
-              ];
+              ]
             }
-            return acc;
+            return acc
           }, [])}
         </Box>
       ),
-    };
-  });
+    }
+  })
 
 export const AllIcons = () => {
-  const [search, setSearch] = useState('');
+  const [search, setSearch] = useState('')
 
   // TODO: maybe memorize and debounce for better performance
-  const tabs = getTabs(search);
+  const tabs = getTabs(search)
   return (
     <>
       <Box marginBottom={4}>
@@ -84,11 +84,11 @@ export const AllIcons = () => {
           name="search"
           value={search}
           onChange={(e) => {
-            setSearch(e.target.value);
+            setSearch(e.target.value)
           }}
         />
       </Box>
       <Tabs label="Icons" tabs={tabs} contentBackground="white" />
     </>
-  );
-};
+  )
+}

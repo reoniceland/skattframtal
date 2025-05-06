@@ -1,43 +1,43 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import type { FC, ReactNode } from 'react';
-import type { Document, Outline, Page, pdfjs } from 'react-pdf';
+import type { FC, ReactNode } from 'react'
+import type { Document, Outline, Page, pdfjs } from 'react-pdf'
 
-import { AlertMessage } from '../AlertMessage/AlertMessage';
-import { Box } from '../Box/Box';
-import { LoadingDots } from '../LoadingDots/LoadingDots';
-import { Pagination } from '../Pagination/Pagination';
+import { AlertMessage } from '../AlertMessage/AlertMessage'
+import { Box } from '../Box/Box'
+import { LoadingDots } from '../LoadingDots/LoadingDots'
+import { Pagination } from '../Pagination/Pagination'
 
-import 'react-pdf/dist/Page/TextLayer.css';
-import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css'
+import 'react-pdf/dist/Page/AnnotationLayer.css'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './PdfViewer.css';
+import * as styles from './PdfViewer.css'
 
-const pdfError = 'Villa kom upp við að birta skjal, reyndu aftur síðar.';
+const pdfError = 'Villa kom upp við að birta skjal, reyndu aftur síðar.'
 
 export interface PdfViewerProps {
-  file: string;
-  showAllPages?: boolean;
-  scale?: number;
-  autoWidth?: boolean;
-  errorComponent?: ReactNode;
-  onLoadingError?: (error: Error) => void;
-  onLoadingSuccess?: () => void;
+  file: string
+  showAllPages?: boolean
+  scale?: number
+  autoWidth?: boolean
+  errorComponent?: ReactNode
+  onLoadingError?: (error: Error) => void
+  onLoadingSuccess?: () => void
 }
 interface PdfProps {
-  numPages: number;
+  numPages: number
 }
 
 interface IPdfLib {
-  default: any;
-  pdfjs: typeof pdfjs;
-  Document: typeof Document;
-  Page: typeof Page;
-  Outline: typeof Outline;
+  default: any
+  pdfjs: typeof pdfjs
+  Document: typeof Document
+  Page: typeof Page
+  Outline: typeof Outline
 }
 
 export const PdfViewer: FC<React.PropsWithChildren<PdfViewerProps>> = ({
@@ -49,42 +49,42 @@ export const PdfViewer: FC<React.PropsWithChildren<PdfViewerProps>> = ({
   onLoadingError,
   onLoadingSuccess,
 }) => {
-  const [numPages, setNumPages] = useState(0);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [pdfLib, setPdfLib] = useState<IPdfLib>();
-  const [pdfLibError, setPdfLibError] = useState<any>();
+  const [numPages, setNumPages] = useState(0)
+  const [pageNumber, setPageNumber] = useState(1)
+  const [pdfLib, setPdfLib] = useState<IPdfLib>()
+  const [pdfLibError, setPdfLibError] = useState<any>()
 
   useEffect(() => {
     import('react-pdf')
       .then((pdf) => {
-        const path = window.location.origin;
-        const isLocalhost = path.includes('localhost');
+        const path = window.location.origin
+        const isLocalhost = path.includes('localhost')
         const workerUrl = isLocalhost
           ? 'https://assets.ctfassets.net/8k0h54kbe6bj/8dqL0H07pYWZEkXwLtgBp/1c347f9a4f2bb255f78389b42cf40b97/pdf.worker.min.mjs'
-          : `${path}/assets/pdf.worker.min.mjs`;
-        pdf.pdfjs.GlobalWorkerOptions.workerSrc = workerUrl;
-        setPdfLib(pdf);
+          : `${path}/assets/pdf.worker.min.mjs`
+        pdf.pdfjs.GlobalWorkerOptions.workerSrc = workerUrl
+        setPdfLib(pdf)
       })
       .catch((e) => {
-        setPdfLibError(e);
-      });
-  }, []);
+        setPdfLibError(e)
+      })
+  }, [])
 
   const onDocumentLoadSuccess = ({ numPages }: PdfProps) => {
-    setNumPages(numPages);
-    onLoadingSuccess && onLoadingSuccess();
-  };
+    setNumPages(numPages)
+    onLoadingSuccess && onLoadingSuccess()
+  }
 
   const loadingView = () => {
     return (
       <Box height="full" display="flex" justifyContent="center">
         <LoadingDots large />
       </Box>
-    );
-  };
+    )
+  }
 
   if (pdfLibError) {
-    return errorComponent ?? <AlertMessage type="error" title={pdfError} />;
+    return errorComponent ?? <AlertMessage type="error" title={pdfError} />
   }
 
   if (pdfLib) {
@@ -133,7 +133,7 @@ export const PdfViewer: FC<React.PropsWithChildren<PdfViewerProps>> = ({
                 cursor="pointer"
                 className={className}
                 onClick={() => {
-                  setPageNumber(page);
+                  setPageNumber(page)
                 }}
               >
                 {children}
@@ -143,8 +143,8 @@ export const PdfViewer: FC<React.PropsWithChildren<PdfViewerProps>> = ({
           />
         </Box>
       </>
-    );
+    )
   }
 
-  return loadingView();
-};
+  return loadingView()
+}

@@ -1,13 +1,13 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
-const { spacing, color, typography } = theme;
+const { spacing, color, typography } = theme
 
-export const toggleSwitchLarge = style({});
-export const toggleSwitchChecked = style({});
-export const toggleSwitchDisabled = style({});
-export const toggleSwitchHiddenLabel = style({});
+export const toggleSwitchLarge = style({})
+export const toggleSwitchChecked = style({})
+export const toggleSwitchDisabled = style({})
+export const toggleSwitchHiddenLabel = style({})
 
 export const toggleSwitch = style({
   position: 'relative',
@@ -40,11 +40,11 @@ export const toggleSwitch = style({
       display: 'none !important',
     },
   },
-});
+})
 
 export const toggleSwitchWide = style({
   width: '100%',
-});
+})
 
 export const text = style({
   selectors: {
@@ -58,7 +58,7 @@ export const text = style({
       whiteSpace: 'nowrap',
     },
   },
-});
+})
 
 export const knob = style({
   fontSize: spacing[1],
@@ -139,4 +139,4 @@ export const knob = style({
       backgroundColor: color.white,
     },
   },
-});
+})

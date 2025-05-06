@@ -1,13 +1,13 @@
-import { forwardRef } from 'react';
+import { forwardRef } from 'react'
 
-import type { LabelHTMLAttributes } from 'react';
+import type { LabelHTMLAttributes } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Label.css';
+import * as styles from './Label.css'
 
 export interface LableProps extends LabelHTMLAttributes<HTMLLabelElement> {
-  hasError?: boolean;
+  hasError?: boolean
 }
 
 export const Label = forwardRef<HTMLLabelElement, LableProps>(
@@ -22,6 +22,6 @@ export const Label = forwardRef<HTMLLabelElement, LableProps>(
       >
         {children}
       </label>
-    );
+    )
   },
-);
+)

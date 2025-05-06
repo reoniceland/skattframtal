@@ -1,9 +1,9 @@
-import React from 'react';
+import React from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from '@storybook/react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Input } from './Input';
+import { withFigma } from '../../utils/withFigma'
+import { Input } from './Input'
 
 const config: Meta<typeof Input> = {
   title: 'Form/Input',
@@ -48,14 +48,14 @@ const config: Meta<typeof Input> = {
       control: { type: 'number' },
     },
   },
-};
+}
 
-export default config;
-type InputProps = StoryObj<typeof Input>;
+export default config
+type InputProps = StoryObj<typeof Input>
 
-const Template = (args) => <Input {...args} />;
+const Template = (args) => <Input {...args} />
 
-export const Default: InputProps = Template.bind({});
+export const Default: InputProps = Template.bind({})
 Default.args = {
   name: 'Input',
   label: 'Input label text',
@@ -74,84 +74,84 @@ Default.args = {
   buttons: undefined,
   tooltip: undefined,
   maxLength: undefined,
-};
+}
 
-export const BlueBackground: InputProps = Template.bind({});
+export const BlueBackground: InputProps = Template.bind({})
 BlueBackground.args = {
   ...Default.args,
   backgroundColor: 'blue',
-};
+}
 
-export const Disabled: InputProps = Template.bind({});
+export const Disabled: InputProps = Template.bind({})
 Disabled.args = {
   ...Default.args,
   disabled: true,
-};
+}
 
-export const HasError: InputProps = Template.bind({});
+export const HasError: InputProps = Template.bind({})
 HasError.args = {
   ...Default.args,
   hasError: true,
   errorMessage: 'This is the error message',
-};
+}
 
-export const Required: InputProps = Template.bind({});
+export const Required: InputProps = Template.bind({})
 Required.args = {
   ...Default.args,
   required: true,
-};
+}
 
-export const Readonly: InputProps = Template.bind({});
+export const Readonly: InputProps = Template.bind({})
 Readonly.args = {
   ...Default.args,
   readOnly: true,
-};
+}
 
-export const TypeNumber: InputProps = Template.bind({});
+export const TypeNumber: InputProps = Template.bind({})
 TypeNumber.args = {
   ...Default.args,
   type: 'number',
-};
+}
 
-export const Textarea: InputProps = Template.bind({});
+export const Textarea: InputProps = Template.bind({})
 Textarea.args = {
   ...Default.args,
   textarea: true,
   rows: 7,
-};
+}
 
-export const ResponsiveBackgroundColor: InputProps = Template.bind({});
+export const ResponsiveBackgroundColor: InputProps = Template.bind({})
 ResponsiveBackgroundColor.args = {
   ...Default.args,
   placeholder: 'Try change the window size',
   backgroundColor: ['white', 'blue', 'white', 'blue', 'white'],
-};
+}
 
-export const SizeSm: InputProps = Template.bind({});
+export const SizeSm: InputProps = Template.bind({})
 SizeSm.args = {
   ...Default.args,
   size: 'sm',
-};
+}
 
-export const SizeXs: InputProps = Template.bind({});
+export const SizeXs: InputProps = Template.bind({})
 SizeXs.args = {
   ...Default.args,
   size: 'xs',
-};
+}
 
-export const TextRightAligned: InputProps = Template.bind({});
+export const TextRightAligned: InputProps = Template.bind({})
 TextRightAligned.args = {
   ...Default.args,
   rightAlign: true,
-};
+}
 
-export const WithIcon: InputProps = Template.bind({});
+export const WithIcon: InputProps = Template.bind({})
 WithIcon.args = {
   ...Default.args,
   icon: { name: 'informationCircle' },
-};
+}
 
-export const WithButtons: InputProps = Template.bind({});
+export const WithButtons: InputProps = Template.bind({})
 WithButtons.args = {
   ...Default.args,
   buttons: [
@@ -160,7 +160,7 @@ WithButtons.args = {
       name: 'copy',
       type: 'outline',
       onClick: () => {
-        console.log('Copy');
+        console.log('Copy')
       },
     },
     {
@@ -168,42 +168,42 @@ WithButtons.args = {
       name: 'close',
       type: 'outline',
       onClick: () => {
-        console.log('Close');
+        console.log('Close')
       },
     },
   ],
-};
+}
 
-export const WithMaxLength10: InputProps = Template.bind({});
+export const WithMaxLength10: InputProps = Template.bind({})
 WithMaxLength10.args = {
   ...Default.args,
   maxLength: 10,
-};
+}
 
-export const WithTooltip: InputProps = Template.bind({});
+export const WithTooltip: InputProps = Template.bind({})
 WithTooltip.args = {
   ...Default.args,
   tooltip: 'Tooltip text',
-};
+}
 
 export const WithCopyPasswordButton: InputProps = (args) => {
-  const [showPassword, setShowPassword] = React.useState(false);
-  const ref = React.useRef<HTMLInputElement>(null);
+  const [showPassword, setShowPassword] = React.useState(false)
+  const ref = React.useRef<HTMLInputElement>(null)
   const handleCopy = (ev: React.MouseEvent<HTMLButtonElement>) => {
-    if (!ref.current) return;
+    if (!ref.current) return
 
-    ref.current.select();
-    document.execCommand('copy');
+    ref.current.select()
+    document.execCommand('copy')
     if (ev.target instanceof HTMLElement) {
-      ev.target.focus();
+      ev.target.focus()
     }
 
-    console.log('Copy value', ref.current.value);
-  };
+    console.log('Copy value', ref.current.value)
+  }
 
   const handleShow = () => {
-    setShowPassword(!showPassword);
-  };
+    setShowPassword(!showPassword)
+  }
 
   return (
     <Input
@@ -224,10 +224,10 @@ export const WithCopyPasswordButton: InputProps = (args) => {
         },
       ]}
     />
-  );
-};
+  )
+}
 WithCopyPasswordButton.args = {
   ...Default.args,
   readOnly: true,
   value: 'StringThatShouldBeCopied',
-};
+}

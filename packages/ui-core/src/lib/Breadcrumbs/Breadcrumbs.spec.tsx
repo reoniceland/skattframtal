@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { Breadcrumbs } from './Breadcrumbs';
+import { Breadcrumbs } from './Breadcrumbs'
 
 describe('Breadcrumbs', () => {
   it('should render successfully', () => {
@@ -15,7 +15,7 @@ describe('Breadcrumbs', () => {
           { isTag: true, title: 'text tag' },
         ]}
       />,
-    );
-    expect(baseElement).toBeTruthy();
-  });
-});
+    )
+    expect(baseElement).toBeTruthy()
+  })
+})

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Text } from '../Text/Text';
-import { ModalBase } from './ModalBase';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Text } from '../Text/Text'
+import { ModalBase } from './ModalBase'
 
 export default {
   title: 'Components/ModalBase',
   component: ModalBase,
-};
+}
 
 export const CustomModalExample = () => {
   return (
@@ -25,17 +25,17 @@ export const CustomModalExample = () => {
         </Box>
       )}
     </ModalBase>
-  );
-};
+  )
+}
 export const CustomModalUsingState = () => {
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(false)
 
   return (
     <>
       <Button
         variant="ghost"
         onClick={() => {
-          setIsVisible(true);
+          setIsVisible(true)
         }}
       >
         Open modal using state
@@ -45,7 +45,7 @@ export const CustomModalUsingState = () => {
         isVisible={isVisible}
         onVisibilityChange={(visibility) => {
           if (visibility !== isVisible) {
-            setIsVisible(visibility);
+            setIsVisible(visibility)
           }
         }}
       >
@@ -59,5 +59,5 @@ export const CustomModalUsingState = () => {
         )}
       </ModalBase>
     </>
-  );
-};
+  )
+}

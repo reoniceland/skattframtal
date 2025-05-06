@@ -1,29 +1,29 @@
-import React from 'react';
+import React from 'react'
 
-import type { ResponsiveProp } from '../../../utils/responsiveProp';
+import type { ResponsiveProp } from '../../../utils/responsiveProp'
 import type {
   InputBackgroundColor,
   InputButton,
   InputIcon,
-} from '../../Input/types';
+} from '../../Input/types'
 
-import { Input } from '../../Input/Input';
+import { Input } from '../../Input/Input'
 
 export interface FilterInputProps {
-  name: string;
-  id?: string;
-  placeholder?: string;
-  value: string;
-  button?: Omit<InputButton, 'name' | 'type'>;
-  onChange: (value: string) => void;
+  name: string
+  id?: string
+  placeholder?: string
+  value: string
+  button?: Omit<InputButton, 'name' | 'type'>
+  onChange: (value: string) => void
   onKeyDown?: (
     event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  backgroundColor?: ResponsiveProp<InputBackgroundColor>;
-  loading?: boolean;
+  ) => void
+  backgroundColor?: ResponsiveProp<InputBackgroundColor>
+  loading?: boolean
 }
 
-const icon: InputIcon = { name: 'search', type: 'outline' };
+const icon: InputIcon = { name: 'search', type: 'outline' }
 
 export const FilterInput: React.FC<
   React.PropsWithChildren<FilterInputProps>
@@ -47,12 +47,12 @@ export const FilterInput: React.FC<
       size="xs"
       value={value}
       onChange={(event) => {
-        onChange(event.target.value);
+        onChange(event.target.value)
       }}
       onKeyDown={onKeyDown}
       buttons={button && [{ ...icon, ...button }]}
       {...(button ? {} : { icon })}
       loading={loading}
     />
-  );
-};
+  )
+}

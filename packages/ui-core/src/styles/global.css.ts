@@ -1,19 +1,19 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { globalStyle } from '@vanilla-extract/css';
+import { globalStyle } from '@vanilla-extract/css'
 
 globalStyle('html', {
   boxSizing: 'border-box',
   fontSize: theme.typography.baseFontSize,
-});
+})
 
 globalStyle('body', {
   overflowX: 'hidden',
-});
+})
 
 globalStyle('*, *:before, *:after', {
   boxSizing: 'inherit',
-});
+})
 
 globalStyle('body, h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote', {
   margin: 0,
@@ -22,11 +22,11 @@ globalStyle('body, h1, h2, h3, h4, h5, h6, p, ol, ul, blockquote', {
   fontFamily: theme.typography.fontFamily,
   color: theme.color.dark400,
   scrollMarginTop: 64,
-});
+})
 
 globalStyle('strong', {
   fontWeight: theme.typography.semiBold,
-});
+})
 
 // NOTE: DO NOT reset `ol[type]` <-- !!!!!
 // Since CSS attribute selectors for most standard HTML attributes
@@ -38,21 +38,21 @@ globalStyle('strong', {
 // "see item C below" or "according to item viii above"
 globalStyle('ol:not([type]), ul', {
   listStyle: 'none',
-});
+})
 
 globalStyle('a', {
   textDecoration: 'none',
   color: 'inherit',
-});
+})
 
 globalStyle('a:hover', {
   textDecoration: 'underline',
-});
+})
 
 globalStyle('img', {
   maxWidth: '100%',
   height: 'auto',
-});
+})
 
 globalStyle('button, input, optgroup, select, textarea', {
   margin: 0,
@@ -61,7 +61,7 @@ globalStyle('button, input, optgroup, select, textarea', {
   fontWeight: 'inherit',
   color: 'inherit',
   lineHeight: 'inherit',
-});
+})
 
 globalStyle('button', {
   display: 'inline-block',
@@ -75,7 +75,7 @@ globalStyle('button', {
   cursor: 'pointer',
   textAlign: 'center',
   appearance: 'none',
-});
+})
 
 globalStyle('.visually-hidden', {
   position: 'absolute',
@@ -84,8 +84,8 @@ globalStyle('.visually-hidden', {
   overflow: 'hidden',
   clip: 'rect(1px, 1px, 1px, 1px)',
   whiteSpace: 'nowrap',
-});
+})
 
 globalStyle('.js-focus-visible :focus:not(.focus-visible)', {
   outline: 'none',
-});
+})

@@ -1,16 +1,16 @@
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react'
 
-import type { AllHTMLAttributes, ElementType, Ref } from 'react';
-import type { UseBoxStylesProps } from '../Box/useBoxStyles';
-import type { ColorSchemes } from '../context/ColorSchemeContext/ColorSchemeContext';
+import type { AllHTMLAttributes, ElementType, Ref } from 'react'
+import type { UseBoxStylesProps } from '../Box/useBoxStyles'
+import type { ColorSchemes } from '../context/ColorSchemeContext/ColorSchemeContext'
 
-import cn from 'classnames';
-import { useToggle } from 'react-use';
+import cn from 'classnames'
+import { useToggle } from 'react-use'
 
-import { Box } from '../Box/Box';
-import { ColorSchemeContext } from '../context/ColorSchemeContext/ColorSchemeContext';
-import { Link } from '../Link/Link';
-import * as styles from './FocusableBox.css';
+import { Box } from '../Box/Box'
+import { ColorSchemeContext } from '../context/ColorSchemeContext/ColorSchemeContext'
+import { Link } from '../Link/Link'
+import * as styles from './FocusableBox.css'
 
 // TODO fix strict typing
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -21,19 +21,16 @@ interface Props
       AllHTMLAttributes<HTMLElement>,
       'width' | 'height' | 'className' | 'color'
     > {
-  component?: ElementType;
-  ref?: Ref<HTMLElement>;
-  color?: ColorSchemes;
-  to?: string;
+  component?: ElementType
+  ref?: Ref<HTMLElement>
+  color?: ColorSchemes
+  to?: string
   children?:
     | React.ReactNode
-    | ((props: {
-        isFocused?: boolean;
-        isHovered?: boolean;
-      }) => React.ReactNode);
+    | ((props: { isFocused?: boolean; isHovered?: boolean }) => React.ReactNode)
 }
 
-type NoNullColorScheme = Exclude<ColorSchemes, null>;
+type NoNullColorScheme = Exclude<ColorSchemes, null>
 
 // FocusableBox is a wrapper component that handles focus styles.
 // Most props are forwarded to Box.
@@ -53,11 +50,11 @@ export const FocusableBox = forwardRef<HTMLElement, Props>(
     },
     ref,
   ) => {
-    const { colorScheme } = useContext(ColorSchemeContext);
-    const [isFocused, toggleIsFocused] = useToggle(false);
-    const [isHovered, toggleIsHovered] = useToggle(false);
+    const { colorScheme } = useContext(ColorSchemeContext)
+    const [isFocused, toggleIsFocused] = useToggle(false)
+    const [isHovered, toggleIsHovered] = useToggle(false)
 
-    const colorKey: NoNullColorScheme = colorScheme ?? color!;
+    const colorKey: NoNullColorScheme = colorScheme ?? color!
 
     return (
       <Box
@@ -79,6 +76,6 @@ export const FocusableBox = forwardRef<HTMLElement, Props>(
           ? children({ isFocused, isHovered })
           : children}
       </Box>
-    );
+    )
   },
-);
+)

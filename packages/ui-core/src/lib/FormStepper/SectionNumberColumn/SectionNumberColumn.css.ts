@@ -1,12 +1,12 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const root = style({
   width: 32,
   height: 32,
   flex: '0 0 32px',
-});
+})
 
 export const rootSubSection = style({
   '@media': {
@@ -16,4 +16,4 @@ export const rootSubSection = style({
       flex: '0 0 16px',
     },
   },
-});
+})

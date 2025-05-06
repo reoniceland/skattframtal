@@ -1,20 +1,20 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import cn from 'classnames';
-import { times } from 'lodash';
+import cn from 'classnames'
+import { times } from 'lodash'
 
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import * as styles from './DraftProgressMeter.css';
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
+import * as styles from './DraftProgressMeter.css'
 
-export type DraftProgressMeterVariant = 'blue' | 'red' | 'rose' | 'mint';
+export type DraftProgressMeterVariant = 'blue' | 'red' | 'rose' | 'mint'
 
 interface DraftProgressMeterProps {
-  variant?: DraftProgressMeterVariant;
-  className?: string;
-  draftTotalSteps: number;
-  draftFinishedSteps: number;
-  progressMessage: string;
+  variant?: DraftProgressMeterVariant
+  className?: string
+  draftTotalSteps: number
+  draftFinishedSteps: number
+  progressMessage: string
 }
 
 const colorSchemes = {
@@ -38,7 +38,7 @@ const colorSchemes = {
     outer: 'mint100',
     inner: 'mint600',
   },
-} as const;
+} as const
 
 export const DraftProgressMeter: React.FC<
   React.PropsWithChildren<DraftProgressMeterProps>
@@ -80,7 +80,7 @@ export const DraftProgressMeter: React.FC<
                 borderRadius="standard"
                 width="full"
               />
-            );
+            )
           })}
         </Box>
       </Box>
@@ -90,5 +90,5 @@ export const DraftProgressMeter: React.FC<
         </Text>
       </Box>
     </>
-  );
-};
+  )
+}

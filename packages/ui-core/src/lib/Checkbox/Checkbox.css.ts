@@ -1,27 +1,27 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
 import {
   errorMessage as inputErrorMessage,
   inputErrorState,
-} from '../Input/Input.mixins';
+} from '../Input/Input.mixins'
 
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css'
 
-export const checkMarkWidth = theme.spacing[2];
-const checkboxSize = theme.spacing[3];
+export const checkMarkWidth = theme.spacing[2]
+const checkboxSize = theme.spacing[3]
 
 export const container = style({
   position: 'relative',
-});
+})
 
 export const filled = style({
   background: theme.color.white,
-});
+})
 
 export const large = style({
   borderRadius: theme.border.radius.large,
   border: `1px solid ${theme.color.blue200}`,
-});
+})
 
 export const input = style({
   height: checkboxSize,
@@ -32,7 +32,7 @@ export const input = style({
   transform: 'translateY(-50%)',
   width: checkboxSize,
   cursor: 'pointer',
-});
+})
 export const inputLarge = style({
   transform: 'translateY(-50%) translateX(100%)',
   '@media': {
@@ -40,21 +40,21 @@ export const inputLarge = style({
       transform: 'translateY(-50%) translateX(65%)',
     },
   },
-});
+})
 export const label = style({
   display: 'flex',
   fontSize: theme.typography.baseFontSize,
   alignItems: 'center',
-});
+})
 export const labelText = style({
   display: 'flex',
   flex: 1,
   flexDirection: 'column',
-});
+})
 export const checkboxDisabled = style({
   background: 'transparent',
   borderColor: theme.color.blue200,
-});
+})
 export const largeLabel = style({
   alignItems: 'center',
   padding: `${theme.spacing[3]}px ${theme.spacing[2]}px`,
@@ -63,7 +63,7 @@ export const largeLabel = style({
       padding: `${theme.spacing[3]}px ${theme.spacing[3]}px`,
     },
   },
-});
+})
 
 export const checkbox = style({
   alignItems: 'center',
@@ -86,7 +86,7 @@ export const checkbox = style({
       boxShadow: `0 0 0 4px ${theme.color.mint400}`,
     },
   },
-});
+})
 
 export const checkboxChecked = style({
   selectors: {
@@ -95,32 +95,32 @@ export const checkboxChecked = style({
       borderColor: theme.color.blue400,
     },
   },
-});
+})
 
 export const checkboxLabelDisabled = style({
   color: theme.color.dark300,
-});
+})
 
-export const checkboxError = style(inputErrorState);
-export const errorMessage = style(inputErrorMessage);
+export const checkboxError = style(inputErrorState)
+export const errorMessage = style(inputErrorMessage)
 
 export const tooltipContainer = style({
   display: 'inline-block',
   marginLeft: theme.spacing[2],
-});
+})
 
 export const tooltipLargeContainer = style({
   marginLeft: 'auto',
   paddingLeft: theme.spacing[2],
-});
+})
 
 export const fixJumpingContentFromFontWeightToggle = style({
   visibility: 'hidden',
   height: 0,
-});
+})
 
-export const labelChildrenFontWeightToggle = style({});
+export const labelChildrenFontWeightToggle = style({})
 
 globalStyle(`${labelChildrenFontWeightToggle} p`, {
   fontWeight: `${theme.typography.semiBold} !important`,
-});
+})

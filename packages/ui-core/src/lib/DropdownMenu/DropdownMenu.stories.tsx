@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { DropdownMenu } from './DropdownMenu';
+import { DropdownMenu } from './DropdownMenu'
 
 export default {
   title: 'Navigation/DropdownMenu',
   component: DropdownMenu,
-};
+}
 
-const Template = (args) => <DropdownMenu {...args} />;
+const Template = (args) => <DropdownMenu {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   title: 'Innskráning',
   icon: 'person',
@@ -22,9 +22,9 @@ Default.args = {
     {
       title: 'Fyrirtæki',
       onClick: (menu) => {
-        menu.hide();
-        console.log('click');
+        menu.hide()
+        console.log('click')
       },
     },
   ],
-};
+}

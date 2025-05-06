@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { Bullet, BulletList } from './BulletList';
+import { Box } from '../Box/Box'
+import { Bullet, BulletList } from './BulletList'
 
 export default {
   title: 'Components/BulletList',
   component: BulletList,
-};
+}
 
 export const Default = ({ type }) => (
   <Box padding="gutter">
@@ -26,11 +26,11 @@ export const Default = ({ type }) => (
       </Bullet>
     </BulletList>
   </Box>
-);
+)
 
 Default.args = {
   type: false,
-};
+}
 
 export const Nested = () => (
   <Box padding="gutter">
@@ -41,4 +41,4 @@ export const Nested = () => (
       </Bullet>
     </BulletList>
   </Box>
-);
+)

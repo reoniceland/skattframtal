@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as s from './ToggleSwitch.css';
+import * as s from './ToggleSwitch.css'
 
-type TogglerElms = HTMLAnchorElement | HTMLButtonElement | HTMLInputElement;
+type TogglerElms = HTMLAnchorElement | HTMLButtonElement | HTMLInputElement
 
 type InteractiveProps<Elm extends TogglerElms = TogglerElms> = Pick<
   JSX.IntrinsicElements[Elm extends HTMLAnchorElement
@@ -13,29 +13,29 @@ type InteractiveProps<Elm extends TogglerElms = TogglerElms> = Pick<
       ? 'button'
       : 'input'],
   'onFocus' | 'onBlur'
->;
+>
 
 export type ToggleSwitchBaseProps<Elm extends TogglerElms = TogglerElms> = {
   /** The visible label text */
-  label: string | JSX.Element;
+  label: string | JSX.Element
   /** The current checked state of the component */
-  checked: boolean;
+  checked: boolean
   /** When disabled, onClick does not trigger. */
-  disabled?: boolean;
+  disabled?: boolean
   /** Callback that triggers on user interaction */
-  onChange: (newChecked: boolean) => void;
+  onChange: (newChecked: boolean) => void
   /** Custom **additional** class-name applied to the container element */
-  className?: string;
+  className?: string
   /** Renders a full-width version of the ToggleSwicth */
-  wide?: boolean;
+  wide?: boolean
   /** Renders a "large" version of the ToggleSwicth */
-  large?: boolean;
+  large?: boolean
   /** Set to true to create a standalone ToggleSwitch with no visible label
    *
    * This can be useful if the "visible label needs to contain rich/interactive elements (links, etc.)"
    */
-  hiddenLabel?: boolean;
-} & InteractiveProps<Elm>;
+  hiddenLabel?: boolean
+} & InteractiveProps<Elm>
 
 export const getContainerClass = (
   props: Pick<
@@ -52,14 +52,14 @@ export const getContainerClass = (
     localChecked && s.toggleSwitchChecked,
     props.disabled && s.toggleSwitchDisabled,
     props.hiddenLabel && s.toggleSwitchHiddenLabel,
-  );
+  )
 
 export const getInteractiveProps = <Elm extends TogglerElms>(
   props: InteractiveProps<Elm>,
 ): InteractiveProps<Elm> => ({
   onFocus: props.onFocus,
   onBlur: props.onBlur,
-});
+})
 
 export const renderContents = (
   visibleLabel: ToggleSwitchBaseProps['label'],
@@ -69,4 +69,4 @@ export const renderContents = (
   <span key="label" className={s.text} title={title}>
     {visibleLabel}
   </span>,
-];
+]

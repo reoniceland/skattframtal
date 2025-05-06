@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { Button } from '../Button/Button';
-import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
-import * as T from './Table';
+import { Button } from '../Button/Button'
+import { DropdownMenu } from '../DropdownMenu/DropdownMenu'
+import * as T from './Table'
 
-const { Table, Head, Row, HeadData, Body, Data } = T;
+const { Table, Head, Row, HeadData, Body, Data } = T
 
 const description = `
 Table elements are nested inside the \`Table\` import
@@ -30,7 +30,7 @@ import { Table as T } from '@island.is/island-ui/core'
   </T.Foot>
 </T.Table>
 \`\`\`
-`;
+`
 
 export default {
   title: 'Core/Table',
@@ -43,7 +43,7 @@ export default {
       },
     },
   },
-};
+}
 
 const dummy = [
   {
@@ -76,7 +76,7 @@ const dummy = [
     programme: 'Próf í verðbréfaviðskiptum',
     date: '2005-05-25',
   },
-];
+]
 
 export const BasicTable = () => {
   return (
@@ -116,19 +116,19 @@ export const BasicTable = () => {
                   {
                     title: 'Sækja',
                     onClick: () => {
-                      console.log('sækja');
+                      console.log('sækja')
                     },
                   },
                   {
                     title: 'Deila',
                     onClick: () => {
-                      console.log('deila');
+                      console.log('deila')
                     },
                   },
                   {
                     title: 'Skoða',
                     onClick: () => {
-                      console.log('skoða');
+                      console.log('skoða')
                     },
                   },
                 ]}
@@ -138,5 +138,5 @@ export const BasicTable = () => {
         ))}
       </Body>
     </Table>
-  );
-};
+  )
+}

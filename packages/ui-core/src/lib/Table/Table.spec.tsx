@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import * as T from './Table';
+import * as T from './Table'
 
 describe('Table', () => {
   it('should render successfully', () => {
@@ -24,7 +24,7 @@ describe('Table', () => {
           </T.Row>
         </T.Foot>
       </T.Table>,
-    );
-    expect(baseElement).toBeTruthy();
-  });
-});
+    )
+    expect(baseElement).toBeTruthy()
+  })
+})

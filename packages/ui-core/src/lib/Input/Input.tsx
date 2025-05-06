@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useLayoutEffect, useRef, useState } from 'react';
+import React, { forwardRef, useLayoutEffect, useRef, useState } from 'react'
 
-import type { UseBoxStylesProps } from '../Box/useBoxStyles';
+import type { UseBoxStylesProps } from '../Box/useBoxStyles'
 import type {
   AriaError,
   AsideProps,
@@ -10,30 +10,30 @@ import type {
   InputComponentProps,
   InputIcon,
   InputProps,
-} from './types';
+} from './types'
 
-import cn from 'classnames';
-import { VisuallyHidden } from 'reakit';
+import cn from 'classnames'
+import { VisuallyHidden } from 'reakit'
 
-import { useMergeRefs } from '../../hooks/useMergeRefs';
-import { resolveResponsiveProp } from '../../utils/responsiveProp';
-import { Box } from '../Box/Box';
-import { Icon } from '../IconRC/Icon';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { ErrorMessage } from './ErrorMessage';
-import * as styles from './Input.css';
+import { useMergeRefs } from '../../hooks/useMergeRefs'
+import { resolveResponsiveProp } from '../../utils/responsiveProp'
+import { Box } from '../Box/Box'
+import { Icon } from '../IconRC/Icon'
+import { Tooltip } from '../Tooltip/Tooltip'
+import { ErrorMessage } from './ErrorMessage'
+import * as styles from './Input.css'
 
 const InputHOC = forwardRef(
   (
     props: Omit<InputComponentProps, 'size'>,
     ref: React.Ref<HTMLInputElement>,
   ) => <input ref={ref} {...props} />,
-);
+)
 const TextareaHOC = forwardRef(
   (props: InputComponentProps, ref: React.Ref<HTMLTextAreaElement>) => (
     <textarea ref={ref} {...props} />
   ),
-);
+)
 
 export const Input = forwardRef(
   (
@@ -72,49 +72,49 @@ export const Input = forwardRef(
       loading,
       buttons,
       ...inputProps
-    } = props;
-    const [hasFocus, setHasFocus] = useState(false);
+    } = props
+    const [hasFocus, setHasFocus] = useState(false)
 
-    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
-    const mergedRefs = useMergeRefs(inputRef, ref || null);
+    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
+    const mergedRefs = useMergeRefs(inputRef, ref || null)
 
-    const hasLabel = Boolean(label);
-    const showFocus = hasFocus || !!fixedFocusState;
+    const hasLabel = Boolean(label)
+    const showFocus = hasFocus || !!fixedFocusState
 
-    const errorId = `${id}-error`;
+    const errorId = `${id}-error`
     const ariaError = hasError
       ? { 'aria-invalid': true, 'aria-describedby': errorId }
-      : {};
+      : {}
 
-    const InputComponent = textarea ? TextareaHOC : InputHOC;
+    const InputComponent = textarea ? TextareaHOC : InputHOC
     const mapBlue = (color: InputBackgroundColor) =>
-      color === 'blue' ? 'blue100' : color;
+      color === 'blue' ? 'blue100' : color
     const containerBackground = Array.isArray(backgroundColor)
       ? backgroundColor.map(mapBlue)
-      : mapBlue(backgroundColor as InputBackgroundColor);
+      : mapBlue(backgroundColor as InputBackgroundColor)
 
     useLayoutEffect(() => {
-      const input = inputRef.current;
+      const input = inputRef.current
 
       if (autoExpand?.on && input) {
         const handler = () => {
-          input.style.height = 'auto';
+          input.style.height = 'auto'
           // The +1 here prevents a scrollbar from appearing in the textarea
-          input.style.height = `${input.scrollHeight + 1}px`;
+          input.style.height = `${input.scrollHeight + 1}px`
           input.style.maxHeight = autoExpand.maxHeight
             ? `${autoExpand.maxHeight}px`
-            : `${window.innerHeight - 50}px`;
-        };
+            : `${window.innerHeight - 50}px`
+        }
 
-        handler();
+        handler()
 
-        input.addEventListener('input', handler, false);
+        input.addEventListener('input', handler, false)
 
         return function cleanup() {
-          input.removeEventListener('input', handler);
-        };
+          input.removeEventListener('input', handler)
+        }
       }
-    }, [autoExpand?.maxHeight, autoExpand?.on, inputRef]);
+    }, [autoExpand?.maxHeight, autoExpand?.on, inputRef])
 
     return (
       <div>
@@ -155,9 +155,9 @@ export const Input = forwardRef(
             hasFocus: showFocus,
           })}
           onClick={(e) => {
-            e.preventDefault();
+            e.preventDefault()
             if (inputRef.current) {
-              inputRef.current.focus();
+              inputRef.current.focus()
             }
           }}
         >
@@ -210,25 +210,25 @@ export const Input = forwardRef(
               maxLength={maxLength}
               defaultValue={defaultValue}
               onFocus={(e) => {
-                setHasFocus(true);
+                setHasFocus(true)
                 if (onFocus) {
-                  onFocus(e);
+                  onFocus(e)
                 }
               }}
               onClick={(e) => {
                 if (onClick) {
-                  onClick(e);
+                  onClick(e)
                 }
               }}
               onKeyDown={(e) => {
                 if (onKeyDown) {
-                  onKeyDown(e);
+                  onKeyDown(e)
                 }
               }}
               onBlur={(e) => {
-                setHasFocus(false);
+                setHasFocus(false)
                 if (onBlur) {
-                  onBlur(e);
+                  onBlur(e)
                 }
               }}
               readOnly={readOnly}
@@ -255,9 +255,9 @@ export const Input = forwardRef(
           <ErrorMessage id={errorId}>{errorMessage}</ErrorMessage>
         )}
       </div>
-    );
+    )
   },
-);
+)
 
 function AsideIcons({
   icon,
@@ -269,7 +269,7 @@ function AsideIcons({
 }: AsideProps) {
   const displayedIcon: InputIcon | undefined = hasError
     ? { name: 'warning' }
-    : icon;
+    : icon
 
   const renderIcon = (item: InputIcon) => (
     <Icon
@@ -279,7 +279,7 @@ function AsideIcons({
       className={styles.icon({ size, hasLabel, hasError })}
       ariaHidden
     />
-  );
+  )
 
   return (
     <div className={styles.aside}>
@@ -296,7 +296,7 @@ function AsideIcons({
       ) : null}
 
       {buttons.map((item) => {
-        const { name, type, label, ...rest } = item;
+        const { name, type, label, ...rest } = item
         return (
           <button
             className={styles.inputButton({ size, hasError })}
@@ -306,8 +306,8 @@ function AsideIcons({
             <VisuallyHidden>{label}</VisuallyHidden>
             {renderIcon(item)}
           </button>
-        );
+        )
       })}
     </div>
-  );
+  )
 }

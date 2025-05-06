@@ -1,32 +1,32 @@
-'use client';
+'use client'
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { FC, ReactNode } from 'react';
-import type { StackProps } from '../Stack/Stack';
+import type { Colors } from '@reon-island/ui-theme'
+import type { FC, ReactNode } from 'react'
+import type { StackProps } from '../Stack/Stack'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-import * as styles from './BulletList.css';
+import { Box } from '../Box/Box'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
+import * as styles from './BulletList.css'
 
 interface BulletListContextValue {
-  type: string;
-  color: Colors;
+  type: string
+  color: Colors
 }
 
 const BulletListContext = createContext<BulletListContextValue>({
   type: 'ul',
   color: 'red400',
-});
+})
 
 export const Bullet: FC<React.PropsWithChildren> = ({ children }) => {
-  const { type, color } = useContext(BulletListContext);
+  const { type, color } = useContext(BulletListContext)
 
   return (
     <Text as="span">
@@ -50,14 +50,14 @@ export const Bullet: FC<React.PropsWithChildren> = ({ children }) => {
         <Box className={styles.content}>{children}</Box>
       </Box>
     </Text>
-  );
-};
+  )
+}
 
 interface BulletListProps {
-  children: ReactNode;
-  space?: StackProps['space'];
-  type?: 'ul' | 'ol';
-  color?: Colors;
+  children: ReactNode
+  space?: StackProps['space']
+  type?: 'ul' | 'ol'
+  color?: Colors
 }
 
 export const BulletList: FC<React.PropsWithChildren<BulletListProps>> = ({
@@ -74,5 +74,5 @@ export const BulletList: FC<React.PropsWithChildren<BulletListProps>> = ({
         </Stack>
       </BulletListContext.Provider>
     </div>
-  );
-};
+  )
+}

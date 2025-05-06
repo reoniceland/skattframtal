@@ -1,5 +1,5 @@
-import { errorMessage as inputErrorMessage } from '../Input/Input.mixins';
+import { errorMessage as inputErrorMessage } from '../Input/Input.mixins'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
-export const errorMessage = style(inputErrorMessage);
+export const errorMessage = style(inputErrorMessage)

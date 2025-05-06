@@ -1,3 +1,3 @@
-import type { IconTypes } from './Icon';
+import type { IconTypes } from './Icon'
 
-export type IconTypesDeprecated = IconTypes;
+export type IconTypesDeprecated = IconTypes

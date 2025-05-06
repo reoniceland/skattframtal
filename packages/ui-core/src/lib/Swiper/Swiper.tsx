@@ -1,18 +1,18 @@
-'use client';
+'use client'
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Swiper.css';
+import * as styles from './Swiper.css'
 
-const FALLBACK_WIDTH = 10;
+const FALLBACK_WIDTH = 10
 
 interface Props {
-  itemWidth?: number;
-  className?: string;
+  itemWidth?: number
+  className?: string
 }
 
 export const Swiper: FC<React.PropsWithChildren<Props>> = ({
@@ -20,25 +20,25 @@ export const Swiper: FC<React.PropsWithChildren<Props>> = ({
   itemWidth,
   className,
 }) => {
-  const [width, setWidth] = useState<number>(itemWidth ?? FALLBACK_WIDTH);
-  const ref = useRef<HTMLDivElement>(null);
+  const [width, setWidth] = useState<number>(itemWidth ?? FALLBACK_WIDTH)
+  const ref = useRef<HTMLDivElement>(null)
 
   const onResize = useCallback(() => {
     if (ref.current) {
-      const w = ref.current.offsetWidth;
-      setWidth(~~(w * 0.77));
+      const w = ref.current.offsetWidth
+      setWidth(~~(w * 0.77))
     }
-  }, [ref]);
+  }, [ref])
 
   useEffect(() => {
-    onResize();
-    window.addEventListener('resize', onResize, { passive: true });
+    onResize()
+    window.addEventListener('resize', onResize, { passive: true })
     return () => {
-      window.removeEventListener('resize', onResize);
-    };
-  }, [onResize]);
+      window.removeEventListener('resize', onResize)
+    }
+  }, [onResize])
 
-  const arr = React.Children.map(children, (child) => child) || [];
+  const arr = React.Children.map(children, (child) => child) || []
 
   return (
     <div className={styles.root}>
@@ -62,5 +62,5 @@ export const Swiper: FC<React.PropsWithChildren<Props>> = ({
         </div>
       </div>
     </div>
-  );
-};
+  )
+}

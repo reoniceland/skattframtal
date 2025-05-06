@@ -1,6 +1,6 @@
-import { theme, zIndex } from '@reon-island/ui-theme';
+import { theme, zIndex } from '@reon-island/ui-theme'
 
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css'
 
 export const menu = style({
   minWidth: 150,
@@ -9,7 +9,7 @@ export const menu = style({
   ':focus': {
     outline: 'none',
   },
-});
+})
 
 export const menuItem = style({
   transition: 'color .2s',
@@ -24,8 +24,8 @@ export const menuItem = style({
     },
   },
   padding: `${theme.spacing[2]}px ${theme.spacing[1]}px`,
-});
+})
 
 globalStyle(`${menuItem} button:focus`, {
   outline: 'none',
-});
+})

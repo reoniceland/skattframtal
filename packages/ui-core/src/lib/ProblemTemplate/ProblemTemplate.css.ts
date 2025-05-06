@@ -1,8 +1,8 @@
-import { recipe } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes'
 
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const problemTemplateContainer = recipe({
   base: {
@@ -32,7 +32,7 @@ export const problemTemplateContainer = recipe({
       },
     },
   },
-});
+})
 
 export const problemTemplateImg = style({
   minHeight: '20vh',
@@ -42,4 +42,4 @@ export const problemTemplateImg = style({
       minHeight: '250px',
     },
   }),
-});
+})

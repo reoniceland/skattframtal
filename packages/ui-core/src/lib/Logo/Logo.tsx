@@ -1,17 +1,17 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Logo.css';
+import * as styles from './Logo.css'
 
 interface LogoProps {
-  id?: string;
-  width?: number;
-  height?: number;
-  solid?: boolean;
-  solidColor?: string;
-  iconOnly?: boolean;
-  title?: string;
+  id?: string
+  width?: number
+  height?: number
+  solid?: boolean
+  solidColor?: string
+  iconOnly?: boolean
+  title?: string
 }
 
 export const Logo = forwardRef<SVGSVGElement, LogoProps>(
@@ -251,4 +251,4 @@ export const Logo = forwardRef<SVGSVGElement, LogoProps>(
         </g>
       </svg>
     ),
-);
+)

@@ -1,11 +1,11 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
-import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils';
+import { theme, themeUtils } from '@reon-island/ui-theme'
+import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const container = responsiveStyleMap({
   height: { xs: 80, md: 112 },
-});
+})
 
 export const infoContainer = style({
   ...themeUtils.responsiveStyle({
@@ -15,7 +15,7 @@ export const infoContainer = style({
       borderColor: theme.color.dark100,
     },
   }),
-});
+})
 
 export const infoDescription = style({
   fontWeight: 300,
@@ -31,9 +31,9 @@ export const infoDescription = style({
       maxHeight: 66,
     },
   }),
-});
+})
 
 export const userNameContainer = style({
   flex: 1,
   minWidth: 0,
-});
+})

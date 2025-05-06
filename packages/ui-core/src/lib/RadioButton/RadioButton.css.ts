@@ -1,29 +1,29 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
 import {
   errorMessage as inputErrorMessage,
   inputErrorState,
-} from '../Input/Input.mixins';
+} from '../Input/Input.mixins'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
-const radioButtonSize = theme.spacing[3];
-const radioButtonCheckSize = 12;
-export const checkMarkWidth = theme.spacing[2];
+const radioButtonSize = theme.spacing[3]
+const radioButtonCheckSize = 12
+export const checkMarkWidth = theme.spacing[2]
 
 export const container = style({
   display: 'flex',
   position: 'relative',
-});
+})
 
 export const large = style({
   borderRadius: theme.border.radius.large,
   border: `1px solid ${theme.color.blue200}`,
-});
+})
 
 export const largeError = style({
   border: `1px solid ${theme.color.red600}`,
-});
+})
 
 export const input = style({
   height: radioButtonSize,
@@ -32,18 +32,18 @@ export const input = style({
   position: 'absolute',
   top: 0,
   width: radioButtonSize,
-});
+})
 export const label = style({
   display: 'flex',
   fontSize: theme.typography.baseFontSize,
   lineHeight: theme.typography.baseLineHeight,
   width: '100%',
-});
+})
 export const labelText = style({
   display: 'flex',
   flexDirection: 'column',
   width: '100%',
-});
+})
 export const largeLabel = style({
   alignItems: 'center',
   padding: `${theme.spacing[3]}px ${theme.spacing[2]}px`,
@@ -52,11 +52,11 @@ export const largeLabel = style({
       padding: `${theme.spacing[3]}px`,
     },
   },
-});
+})
 export const radioButtonDisabled = style({
   background: 'transparent',
   borderColor: theme.color.blue200,
-});
+})
 export const radioButton = style({
   alignItems: 'center',
   backgroundColor: theme.color.white,
@@ -77,9 +77,9 @@ export const radioButton = style({
       boxShadow: `0 0 0 4px ${theme.color.mint400}`,
     },
   },
-});
+})
 
-export const radioButtonChecked = style({});
+export const radioButtonChecked = style({})
 
 export const checkMark = style({
   backgroundColor: theme.color.transparent,
@@ -94,33 +94,33 @@ export const checkMark = style({
       transform: 'scale(1)',
     },
   },
-});
+})
 
 export const radioButtonLabelDisabled = style({
   color: theme.color.dark300,
-});
+})
 
 export const radioButtonError = style({
   ...inputErrorState,
   paddingBottom: 0,
-});
+})
 
 export const errorMessage = style({
   ...inputErrorMessage,
   padding: `0 ${theme.spacing[3]}px ${theme.spacing[2]}px ${theme.spacing[3]}px`,
-});
+})
 
 export const tooltipContainer = style({
   display: 'inline-block',
   marginLeft: theme.spacing[2],
-});
+})
 
 export const tooltipLargeContainer = style({
   marginLeft: 'auto',
   paddingLeft: theme.spacing[2],
-});
+})
 
 export const toolTipLargeContainerWithIllustration = style({
   marginLeft: 0,
   paddingLeft: theme.spacing[2],
-});
+})

@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const label = style({
   position: 'absolute',
@@ -10,8 +10,8 @@ export const label = style({
   fontWeight: theme.typography.semiBold,
   fontSize: 14,
   lineHeight: 1.142857,
-});
+})
 
 export const hasError = style({
   color: `${theme.color.red600} !important`,
-});
+})

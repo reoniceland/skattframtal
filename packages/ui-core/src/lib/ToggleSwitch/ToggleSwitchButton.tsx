@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 import {
   getContainerClass,
   getInteractiveProps,
   renderContents,
   ToggleSwitchBaseProps,
-} from './_ToggleSwitch.utils';
+} from './_ToggleSwitch.utils'
 
 export type ToggleSwitchButtonProps =
   ToggleSwitchBaseProps<HTMLButtonElement> & {
@@ -13,17 +13,17 @@ export type ToggleSwitchButtonProps =
      *
      * If `expander={true}` is used the button changes to use `aria-expanded="true|false"` instead.
      */
-    expander?: boolean;
+    expander?: boolean
 
-    'aria-controls'?: string;
-  };
+    'aria-controls'?: string
+  }
 
 export const ToggleSwitchButton = (props: ToggleSwitchButtonProps) => {
-  const { checked } = props;
+  const { checked } = props
 
   const checkedAttr = props.expander
     ? { 'aria-expanded': checked }
-    : { 'aria-pressed': checked };
+    : { 'aria-pressed': checked }
 
   return (
     <button
@@ -37,5 +37,5 @@ export const ToggleSwitchButton = (props: ToggleSwitchButtonProps) => {
     >
       {renderContents(props.label)}
     </button>
-  );
-};
+  )
+}

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import * as styles from './demostyles.css';
-import { GridColumn } from './GridColumn/GridColumn';
-import { GridContainer } from './GridContainer/GridContainer';
-import { GridRow } from './GridRow/GridRow';
+import { Box } from '../Box/Box'
+import * as styles from './demostyles.css'
+import { GridColumn } from './GridColumn/GridColumn'
+import { GridContainer } from './GridContainer/GridContainer'
+import { GridRow } from './GridRow/GridRow'
 
 export default {
   title: 'Layout/Grid',
   component: GridColumn,
-};
+}
 
 const DemoBox = ({ text = 'Grid item' }) => (
   <Box
@@ -21,7 +21,7 @@ const DemoBox = ({ text = 'Grid item' }) => (
   >
     {text}
   </Box>
-);
+)
 
 export const Nested = () => (
   <GridContainer>
@@ -84,7 +84,7 @@ export const Nested = () => (
       </GridColumn>
     </GridRow>
   </GridContainer>
-);
+)
 
 export const Default = () => (
   <GridContainer>
@@ -100,7 +100,7 @@ export const Default = () => (
       </GridColumn>
     </GridRow>
   </GridContainer>
-);
+)
 
 export const Responsive = () => (
   <GridContainer>
@@ -119,7 +119,7 @@ export const Responsive = () => (
       </GridColumn>
     </GridRow>
   </GridContainer>
-);
+)
 
 export const Order = () => (
   <GridContainer>
@@ -141,7 +141,7 @@ export const Order = () => (
       </GridColumn>
     </GridRow>
   </GridContainer>
-);
+)
 
 export const Offsets = () => (
   <Box paddingY={1}>
@@ -183,7 +183,7 @@ export const Offsets = () => (
       </GridRow>
     </GridContainer>
   </Box>
-);
+)
 
 export const ResponsiveOffset = () => (
   <Box paddingY={1}>
@@ -195,4 +195,4 @@ export const ResponsiveOffset = () => (
       </GridRow>
     </GridContainer>
   </Box>
-);
+)

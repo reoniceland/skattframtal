@@ -1,13 +1,14 @@
 import React from 'react'
+
+import { Box } from '../Box/Box'
 import { Button } from '../Button/Button'
 import { ButtonTypes } from '../Button/types'
-import { Box } from '../Box/Box'
-import { Text } from '../Text/Text'
-import { GridRow } from '../Grid/GridRow/GridRow'
 import { GridColumn } from '../Grid/GridColumn/GridColumn'
-import { ModalBase } from '../ModalBase/ModalBase'
-import * as styles from './DialogPrompt.css'
+import { GridRow } from '../Grid/GridRow/GridRow'
 import { Hidden } from '../Hidden/Hidden'
+import { ModalBase } from '../ModalBase/ModalBase'
+import { Text } from '../Text/Text'
+import * as styles from './DialogPrompt.css'
 
 interface DialogPromptProps {
   /**

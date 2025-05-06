@@ -6,12 +6,12 @@ export enum FormStepperThemes {
 }
 
 export interface FormStepperSection {
-  name: string;
-  type?: string;
-  children?: FormStepperChildSection[];
+  name: string
+  type?: string
+  children?: FormStepperChildSection[]
 }
 
 export interface FormStepperChildSection extends FormStepperSection {
-  href?: string;
-  onClick?: () => void;
+  href?: string
+  onClick?: () => void
 }

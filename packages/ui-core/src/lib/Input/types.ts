@@ -1,97 +1,97 @@
-import type { HTMLAttributes } from 'react';
-import type React from 'react';
-import type { ResponsiveProp } from '../../utils/responsiveProp';
-import type { Icon as IconType, Type } from '../IconRC/iconMap';
-import type * as styles from './Input.css';
+import type { HTMLAttributes } from 'react'
+import type React from 'react'
+import type { ResponsiveProp } from '../../utils/responsiveProp'
+import type { Icon as IconType, Type } from '../IconRC/iconMap'
+import type * as styles from './Input.css'
 
-export type InputBackgroundColor = 'white' | 'blue';
+export type InputBackgroundColor = 'white' | 'blue'
 
 export interface AriaError {
-  'aria-invalid': boolean;
-  'aria-describedby': string;
+  'aria-invalid': boolean
+  'aria-describedby': string
 }
 
 export interface InputComponentProps {
-  name: string;
-  value?: string | number;
-  defaultValue?: string | number;
-  id?: string;
-  className?: string;
-  disabled?: boolean;
-  required?: boolean;
-  rightAlign?: boolean;
-  readOnly?: boolean;
-  placeholder?: string;
-  autoFocus?: boolean;
-  maxLength?: number;
-  max?: number | string;
-  min?: number | string;
-  step?: string;
-  size?: keyof typeof styles.inputSize;
+  name: string
+  value?: string | number
+  defaultValue?: string | number
+  id?: string
+  className?: string
+  disabled?: boolean
+  required?: boolean
+  rightAlign?: boolean
+  readOnly?: boolean
+  placeholder?: string
+  autoFocus?: boolean
+  maxLength?: number
+  max?: number | string
+  min?: number | string
+  step?: string
+  size?: keyof typeof styles.inputSize
   onFocus?: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  ) => void
   onBlur?: (
     event: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  ) => void
   onChange?: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  ) => void
   onClick?: (
     event: React.MouseEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
+  ) => void
   onKeyDown?: (
     event: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  rows?: number;
-  type?: 'text' | 'number' | 'email' | 'tel' | 'password';
+  ) => void
+  rows?: number
+  type?: 'text' | 'number' | 'email' | 'tel' | 'password'
 
   /**
    * While true hover state will not show and focus state will be always on
    */
-  fixedFocusState?: boolean;
-  autoComplete?: 'on' | 'off';
+  fixedFocusState?: boolean
+  autoComplete?: 'on' | 'off'
   autoExpand?: {
-    on: boolean;
-    maxHeight?: number;
-  };
-  inputMode?: HTMLAttributes<HTMLInputElement>['inputMode'];
+    on: boolean
+    maxHeight?: number
+  }
+  inputMode?: HTMLAttributes<HTMLInputElement>['inputMode']
 }
 
 export interface InputButton {
-  name: IconType;
-  type?: Type;
-  label: string;
-  onClick?: React.HTMLAttributes<HTMLButtonElement>['onClick'];
-  disabled?: boolean;
+  name: IconType
+  type?: Type
+  label: string
+  onClick?: React.HTMLAttributes<HTMLButtonElement>['onClick']
+  disabled?: boolean
 }
 
 export interface InputIcon {
-  name: IconType;
-  type?: Type;
+  name: IconType
+  type?: Type
 }
 
 export interface InputProps extends InputComponentProps {
-  label?: string;
-  hasError?: boolean;
-  errorMessage?: string;
-  tooltip?: string;
-  backgroundColor?: ResponsiveProp<InputBackgroundColor>;
-  textarea?: boolean;
-  maxLength?: number;
-  loading?: boolean;
-  icon?: InputIcon;
-  buttons?: InputButton[];
-  max?: number | string;
-  min?: number | string;
-  step?: string;
+  label?: string
+  hasError?: boolean
+  errorMessage?: string
+  tooltip?: string
+  backgroundColor?: ResponsiveProp<InputBackgroundColor>
+  textarea?: boolean
+  maxLength?: number
+  loading?: boolean
+  icon?: InputIcon
+  buttons?: InputButton[]
+  max?: number | string
+  min?: number | string
+  step?: string
 }
 
 export interface AsideProps {
-  icon: InputProps['icon'];
-  buttons: InputProps['buttons'];
-  size: InputProps['size'];
-  loading: boolean;
-  hasError: boolean;
-  hasLabel: boolean;
+  icon: InputProps['icon']
+  buttons: InputProps['buttons']
+  size: InputProps['size']
+  loading: boolean
+  hasError: boolean
+  hasLabel: boolean
 }

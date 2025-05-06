@@ -1,60 +1,60 @@
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
-import type { ChangeEvent, FC, ReactNode } from 'react';
+import type { ChangeEvent, FC, ReactNode } from 'react'
 
-import { Accordion } from '../../Accordion/Accordion';
+import { Accordion } from '../../Accordion/Accordion'
 import {
   AccordionCard,
   AccordionItem,
-} from '../../Accordion/AccordionItem/AccordionItem';
-import { Box } from '../../Box/Box';
-import { Button } from '../../Button/Button';
-import { Checkbox } from '../../Checkbox/Checkbox';
-import { Inline } from '../../Inline/Inline';
-import { RadioButton } from '../../RadioButton/RadioButton';
-import { Stack } from '../../Stack/Stack';
-import { FilterContext } from '../Filter';
+} from '../../Accordion/AccordionItem/AccordionItem'
+import { Box } from '../../Box/Box'
+import { Button } from '../../Button/Button'
+import { Checkbox } from '../../Checkbox/Checkbox'
+import { Inline } from '../../Inline/Inline'
+import { RadioButton } from '../../RadioButton/RadioButton'
+import { Stack } from '../../Stack/Stack'
+import { FilterContext } from '../Filter'
 
 interface FilterCategory {
   /** Id for the category. */
-  id: string;
+  id: string
   /** The category label to display on screen. */
-  label: string | ReactNode;
+  label: string | ReactNode
   /** The heading size of the label */
-  labelAs?: 'h2' | 'h3' | 'h4' | 'h5';
+  labelAs?: 'h2' | 'h3' | 'h4' | 'h5'
   /** The array of currently selected active filters. */
-  selected: string[];
+  selected: string[]
   /** Array of available filters in this category. */
-  filters: FilterItem[];
+  filters: FilterItem[]
   /** Display checkboxes inline */
-  inline?: boolean;
+  inline?: boolean
   /** Allow only one option at a time */
-  singleOption?: boolean;
+  singleOption?: boolean
 }
 
 interface FilterItem {
-  value: string;
-  label: string | ReactNode;
+  value: string
+  label: string | ReactNode
 }
 
 interface FilterMultiChoiceChangeEvent {
   /** Id of the category the selected values belongs to. */
-  categoryId: string;
+  categoryId: string
   /** Array of selected items in the corresponding category. */
-  selected: string[];
+  selected: string[]
 }
 
 export interface FilterMultiChoiceProps {
   /** Array of different categories grouping different filter values */
-  categories: readonly FilterCategory[];
+  categories: readonly FilterCategory[]
   /** Label for clear button for localization */
-  labelClear: string;
+  labelClear: string
   /** Only expand one accordion item at a time */
-  singleExpand?: boolean;
+  singleExpand?: boolean
   /** OnChange event handler when user checks/unchecks a value */
-  onChange: (event: FilterMultiChoiceChangeEvent) => void;
+  onChange: (event: FilterMultiChoiceChangeEvent) => void
   /** OnClear event handler to clear selected values for specific category */
-  onClear: (categoryId: string) => void;
+  onClear: (categoryId: string) => void
 }
 
 export const FilterMultiChoice: FC<
@@ -66,7 +66,7 @@ export const FilterMultiChoice: FC<
   onChange,
   onClear,
 }: FilterMultiChoiceProps) => {
-  const { variant } = useContext(FilterContext);
+  const { variant } = useContext(FilterContext)
 
   const handleChange = (
     event: ChangeEvent<HTMLInputElement>,
@@ -76,19 +76,16 @@ export const FilterMultiChoice: FC<
     if (event.target.checked) {
       singleOption
         ? (category.selected = [event.target.value])
-        : category.selected.push(event.target.value);
+        : category.selected.push(event.target.value)
     } else {
-      category.selected.splice(
-        category.selected.indexOf(event.target.value),
-        1,
-      );
+      category.selected.splice(category.selected.indexOf(event.target.value), 1)
     }
 
     onChange({
       categoryId: category.id,
       selected: category.selected,
-    });
-  };
+    })
+  }
 
   const renderCategoryFilters = (category: FilterCategory) =>
     category.filters.map((filter, index) =>
@@ -100,7 +97,7 @@ export const FilterMultiChoice: FC<
           value={filter.value}
           checked={category.selected.includes(filter.value)}
           onChange={(event) => {
-            handleChange(event, category, true);
+            handleChange(event, category, true)
           }}
         />
       ) : (
@@ -111,11 +108,11 @@ export const FilterMultiChoice: FC<
           value={filter.value}
           checked={category.selected.includes(filter.value)}
           onChange={(event) => {
-            handleChange(event, category);
+            handleChange(event, category)
           }}
         />
       ),
-    );
+    )
 
   return variant === 'dialog' ? (
     <Stack space={2}>
@@ -137,7 +134,7 @@ export const FilterMultiChoice: FC<
                   size="small"
                   variant="text"
                   onClick={() => {
-                    onClear(category.id);
+                    onClear(category.id)
                   }}
                 >
                   {labelClear}
@@ -179,7 +176,7 @@ export const FilterMultiChoice: FC<
                     size="small"
                     variant="text"
                     onClick={() => {
-                      onClear(category.id);
+                      onClear(category.id)
                     }}
                   >
                     {labelClear}
@@ -191,12 +188,12 @@ export const FilterMultiChoice: FC<
         ))}
       </Accordion>
     </Box>
-  );
-};
+  )
+}
 
 interface CheckboxWrapperProps {
-  inline?: boolean;
-  children: ReactNode;
+  inline?: boolean
+  children: ReactNode
 }
 
 const CheckboxWrapper = ({ inline = false, children }: CheckboxWrapperProps) =>
@@ -206,4 +203,4 @@ const CheckboxWrapper = ({ inline = false, children }: CheckboxWrapperProps) =>
     </Inline>
   ) : (
     <Stack space={2}>{children}</Stack>
-  );
+  )

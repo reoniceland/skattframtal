@@ -1,35 +1,35 @@
-'use client';
+'use client'
 
-import React, { createContext } from 'react';
+import React, { createContext } from 'react'
 
-import type { ReactElement } from 'react';
-import type { CollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
-import type { ResponsiveSpace, Space } from '../Box/useBoxStyles';
-import type { ColumnProps } from '../Column/Column';
+import type { ReactElement } from 'react'
+import type { CollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps'
+import type { ResponsiveSpace, Space } from '../Box/useBoxStyles'
+import type { ColumnProps } from '../Column/Column'
 
-import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps';
-import { normaliseResponsiveProp } from '../../utils/responsiveProp';
-import { Box } from '../Box/Box';
+import { useNegativeMarginLeft } from '../../hooks/useNegativeMargin/useNegativeMargin'
+import { resolveCollapsibleAlignmentProps } from '../../utils/collapsibleAlignmentProps'
+import { normaliseResponsiveProp } from '../../utils/responsiveProp'
+import { Box } from '../Box/Box'
 
 type CollapsibleAlignmentChildProps = ReturnType<
   typeof resolveCollapsibleAlignmentProps
->['collapsibleAlignmentChildProps'];
+>['collapsibleAlignmentChildProps']
 
-type As = 'div' | 'span';
+type As = 'div' | 'span'
 
 interface ColumnsContextValue {
-  collapseXs: boolean;
-  collapseSm: boolean;
-  collapseMd: boolean;
-  collapseLg: boolean;
-  xsSpace: Space;
-  smSpace: Space;
-  mdSpace: Space;
-  lgSpace: Space;
-  xlSpace: Space;
-  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | {};
-  as: As;
+  collapseXs: boolean
+  collapseSm: boolean
+  collapseMd: boolean
+  collapseLg: boolean
+  xsSpace: Space
+  smSpace: Space
+  mdSpace: Space
+  lgSpace: Space
+  xlSpace: Space
+  collapsibleAlignmentChildProps: CollapsibleAlignmentChildProps | {}
+  as: As
 }
 
 export const ColumnsContext = createContext<ColumnsContextValue>({
@@ -44,15 +44,15 @@ export const ColumnsContext = createContext<ColumnsContextValue>({
   xlSpace: 'none',
   collapsibleAlignmentChildProps: {},
   as: 'div',
-});
+})
 
 export interface ColumnsProps extends CollapsibleAlignmentProps {
-  as?: As;
-  space?: ResponsiveSpace;
+  as?: As
+  space?: ResponsiveSpace
   children:
     | (ReactElement<ColumnProps> | null)[]
     | ReactElement<ColumnProps>
-    | null;
+    | null
 }
 
 /** Provides spacing between *Column*s */
@@ -66,7 +66,7 @@ export const Columns = ({
   alignY,
 }: ColumnsProps) => {
   const [xsSpace, smSpace, mdSpace, lgSpace, xlSpace] =
-    normaliseResponsiveProp(space);
+    normaliseResponsiveProp(space)
 
   const {
     collapsibleAlignmentProps,
@@ -81,7 +81,7 @@ export const Columns = ({
     align,
     alignY,
     reverse,
-  });
+  })
 
   const negativeMarginLeft = useNegativeMarginLeft([
     collapseXs ? 'none' : xsSpace,
@@ -89,7 +89,7 @@ export const Columns = ({
     collapseMd ? 'none' : mdSpace,
     collapseLg ? 'none' : lgSpace,
     xlSpace,
-  ]);
+  ])
 
   return (
     <Box
@@ -115,5 +115,5 @@ export const Columns = ({
         {orderChildren(children)}
       </ColumnsContext.Provider>
     </Box>
-  );
-};
+  )
+}

@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { useEffect } from 'react';
+import { useEffect } from 'react'
 
 export const useDeprecatedComponent = (
   componentName: string,
@@ -8,12 +8,12 @@ export const useDeprecatedComponent = (
 ) => {
   const newComponent = newComponentName
     ? ` Please now use ${newComponentName}.`
-    : '';
-  const message = `${componentName} has been deprecated.${newComponent}`;
+    : ''
+  const message = `${componentName} has been deprecated.${newComponent}`
 
   useEffect(() => {
     if (process.env.NODE_ENV === 'development') {
-      console.warn(message);
+      console.warn(message)
     }
-  }, [message]);
-};
+  }, [message])
+}

@@ -1,31 +1,31 @@
-import { Children } from 'react';
+import { Children } from 'react'
 
-import type { ReactNode } from 'react';
-import type { Align, AlignY } from './align';
-import type { ResponsiveProp } from './responsiveProp';
-import type { ResponsiveRangeProps } from './responsiveRangeProps';
+import type { ReactNode } from 'react'
+import type { Align, AlignY } from './align'
+import type { ResponsiveProp } from './responsiveProp'
+import type { ResponsiveRangeProps } from './responsiveRangeProps'
 
-import { alignToFlexAlign, alignYToFlexAlign } from './align';
-import { normaliseResponsiveProp } from './responsiveProp';
-import { resolveResponsiveRangeProps } from './responsiveRangeProps';
+import { alignToFlexAlign, alignYToFlexAlign } from './align'
+import { normaliseResponsiveProp } from './responsiveProp'
+import { resolveResponsiveRangeProps } from './responsiveRangeProps'
 
 function invertAlignment<Alignment extends string>(alignment: Alignment) {
   if (alignment === 'flexStart') {
-    return 'flexEnd';
+    return 'flexEnd'
   }
 
   if (alignment === 'flexEnd') {
-    return 'flexStart';
+    return 'flexStart'
   }
 
-  return alignment;
+  return alignment
 }
 
 export interface CollapsibleAlignmentProps {
-  collapseBelow?: ResponsiveRangeProps['below'];
-  align?: ResponsiveProp<Align>;
-  alignY?: ResponsiveProp<AlignY>;
-  reverse?: boolean;
+  collapseBelow?: ResponsiveRangeProps['below']
+  align?: ResponsiveProp<Align>
+  alignY?: ResponsiveProp<AlignY>
+  reverse?: boolean
 }
 
 export function resolveCollapsibleAlignmentProps({
@@ -37,13 +37,13 @@ export function resolveCollapsibleAlignmentProps({
   const [collapseXs, collapseSm, collapseMd, collapseLg] =
     resolveResponsiveRangeProps({
       below: collapseBelow,
-    });
+    })
 
-  const rowReverseSm = collapseXs && reverse;
-  const rowReverseMd = (collapseXs || collapseSm) && reverse;
-  const rowReverseLg = (collapseXs || collapseSm || collapseMd) && reverse;
+  const rowReverseSm = collapseXs && reverse
+  const rowReverseMd = (collapseXs || collapseSm) && reverse
+  const rowReverseLg = (collapseXs || collapseSm || collapseMd) && reverse
   const rowReverseXl =
-    (collapseXs || collapseSm || collapseMd || collapseLg) && reverse;
+    (collapseXs || collapseSm || collapseMd || collapseLg) && reverse
 
   const [
     justifyContentXs,
@@ -51,7 +51,7 @@ export function resolveCollapsibleAlignmentProps({
     justifyContentMd,
     justifyContentLg,
     justifyContentXl,
-  ] = normaliseResponsiveProp(alignToFlexAlign(align) || 'flexStart');
+  ] = normaliseResponsiveProp(alignToFlexAlign(align) || 'flexStart')
 
   return {
     collapseXs,
@@ -59,10 +59,10 @@ export function resolveCollapsibleAlignmentProps({
     collapseMd,
     collapseLg,
     orderChildren: (children: ReactNode) => {
-      const childrenArray = Children.toArray(children);
+      const childrenArray = Children.toArray(children)
       return !collapseXs && !collapseSm && !collapseMd && !collapseLg && reverse
         ? childrenArray.reverse()
-        : childrenArray;
+        : childrenArray
     },
     collapsibleAlignmentProps: {
       display: [
@@ -106,5 +106,5 @@ export function resolveCollapsibleAlignmentProps({
         justifyContentLg,
       ],
     },
-  } as const;
+  } as const
 }

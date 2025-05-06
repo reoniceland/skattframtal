@@ -1,15 +1,15 @@
-'use client';
+'use client'
 
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext } from 'react'
 
-import type { ReactElement } from 'react';
-import type { BoxProps } from '../../Box/types';
+import type { ReactElement } from 'react'
+import type { BoxProps } from '../../Box/types'
 
-export type BackgroundVariant = BoxProps['background'];
+export type BackgroundVariant = BoxProps['background']
 
-const backgroundContext = createContext<BackgroundVariant | null>(null);
+const backgroundContext = createContext<BackgroundVariant | null>(null)
 
-export const BackgroundProvider = backgroundContext.Provider;
+export const BackgroundProvider = backgroundContext.Provider
 
 export const renderBackgroundProvider = (
   background: BackgroundVariant,
@@ -19,6 +19,6 @@ export const renderBackgroundProvider = (
     <BackgroundProvider value={background}>{element}</BackgroundProvider>
   ) : (
     element
-  );
+  )
 
-export const useBackground = () => useContext(backgroundContext);
+export const useBackground = () => useContext(backgroundContext)

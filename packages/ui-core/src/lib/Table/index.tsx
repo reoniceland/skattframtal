@@ -1,3 +1,3 @@
-import * as TableExports from './Table';
+import * as TableExports from './Table'
 
-export const Table = { ...TableExports };
+export const Table = { ...TableExports }

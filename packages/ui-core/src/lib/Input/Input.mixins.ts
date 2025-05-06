@@ -1,18 +1,18 @@
-import type { StyleRule } from '@vanilla-extract/css';
+import type { StyleRule } from '@vanilla-extract/css'
 
-import omit from 'lodash/omit';
+import omit from 'lodash/omit'
 
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-const inputPadding = `0 ${theme.spacing[2]}px`;
-const mobileInputPadding = `0 ${theme.spacing[1]}px`;
-const labelFontSize = 14;
-const mobileLabelFontSize = 12;
-const inputFontSize = 24;
-const mobileInputFontSize = 20;
-const inputFontSizeSmall = 18;
-const mobileInputFontSizeSmall = 16;
-const inputBorderRadius = 8;
+const inputPadding = `0 ${theme.spacing[2]}px`
+const mobileInputPadding = `0 ${theme.spacing[1]}px`
+const labelFontSize = 14
+const mobileLabelFontSize = 12
+const inputFontSize = 24
+const mobileInputFontSize = 20
+const inputFontSizeSmall = 18
+const mobileInputFontSizeSmall = 16
+const inputBorderRadius = 8
 
 export const label = {
   display: 'block',
@@ -28,7 +28,7 @@ export const label = {
       fontSize: labelFontSize,
     },
   }),
-};
+}
 
 export const labelSizes = {
   xs: {
@@ -55,7 +55,7 @@ export const labelSizes = {
       },
     }),
   },
-};
+}
 
 export const container = {
   backgroundColor: theme.color.white,
@@ -64,7 +64,7 @@ export const container = {
   borderRadius: inputBorderRadius,
   cursor: 'text',
   transition: 'box-shadow 0.3s',
-};
+}
 
 export const containerWithBefore: StyleRule = {
   ...omit(container, ['boxShadow', 'transition', 'backgroundColor']),
@@ -80,7 +80,7 @@ export const containerWithBefore: StyleRule = {
     transition: 'box-shadow 0.2s',
     boxShadow: container.boxShadow,
   },
-};
+}
 
 export const containerSizes = {
   xs: {
@@ -107,7 +107,7 @@ export const containerSizes = {
       },
     }),
   },
-};
+}
 
 export const input = {
   caretColor: theme.color.blue400,
@@ -124,13 +124,13 @@ export const input = {
       padding: inputPadding,
     },
   }),
-};
+}
 
 export const inputExtraSmallPlaceholder = {
   color: theme.color.dark300,
   fontWeight: theme.typography.light,
   fontSize: theme.typography.baseFontSize,
-};
+}
 
 export const inputSizes = {
   xs: {
@@ -164,7 +164,7 @@ export const inputSizes = {
       },
     }),
   },
-};
+}
 
 export const optionDescriptionSizes = {
   xs: {
@@ -197,7 +197,7 @@ export const optionDescriptionSizes = {
       },
     }),
   },
-};
+}
 
 export const inputPlaceholder = {
   color: theme.color.dark300,
@@ -205,13 +205,13 @@ export const inputPlaceholder = {
 
   // Firefox applies 0.54 opacity to placeholder text. This disables that.
   opacity: 1,
-};
+}
 
 export const placeholder = {
   color: theme.color.dark300,
   fontWeight: theme.typography.light,
   width: '100%',
-};
+}
 
 // Error state
 export const errorMessage = {
@@ -219,11 +219,11 @@ export const errorMessage = {
   fontWeight: theme.typography.medium,
   fontSize: labelFontSize,
   marginTop: theme.spacing[1],
-};
+}
 
 export const inputErrorState = {
   boxShadow: `inset 0 0 0 1px ${theme.color.red600}`,
-};
+}
 
 // For elements where the
 export const inputErrorStateWithBefore: StyleRule = {
@@ -232,17 +232,17 @@ export const inputErrorStateWithBefore: StyleRule = {
   '::before': {
     ...inputErrorState,
   },
-};
+}
 
 export const labelErrorState = {
   color: theme.color.red600,
-};
+}
 
 // Focus state
 export const containerFocus = {
   outline: 'none',
   boxShadow: `inset 0 0 0 3px ${theme.color.mint400}`,
-};
+}
 
 export const containerFocusWithBefore: StyleRule = {
   outline: 'none',
@@ -250,25 +250,25 @@ export const containerFocusWithBefore: StyleRule = {
   '::before': {
     boxShadow: containerFocus.boxShadow,
   },
-};
+}
 
 export const inputFocus = {
   outline: 'none',
-};
+}
 
 // Hover state
 export const containerHover = {
   boxShadow: `inset 0 0 0 1px ${theme.color.blue400}`,
-};
+}
 
 // Disabled state
 export const labelDisabledEmptyInput = {
   color: theme.color.blue300,
-};
+}
 
 export const labelReadOnly = {
   color: theme.color.dark400,
-};
+}
 
 // Textarea state
 export const textarea = {
@@ -279,4 +279,4 @@ export const textarea = {
       fontSize: 18,
     },
   }),
-};
+}

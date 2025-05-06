@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const modal = style({
   position: 'relative',
@@ -20,11 +20,11 @@ export const modal = style({
       width: 828,
     },
   }),
-});
+})
 
 export const closeButton = style({
   position: 'absolute',
   top: theme.spacing['1'],
   right: theme.spacing['1'],
   zIndex: 2,
-});
+})

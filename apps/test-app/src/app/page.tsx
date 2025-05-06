@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { Button } from '@reon-island/ui-core';
+import { Button } from '@reon-island/ui-core'
 
 export default function Home() {
   return (
@@ -11,5 +11,5 @@ export default function Home() {
       <Button variant="ghost">Hello</Button>
       <Button variant="text">Hello</Button>
     </main>
-  );
+  )
 }

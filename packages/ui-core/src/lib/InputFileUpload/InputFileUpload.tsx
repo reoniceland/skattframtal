@@ -1,19 +1,19 @@
-import React, { useMemo } from 'react';
+import React, { useMemo } from 'react'
 
-import cn from 'classnames';
-import { FileRejection, useDropzone } from 'react-dropzone';
-import { useMeasure } from 'react-use';
+import cn from 'classnames'
+import { FileRejection, useDropzone } from 'react-dropzone'
+import { useMeasure } from 'react-use'
 
-import { Colors, theme } from '@reon-island/ui-theme';
+import { Colors, theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Icon } from '../IconRC/Icon';
-import { Icon as IconTypes } from '../IconRC/iconMap';
-import { Text } from '../Text/Text';
-import * as styles from './InputFileUpload.css';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Icon } from '../IconRC/Icon'
+import { Icon as IconTypes } from '../IconRC/iconMap'
+import { Text } from '../Text/Text'
+import * as styles from './InputFileUpload.css'
 
-export type UploadFileStatus = 'error' | 'done' | 'uploading';
+export type UploadFileStatus = 'error' | 'done' | 'uploading'
 export enum FileUploadStatus {
   'error',
   'done',
@@ -21,15 +21,15 @@ export enum FileUploadStatus {
 }
 
 export interface UploadFile {
-  name: string;
-  type?: string;
-  id?: string;
-  key?: string;
-  status?: UploadFileStatus;
-  percent?: number;
-  originalFileObj?: File | Blob;
-  error?: string;
-  size?: number;
+  name: string
+  type?: string
+  id?: string
+  key?: string
+  status?: UploadFileStatus
+  percent?: number
+  originalFileObj?: File | Blob
+  error?: string
+  size?: number
 }
 
 export const fileToObject = (
@@ -42,17 +42,17 @@ export const fileToObject = (
     percent: 0,
     originalFileObj: file,
     status: status || 'done',
-  };
-};
+  }
+}
 
 interface UploadingIndicatorProps {
-  percent?: number;
+  percent?: number
 }
 
 const UploadingIndicator = (
   { percent }: UploadingIndicatorProps = { percent: 0 },
 ) => {
-  const isDoneUploading = percent === 100;
+  const isDoneUploading = percent === 100
 
   return (
     <Box
@@ -64,24 +64,24 @@ const UploadingIndicator = (
       className={styles.uploadingIndicator}
       style={{ width: `${percent}%` }}
     />
-  );
-};
+  )
+}
 
 export type StatusColor = {
-  background: Colors;
-  border: Colors;
-  icon?: Colors;
-};
+  background: Colors
+  border: Colors
+  icon?: Colors
+}
 
 interface UploadedFileProps {
-  file: UploadFile;
-  showFileSize: boolean;
-  onRemoveClick?: (file: UploadFile) => void;
-  onRetryClick?: (file: UploadFile) => void;
-  onOpenFile?: (file: UploadFile) => void;
-  defaultBackgroundColor?: StatusColor;
-  doneIcon?: IconTypes;
-  hideIcons?: boolean;
+  file: UploadFile
+  showFileSize: boolean
+  onRemoveClick?: (file: UploadFile) => void
+  onRetryClick?: (file: UploadFile) => void
+  onOpenFile?: (file: UploadFile) => void
+  defaultBackgroundColor?: StatusColor
+  doneIcon?: IconTypes
+  hideIcons?: boolean
 }
 
 export const UploadedFile = ({
@@ -94,21 +94,21 @@ export const UploadedFile = ({
   onOpenFile,
   hideIcons = false,
 }: UploadedFileProps) => {
-  const [ref, { width }] = useMeasure();
+  const [ref, { width }] = useMeasure()
 
   const statusColor: StatusColor = useMemo<StatusColor>(() => {
     switch (file.status) {
       case 'error':
-        return { background: 'red100', border: 'red200', icon: 'red600' };
+        return { background: 'red100', border: 'red200', icon: 'red600' }
       case 'done':
         if (file.size === 0) {
-          return { background: 'red100', border: 'red200', icon: 'red600' };
+          return { background: 'red100', border: 'red200', icon: 'red600' }
         }
         return {
           background: 'blue100',
           border: 'blue200',
           icon: 'blue400',
-        };
+        }
       default:
         return (
           defaultBackgroundColor ?? {
@@ -116,38 +116,38 @@ export const UploadedFile = ({
             border: 'blue200',
             icon: 'blue400',
           }
-        );
+        )
     }
-  }, [file.status, file.size, defaultBackgroundColor]);
+  }, [file.status, file.size, defaultBackgroundColor])
 
   const statusIcon = (status?: UploadFileStatus): IconTypes => {
     switch (status) {
       case 'error':
-        return 'close';
+        return 'close'
       case 'done':
-        return doneIcon ?? 'close';
+        return doneIcon ?? 'close'
       default:
-        return 'reload';
+        return 'reload'
     }
-  };
+  }
 
   const kb = (bytes?: number) => {
-    return bytes ? Math.ceil(bytes / 1024) : '';
-  };
+    return bytes ? Math.ceil(bytes / 1024) : ''
+  }
 
   const truncateInMiddle = (str: string) => {
     if (str.length > 40) {
-      const nrOfCharacters = width / 25;
-      return `${str.slice(0, nrOfCharacters)}...${str.slice(-nrOfCharacters)}`;
+      const nrOfCharacters = width / 25
+      return `${str.slice(0, nrOfCharacters)}...${str.slice(-nrOfCharacters)}`
     } else {
-      return str;
+      return str
     }
-  };
+  }
 
   const isUploading =
     file.percent !== undefined &&
     file.percent < 100 &&
-    file.status === 'uploading';
+    file.status === 'uploading'
 
   return (
     <Box
@@ -171,10 +171,10 @@ export const UploadedFile = ({
         [styles.canOpenFiles]: onOpenFile,
       })}
       onClick={(e) => {
-        e.stopPropagation();
+        e.stopPropagation()
 
         if (onOpenFile) {
-          onOpenFile(file);
+          onOpenFile(file)
         }
       }}
     >
@@ -204,9 +204,9 @@ export const UploadedFile = ({
             <button
               type={'button'}
               onClick={(e) => {
-                e.stopPropagation();
+                e.stopPropagation()
                 if (!isUploading) {
-                  onRetryClick(file);
+                  onRetryClick(file)
                 }
               }}
               aria-label="Reyna aftur"
@@ -217,9 +217,9 @@ export const UploadedFile = ({
             <button
               type={'button'}
               onClick={(e) => {
-                e.stopPropagation();
+                e.stopPropagation()
                 if (!isUploading && onRemoveClick) {
-                  onRemoveClick(file);
+                  onRemoveClick(file)
                 }
               }}
               aria-label="Fjarlægja skrá"
@@ -233,30 +233,30 @@ export const UploadedFile = ({
         <UploadingIndicator percent={file.percent} />
       )}
     </Box>
-  );
-};
+  )
+}
 
 export interface InputFileUploadProps {
-  applicationId?: string;
-  name?: string;
-  showFileSize?: boolean;
-  id?: string;
-  header?: string;
-  description?: string;
-  buttonLabel?: string;
-  disabled?: boolean;
-  accept?: string | string[];
-  multiple?: boolean;
-  fileList: UploadFile[];
-  maxSize?: number;
-  onRemove: (file: UploadFile) => void;
-  onRetry?: (file: UploadFile) => void;
-  onChange?: (files: File[], uploadCount?: number) => void;
-  onUploadRejection?: (files: FileRejection[]) => void;
-  errorMessage?: string;
-  defaultFileBackgroundColor?: StatusColor;
-  doneIcon?: IconTypes;
-  hideIcons?: boolean;
+  applicationId?: string
+  name?: string
+  showFileSize?: boolean
+  id?: string
+  header?: string
+  description?: string
+  buttonLabel?: string
+  disabled?: boolean
+  accept?: string | string[]
+  multiple?: boolean
+  fileList: UploadFile[]
+  maxSize?: number
+  onRemove: (file: UploadFile) => void
+  onRetry?: (file: UploadFile) => void
+  onChange?: (files: File[], uploadCount?: number) => void
+  onUploadRejection?: (files: FileRejection[]) => void
+  errorMessage?: string
+  defaultFileBackgroundColor?: StatusColor
+  doneIcon?: IconTypes
+  hideIcons?: boolean
 }
 
 export const InputFileUpload = ({
@@ -282,39 +282,39 @@ export const InputFileUpload = ({
 }: InputFileUploadProps) => {
   const onDrop = (acceptedFiles: File[], fileRejections: FileRejection[]) => {
     if (fileRejections.length !== 0 && onUploadRejection) {
-      onUploadRejection(fileRejections);
+      onUploadRejection(fileRejections)
     }
 
-    if (acceptedFiles.length === 0 || !onChange) return;
+    if (acceptedFiles.length === 0 || !onChange) return
 
     if (!multiple) {
-      onChange(acceptedFiles.slice(0, 1), acceptedFiles.length);
-      return;
+      onChange(acceptedFiles.slice(0, 1), acceptedFiles.length)
+      return
     }
 
-    onChange(acceptedFiles);
-  };
+    onChange(acceptedFiles)
+  }
 
   const { getRootProps, getInputProps, isDragActive } = useDropzone({
     onDrop,
     accept,
     disabled,
     maxSize,
-  });
+  })
 
   const style = useMemo(
     () => ({
       ...(isDragActive ? { borderColor: theme.color.blue400 } : {}),
     }),
     [isDragActive],
-  );
+  )
 
   const ariaError = errorMessage
     ? {
         'aria-invalid': true,
         'aria-describedby': id,
       }
-    : {};
+    : {}
 
   return (
     <Box
@@ -362,5 +362,5 @@ export const InputFileUpload = ({
         </div>
       )}
     </Box>
-  );
-};
+  )
+}

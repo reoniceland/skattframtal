@@ -1,39 +1,39 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode } from 'react'
 
-import { Colors } from '@reon-island/ui-theme';
-import { TestSupport } from '@reon-island/ui-utils';
+import { Colors } from '@reon-island/ui-theme'
+import { TestSupport } from '@reon-island/ui-utils'
 
-import { Box, Icon, Tag, Text } from '../..';
-import { Icon as IconType } from '../IconRC/iconMap';
-import * as styles from './ProblemTemplate.css';
+import { Box, Icon, Tag, Text } from '../..'
+import { Icon as IconType } from '../IconRC/iconMap'
+import * as styles from './ProblemTemplate.css'
 
-type Variant = 'info' | 'error' | 'warning';
+type Variant = 'info' | 'error' | 'warning'
 
 export type ProblemTemplateBaseProps = {
-  variant: Variant;
-  title: string;
-  message: string | ReactNode;
-  imgSrc?: string;
-  imgAlt?: string;
-  noBorder?: boolean;
-  titleSize?: 'h1' | 'h2' | 'h3';
+  variant: Variant
+  title: string
+  message: string | ReactNode
+  imgSrc?: string
+  imgAlt?: string
+  noBorder?: boolean
+  titleSize?: 'h1' | 'h2' | 'h3'
   /**
    * If true, the out most container will be expanded to fill the available space.
    */
-  expand?: boolean;
-} & TestSupport;
+  expand?: boolean
+} & TestSupport
 
 interface WithIconProps extends ProblemTemplateBaseProps {
-  showIcon?: boolean;
-  tag?: never;
+  showIcon?: boolean
+  tag?: never
 }
 
 interface WithTagProps extends ProblemTemplateBaseProps {
-  tag?: string;
-  showIcon?: never;
+  tag?: string
+  showIcon?: never
 }
 
-export type ProblemTemplateProps = WithIconProps | WithTagProps;
+export type ProblemTemplateProps = WithIconProps | WithTagProps
 
 const getIconProps = (icon: Variant): { color: Colors; icon: IconType } => {
   switch (icon) {
@@ -41,31 +41,31 @@ const getIconProps = (icon: Variant): { color: Colors; icon: IconType } => {
       return {
         color: 'red400',
         icon: 'warning',
-      };
+      }
     case 'info':
       return {
         color: 'blue400',
         icon: 'informationCircle',
-      };
+      }
 
     case 'warning':
       return {
         color: 'yellow400',
         icon: 'warning',
-      };
+      }
   }
-};
+}
 
 const variantToColour = (variant: Variant) => {
   switch (variant) {
     case 'error':
-      return 'red';
+      return 'red'
     case 'info':
-      return 'blue';
+      return 'blue'
     case 'warning':
-      return 'yellow';
+      return 'yellow'
   }
-};
+}
 
 export const ProblemTemplate = ({
   tag,
@@ -80,7 +80,7 @@ export const ProblemTemplate = ({
   expand,
   titleSize = 'h1',
 }: ProblemTemplateProps) => {
-  const convertedVariant = variantToColour(variant);
+  const convertedVariant = variantToColour(variant)
   return (
     <Box
       display="flex"
@@ -130,5 +130,5 @@ export const ProblemTemplate = ({
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}

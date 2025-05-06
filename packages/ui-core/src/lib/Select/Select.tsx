@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore make web strict
-import type { GroupBase } from 'react-select';
-import type { Option as OptionType, SelectProps } from './Select.types';
+import type { GroupBase } from 'react-select'
+import type { Option as OptionType, SelectProps } from './Select.types'
 
-import cn from 'classnames';
-import ReactSelect, { createFilter } from 'react-select';
-import CreatableReactSelect from 'react-select/creatable';
+import cn from 'classnames'
+import ReactSelect, { createFilter } from 'react-select'
+import CreatableReactSelect from 'react-select/creatable'
 
 import {
   ClearIndicator,
@@ -24,8 +24,8 @@ import {
   Placeholder,
   SingleValue,
   ValueContainer,
-} from './Components';
-import * as styles from './Select.css';
+} from './Components'
+import * as styles from './Select.css'
 
 export const Select = <
   Value,
@@ -59,14 +59,14 @@ export const Select = <
   isLoading = false,
   hideSelectedOptions,
 }: SelectProps<OptionType<Value>, IsMulti, Group>) => {
-  const errorId = `${id}-error`;
+  const errorId = `${id}-error`
   const ariaError = hasError
     ? {
         'aria-invalid': true,
         'aria-describedby': errorId,
       }
-    : undefined;
-  const [currentValue, setCurrentValue] = React.useState('');
+    : undefined
+  const [currentValue, setCurrentValue] = React.useState('')
 
   return isCreatable ? (
     <div
@@ -107,7 +107,7 @@ export const Select = <
         formatCreateLabel={() => currentValue}
         createOptionPosition="first"
         onInputChange={(inputValue) => {
-          setCurrentValue(inputValue);
+          setCurrentValue(inputValue)
         }}
         filterOption={createFilter(filterConfig)}
         components={{
@@ -199,5 +199,5 @@ export const Select = <
         </div>
       )}
     </div>
-  );
-};
+  )
+}

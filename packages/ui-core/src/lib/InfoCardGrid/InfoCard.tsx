@@ -1,29 +1,29 @@
-import { Box, BoxProps, FocusableBox, LinkV2 } from '../..';
-import { DetailedInfoCard, DetailedProps } from './DetailedInfoCard';
-import { SimpleInfoCard } from './SimpleInfoCard';
+import { Box, BoxProps, FocusableBox, LinkV2 } from '../..'
+import { DetailedInfoCard, DetailedProps } from './DetailedInfoCard'
+import { SimpleInfoCard } from './SimpleInfoCard'
 
 export interface BaseProps {
-  id: string;
-  title: string;
-  description: string;
-  eyebrow: string;
-  background?: BoxProps['background'];
-  size: 'large' | 'medium' | 'small';
-  padding?: BoxProps['padding'];
-  borderColor?: BoxProps['borderColor'];
+  id: string
+  title: string
+  description: string
+  eyebrow: string
+  background?: BoxProps['background']
+  size: 'large' | 'medium' | 'small'
+  padding?: BoxProps['padding']
+  borderColor?: BoxProps['borderColor']
   link: {
-    label: string;
-    href: string;
-  };
+    label: string
+    href: string
+  }
 }
 
 export type InfoCardProps =
   | (BaseProps & {
-      variant?: 'simple';
+      variant?: 'simple'
     })
   | (DetailedProps & {
-      variant: 'detailed';
-    });
+      variant: 'detailed'
+    })
 
 export const InfoCard = ({ size, ...restOfProps }: InfoCardProps) => {
   return (
@@ -46,5 +46,5 @@ export const InfoCard = ({ size, ...restOfProps }: InfoCardProps) => {
         )}
       </Box>
     </FocusableBox>
-  );
-};
+  )
+}

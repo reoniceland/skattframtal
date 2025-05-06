@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const container = style({
   borderRadius: theme.border.radius.large,
@@ -14,17 +14,17 @@ export const container = style({
   maxWidth: '100%',
   border: '1px solid transparent',
   whiteSpace: 'nowrap',
-});
+})
 
 export const hyphenate = style({
   padding: '4px 8px',
   minHeight: 32,
   height: 'auto',
-});
+})
 
 export const textLeft = style({
   textAlign: 'left',
-});
+})
 
 export const variants = styleVariants({
   blue: {
@@ -76,7 +76,7 @@ export const variants = styleVariants({
     color: theme.color.dark400,
   },
   label: {},
-});
+})
 
 export const outlined = style({
   backgroundColor: 'transparent',
@@ -122,7 +122,7 @@ export const outlined = style({
       color: theme.color.dark200,
     },
   },
-});
+})
 
 export const active = style({
   selectors: {
@@ -139,7 +139,7 @@ export const active = style({
       color: theme.color.blueberry400,
     },
   },
-});
+})
 
 export const attention = style({
   position: 'relative',
@@ -155,7 +155,7 @@ export const attention = style({
       width: 8,
     },
   },
-});
+})
 
 export const focusable = style({
   ':focus': {
@@ -167,12 +167,12 @@ export const focusable = style({
     backgroundColor: theme.color.blue400,
     color: theme.color.white,
   },
-});
+})
 
 export const disabled = style({
   cursor: 'default',
-});
+})
 
 export const whiteBackground = style({
   background: 'white',
-});
+})

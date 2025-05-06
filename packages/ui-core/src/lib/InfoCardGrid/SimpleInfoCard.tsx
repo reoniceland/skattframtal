@@ -1,7 +1,7 @@
-import { Box, GridColumn, GridContainer, GridRow, Text } from '../..';
-import { BaseProps } from './InfoCard';
+import { Box, GridColumn, GridContainer, GridRow, Text } from '../..'
+import { BaseProps } from './InfoCard'
 
-const eyebrowColor = 'blueberry600';
+const eyebrowColor = 'blueberry600'
 
 export const SimpleInfoCard = ({
   title,
@@ -11,7 +11,7 @@ export const SimpleInfoCard = ({
 }: BaseProps) => {
   const renderHeader = () => {
     if (!eyebrow) {
-      return;
+      return
     }
     return (
       <Box
@@ -25,8 +25,8 @@ export const SimpleInfoCard = ({
           {eyebrow}
         </Text>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderContent = () => {
     if (size === 'large') {
@@ -43,7 +43,7 @@ export const SimpleInfoCard = ({
             )}
           </GridColumn>
         </GridRow>
-      );
+      )
     }
     return (
       <>
@@ -56,13 +56,13 @@ export const SimpleInfoCard = ({
           </Box>
         )}
       </>
-    );
-  };
+    )
+  }
 
   return (
     <>
       {renderHeader()}
       {renderContent()}
     </>
-  );
-};
+  )
+}

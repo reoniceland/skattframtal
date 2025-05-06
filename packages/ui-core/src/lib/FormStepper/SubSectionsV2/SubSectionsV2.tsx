@@ -1,29 +1,29 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import useComponentSize from '@rehooks/component-size';
-import cn from 'classnames';
+import useComponentSize from '@rehooks/component-size'
+import cn from 'classnames'
 
-import { Box } from '../../Box/Box';
-import { SectionNumberColumn } from '../SectionNumberColumn/SectionNumberColumn';
-import * as styles from './SubSectionsV2.css';
+import { Box } from '../../Box/Box'
+import { SectionNumberColumn } from '../SectionNumberColumn/SectionNumberColumn'
+import * as styles from './SubSectionsV2.css'
 
 export const SubSections: FC<
   React.PropsWithChildren<{
-    isActive?: boolean;
-    subSections?: React.ReactNodeArray;
+    isActive?: boolean
+    subSections?: React.ReactNodeArray
   }>
 > = ({ isActive = false, subSections }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const { height: activeHeight } = useComponentSize(containerRef);
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { height: activeHeight } = useComponentSize(containerRef)
   const [containerHeight, setContainerHeight] = useState<string | number>(
     'auto',
-  );
+  )
 
   useEffect(() => {
-    setContainerHeight((isActive && activeHeight) || 0);
-  }, [activeHeight, isActive]);
+    setContainerHeight((isActive && activeHeight) || 0)
+  }, [activeHeight, isActive])
 
   return (
     <Box
@@ -53,7 +53,7 @@ export const SubSections: FC<
         </ul>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
-export default SubSections;
+export default SubSections

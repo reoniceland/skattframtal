@@ -1,9 +1,9 @@
 interface CountryCode {
-  name: string;
-  flag: string;
-  code: string;
-  dial_code: string;
-  format?: string;
+  name: string
+  flag: string
+  code: string
+  dial_code: string
+  format?: string
 }
 
 export const countryCodesEN: CountryCode[] = [
@@ -641,7 +641,7 @@ export const countryCodesEN: CountryCode[] = [
   { name: 'Yemen', flag: '🇾🇪', code: 'YE', dial_code: '+967' },
   { name: 'Zambia', flag: '🇿🇲', code: 'ZM', dial_code: '+260' },
   { name: 'Zimbabwe', flag: '🇿🇼', code: 'ZW', dial_code: '+263' },
-];
+]
 
 export const countryCodesIS: CountryCode[] = [
   { name: 'Afganistan', flag: '🇦🇫', code: 'AF', dial_code: '+93' },
@@ -945,4 +945,4 @@ export const countryCodesIS: CountryCode[] = [
   { name: 'Víetnam', flag: '🇻🇳', code: 'VN', dial_code: '+84' },
   { name: 'Wallis- og Fútúnaeyjar', flag: '🇼🇫', code: 'WF', dial_code: '+681' },
   { name: 'Þýskaland', flag: '🇩🇪', code: 'DE', dial_code: '+49' },
-];
+]

@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const root = style({
   position: 'relative',
@@ -17,8 +17,8 @@ export const root = style({
     background: 'currentColor',
     height: 2,
   },
-});
+})
 
 export const iconWrap = style({
   paddingLeft: 4,
-});
+})

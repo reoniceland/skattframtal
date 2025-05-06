@@ -1,24 +1,24 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useEffect, useLayoutEffect, useState } from 'react';
+import React, { forwardRef, useEffect, useLayoutEffect, useState } from 'react'
 
-import type { FC, ReactElement, Ref } from 'react';
-import type { DialogProps } from 'reakit/Dialog';
-import type { DisclosureProps } from 'reakit/ts';
+import type { FC, ReactElement, Ref } from 'react'
+import type { DialogProps } from 'reakit/Dialog'
+import type { DisclosureProps } from 'reakit/ts'
 
-import cn from 'classnames';
-import { useUpdateEffect } from 'react-use';
+import cn from 'classnames'
+import { useUpdateEffect } from 'react-use'
 import {
   Dialog as BaseDialog,
   DialogBackdrop,
   DialogDisclosure,
   useDialogState,
-} from 'reakit/Dialog';
+} from 'reakit/Dialog'
 
-import * as styles from './ModalBase.css';
+import * as styles from './ModalBase.css'
 
 interface BackdropDivProps {
-  backdropWhite?: ModalBaseProps['backdropWhite'];
+  backdropWhite?: ModalBaseProps['backdropWhite']
 }
 
 export const BackdropDiv = forwardRef(
@@ -26,10 +26,10 @@ export const BackdropDiv = forwardRef(
     { backdropWhite, ...props }: DialogProps & BackdropDivProps,
     ref: Ref<HTMLDivElement>,
   ) => {
-    const [mounted, setMounted] = useState(false);
+    const [mounted, setMounted] = useState(false)
     useLayoutEffect(() => {
-      setMounted(true);
-    }, []);
+      setMounted(true)
+    }, [])
 
     return mounted ? (
       <div
@@ -40,70 +40,70 @@ export const BackdropDiv = forwardRef(
         {...props}
         ref={ref}
       />
-    ) : null;
+    ) : null
   },
-);
+)
 
 export interface ModalBaseProps {
   /**
    * Element that opens the dialog.
    * It will be forwarded necessary props for a11y and event handling.
    */
-  disclosure?: ReactElement;
+  disclosure?: ReactElement
   /**
    * Unique ID for accessibility purposes
    */
-  baseId: string;
-  className?: string;
+  baseId: string
+  className?: string
   /**
    * Default visibility state
    */
-  initialVisibility?: boolean;
+  initialVisibility?: boolean
   /**
    * Setting this to false automatically closes the modal
    */
-  toggleClose?: boolean;
+  toggleClose?: boolean
   /**
    * Optional cb function that is fired when the modal visibility changes
    */
-  onVisibilityChange?: (isVisible: boolean) => void;
+  onVisibilityChange?: (isVisible: boolean) => void
   renderDisclosure?: (
     disclosure: ReactElement,
     disclosureProps?: DisclosureProps,
-  ) => ReactElement;
-  backdropWhite?: boolean;
+  ) => ReactElement
+  backdropWhite?: boolean
   /**
    * Aria label for the modal
    */
-  modalLabel?: string;
+  modalLabel?: string
   /**
    * Remove the modal from dom when closed
    */
-  removeOnClose?: boolean;
+  removeOnClose?: boolean
   /**
    * toggle visibility, useful for controlling visibility from useState. Should be used with onVisibilityChange
    */
-  isVisible?: boolean;
+  isVisible?: boolean
   /**
    * Clicking outside the Dialog closes it unless hideOnClickOutside is set to false.
    */
-  hideOnClickOutside?: boolean;
+  hideOnClickOutside?: boolean
   /**
    * When there is no focusable element in the dialog the tabIndex should be set to 0.
    */
-  tabIndex?: number;
+  tabIndex?: number
   /**
    * When enabled, the dialog can be closed by pressing Escape. Enabled by default.
    */
-  hideOnEsc?: boolean;
+  hideOnEsc?: boolean
   /**
    * When enabled, user can't scroll on body when the dialog is visible. This option doesn't work if the dialog isn't modal.
    */
-  preventBodyScroll?: boolean;
+  preventBodyScroll?: boolean
 
   children?:
     | React.ReactNode
-    | ((props: { closeModal: () => void }) => React.ReactNode);
+    | ((props: { closeModal: () => void }) => React.ReactNode)
 }
 
 export const ModalBase: FC<ModalBaseProps> = ({
@@ -128,29 +128,29 @@ export const ModalBase: FC<ModalBaseProps> = ({
     animated: true,
     baseId,
     visible: initialVisibility || false,
-  });
+  })
   const closeModal = () => {
-    modal.hide();
-  };
+    modal.hide()
+  }
 
   // If the toggleClose flag has been set to true, we close the modal
   useEffect(() => {
-    if (toggleClose) closeModal();
-  }, [toggleClose]);
+    if (toggleClose) closeModal()
+  }, [toggleClose])
 
   useEffect(() => {
     if (isVisible) {
-      modal.show();
+      modal.show()
     } else if (isVisible === false) {
-      modal.hide();
+      modal.hide()
     }
-  }, [isVisible]);
+  }, [isVisible])
 
   useUpdateEffect(() => {
-    onVisibilityChange && onVisibilityChange(modal.visible);
-  }, [modal.visible]);
+    onVisibilityChange && onVisibilityChange(modal.visible)
+  }, [modal.visible])
 
-  const renderModal = !removeOnClose || (removeOnClose && modal.visible);
+  const renderModal = !removeOnClose || (removeOnClose && modal.visible)
 
   return (
     <>
@@ -187,5 +187,5 @@ export const ModalBase: FC<ModalBaseProps> = ({
         </DialogBackdrop>
       )}
     </>
-  );
-};
+  )
+}

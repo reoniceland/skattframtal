@@ -1,56 +1,56 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import type { ObjectFitProperty } from 'csstype';
-import type { ElementType, ReactElement, ReactNode } from 'react';
-import type { UseMeasureRef } from 'react-use/lib/useMeasure';
-import type { TagProps } from '../Tag/types';
-import type { TextProps } from '../Text/Text';
+import type { ObjectFitProperty } from 'csstype'
+import type { ElementType, ReactElement, ReactNode } from 'react'
+import type { UseMeasureRef } from 'react-use/lib/useMeasure'
+import type { TagProps } from '../Tag/types'
+import type { TextProps } from '../Text/Text'
 
-import cn from 'classnames';
-import { useMeasure } from 'react-use';
+import cn from 'classnames'
+import { useMeasure } from 'react-use'
 
-import { Box } from '../Box/Box';
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import { Hyphen } from '../Hyphen/Hyphen';
-import { Inline } from '../Inline/Inline';
-import { LinkV2 } from '../Link/LinkV2';
-import { Tag } from '../Tag/Tag';
-import { Text } from '../Text/Text';
-import * as styles from './CategoryCard.css';
+import { Box } from '../Box/Box'
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import { Hyphen } from '../Hyphen/Hyphen'
+import { Inline } from '../Inline/Inline'
+import { LinkV2 } from '../Link/LinkV2'
+import { Tag } from '../Tag/Tag'
+import { Text } from '../Text/Text'
+import * as styles from './CategoryCard.css'
 
-export const STACK_WIDTH = 280;
+export const STACK_WIDTH = 280
 
 interface Tag {
-  label: string;
-  href?: string;
-  onClick?: () => void;
-  disabled?: boolean;
+  label: string
+  href?: string
+  onClick?: () => void
+  disabled?: boolean
 }
 
 export interface CategoryCardProps {
-  ref?: UseMeasureRef<HTMLElement>;
-  width?: number;
-  icon?: React.ReactElement;
-  heading: string;
-  headingAs?: TextProps['as'];
-  headingVariant?: TextProps['variant'];
-  text: string;
-  textVariant?: 'default' | 'medium' | 'small';
-  textFontWeight?: 'light' | 'regular';
-  tags?: Tag[];
-  tagOptions?: Pick<TagProps, 'hyphenate' | 'truncate' | 'textLeft'>;
-  href?: string;
-  colorScheme?: 'blue' | 'purple' | 'red';
+  ref?: UseMeasureRef<HTMLElement>
+  width?: number
+  icon?: React.ReactElement
+  heading: string
+  headingAs?: TextProps['as']
+  headingVariant?: TextProps['variant']
+  text: string
+  textVariant?: 'default' | 'medium' | 'small'
+  textFontWeight?: 'light' | 'regular'
+  tags?: Tag[]
+  tagOptions?: Pick<TagProps, 'hyphenate' | 'truncate' | 'textLeft'>
+  href?: string
+  colorScheme?: 'blue' | 'purple' | 'red'
   /** The heading above is truncated instead of overflowing */
-  truncateHeading?: TextProps['truncate'];
+  truncateHeading?: TextProps['truncate']
   /** Use event listener to check wether or not to place the image below the text content */
-  autoStack?: boolean;
+  autoStack?: boolean
   /** The card width breakpoint that the image should stack below content when autoStack = true */
-  stackWidth?: number;
+  stackWidth?: number
   /** Hyphenate the heading */
-  hyphenate?: boolean;
-  to?: string;
-  component?: ElementType;
+  hyphenate?: boolean
+  to?: string
+  component?: ElementType
 }
 
 const colorSchemes = {
@@ -69,21 +69,21 @@ const colorSchemes = {
     borderColor: 'red200',
     tagVariant: 'red',
   },
-} as const;
+} as const
 
 export type CategoryCardImage =
   | {
-      src: string;
-      alt: string;
-      objectFit?: ObjectFitProperty;
-      customImage?: never;
+      src: string
+      alt: string
+      objectFit?: ObjectFitProperty
+      customImage?: never
     }
   | {
-      src?: never;
-      alt?: never;
-      objectFit?: never;
-      customImage?: ReactNode;
-    };
+      src?: never
+      alt?: never
+      objectFit?: never
+      customImage?: ReactNode
+    }
 
 const Component = forwardRef<
   HTMLElement,
@@ -115,14 +115,14 @@ const Component = forwardRef<
     },
     ref,
   ) => {
-    const { borderColor, textColor, tagVariant } = colorSchemes[colorScheme];
+    const { borderColor, textColor, tagVariant } = colorSchemes[colorScheme]
 
-    const hasTags = Array.isArray(tags) && tags.length > 0;
-    const hasImage = !!src || !!customImage;
+    const hasTags = Array.isArray(tags) && tags.length > 0
+    const hasImage = !!src || !!customImage
 
-    const shouldStack = width && width < stackWidth;
+    const shouldStack = width && width < stackWidth
 
-    const hasNestedHref = tags.some((tag) => tag.href);
+    const hasNestedHref = tags.some((tag) => tag.href)
 
     return (
       <FocusableBox
@@ -244,9 +244,9 @@ const Component = forwardRef<
             ))}
         </Box>
       </FocusableBox>
-    );
+    )
   },
-);
+)
 
 export const CategoryCard = (props: CategoryCardProps & CategoryCardImage) => {
   return props.autoStack ? (
@@ -255,21 +255,21 @@ export const CategoryCard = (props: CategoryCardProps & CategoryCardImage) => {
     </WithMeasureProps>
   ) : (
     <Component {...props} />
-  );
-};
+  )
+}
 
 interface MeasureProps {
   children: ({
     ref,
     width,
   }: {
-    ref: UseMeasureRef<HTMLElement>;
-    width: number;
-  }) => ReactElement | null;
+    ref: UseMeasureRef<HTMLElement>
+    width: number
+  }) => ReactElement | null
 }
 
 const WithMeasureProps = ({ children }: MeasureProps) => {
-  const [ref, { width }] = useMeasure();
+  const [ref, { width }] = useMeasure()
 
-  return typeof children === 'function' ? children({ ref, width }) : children;
-};
+  return typeof children === 'function' ? children({ ref, width }) : children
+}

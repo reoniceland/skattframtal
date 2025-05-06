@@ -1,18 +1,18 @@
-import * as React from 'react';
-import { forwardRef } from 'react';
+import * as React from 'react'
+import { forwardRef } from 'react'
 
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { IconProps } from '../IconRC/types';
-import type { ButtonProps, ButtonTypes } from './types';
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { IconProps } from '../IconRC/types'
+import type { ButtonProps, ButtonTypes } from './types'
 
-import cn from 'classnames';
-import { Button as ReaButton } from 'reakit/Button';
+import cn from 'classnames'
+import { Button as ReaButton } from 'reakit/Button'
 
-import { Box } from '../Box/Box';
-import { Icon } from '../IconRC/Icon';
-import * as styles from './Button.css';
+import { Box } from '../Box/Box'
+import { Icon } from '../IconRC/Icon'
+import * as styles from './Button.css'
 
-export type ButtonBaseProps = ButtonProps & ButtonTypes;
+export type ButtonBaseProps = ButtonProps & ButtonTypes
 
 export const Button = forwardRef<
   HTMLButtonElement,
@@ -113,15 +113,15 @@ export const Button = forwardRef<
           </>
         )}
       </Box>
-    );
+    )
   },
-);
+)
 
 interface ButtonIconProps {
-  icon: IconProps['icon'];
-  type: IconProps['type'];
-  transparent?: boolean;
-  preText?: boolean;
+  icon: IconProps['icon']
+  type: IconProps['type']
+  transparent?: boolean
+  preText?: boolean
 }
 
 const ButtonIcon = ({ icon, type, transparent, preText }: ButtonIconProps) => (
@@ -135,4 +135,4 @@ const ButtonIcon = ({ icon, type, transparent, preText }: ButtonIconProps) => (
     )}
     skipPlaceholderSize
   />
-);
+)

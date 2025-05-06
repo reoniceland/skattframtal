@@ -1,9 +1,9 @@
-import type { Colors } from '@reon-island/ui-theme';
+import type { Colors } from '@reon-island/ui-theme'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { useDeprecatedComponent } from '../private/useDeprecatedComponent';
-import * as styles from './Icon.css';
+import { useDeprecatedComponent } from '../private/useDeprecatedComponent'
+import * as styles from './Icon.css'
 
 export type IconTypes =
   | 'alert'
@@ -34,41 +34,41 @@ export type IconTypes =
   | 'toasterSuccess'
   | 'toasterInfo'
   | 'toasterError'
-  | 'toasterWarning';
+  | 'toasterWarning'
 
 type Icons = Record<
   IconTypes,
   {
-    width: string | number | 'none';
-    height: string | number | 'none';
-    viewBox: string;
-    path?: string;
-    circle?: object;
+    width: string | number | 'none'
+    height: string | number | 'none'
+    viewBox: string
+    path?: string
+    circle?: object
   }
->;
+>
 
 export interface IconProps {
-  type: IconTypes;
-  width?: string | number;
-  height?: string | number;
-  color?: Colors;
-  fill?: string;
-  title?: string;
-  spin?: boolean;
-  className?: string;
+  type: IconTypes
+  width?: string | number
+  height?: string | number
+  color?: Colors
+  fill?: string
+  title?: string
+  spin?: boolean
+  className?: string
 }
 
 export interface SvgPathContainerProps {
-  viewBox: string;
-  path?: string;
-  width?: string | number;
-  height?: string | number;
-  color?: Colors;
-  fill?: string;
-  title?: string;
-  circle?: object;
-  spin?: boolean;
-  className?: string;
+  viewBox: string
+  path?: string
+  width?: string | number
+  height?: string | number
+  color?: Colors
+  fill?: string
+  title?: string
+  circle?: object
+  spin?: boolean
+  className?: string
 }
 
 const iconsConf: Icons = {
@@ -250,7 +250,7 @@ const iconsConf: Icons = {
     width: 24,
     path: 'M7.5 14.5C7.5 14.7761 7.72386 15 8 15C8.27614 15 8.5 14.7761 8.5 14.5V6.20711L10.1464 7.85355C10.3417 8.04882 10.6583 8.04882 10.8536 7.85355C11.0488 7.65829 11.0488 7.34171 10.8536 7.14645L8.35355 4.64645C8.15829 4.45119 7.84171 4.45119 7.64645 4.64645L5.14645 7.14645C4.95118 7.34171 4.95118 7.65829 5.14645 7.85355C5.34171 8.04882 5.65829 8.04882 5.85355 7.85355L7.5 6.20711L7.5 14.5Z',
   },
-};
+}
 
 const SvgPathContainer = ({
   width,
@@ -264,8 +264,8 @@ const SvgPathContainer = ({
   spin,
   className,
 }: SvgPathContainerProps) => {
-  const widthProps = width === 'none' ? {} : { width };
-  const heightProps = height === 'none' ? {} : { height };
+  const widthProps = width === 'none' ? {} : { width }
+  const heightProps = height === 'none' ? {} : { height }
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -279,8 +279,8 @@ const SvgPathContainer = ({
       {path && <path className={styles.colors[color]} d={path}></path>}
       {circle && <circle className={styles.colors[color]} {...circle} />}
     </svg>
-  );
-};
+  )
+}
 
 export const Icon = ({
   type,
@@ -292,7 +292,7 @@ export const Icon = ({
   spin,
   className,
 }: IconProps) => {
-  useDeprecatedComponent('IconDeprecated', 'Icon');
+  useDeprecatedComponent('IconDeprecated', 'Icon')
   return (
     <SvgPathContainer
       path={iconsConf[type].path}
@@ -306,7 +306,7 @@ export const Icon = ({
       spin={spin}
       className={className}
     />
-  );
-};
+  )
+}
 
-export { Icon as IconDeprecated };
+export { Icon as IconDeprecated }

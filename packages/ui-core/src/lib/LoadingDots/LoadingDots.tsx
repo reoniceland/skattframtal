@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './LoadingDots.css';
+import * as styles from './LoadingDots.css'
 
 interface LoadingDotsProps {
-  single?: boolean;
-  large?: boolean;
-  color?: 'blue' | 'white' | 'gradient';
+  single?: boolean
+  large?: boolean
+  color?: 'blue' | 'white' | 'gradient'
 }
 
 export const LoadingDots = ({
@@ -26,7 +26,7 @@ export const LoadingDots = ({
       <div className={styles.dot} />
       <div className={styles.dot} />
     </div>
-  );
-};
+  )
+}
 
-export default LoadingDots;
+export default LoadingDots

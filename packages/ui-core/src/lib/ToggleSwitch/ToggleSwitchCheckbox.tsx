@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
 import {
   getContainerClass,
   getInteractiveProps,
   renderContents,
   ToggleSwitchBaseProps,
-} from './_ToggleSwitch.utils';
+} from './_ToggleSwitch.utils'
 
 export type ToggleSwitchCheckboxProps =
   ToggleSwitchBaseProps<HTMLInputElement> & {
     /** Optional `name=""` for the form `<input type="checkbox" />` element */
-    name?: string;
+    name?: string
     /** Optional `value=""` for the form `<input type="checkbox" />` element */
-    value?: string;
-  };
+    value?: string
+  }
 
 export const ToggleSwitchCheckbox = (props: ToggleSwitchCheckboxProps) => {
-  const { checked } = props;
+  const { checked } = props
 
   return (
     <label className={getContainerClass(props)}>
@@ -31,5 +31,5 @@ export const ToggleSwitchCheckbox = (props: ToggleSwitchCheckboxProps) => {
       />
       {renderContents(props.label)}
     </label>
-  );
-};
+  )
+}

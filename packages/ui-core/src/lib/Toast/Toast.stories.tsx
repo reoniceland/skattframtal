@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { toast, ToastContainer } from './Toast';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { toast, ToastContainer } from './Toast'
 
 export default {
   title: 'Alerts/Toast',
   component: ToastContainer,
   parameters: withFigma('Toast'),
-};
+}
 
 const Template = (args) => (
   <div>
@@ -35,6 +35,6 @@ const Template = (args) => (
     </Box>
     <ToastContainer {...args} />
   </div>
-);
+)
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})

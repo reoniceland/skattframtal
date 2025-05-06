@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
 function setRefs<T>(ref: React.Ref<T>, value: T) {
   if (typeof ref === 'function') {
-    ref(value);
+    ref(value)
   } else if (ref) {
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-    (ref as any).current = value;
+    ;(ref as any).current = value
   }
 }
 
@@ -15,9 +15,9 @@ export function useMergeRefs<ForwardRef, LocalRef extends ForwardRef>(
 ): (instance: LocalRef | null) => void {
   return React.useCallback(
     (value) => {
-      setRefs(forwardedRef, value);
-      setRefs(localRef, value);
+      setRefs(forwardedRef, value)
+      setRefs(localRef, value)
     },
     [forwardedRef, localRef],
-  );
+  )
 }

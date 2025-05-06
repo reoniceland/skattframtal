@@ -1,30 +1,30 @@
-import React from 'react';
+import React from 'react'
 
-import type { theme } from '@reon-island/ui-theme';
-import type { FC } from 'react';
-import type { ResponsiveProp } from '../../../utils/responsiveProp';
-import type { ResponsiveSpace } from '../../Box/useBoxStyles';
+import type { theme } from '@reon-island/ui-theme'
+import type { FC } from 'react'
+import type { ResponsiveProp } from '../../../utils/responsiveProp'
+import type { ResponsiveSpace } from '../../Box/useBoxStyles'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { resolveResponsiveProp } from '../../../utils/responsiveProp';
-import { resolveResponsiveRangeProps } from '../../../utils/responsiveRangeProps';
-import { Box } from '../../Box/Box';
-import * as styles from './GridColumn.css';
+import { resolveResponsiveProp } from '../../../utils/responsiveProp'
+import { resolveResponsiveRangeProps } from '../../../utils/responsiveRangeProps'
+import { Box } from '../../Box/Box'
+import * as styles from './GridColumn.css'
 
-type Breakpoint = keyof (typeof theme)['breakpoints'];
-type position = 'relative' | 'fixed' | 'absolute' | 'static';
+type Breakpoint = keyof (typeof theme)['breakpoints']
+type position = 'relative' | 'fixed' | 'absolute' | 'static'
 
 export interface GridColumnProps {
-  span?: styles.SpanType;
-  offset?: styles.SpanType;
-  order?: ResponsiveProp<styles.Order>;
-  paddingBottom?: ResponsiveSpace;
-  paddingTop?: ResponsiveSpace;
-  className?: string;
-  hiddenAbove?: Exclude<Breakpoint, 'xl'>;
-  hiddenBelow?: Exclude<Breakpoint, 'xs'>;
-  position?: position | 'none';
+  span?: styles.SpanType
+  offset?: styles.SpanType
+  order?: ResponsiveProp<styles.Order>
+  paddingBottom?: ResponsiveSpace
+  paddingTop?: ResponsiveSpace
+  className?: string
+  hiddenAbove?: Exclude<Breakpoint, 'xl'>
+  hiddenBelow?: Exclude<Breakpoint, 'xs'>
+  position?: position | 'none'
 }
 
 export const GridColumn: FC<React.PropsWithChildren<GridColumnProps>> = ({
@@ -39,14 +39,14 @@ export const GridColumn: FC<React.PropsWithChildren<GridColumnProps>> = ({
   hiddenBelow: below,
   position = 'relative',
 }) => {
-  const pos: { position?: position } = {};
+  const pos: { position?: position } = {}
 
   if (position !== 'none') {
-    pos.position = position;
+    pos.position = position
   }
 
   const [hiddenOnXs, hiddenOnSm, hiddenOnMd, hiddenOnLg, hiddenOnXl] =
-    resolveResponsiveRangeProps({ above, below });
+    resolveResponsiveRangeProps({ above, below })
 
   return (
     <Box
@@ -94,5 +94,5 @@ export const GridColumn: FC<React.PropsWithChildren<GridColumnProps>> = ({
     >
       {children}
     </Box>
-  );
-};
+  )
+}

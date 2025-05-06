@@ -1,38 +1,38 @@
-'use client';
+'use client'
 
-import React, { forwardRef, SyntheticEvent, useRef, useState } from 'react';
+import React, { forwardRef, SyntheticEvent, useRef, useState } from 'react'
 
-import cn from 'classnames';
-import { parse } from 'libphonenumber-js';
-import NumberFormat, { NumberFormatValues } from 'react-number-format';
-import { useEffectOnce } from 'react-use';
+import cn from 'classnames'
+import { parse } from 'libphonenumber-js'
+import NumberFormat, { NumberFormatValues } from 'react-number-format'
+import { useEffectOnce } from 'react-use'
 
-import { Locale } from '@reon-island/types';
+import { Locale } from '@reon-island/types'
 
-import { useMergeRefs } from '../../hooks/useMergeRefs';
-import { resolveResponsiveProp } from '../../utils/responsiveProp';
-import { Box } from '../Box/Box';
-import { UseBoxStylesProps } from '../Box/useBoxStyles';
-import { Icon } from '../IconRC/Icon';
+import { useMergeRefs } from '../../hooks/useMergeRefs'
+import { resolveResponsiveProp } from '../../utils/responsiveProp'
+import { Box } from '../Box/Box'
+import { UseBoxStylesProps } from '../Box/useBoxStyles'
+import { Icon } from '../IconRC/Icon'
 import {
   AriaError,
   InputBackgroundColor,
   InputIcon,
   InputProps,
-} from '../Input/types';
-import { StringOption } from '../Select/Select.types';
-import { Tooltip } from '../Tooltip/Tooltip';
-import { countryCodesEN, countryCodesIS } from './countryCodes';
-import { CountryCodeSelect } from './CountryCodeSelect/CountryCodeSelect';
-import * as styles from './PhoneInput.css';
+} from '../Input/types'
+import { StringOption } from '../Select/Select.types'
+import { Tooltip } from '../Tooltip/Tooltip'
+import { countryCodesEN, countryCodesIS } from './countryCodes'
+import { CountryCodeSelect } from './CountryCodeSelect/CountryCodeSelect'
+import * as styles from './PhoneInput.css'
 
-const DEFAULT_COUNTRY_CODE = '+354';
+const DEFAULT_COUNTRY_CODE = '+354'
 
 const getCountryCodes = (
   lang: Locale,
   allowedCountryCodes?: string[],
 ): StringOption[] => {
-  const countryCodeList = lang === 'is' ? countryCodesIS : countryCodesEN;
+  const countryCodeList = lang === 'is' ? countryCodesIS : countryCodesEN
   return countryCodeList
     .filter((x) =>
       allowedCountryCodes ? allowedCountryCodes.includes(x.code) : true,
@@ -41,8 +41,8 @@ const getCountryCodes = (
       label: `${x.name} ${x.dial_code}`,
       value: x.dial_code,
       description: x.flag,
-    }));
-};
+    }))
+}
 
 /**
  * Gets default value for the controller.
@@ -53,11 +53,11 @@ const getDefaultValue = (
   defaultValue?: string,
   defaultCountryCode?: string,
 ) => {
-  const cleanedValue = defaultValue?.replace(/-/g, '');
+  const cleanedValue = defaultValue?.replace(/-/g, '')
   return !cleanedValue || cleanedValue?.startsWith('+')
     ? cleanedValue
-    : `${defaultCountryCode ?? ''}${cleanedValue}`;
-};
+    : `${defaultCountryCode ?? ''}${cleanedValue}`
+}
 
 /**
  * Gets default country code.
@@ -71,19 +71,19 @@ const getDefaultValue = (
  * getDefaultCountryCode("5812345") // +354
  */
 const getDefaultCountryCode = (lang: Locale, phoneNumber?: string) => {
-  if (!phoneNumber) return DEFAULT_COUNTRY_CODE;
-  const parsedPhoneNumber = parse(phoneNumber);
-  const countryCodeList = lang === 'is' ? countryCodesIS : countryCodesEN;
+  if (!phoneNumber) return DEFAULT_COUNTRY_CODE
+  const parsedPhoneNumber = parse(phoneNumber)
+  const countryCodeList = lang === 'is' ? countryCodesIS : countryCodesEN
 
   if (parsedPhoneNumber && parsedPhoneNumber.country) {
     return (
       countryCodeList.find((x) => x.code === parsedPhoneNumber.country)
         ?.dial_code || DEFAULT_COUNTRY_CODE
-    );
+    )
   }
 
-  return DEFAULT_COUNTRY_CODE;
-};
+  return DEFAULT_COUNTRY_CODE
+}
 
 export type PhoneInputProps = Omit<
   InputProps,
@@ -95,17 +95,17 @@ export type PhoneInputProps = Omit<
   | 'defaultValue'
   | 'value'
 > & {
-  defaultValue?: string;
-  locale?: Locale;
-  value?: string;
-  backgroundColor?: InputBackgroundColor;
-  onValueChange?: (values: NumberFormatValues) => void;
-  allowedCountryCodes?: string[];
-  format?: string;
-  onFormatValueChange?: (...event: any[]) => void;
-  disableDropdown?: boolean;
-  icon?: InputIcon;
-};
+  defaultValue?: string
+  locale?: Locale
+  value?: string
+  backgroundColor?: InputBackgroundColor
+  onValueChange?: (values: NumberFormatValues) => void
+  allowedCountryCodes?: string[]
+  format?: string
+  onFormatValueChange?: (...event: any[]) => void
+  disableDropdown?: boolean
+  icon?: InputIcon
+}
 
 export const PhoneInput = forwardRef(
   (
@@ -142,42 +142,42 @@ export const PhoneInput = forwardRef(
       onClick,
       onKeyDown,
       ...inputProps
-    } = props;
+    } = props
 
-    const [hasFocus, setHasFocus] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
-    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null);
-    const mergedRefs = useMergeRefs(inputRef, ref || null);
-    const countryCodeList = locale === 'is' ? countryCodesIS : countryCodesEN;
+    const [hasFocus, setHasFocus] = useState(false)
+    const [isMenuOpen, setIsMenuOpen] = useState(false)
+    const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement>(null)
+    const mergedRefs = useMergeRefs(inputRef, ref || null)
+    const countryCodeList = locale === 'is' ? countryCodesIS : countryCodesEN
 
     // Extract default country code from value, with value from form context having priority
     const defaultCountryCode = getDefaultCountryCode(
       locale || 'is',
       value || defaultValue,
-    );
-    const countryCodes = getCountryCodes(locale || 'is', allowedCountryCodes);
+    )
+    const countryCodes = getCountryCodes(locale || 'is', allowedCountryCodes)
 
     const selected = countryCodes.find(
       (x) => x.value === defaultCountryCode,
-    ) as StringOption;
+    ) as StringOption
 
-    const [selectedCountryCode, setSelectedCountryCode] = useState(selected);
-    const cc = selectedCountryCode?.value;
+    const [selectedCountryCode, setSelectedCountryCode] = useState(selected)
+    const cc = selectedCountryCode?.value
 
-    const errorId = `${id}-error`;
-    const selectId = `country-code-select-${id}`;
+    const errorId = `${id}-error`
+    const selectId = `country-code-select-${id}`
     const ariaError = hasError
       ? {
           'aria-invalid': true,
           'aria-describedby': errorId,
         }
-      : {};
+      : {}
 
     const mapBlue = (color: InputBackgroundColor) =>
-      color === 'blue' ? 'blue100' : color;
+      color === 'blue' ? 'blue100' : color
     const containerBackground = Array.isArray(backgroundColor)
       ? backgroundColor.map(mapBlue)
-      : mapBlue(backgroundColor as InputBackgroundColor);
+      : mapBlue(backgroundColor as InputBackgroundColor)
 
     /**
      Used to handle autofill and paste events.
@@ -191,22 +191,22 @@ export const PhoneInput = forwardRef(
         const updatedCC = getDefaultCountryCode(
           locale || 'is',
           e.currentTarget.value,
-        );
-        e.currentTarget.value = e.currentTarget.value.replace(updatedCC, '');
+        )
+        e.currentTarget.value = e.currentTarget.value.replace(updatedCC, '')
         if (!disableDropdown) {
           setSelectedCountryCode(
             countryCodes.find((x) => x.value === updatedCC) as StringOption,
-          );
+          )
         }
       }
-    };
+    }
 
     useEffectOnce(() => {
       // We need to initialize defaultValues with country code prefix if it is missing
       if (value && !value.startsWith('+') && onFormatValueChange) {
-        onFormatValueChange(getDefaultValue(value, defaultCountryCode));
+        onFormatValueChange(getDefaultValue(value, defaultCountryCode))
       }
-    });
+    })
 
     return (
       <>
@@ -214,7 +214,7 @@ export const PhoneInput = forwardRef(
           position="relative"
           onClick={() => {
             if (disableDropdown) {
-              inputRef.current?.focus();
+              inputRef.current?.focus()
             }
           }}
         >
@@ -294,11 +294,11 @@ export const PhoneInput = forwardRef(
                   // @ts-ignore make web strict
                   onChange={(option) => {
                     if (option) {
-                      const newCc = option.value;
-                      setSelectedCountryCode(option);
-                      onFormatValueChange?.(value?.replace(cc, newCc));
+                      const newCc = option.value
+                      setSelectedCountryCode(option)
+                      onFormatValueChange?.(value?.replace(cc, newCc))
                       if (inputRef.current) {
-                        inputRef.current.focus();
+                        inputRef.current.focus()
                       }
                     }
                   }}
@@ -359,28 +359,28 @@ export const PhoneInput = forwardRef(
                     // Don't prefix value with country code it it's empty.
                     value
                       ? onFormatValueChange?.(cc + value)
-                      : onFormatValueChange?.(value);
+                      : onFormatValueChange?.(value)
                   }}
                   onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
-                    setHasFocus(true);
+                    setHasFocus(true)
                     if (onFocus) {
-                      onFocus(e);
+                      onFocus(e)
                     }
                   }}
                   onClick={(e: React.MouseEvent<HTMLInputElement>) => {
                     if (onClick) {
-                      onClick(e);
+                      onClick(e)
                     }
                   }}
                   onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
                     if (onKeyDown) {
-                      onKeyDown(e);
+                      onKeyDown(e)
                     }
                   }}
                   onBlur={(e: React.FocusEvent<HTMLInputElement>) => {
-                    setHasFocus(false);
+                    setHasFocus(false)
                     if (onBlur) {
-                      onBlur(e);
+                      onBlur(e)
                     }
                   }}
                   {...(ariaError as AriaError)}
@@ -435,6 +435,6 @@ export const PhoneInput = forwardRef(
           </div>
         )}
       </>
-    );
+    )
   },
-);
+)

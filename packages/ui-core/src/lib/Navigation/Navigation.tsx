@@ -1,4 +1,4 @@
-'use client';
+'use client'
 
 import React, {
   createContext,
@@ -7,40 +7,40 @@ import React, {
   ReactNode,
   useEffect,
   useState,
-} from 'react';
+} from 'react'
 
-import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
-import { Menu, MenuButton, MenuStateReturn, useMenuState } from 'reakit/Menu';
+import cn from 'classnames'
+import AnimateHeight from 'react-animate-height'
+import { Menu, MenuButton, MenuStateReturn, useMenuState } from 'reakit/Menu'
 
-import { Colors, theme } from '@reon-island/ui-theme';
+import { Colors, theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { BoxProps } from '../Box/types';
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import { Icon } from '../IconRC/Icon';
-import { IconProps } from '../IconRC/types';
-import { Text } from '../Text/Text';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
-import * as styles from './Navigation.css';
+import { Box } from '../Box/Box'
+import { BoxProps } from '../Box/types'
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import { Icon } from '../IconRC/Icon'
+import { IconProps } from '../IconRC/types'
+import { Text } from '../Text/Text'
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden'
+import * as styles from './Navigation.css'
 
 type NavigationContextProps = {
-  baseId: string;
-  activeAccordions: Array<string>;
-  toggleAccordion: (id: string) => void;
-};
+  baseId: string
+  activeAccordions: Array<string>
+  toggleAccordion: (id: string) => void
+}
 
 export const NavigationContext = createContext<NavigationContextProps>({
   baseId: '',
   activeAccordions: [],
   toggleAccordion: () => null,
-});
+})
 
 export type NavigationColorAttributes =
   | 'color'
   | 'dividerColor'
   | 'backgroundColor'
-  | 'activeColor';
+  | 'activeColor'
 
 const colorSchemeColors: Record<
   keyof typeof styles.colorScheme,
@@ -64,92 +64,92 @@ const colorSchemeColors: Record<
     backgroundColor: 'purple100' as Colors,
     activeColor: 'purple400' as Colors,
   },
-};
+}
 
 export interface NavigationItem {
-  title: string;
-  href?: string;
-  active?: boolean;
-  accordion?: boolean;
-  items?: NavigationItem[];
-  typename?: string;
-  slug?: string[];
+  title: string
+  href?: string
+  active?: boolean
+  accordion?: boolean
+  items?: NavigationItem[]
+  typename?: string
+  slug?: string[]
 }
 interface MobileNavigationDialogProps {
-  Title: ReactNode;
-  colorScheme: keyof typeof styles.colorScheme;
-  items: NavigationItem[];
-  renderLink: NavigationTreeProps['renderLink'];
-  asSpan?: NavigationTreeProps['asSpan'];
-  isVisible: boolean;
-  onClick: () => void;
-  menuState: MenuStateReturn;
-  mobileNavigationButtonCloseLabel?: string;
+  Title: ReactNode
+  colorScheme: keyof typeof styles.colorScheme
+  items: NavigationItem[]
+  renderLink: NavigationTreeProps['renderLink']
+  asSpan?: NavigationTreeProps['asSpan']
+  isVisible: boolean
+  onClick: () => void
+  menuState: MenuStateReturn
+  mobileNavigationButtonCloseLabel?: string
 }
 
 interface NavigationTreeProps {
-  items: NavigationItem[];
-  level?: Level;
-  colorScheme?: keyof typeof styles.colorScheme;
-  expand?: boolean;
-  expandOnActivation?: boolean;
-  renderLink?: (link: ReactElement, item?: NavigationItem) => ReactNode;
-  menuState: MenuStateReturn;
-  linkOnClick?: () => void;
-  id?: string;
-  labelId?: string;
-  asSpan?: boolean;
+  items: NavigationItem[]
+  level?: Level
+  colorScheme?: keyof typeof styles.colorScheme
+  expand?: boolean
+  expandOnActivation?: boolean
+  renderLink?: (link: ReactElement, item?: NavigationItem) => ReactNode
+  menuState: MenuStateReturn
+  linkOnClick?: () => void
+  id?: string
+  labelId?: string
+  asSpan?: boolean
 }
 export interface NavigationProps {
-  title: string;
-  titleIcon?: Pick<IconProps, 'icon' | 'type'>;
+  title: string
+  titleIcon?: Pick<IconProps, 'icon' | 'type'>
 
-  label?: string;
-  activeItemTitle?: string;
-  colorScheme?: keyof typeof styles.colorScheme;
+  label?: string
+  activeItemTitle?: string
+  colorScheme?: keyof typeof styles.colorScheme
   /**
    * Keep all child menu items expanded
    */
-  expand?: boolean;
+  expand?: boolean
   /**
    * Expand on link activation when link has sub items.
    */
-  expandOnActivation?: boolean;
+  expandOnActivation?: boolean
   /**
    * Only a single acccordion can be expanded at a time
    */
-  singleAccordion?: boolean;
-  isMenuDialog?: boolean;
-  titleLink?: Pick<NavigationItem, 'href' | 'active'>;
-  items: NavigationItem[];
-  baseId: string;
+  singleAccordion?: boolean
+  isMenuDialog?: boolean
+  titleLink?: Pick<NavigationItem, 'href' | 'active'>
+  items: NavigationItem[]
+  baseId: string
   /**
    * Render function for all links, useful for wrapping framework specific routing links
    */
-  renderLink?: NavigationTreeProps['renderLink'];
+  renderLink?: NavigationTreeProps['renderLink']
   /**
    * Wrap the link in a <span> instead of a <a> for passing in framework specific routing links
    */
-  asSpan?: NavigationTreeProps['asSpan'];
-  titleProps?: NavigationItem;
-  mobileNavigationButtonOpenLabel?: string;
-  mobileNavigationButtonCloseLabel?: string;
+  asSpan?: NavigationTreeProps['asSpan']
+  titleProps?: NavigationItem
+  mobileNavigationButtonOpenLabel?: string
+  mobileNavigationButtonCloseLabel?: string
 }
 
 // The sidebar nav is not designed to show more than 2 levels.
-type Level = keyof typeof styles.level;
+type Level = keyof typeof styles.level
 
-const MAX_LEVELS = 2;
+const MAX_LEVELS = 2
 
 const basePadding = {
   paddingY: 1,
   paddingX: 3,
-} as Pick<BoxProps, 'paddingY' | 'paddingX'>;
+} as Pick<BoxProps, 'paddingY' | 'paddingX'>
 
-const defaultLinkRender: NavigationTreeProps['renderLink'] = (link) => link;
+const defaultLinkRender: NavigationTreeProps['renderLink'] = (link) => link
 
 const toggleId = (arr: Array<string> = [], id: string, single = false) =>
-  arr.includes(id) ? arr.filter((i) => i !== id) : [...(single ? [] : arr), id];
+  arr.includes(id) ? arr.filter((i) => i !== id) : [...(single ? [] : arr), id]
 
 export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
   title = 'Efnisyfirlit',
@@ -170,13 +170,13 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
   mobileNavigationButtonOpenLabel = 'Open',
   mobileNavigationButtonCloseLabel = 'Close',
 }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const [activeAccordions, setActiveAccordions] = useState<Array<string>>(
     () => {
       const initialActivePathIndex = items?.findIndex(
         (item) => item.active && item.accordion,
-      );
+      )
 
       if (initialActivePathIndex > 0) {
         //first level only
@@ -187,33 +187,33 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
               item.accordion &&
               item.items?.some((child) => child.active),
           )}`,
-        ];
+        ]
       }
 
-      return [];
+      return []
     },
-  );
+  )
 
-  const color = colorSchemeColors[colorScheme]['color'];
-  const activeColor = colorSchemeColors[colorScheme]['activeColor'];
-  const backgroundColor = colorSchemeColors[colorScheme]['backgroundColor'];
-  const dividerColor = colorSchemeColors[colorScheme]['dividerColor'];
+  const color = colorSchemeColors[colorScheme]['color']
+  const activeColor = colorSchemeColors[colorScheme]['activeColor']
+  const backgroundColor = colorSchemeColors[colorScheme]['backgroundColor']
+  const dividerColor = colorSchemeColors[colorScheme]['dividerColor']
 
-  const menu = useMenuState({ animated: true, baseId, visible: false });
+  const menu = useMenuState({ animated: true, baseId, visible: false })
 
   useEffect(() => {
-    setMobileMenuOpen(menu.visible);
-  }, [menu.visible]);
+    setMobileMenuOpen(menu.visible)
+  }, [menu.visible])
 
   const titleLinkProps = titleLink
     ? {
         href: titleLink.href,
       }
-    : null;
+    : null
 
   const toggleAccordion = (id: string) => {
-    setActiveAccordions(toggleId(activeAccordions, id, singleAccordion));
-  };
+    setActiveAccordions(toggleId(activeAccordions, id, singleAccordion))
+  }
 
   const Title: MobileNavigationDialogProps['Title'] = titleLinkProps ? (
     renderLink(
@@ -226,7 +226,7 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
       >
         {({ isFocused, isHovered }) => {
           const textColor =
-            titleLink?.active || isFocused || isHovered ? activeColor : color;
+            titleLink?.active || isFocused || isHovered ? activeColor : color
 
           return (
             <>
@@ -241,7 +241,7 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
                 {title}
               </Text>
             </>
-          );
+          )
         }}
       </FocusableBox>,
       titleProps,
@@ -264,7 +264,7 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
         </Text>
       </Box>
     </Box>
-  );
+  )
 
   return (
     <NavigationContext.Provider
@@ -314,7 +314,7 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
                 mobileNavigationButtonCloseLabel
               }
               onClick={() => {
-                menu.hide();
+                menu.hide()
               }}
             />
           </Menu>
@@ -345,8 +345,8 @@ export const Navigation: FC<React.PropsWithChildren<NavigationProps>> = ({
         </Box>
       )}
     </NavigationContext.Provider>
-  );
-};
+  )
+}
 
 const MobileNavigationDialog = ({
   Title,
@@ -404,13 +404,13 @@ const MobileNavigationDialog = ({
         linkOnClick={onClick}
       />
     </Box>
-  );
-};
+  )
+}
 interface MobileButtonProps {
-  title: string;
-  titleIcon?: Pick<IconProps, 'icon' | 'type'>;
-  colorScheme: keyof typeof styles.colorScheme;
-  mobileNavigationButtonOpenLabel?: string;
+  title: string
+  titleIcon?: Pick<IconProps, 'icon' | 'type'>
+  colorScheme: keyof typeof styles.colorScheme
+  mobileNavigationButtonOpenLabel?: string
 }
 
 const MobileButton = ({
@@ -474,8 +474,8 @@ const MobileButton = ({
         </FocusableBox>
       </Box>
     </Box>
-  );
-};
+  )
+}
 
 export const NavigationTree: FC<
   React.PropsWithChildren<NavigationTreeProps>
@@ -509,23 +509,23 @@ export const NavigationTree: FC<
           }}
         >
           {items.map((item, index) => {
-            const { title, href, items = [], active, accordion } = item;
-            const nextLevel: Level = (level + 1) as Level;
-            const isChildren = level > 1;
+            const { title, href, items = [], active, accordion } = item
+            const nextLevel: Level = (level + 1) as Level
+            const isChildren = level > 1
             const showNextLevel =
               (active || expand) &&
               items.length &&
               nextLevel <= MAX_LEVELS &&
-              !accordion;
+              !accordion
             const isAccordion = !!(
               items.length &&
               nextLevel <= MAX_LEVELS &&
               accordion
-            );
-            const accordionId = `${level}-${index}`;
-            const activeAccordion = activeAccordions.includes(accordionId);
-            const labelId = `${baseId}-title-${accordionId}`;
-            const ariaId = `${baseId}-tree-${accordionId}`;
+            )
+            const accordionId = `${level}-${index}`
+            const activeAccordion = activeAccordions.includes(accordionId)
+            const labelId = `${baseId}-title-${accordionId}`
+            const ariaId = `${baseId}-tree-${accordionId}`
 
             const nextLevelTree = (
               <NavigationTree
@@ -539,7 +539,7 @@ export const NavigationTree: FC<
                 menuState={menuState}
                 linkOnClick={linkOnClick}
               />
-            );
+            )
 
             return (
               <li key={index} className={styles.listItem} role="menuitem">
@@ -555,10 +555,10 @@ export const NavigationTree: FC<
                     className={styles.link}
                     onClick={() => {
                       if (linkOnClick) {
-                        linkOnClick();
+                        linkOnClick()
                       }
                       if (isAccordion && expandOnActivation) {
-                        toggleAccordion(accordionId);
+                        toggleAccordion(accordionId)
                       }
                     }}
                   >
@@ -566,7 +566,7 @@ export const NavigationTree: FC<
                       const textColor =
                         active || isFocused || isHovered
                           ? colorSchemeColors[colorScheme]['activeColor']
-                          : colorSchemeColors[colorScheme]['color'];
+                          : colorSchemeColors[colorScheme]['color']
 
                       return (
                         <span
@@ -586,7 +586,7 @@ export const NavigationTree: FC<
                             {title}
                           </Text>
                         </span>
-                      );
+                      )
                     }}
                   </FocusableBox>,
                   item,
@@ -595,7 +595,7 @@ export const NavigationTree: FC<
                   <FocusableBox
                     component="button"
                     onClick={() => {
-                      toggleAccordion(accordionId);
+                      toggleAccordion(accordionId)
                     }}
                     background={colorSchemeColors[colorScheme]['dividerColor']}
                     marginRight={2}
@@ -642,10 +642,10 @@ export const NavigationTree: FC<
                 )}
                 {!!showNextLevel && nextLevelTree}
               </li>
-            );
+            )
           })}
         </Box>
       )}
     </NavigationContext.Consumer>
-  );
-};
+  )
+}

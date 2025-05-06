@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { Inline } from '../Inline/Inline';
-import { Tag } from './Tag';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { Inline } from '../Inline/Inline'
+import { Tag } from './Tag'
 
 export default {
   title: 'Components/Tag',
   component: Tag,
   parameters: withFigma('Tag'),
-};
+}
 
 export const Basic = () => (
   <ContentBlock>
@@ -31,7 +31,7 @@ export const Basic = () => (
       </Inline>
     </Box>
   </ContentBlock>
-);
+)
 
 export const outlined = () => (
   <ContentBlock>
@@ -65,4 +65,4 @@ export const outlined = () => (
       </Inline>
     </Box>
   </ContentBlock>
-);
+)

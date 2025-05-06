@@ -1,31 +1,31 @@
-import * as React from 'react';
-import NextLink from 'next/link';
+import * as React from 'react'
+import NextLink from 'next/link'
 
-import type { LinkProps as NextLinkProps } from 'next/link';
+import type { LinkProps as NextLinkProps } from 'next/link'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
 import {
   shouldLinkBeAnAnchorTag,
   shouldLinkOpenInNewWindow,
-} from '@reon-island/utils';
+} from '@reon-island/utils'
 
-import * as styles from './Link.css';
+import * as styles from './Link.css'
 
-export type LinkColor = 'white' | 'blue400' | 'blue600';
-export type UnderlineVisibility = 'always' | 'hover';
-export type UnderlineVariants = 'normal' | 'small';
+export type LinkColor = 'white' | 'blue400' | 'blue600'
+export type UnderlineVisibility = 'always' | 'hover'
+export type UnderlineVariants = 'normal' | 'small'
 
 export interface LinkProps extends NextLinkProps {
-  color?: LinkColor;
-  dataTestId?: string;
-  className?: string;
-  underline?: UnderlineVariants;
-  underlineVisibility?: UnderlineVisibility;
-  skipTab?: boolean;
-  pureChildren?: boolean;
-  newTab?: boolean;
-  onClick?: () => void;
+  color?: LinkColor
+  dataTestId?: string
+  className?: string
+  underline?: UnderlineVariants
+  underlineVisibility?: UnderlineVisibility
+  skipTab?: boolean
+  pureChildren?: boolean
+  newTab?: boolean
+  onClick?: () => void
 }
 
 // Next link that can handle external urls
@@ -48,7 +48,7 @@ export const LinkV2: React.FC<React.PropsWithChildren<LinkProps>> = ({
   onClick,
   ...linkProps
 }) => {
-  const isInternal = !shouldLinkOpenInNewWindow(href as string);
+  const isInternal = !shouldLinkOpenInNewWindow(href as string)
   const classNames = cn(
     styles.link,
     color ? styles.colors[color] : undefined,
@@ -57,10 +57,10 @@ export const LinkV2: React.FC<React.PropsWithChildren<LinkProps>> = ({
       ? styles.underlineVisibilities[underlineVisibility]
       : undefined,
     className,
-  );
+  )
 
   if (isInternal) {
-    const hrefString = href?.toString();
+    const hrefString = href?.toString()
 
     if (shouldLinkBeAnAnchorTag(hrefString)) {
       return (
@@ -74,7 +74,7 @@ export const LinkV2: React.FC<React.PropsWithChildren<LinkProps>> = ({
         >
           {children}
         </a>
-      );
+      )
     }
 
     return (
@@ -102,7 +102,7 @@ export const LinkV2: React.FC<React.PropsWithChildren<LinkProps>> = ({
           </a>
         )}
       </NextLink>
-    );
+    )
   } else {
     return (
       <a
@@ -116,6 +116,6 @@ export const LinkV2: React.FC<React.PropsWithChildren<LinkProps>> = ({
       >
         {children}
       </a>
-    );
+    )
   }
-};
+}

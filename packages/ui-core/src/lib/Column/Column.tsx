@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import React, { useContext } from 'react';
+import React, { useContext } from 'react'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-import { Box } from '../Box/Box';
-import { ColumnsContext } from '../Columns/Columns';
-import * as styles from './Column.css';
+import { Box } from '../Box/Box'
+import { ColumnsContext } from '../Columns/Columns'
+import * as styles from './Column.css'
 
 export interface ColumnProps {
-  children: ReactNode;
-  width?: keyof typeof styles.width | 'content';
+  children: ReactNode
+  width?: keyof typeof styles.width | 'content'
 }
 
 /** Standard columns */
@@ -27,7 +27,7 @@ export const Column = ({ children, width }: ColumnProps) => {
     xlSpace,
     collapsibleAlignmentChildProps,
     as,
-  } = useContext(ColumnsContext);
+  } = useContext(ColumnsContext)
 
   return (
     <Box
@@ -67,5 +67,5 @@ export const Column = ({ children, width }: ColumnProps) => {
         {children}
       </Box>
     </Box>
-  );
-};
+  )
+}

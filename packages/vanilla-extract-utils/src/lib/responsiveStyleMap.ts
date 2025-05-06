@@ -1,40 +1,40 @@
-import type * as CSS from 'csstype';
+import type * as CSS from 'csstype'
 
-import isObject from 'lodash/isObject';
+import isObject from 'lodash/isObject'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
-type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
-type ResponsiveProps<T> = Partial<Record<Breakpoint, T>>;
+type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
+type ResponsiveProps<T> = Partial<Record<Breakpoint, T>>
 
 export const resolveBreakpoints = (variant: any, attr: any, acc: any) => {
   if (isObject(variant[attr])) {
-    (Object.keys(variant[attr]) as Breakpoint[]).reduce(
+    ;(Object.keys(variant[attr]) as Breakpoint[]).reduce(
       (acc, breakpointKey) => {
         const handleBreakpoint = Object.prototype.hasOwnProperty.call(
           theme.breakpoints,
           breakpointKey,
-        );
+        )
 
         if (!handleBreakpoint) {
-          acc[attr] = variant[attr];
-          return acc;
+          acc[attr] = variant[attr]
+          return acc
         }
 
         if (breakpointKey === 'xs') {
-          acc[attr] = variant[attr].xs;
+          acc[attr] = variant[attr].xs
         } else {
           if (!acc['@media']) {
-            acc['@media'] = {};
+            acc['@media'] = {}
           }
           if (
             !acc['@media'][`(min-width: ${theme.breakpoints[breakpointKey]}px)`]
           ) {
             acc['@media'][
               `(min-width: ${theme.breakpoints[breakpointKey]}px)`
-            ] = {};
+            ] = {}
           }
           acc['@media'][`(min-width: ${theme.breakpoints[breakpointKey]}px)`] =
             {
@@ -42,17 +42,17 @@ export const resolveBreakpoints = (variant: any, attr: any, acc: any) => {
                 `(min-width: ${theme.breakpoints[breakpointKey]}px)`
               ],
               [attr]: variant[attr][breakpointKey],
-            };
+            }
         }
-        return acc;
+        return acc
       },
       acc,
-    );
+    )
   } else {
-    acc[attr] = variant[attr];
+    acc[attr] = variant[attr]
   }
-  return acc;
-};
+  return acc
+}
 
 export const responsiveStyleMap = (
   styleObj: CSS.Properties<string | ResponsiveProps<string | number>>,
@@ -62,4 +62,4 @@ export const responsiveStyleMap = (
       (acc, attr) => resolveBreakpoints(styleObj, attr, acc),
       {},
     ),
-  );
+  )

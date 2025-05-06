@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const closeBtn = style({
   position: 'absolute',
@@ -21,4 +21,4 @@ export const closeBtn = style({
     top: -theme.spacing[1],
     bottom: -theme.spacing[1],
   },
-});
+})

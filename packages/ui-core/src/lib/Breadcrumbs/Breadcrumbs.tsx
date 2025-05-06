@@ -1,32 +1,32 @@
-import React from 'react';
+import React from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { FC, ReactNode } from 'react';
-import type { TagVariant } from '../Tag/types';
+import type { Colors } from '@reon-island/ui-theme'
+import type { FC, ReactNode } from 'react'
+import type { TagVariant } from '../Tag/types'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { Tag } from '../Tag/Tag';
-import { Text } from '../Text/Text';
-import * as styles from './Breadcrumbs.css';
+import { Box } from '../Box/Box'
+import { Tag } from '../Tag/Tag'
+import { Text } from '../Text/Text'
+import * as styles from './Breadcrumbs.css'
 
 export interface BreadCrumbItem {
-  title: string;
-  href?: string;
-  slug?: string[];
-  typename?: string;
-  isTag?: boolean;
-  isCurrentPage?: boolean;
+  title: string
+  href?: string
+  slug?: string[]
+  typename?: string
+  isTag?: boolean
+  isCurrentPage?: boolean
 }
 
 interface BreadcrumbsProps {
-  items: BreadCrumbItem[];
-  label?: string;
-  color?: keyof typeof styles.breadcrumb;
-  tagVariant?: TagVariant;
-  separatorColor?: Colors;
-  renderLink?: (link: ReactNode, item: BreadCrumbItem) => ReactNode;
+  items: BreadCrumbItem[]
+  label?: string
+  color?: keyof typeof styles.breadcrumb
+  tagVariant?: TagVariant
+  separatorColor?: Colors
+  renderLink?: (link: ReactNode, item: BreadCrumbItem) => ReactNode
 }
 
 export const Breadcrumbs: FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
@@ -36,7 +36,7 @@ export const Breadcrumbs: FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
   tagVariant = 'blue',
   renderLink = (link) => link,
 }) => {
-  const visibleItems = items.filter((x) => x.title);
+  const visibleItems = items.filter((x) => x.title)
 
   return (
     <Box
@@ -48,7 +48,7 @@ export const Breadcrumbs: FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
       component="nav"
     >
       {visibleItems.map((item, index) => {
-        const isLink: boolean = !!item.href || !!item.slug;
+        const isLink: boolean = !!item.href || !!item.slug
         const renderCrumb = item.isTag ? (
           <Tag textLeft={true} disabled={!isLink} variant={tagVariant}>
             {item.title}
@@ -61,7 +61,7 @@ export const Breadcrumbs: FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
           >
             {item.title}
           </Text>
-        );
+        )
 
         return (
           <Box
@@ -96,8 +96,8 @@ export const Breadcrumbs: FC<React.PropsWithChildren<BreadcrumbsProps>> = ({
               ></Box>
             )}
           </Box>
-        );
+        )
       })}
     </Box>
-  );
-};
+  )
+}

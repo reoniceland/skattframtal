@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { withFigma } from '../../utils/withFigma'
-import { AlertBanner } from './AlertBanner'
 import { Box } from '../Box/Box'
+import { AlertBanner } from './AlertBanner'
 
 export default {
   title: 'Alerts/AlertBanner',

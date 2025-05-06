@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { Column } from '../Column/Column';
-import { Columns } from '../Columns/Columns';
-import { SkeletonLoader as SL } from './SkeletonLoader';
+import { Box } from '../Box/Box'
+import { Column } from '../Column/Column'
+import { Columns } from '../Columns/Columns'
+import { SkeletonLoader as SL } from './SkeletonLoader'
 
 export default {
   title: 'Components/SkeletonLoader',
   component: SL,
-};
+}
 
 export const DefaultSkeletonLoader = (args) => (
   <Box padding={5}>
@@ -26,18 +26,18 @@ export const DefaultSkeletonLoader = (args) => (
       </Column>
     </Columns>
   </Box>
-);
+)
 
 DefaultSkeletonLoader.args = {
   repeat: 4,
-};
+}
 
 export const StackedSkeletonLoader = (args) => (
   <Box padding={5}>
     <SL space={2} repeat={args.repeat} />
   </Box>
-);
+)
 
 StackedSkeletonLoader.args = {
   repeat: 4,
-};
+}

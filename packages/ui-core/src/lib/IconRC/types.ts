@@ -1,34 +1,34 @@
-import type { Icon as IconType, Type } from './iconMap';
+import type { Icon as IconType, Type } from './iconMap'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-const colors = theme.color;
+const colors = theme.color
 
-export type Size = 'small' | 'medium' | 'large';
-export type IconMapType = Type;
-export type IconMapIcon = IconType;
+export type Size = 'small' | 'medium' | 'large'
+export type IconMapType = Type
+export type IconMapIcon = IconType
 
 export interface IconProps {
-  type?: Type;
-  icon: IconType;
-  title?: string;
-  titleId?: string;
-  color?: keyof typeof colors;
-  useStroke?: boolean;
-  size?: Size;
-  className?: string;
-  skipPlaceholderSize?: boolean;
-  ariaHidden?: boolean;
+  type?: Type
+  icon: IconType
+  title?: string
+  titleId?: string
+  color?: keyof typeof colors
+  useStroke?: boolean
+  size?: Size
+  className?: string
+  skipPlaceholderSize?: boolean
+  ariaHidden?: boolean
 }
 
 export interface SvgProps {
-  title?: string;
-  titleId?: string;
-  className?: string;
-  width?: string;
-  height?: string;
-  fill?: string;
-  color?: string;
+  title?: string
+  titleId?: string
+  className?: string
+  width?: string
+  height?: string
+  fill?: string
+  color?: string
 }
 
 export interface PlaceholderProps

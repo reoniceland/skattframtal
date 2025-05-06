@@ -1,32 +1,32 @@
-import React from 'react';
+import React from 'react'
 
-import type { theme } from '@reon-island/ui-theme';
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { AllHTMLAttributes, FC, ReactNode } from 'react';
-import type { UseBoxStylesProps } from '../Box/useBoxStyles';
-import type { TextProps } from '../Text/Text';
+import type { theme } from '@reon-island/ui-theme'
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { AllHTMLAttributes, FC, ReactNode } from 'react'
+import type { UseBoxStylesProps } from '../Box/useBoxStyles'
+import type { TextProps } from '../Text/Text'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { useBoxStyles } from '../Box/useBoxStyles';
-import { getTextStyles } from '../Text/Text';
-import * as styles from './Table.css';
+import { useBoxStyles } from '../Box/useBoxStyles'
+import { getTextStyles } from '../Text/Text'
+import * as styles from './Table.css'
 
 interface DataField {
-  children?: ReactNode;
+  children?: ReactNode
   text?: Pick<
     TextProps,
     'variant' | 'color' | 'truncate' | 'fontWeight' | 'lineHeight'
-  >;
-  box?: Omit<UseBoxStylesProps, 'component'>;
-  borderColor?: keyof typeof theme.color;
-  align?: 'left' | 'right' | 'center';
-  disabled?: boolean;
+  >
+  box?: Omit<UseBoxStylesProps, 'component'>
+  borderColor?: keyof typeof theme.color
+  align?: 'left' | 'right' | 'center'
+  disabled?: boolean
 }
 
 interface Table {
-  children?: ReactNode;
-  box?: Omit<UseBoxStylesProps, 'component'>;
+  children?: ReactNode
+  box?: Omit<UseBoxStylesProps, 'component'>
 }
 
 export const Table = ({
@@ -48,10 +48,10 @@ export const Table = ({
       {children}
     </table>
   </div>
-);
+)
 
 interface HeadProps {
-  sticky?: boolean;
+  sticky?: boolean
 }
 
 export const Head: FC<React.PropsWithChildren<HeadProps>> = ({
@@ -65,20 +65,20 @@ export const Head: FC<React.PropsWithChildren<HeadProps>> = ({
   >
     {children}
   </thead>
-);
+)
 
 export const Body: FC<React.PropsWithChildren> = ({ children }) => (
   <tbody>{children}</tbody>
-);
+)
 
 export const Foot: FC<React.PropsWithChildren> = ({ children }) => (
   <tfoot>{children}</tfoot>
-);
+)
 
 export const Row: FC<React.PropsWithChildren<TestSupport>> = ({
   children,
   dataTestId,
-}) => <tr data-testid={dataTestId}>{children}</tr>;
+}) => <tr data-testid={dataTestId}>{children}</tr>
 
 export const Data = ({
   children,
@@ -108,13 +108,13 @@ export const Data = ({
       textAlign: align,
       ...box,
     }),
-  );
+  )
   return (
     <td className={classNames} {...props}>
       {children}
     </td>
-  );
-};
+  )
+}
 export const HeadData = ({
   children,
   text = {},
@@ -143,10 +143,10 @@ export const HeadData = ({
       textAlign: align,
       ...box,
     }),
-  );
+  )
   return (
     <th className={classNames} {...props}>
       {children}
     </th>
-  );
-};
+  )
+}

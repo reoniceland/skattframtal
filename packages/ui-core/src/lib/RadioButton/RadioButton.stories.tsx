@@ -1,38 +1,38 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { RadioButton } from './RadioButton';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { RadioButton } from './RadioButton'
 
 export default {
   title: 'Form/RadioButton',
   component: RadioButton,
   parameters: withFigma('RadioButton'),
-};
+}
 
-const Template = (args) => <RadioButton {...args} />;
+const Template = (args) => <RadioButton {...args} />
 
-export const Default = Template.bind({});
-Default.args = { label: 'My label', large: false };
+export const Default = Template.bind({})
+Default.args = { label: 'My label', large: false }
 
-export const Disabled = Template.bind({});
-Disabled.args = { label: 'Disabled', large: false, disabled: true };
+export const Disabled = Template.bind({})
+Disabled.args = { label: 'Disabled', large: false, disabled: true }
 
-export const Large = Template.bind({});
-Large.args = { label: 'Large version', large: true };
+export const Large = Template.bind({})
+Large.args = { label: 'Large version', large: true }
 
-export const LargeDisabled = Template.bind({});
-LargeDisabled.args = { label: 'Large disabled', large: true, disabled: true };
+export const LargeDisabled = Template.bind({})
+LargeDisabled.args = { label: 'Large disabled', large: true, disabled: true }
 
-export const WithSubLabel = Template.bind({});
+export const WithSubLabel = Template.bind({})
 WithSubLabel.args = {
   label: 'Large version',
   large: true,
   subLabel: 'Some sublabel',
-};
+}
 
-export const WithTooltip = Template.bind({});
-WithTooltip.args = { label: 'With a tooltip', tooltip: 'This is the tooltip' };
+export const WithTooltip = Template.bind({})
+WithTooltip.args = { label: 'With a tooltip', tooltip: 'This is the tooltip' }
 
 export const FilledWhite = () => (
   <Box background="blue100" padding={3}>
@@ -42,10 +42,10 @@ export const FilledWhite = () => (
       large
     />
   </Box>
-);
+)
 
 export const FilledBlue = () => (
   <Box background="white" padding={3}>
     <RadioButton label="Filled blue background" backgroundColor="blue" large />
   </Box>
-);
+)

@@ -1,75 +1,75 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useContext, useState } from 'react';
+import React, { forwardRef, useContext, useState } from 'react'
 
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { DownshiftProps } from 'downshift';
-import type { ControllerStateAndHelpers } from 'downshift/typings';
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { DownshiftProps } from 'downshift'
+import type { ControllerStateAndHelpers } from 'downshift/typings'
 import type {
   ButtonHTMLAttributes,
   HTMLProps,
   LabelHTMLAttributes,
   ReactElement,
   ReactNode,
-} from 'react';
-import type { InputProps } from './shared/Input/Input';
-import type { MenuProps } from './shared/Menu/Menu';
+} from 'react'
+import type { InputProps } from './shared/Input/Input'
+import type { MenuProps } from './shared/Menu/Menu'
 
-import cn from 'classnames';
-import Downshift from 'downshift';
+import cn from 'classnames'
+import Downshift from 'downshift'
 
-import { helperStyles } from '@reon-island/ui-theme';
+import { helperStyles } from '@reon-island/ui-theme'
 
-import { ColorSchemeContext } from '../context';
-import { Icon } from '../IconRC/Icon';
-import { ErrorMessage } from '../Input/ErrorMessage';
-import * as inputStyles from '../Input/Input.css';
-import * as styles from './AsyncSearch.css';
-import { Input } from './shared/Input/Input';
-import { Item } from './shared/Item/Item';
-import { Label } from './shared/Label/Label';
-import { Menu } from './shared/Menu/Menu';
+import { ColorSchemeContext } from '../context'
+import { Icon } from '../IconRC/Icon'
+import { ErrorMessage } from '../Input/ErrorMessage'
+import * as inputStyles from '../Input/Input.css'
+import * as styles from './AsyncSearch.css'
+import { Input } from './shared/Input/Input'
+import { Item } from './shared/Item/Item'
+import { Label } from './shared/Label/Label'
+import { Menu } from './shared/Menu/Menu'
 
-export type AsyncSearchSizes = 'medium' | 'large' | 'semi-large';
+export type AsyncSearchSizes = 'medium' | 'large' | 'semi-large'
 
 export interface ItemCmpProps {
-  active?: boolean;
-  selected?: boolean;
-  colored?: boolean;
-  white?: boolean;
+  active?: boolean
+  selected?: boolean
+  colored?: boolean
+  white?: boolean
 }
 
 export interface AsyncSearchOption {
-  label: string;
-  value: string;
-  component?: (props: ItemCmpProps) => ReactElement;
-  disabled?: boolean;
+  label: string
+  value: string
+  component?: (props: ItemCmpProps) => ReactElement
+  disabled?: boolean
 }
 
 export interface AsyncSearchProps {
-  id?: string;
-  label?: string;
-  placeholder?: string;
-  options: AsyncSearchOption[];
-  colored?: boolean;
-  showDividerIfActive?: boolean;
-  filter?: boolean | ((x: AsyncSearchOption) => boolean);
-  inputValue?: string;
-  initialInputValue?: string;
-  size?: AsyncSearchSizes;
-  loading?: boolean;
-  closeMenuOnSubmit?: boolean;
-  openMenuOnFocus?: boolean;
-  required?: boolean;
-  errorMessage?: string;
-  hasError?: boolean;
-  white?: boolean;
+  id?: string
+  label?: string
+  placeholder?: string
+  options: AsyncSearchOption[]
+  colored?: boolean
+  showDividerIfActive?: boolean
+  filter?: boolean | ((x: AsyncSearchOption) => boolean)
+  inputValue?: string
+  initialInputValue?: string
+  size?: AsyncSearchSizes
+  loading?: boolean
+  closeMenuOnSubmit?: boolean
+  openMenuOnFocus?: boolean
+  required?: boolean
+  errorMessage?: string
+  hasError?: boolean
+  white?: boolean
   onSubmit?: (
     inputValue: string,
     selectedOption: AsyncSearchOption | null,
-  ) => void;
-  onChange?: DownshiftProps<AsyncSearchOption>['onChange'];
-  onInputValueChange?: DownshiftProps<AsyncSearchOption>['onInputValueChange'];
+  ) => void
+  onChange?: DownshiftProps<AsyncSearchOption>['onChange']
+  onInputValueChange?: DownshiftProps<AsyncSearchOption>['onInputValueChange']
 }
 
 export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
@@ -99,17 +99,17 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
     },
     ref,
   ) => {
-    const [focused, setFocused] = useState<boolean>(false);
-    const { colorScheme } = useContext(ColorSchemeContext);
+    const [focused, setFocused] = useState<boolean>(false)
+    const { colorScheme } = useContext(ColorSchemeContext)
 
     const onFocus = () => {
-      setFocused(true);
-    };
+      setFocused(true)
+    }
     const onBlur = () => {
-      setFocused(false);
-    };
-    const hasLabel = Boolean(size === 'large' && label);
-    const whiteColorScheme = colorScheme === 'white' || white;
+      setFocused(false)
+    }
+    const hasLabel = Boolean(size === 'large' && label)
+    const whiteColorScheme = colorScheme === 'white' || white
     return (
       <Downshift
         id={id}
@@ -117,16 +117,16 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
         initialInputValue={initialInputValue}
         onInputValueChange={onInputValueChange}
         onOuterClick={(ctx) => {
-          ctx.clearItems();
-          ctx.setState({ inputValue });
-          ctx.closeMenu();
+          ctx.clearItems()
+          ctx.setState({ inputValue })
+          ctx.closeMenu()
         }}
         onStateChange={(changes, ctx) => {
           switch (changes.type) {
             case Downshift.stateChangeTypes.unknown:
             case Downshift.stateChangeTypes.mouseUp:
             case Downshift.stateChangeTypes.blurInput:
-              ctx.setState({ inputValue });
+              ctx.setState({ inputValue })
           }
         }}
         itemToString={(item: AsyncSearchOption | null) =>
@@ -147,11 +147,11 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
             highlightedIndex,
             getRootProps,
             inputValue,
-          } = downshiftProps;
+          } = downshiftProps
 
-          const filterFunc = createFilterFunction(filter, inputValue);
-          const filteredOptions = options.filter(filterFunc);
-          const shouldShowItems = filteredOptions.length > 0 && isOpen;
+          const filterFunc = createFilterFunction(filter, inputValue)
+          const filteredOptions = options.filter(filterFunc)
+          const shouldShowItems = filteredOptions.length > 0 && isOpen
 
           const menuContent =
             shouldShowItems &&
@@ -171,33 +171,33 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
                   isSelected: options.includes(item),
                 })}
               />
-            ));
+            ))
 
           const onKeyDown = (event: {
-            key: string;
-            nativeEvent: { preventDownshiftDefault: boolean };
+            key: string
+            nativeEvent: { preventDownshiftDefault: boolean }
           }) => {
             if (event.key === 'Enter') {
               // Prevent Downshift's default 'Enter' behavior.
-              event.nativeEvent.preventDownshiftDefault = true;
+              event.nativeEvent.preventDownshiftDefault = true
 
               const selectedOption =
-                highlightedIndex !== null ? options[highlightedIndex] : null;
+                highlightedIndex !== null ? options[highlightedIndex] : null
 
-              closeMenuOnSubmit && closeMenu();
-              onSubmit && onSubmit(inputValue || '', selectedOption);
+              closeMenuOnSubmit && closeMenu()
+              onSubmit && onSubmit(inputValue || '', selectedOption)
             }
-          };
+          }
 
-          let inputColor: InputProps['color'] | undefined = undefined;
+          let inputColor: InputProps['color'] | undefined = undefined
           if (whiteColorScheme) {
-            inputColor = 'white';
+            inputColor = 'white'
           } else if (colorScheme === 'blueberry') {
-            inputColor = 'blueberry';
+            inputColor = 'blueberry'
           } else if (colorScheme === 'dark') {
-            inputColor = 'dark';
+            inputColor = 'dark'
           } else if (colorScheme === 'blue') {
-            inputColor = 'blue';
+            inputColor = 'blue'
           }
 
           return (
@@ -214,9 +214,9 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
                 ...getInputProps({
                   value: inputValue,
                   onFocus: () => {
-                    onFocus();
+                    onFocus()
                     if (openMenuOnFocus) {
-                      openMenu();
+                      openMenu()
                     }
                   },
                   onBlur,
@@ -237,8 +237,8 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
                 ...(onSubmit
                   ? {
                       onClick: () => {
-                        closeMenuOnSubmit && closeMenu();
-                        onSubmit && onSubmit(inputValue || '', null);
+                        closeMenuOnSubmit && closeMenu()
+                        onSubmit && onSubmit(inputValue || '', null)
                       },
                     }
                   : getToggleButtonProps()),
@@ -254,28 +254,28 @@ export const AsyncSearch = forwardRef<HTMLInputElement, AsyncSearchProps>(
             >
               {menuContent}
             </AsyncSearchInput>
-          );
+          )
         }}
       </Downshift>
-    );
+    )
   },
-);
+)
 
 const createFilterFunction = (
   filter: AsyncSearchProps['filter'],
   inputValue: string | null,
 ): ((item: AsyncSearchOption) => boolean) => {
   if (typeof filter === 'function') {
-    return filter;
+    return filter
   }
 
   if (filter) {
     return (item) =>
-      item.label.toLowerCase().includes((inputValue ?? '').toLowerCase());
+      item.label.toLowerCase().includes((inputValue ?? '').toLowerCase())
   }
 
-  return () => true;
-};
+  return () => true
+}
 
 const getIconColor = (
   whiteColorScheme: boolean,
@@ -283,32 +283,32 @@ const getIconColor = (
   darkColorScheme: boolean,
 ) => {
   if (whiteColorScheme) {
-    return 'white';
+    return 'white'
   }
   if (blueberryColorScheme) {
-    return 'blueberry600';
+    return 'blueberry600'
   }
   if (darkColorScheme) {
-    return 'dark400';
+    return 'dark400'
   }
-  return 'blue400';
-};
+  return 'blue400'
+}
 
 export interface AsyncSearchInputProps {
-  hasFocus: boolean;
-  rootProps?: HTMLProps<HTMLDivElement>;
-  inputProps: InputProps;
-  buttonProps: ButtonHTMLAttributes<HTMLButtonElement>;
-  menuProps?: Partial<MenuProps>;
-  white?: boolean;
-  hasError?: boolean;
-  required?: boolean;
-  label?: string;
-  errorMessage?: string;
-  labelProps?: LabelHTMLAttributes<HTMLLabelElement>;
-  loading?: boolean;
-  children?: ReactNode;
-  skipContext?: boolean;
+  hasFocus: boolean
+  rootProps?: HTMLProps<HTMLDivElement>
+  inputProps: InputProps
+  buttonProps: ButtonHTMLAttributes<HTMLButtonElement>
+  menuProps?: Partial<MenuProps>
+  white?: boolean
+  hasError?: boolean
+  required?: boolean
+  label?: string
+  errorMessage?: string
+  labelProps?: LabelHTMLAttributes<HTMLLabelElement>
+  loading?: boolean
+  children?: ReactNode
+  skipContext?: boolean
 }
 
 export const AsyncSearchInput = forwardRef<
@@ -335,40 +335,40 @@ export const AsyncSearchInput = forwardRef<
     },
     ref,
   ) => {
-    const { colorScheme: colorSchemeContext } = useContext(ColorSchemeContext);
-    const { value, inputSize: size } = inputProps;
-    const showLabel = Boolean(label);
-    const isOpen = hasFocus && !!children && React.Children.count(children) > 0;
+    const { colorScheme: colorSchemeContext } = useContext(ColorSchemeContext)
+    const { value, inputSize: size } = inputProps
+    const showLabel = Boolean(label)
+    const isOpen = hasFocus && !!children && React.Children.count(children) > 0
 
     const whiteColorScheme = skipContext
       ? false
-      : colorSchemeContext === 'white' || white;
+      : colorSchemeContext === 'white' || white
 
     const blueberryColorScheme = skipContext
       ? false
-      : colorSchemeContext === 'blueberry';
+      : colorSchemeContext === 'blueberry'
 
-    const darkColorScheme = skipContext ? false : colorSchemeContext === 'dark';
+    const darkColorScheme = skipContext ? false : colorSchemeContext === 'dark'
 
-    const blueColorScheme = skipContext ? false : colorSchemeContext === 'blue';
+    const blueColorScheme = skipContext ? false : colorSchemeContext === 'blue'
 
     const iconColor = getIconColor(
       whiteColorScheme,
       blueberryColorScheme,
       darkColorScheme,
-    );
+    )
 
-    let inputColor: InputProps['color'] | undefined = undefined;
+    let inputColor: InputProps['color'] | undefined = undefined
 
     if (whiteColorScheme) {
-      inputColor = 'white';
+      inputColor = 'white'
     } else if (blueberryColorScheme) {
-      inputColor = 'blueberry';
+      inputColor = 'blueberry'
     } else if (darkColorScheme) {
-      inputColor = 'dark';
+      inputColor = 'dark'
     }
 
-    const normalizedSize = size === 'semi-large' ? 'medium' : size;
+    const normalizedSize = size === 'semi-large' ? 'medium' : size
     return (
       <>
         <div
@@ -444,6 +444,6 @@ export const AsyncSearchInput = forwardRef<
         </div>
         {hasError && <ErrorMessage>{errorMessage}</ErrorMessage>}
       </>
-    );
+    )
   },
-);
+)
