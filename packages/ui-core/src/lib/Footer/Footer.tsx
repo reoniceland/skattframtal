@@ -1,52 +1,52 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
-import { shouldLinkOpenInNewWindow } from '@reon-island/utils';
+import { shouldLinkOpenInNewWindow } from '@reon-island/utils'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { LinkContext } from '../context/LinkContext/LinkContext';
-import { GridColumn } from '../Grid/GridColumn/GridColumn';
-import { GridContainer } from '../Grid/GridContainer/GridContainer';
-import { GridRow } from '../Grid/GridRow/GridRow';
-import Hyphen from '../Hyphen/Hyphen';
-import { Icon } from '../IconRC/Icon';
-import { Inline } from '../Inline/Inline';
-import { Link } from '../Link/Link';
-import { Logo } from '../Logo/Logo';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-import { Tiles } from '../Tiles/Tiles';
-import * as styles from './Footer.css';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { LinkContext } from '../context/LinkContext/LinkContext'
+import { GridColumn } from '../Grid/GridColumn/GridColumn'
+import { GridContainer } from '../Grid/GridContainer/GridContainer'
+import { GridRow } from '../Grid/GridRow/GridRow'
+import Hyphen from '../Hyphen/Hyphen'
+import { Icon } from '../IconRC/Icon'
+import { Inline } from '../Inline/Inline'
+import { Link } from '../Link/Link'
+import { Logo } from '../Logo/Logo'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
+import { Tiles } from '../Tiles/Tiles'
+import * as styles from './Footer.css'
 
 export interface FooterLinkProps {
-  title: string;
-  href: string;
-  className?: string;
+  title: string
+  href: string
+  className?: string
 }
 
 interface FooterProps {
-  topLinks?: FooterLinkProps[];
+  topLinks?: FooterLinkProps[]
   /**
    * Contact information links.
    */
-  topLinksContact?: FooterLinkProps[];
-  bottomLinks?: FooterLinkProps[];
-  middleLinks?: FooterLinkProps[];
-  middleLinksTitle?: string;
-  bottomLinksTitle?: string;
-  languageSwitchLink?: FooterLinkProps;
-  privacyPolicyLink?: FooterLinkProps;
-  termsLink?: FooterLinkProps;
-  hideLanguageSwitch?: boolean;
-  showMiddleLinks?: boolean;
+  topLinksContact?: FooterLinkProps[]
+  bottomLinks?: FooterLinkProps[]
+  middleLinks?: FooterLinkProps[]
+  middleLinksTitle?: string
+  bottomLinksTitle?: string
+  languageSwitchLink?: FooterLinkProps
+  privacyPolicyLink?: FooterLinkProps
+  termsLink?: FooterLinkProps
+  hideLanguageSwitch?: boolean
+  showMiddleLinks?: boolean
   /**
    * The link to the help web. If used it will be shown instead of the contact information links.
    */
-  linkToHelpWeb?: string;
-  linkToHelpWebText?: string;
-  languageSwitchOnClick?: () => void;
+  linkToHelpWeb?: string
+  linkToHelpWebText?: string
+  languageSwitchOnClick?: () => void
 }
 
 export const Footer = ({
@@ -89,7 +89,7 @@ export const Footer = ({
                   }}
                 >
                   {topLinks.map(({ title, href }, index) => {
-                    const isLast = index + 1 === topLinks.length;
+                    const isLast = index + 1 === topLinks.length
                     return (
                       <Text
                         key={index}
@@ -101,13 +101,13 @@ export const Footer = ({
                           <Hyphen>{title}</Hyphen>
                         </a>
                       </Text>
-                    );
+                    )
                   })}
                 </LinkContext.Provider>
                 <Box display="flex" flexDirection={'column'} paddingBottom={4}>
                   {topLinksContact.map(({ title, href }, index) => {
-                    const isLast = index + 1 === topLinksContact.length;
-                    const isInternalLink = !shouldLinkOpenInNewWindow(href);
+                    const isLast = index + 1 === topLinksContact.length
+                    const isInternalLink = !shouldLinkOpenInNewWindow(href)
                     return (
                       <Box marginBottom={isLast ? 0 : 3} key={index}>
                         <Link href={href} skipTab>
@@ -123,7 +123,7 @@ export const Footer = ({
                           </Button>
                         </Link>
                       </Box>
-                    );
+                    )
                   })}
                 </Box>
                 <div>
@@ -229,7 +229,7 @@ export const Footer = ({
                           >
                             <a href={href}>{title}</a>
                           </Text>
-                        );
+                        )
                       })}
                     </Tiles>
                   </LinkContext.Provider>
@@ -268,8 +268,8 @@ export const Footer = ({
         </GridContainer>
       </Box>
     </footer>
-  );
-};
+  )
+}
 
 const defaultTopLinksInfo = [
   {
@@ -284,7 +284,7 @@ const defaultTopLinksInfo = [
     title: 'Vörur og þjónusta Ísland.is',
     href: 'https://island.is/flokkur/vorur-og-thjonusta-island-is',
   },
-];
+]
 
 const defaultTopLinksContact = [
   {
@@ -295,22 +295,22 @@ const defaultTopLinksContact = [
     title: 'Sími: 426 5500',
     href: 'tel:+3544265500',
   },
-];
+]
 
 const defaultLanguageSwitchLink = {
   title: 'English',
   href: 'https://island.is/en',
-};
+}
 
 const defaultPrivacyPolicyLink = {
   title: 'Persónuverndarstefna',
   href: '/personuverndarstefna-stafraent-islands',
-};
+}
 
 const defaultTermsLink = {
   title: 'Skilmálar',
   href: '/skilmalar-island-is',
-};
+}
 
 const defaultBottomLinks = [
   {
@@ -349,4 +349,4 @@ const defaultBottomLinks = [
     title: 'Tekjusagan',
     href: 'https://tekjusagan.is/',
   },
-];
+]

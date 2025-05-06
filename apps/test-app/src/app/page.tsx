@@ -1,11 +1,5 @@
-import { Text } from '@reon-island/ui-core';
+import { Home } from './home'
 
-export default function Home() {
-  return (
-    <>
-      <Text variant="h1" as="h1">
-        Skil á skattframtali
-      </Text>
-    </>
-  );
+export default function Page() {
+  return <Home />
 }

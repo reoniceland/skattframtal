@@ -1,16 +1,16 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useContext } from 'react';
+import React, { forwardRef, useContext } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { ResponsiveSpace } from '../Box/useBoxStyles';
-import type { TextVariants } from './Text.css';
+import type { Colors } from '@reon-island/ui-theme'
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { ResponsiveSpace } from '../Box/useBoxStyles'
+import type { TextVariants } from './Text.css'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { LinkContext } from '../context';
+import { Box } from '../Box/Box'
+import { LinkContext } from '../context'
 import {
   base,
   capitalizeFirstLetter as capitalizeFirstLetterStyle,
@@ -25,7 +25,7 @@ import {
   truncate as truncateStyle,
   variantStyles,
   whiteSpace as whiteSpaceStyle,
-} from './Text.css';
+} from './Text.css'
 
 type TextElements =
   | 'h1'
@@ -38,36 +38,36 @@ type TextElements =
   | 'div'
   | 'label'
   | 'caption'
-  | 'pre';
+  | 'pre'
 
 export interface TextProps {
-  id?: string;
-  children?: React.ReactNode;
-  as?: TextElements;
-  paddingTop?: ResponsiveSpace;
-  paddingBottom?: ResponsiveSpace;
-  paddingY?: ResponsiveSpace;
-  marginTop?: ResponsiveSpace;
-  marginBottom?: ResponsiveSpace;
-  marginY?: ResponsiveSpace;
-  variant?: TextVariants;
-  color?: Colors;
-  truncate?: boolean;
-  fontWeight?: keyof typeof fontWeightStyles;
-  lineHeight?: keyof typeof lineHeightStyles;
-  title?: string;
-  strikethrough?: boolean;
+  id?: string
+  children?: React.ReactNode
+  as?: TextElements
+  paddingTop?: ResponsiveSpace
+  paddingBottom?: ResponsiveSpace
+  paddingY?: ResponsiveSpace
+  marginTop?: ResponsiveSpace
+  marginBottom?: ResponsiveSpace
+  marginY?: ResponsiveSpace
+  variant?: TextVariants
+  color?: Colors
+  truncate?: boolean
+  fontWeight?: keyof typeof fontWeightStyles
+  lineHeight?: keyof typeof lineHeightStyles
+  title?: string
+  strikethrough?: boolean
   whiteSpace?:
     | 'normal'
     | 'nowrap'
     | 'pre'
     | 'preWrap'
     | 'preLine'
-    | 'breakSpaces';
-  capitalizeFirstLetter?: boolean;
-  translate?: 'yes' | 'no';
-  textAlign?: 'left' | 'right' | 'center' | 'justify';
-  disabled?: boolean;
+    | 'breakSpaces'
+  capitalizeFirstLetter?: boolean
+  translate?: 'yes' | 'no'
+  textAlign?: 'left' | 'right' | 'center' | 'justify'
+  disabled?: boolean
 }
 
 type GetTextStylesProps = Pick<
@@ -82,7 +82,7 @@ type GetTextStylesProps = Pick<
   | 'textAlign'
   | 'capitalizeFirstLetter'
   | 'disabled'
->;
+>
 
 export const getTextStyles = ({
   color,
@@ -109,7 +109,7 @@ export const getTextStyles = ({
     [textAlignStyle[textAlign!]]: textAlign,
     [capitalizeFirstLetterStyle]: capitalizeFirstLetter,
     [disabledText]: disabled,
-  });
+  })
 
 export const Text = forwardRef<HTMLElement, TextProps & TestSupport>(
   (
@@ -139,7 +139,7 @@ export const Text = forwardRef<HTMLElement, TextProps & TestSupport>(
     },
     ref,
   ) => {
-    const { linkRenderer } = useContext(LinkContext);
+    const { linkRenderer } = useContext(LinkContext)
     return (
       <Box
         id={id}
@@ -174,18 +174,18 @@ export const Text = forwardRef<HTMLElement, TextProps & TestSupport>(
               // Checking to see if the child  using "href" and "as" props, which indicates it
               // is (most likely) a next.js link since the linkRenderer breaks this functionality.
               // TODO: Make linkRenderer handle next.js links.
-              return child;
+              return child
             } else if (
               child?.props?.href &&
               typeof linkRenderer === 'function'
             ) {
-              return linkRenderer(child.props.href, child.props.children);
+              return linkRenderer(child.props.href, child.props.children)
             }
 
-            return child;
+            return child
           },
         )}
       </Box>
-    );
+    )
   },
-);
+)

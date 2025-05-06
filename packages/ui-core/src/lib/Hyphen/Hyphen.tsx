@@ -1,4 +1,6 @@
-import React, { useMemo } from 'react'
+'use client'
+
+import { useMemo } from 'react'
 
 import type { Locale } from '@reon-island/types'
 

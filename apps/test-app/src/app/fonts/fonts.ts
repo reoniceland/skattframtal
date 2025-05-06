@@ -1,4 +1,4 @@
-import localFont from 'next/font/local';
+import localFont from 'next/font/local'
 
 export const ibmPlexSans = localFont({
   src: [
@@ -76,4 +76,4 @@ export const ibmPlexSans = localFont({
   display: 'swap',
   variable: '--font-ibm-plex-sans',
   preload: true,
-});
+})
