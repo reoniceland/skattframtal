@@ -40,7 +40,7 @@ export function Home() {
     },
     {
       title: 'Skattframtal',
-      href: '/skattframtal',
+      href: '/',
       isCurrentPage: true,
       isTag: true,
     },
