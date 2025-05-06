@@ -1,11 +1,11 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { mapToStyleProperty } from '../../utils/mapToStyleProperty';
+import { mapToStyleProperty } from '../../utils/mapToStyleProperty'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
-export const root = style({ margin: '0 auto' });
+export const root = style({ margin: '0 auto' })
 
 export const width = styleVariants(
   mapToStyleProperty(theme.contentWidth, 'maxWidth'),
-);
+)

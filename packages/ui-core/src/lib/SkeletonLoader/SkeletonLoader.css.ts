@@ -1,4 +1,4 @@
-import { keyframes, style } from '@vanilla-extract/css';
+import { keyframes, style } from '@vanilla-extract/css'
 
 export const loader = style({
   height: '1em',
@@ -21,4 +21,4 @@ export const loader = style({
       },
     }),
   },
-});
+})

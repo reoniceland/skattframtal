@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import type { Meta, StoryObj } from '@storybook/react';
-import type { ActionCardProps } from './types';
+import type { Meta, StoryObj } from '@storybook/react'
+import type { ActionCardProps } from './types'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import DialogPrompt from '../DialogPrompt/DialogPrompt';
-import { Icon } from '../IconRC/Icon';
-import { Tag } from '../Tag/Tag';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
-import { ActionCard } from './ActionCard';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import DialogPrompt from '../DialogPrompt/DialogPrompt'
+import { Icon } from '../IconRC/Icon'
+import { Tag } from '../Tag/Tag'
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden'
+import { ActionCard } from './ActionCard'
 
 const config: Meta<typeof ActionCard> = {
   title: 'Cards/ActionCard',
@@ -69,11 +69,11 @@ const config: Meta<typeof ActionCard> = {
       control: { type: 'boolean' },
     },
   },
-};
-export default config;
+}
+export default config
 
-const Template = (args) => <ActionCard {...args} />;
-export const Default: StoryObj<ActionCardProps> = Template.bind({});
+const Template = (args) => <ActionCard {...args} />
+export const Default: StoryObj<ActionCardProps> = Template.bind({})
 
 Default.args = {
   heading: 'The main heading',
@@ -105,7 +105,7 @@ Default.args = {
     withLabel: false,
   },
   focused: false,
-};
+}
 
 export const SmallHeading = () => (
   <ActionCard
@@ -114,7 +114,7 @@ export const SmallHeading = () => (
     text="This is the text"
     cta={{ label: 'Click me' }}
   />
-);
+)
 
 export const WithLargerButton = () => (
   <ActionCard
@@ -122,7 +122,7 @@ export const WithLargerButton = () => (
     text="Your application is in progress. Waiting for VMST approval."
     cta={{ label: 'Click me', size: 'large' }}
   />
-);
+)
 
 export const Unavailable = () => (
   <ActionCard
@@ -135,7 +135,7 @@ export const Unavailable = () => (
     }}
     cta={{ label: `Doesn't matter, not rendered` }}
   />
-);
+)
 
 export const WithTag = () => (
   <ActionCard
@@ -147,7 +147,7 @@ export const WithTag = () => (
     text="This is the text"
     cta={{ label: 'Click me', variant: 'text' }}
   />
-);
+)
 
 export const WithProgressMeter = () => (
   <ActionCard
@@ -163,7 +163,7 @@ export const WithProgressMeter = () => (
       withLabel: true,
     }}
   />
-);
+)
 
 export const ApplicationCardInProgressVariant = () => (
   <ActionCard
@@ -181,7 +181,7 @@ export const ApplicationCardInProgressVariant = () => (
       icon: undefined,
     }}
   />
-);
+)
 
 export const Avatar = () => (
   <ActionCard
@@ -193,7 +193,7 @@ export const Avatar = () => (
       variant: 'text',
     }}
   />
-);
+)
 
 export const Destructive = () => (
   <ActionCard
@@ -210,7 +210,7 @@ export const Destructive = () => (
       icon: undefined,
     }}
   />
-);
+)
 
 export const WithRenderTag = () => (
   <ActionCard
@@ -239,7 +239,7 @@ export const WithRenderTag = () => (
               </Tag>
             }
             onConfirm={() => {
-              console.log('Delete confirmed');
+              console.log('Delete confirmed')
             }}
             buttonTextConfirm="Delete"
             buttonTextCancel="Cancel"
@@ -249,7 +249,7 @@ export const WithRenderTag = () => (
     }}
     date="17. júní 1944"
   />
-);
+)
 
 export const WithRenderHeading = () => (
   <ActionCard
@@ -265,4 +265,4 @@ export const WithRenderHeading = () => (
       </Box>
     )}
   />
-);
+)

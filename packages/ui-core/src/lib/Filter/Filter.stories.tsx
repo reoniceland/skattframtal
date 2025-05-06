@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import type { FilterProps } from './Filter';
+import type { FilterProps } from './Filter'
 
-import { useWindowSize } from 'react-use';
+import { useWindowSize } from 'react-use'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import { Filter } from './Filter';
-import { FilterInput } from './FilterInput/FilterInput';
-import { FilterMultiChoice } from './FilterMultiChoice/FilterMultiChoice';
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
+import { Filter } from './Filter'
+import { FilterInput } from './FilterInput/FilterInput'
+import { FilterMultiChoice } from './FilterMultiChoice/FilterMultiChoice'
 
 export default {
   title: 'Components/Filter',
   component: Filter,
-};
+}
 
 const RenderVariant = (
   variant: FilterProps['variant'],
   inputButton?: boolean,
 ) => {
-  const [isMobile, setIsMobile] = useState(false);
-  const { width } = useWindowSize();
+  const [isMobile, setIsMobile] = useState(false)
+  const { width } = useWindowSize()
   useEffect(() => {
     if (width < theme.breakpoints.md) {
-      setIsMobile(true);
-      return;
+      setIsMobile(true)
+      return
     }
-    setIsMobile(false);
-  }, [width]);
+    setIsMobile(false)
+  }, [width])
   const [filter, setFilter] = useState<{
-    price: string[];
-    data: string[];
-    input: string;
+    price: string[]
+    data: string[]
+    input: string
   }>({
     price: [],
     data: [],
     input: '',
-  });
+  })
 
   const categories = [
     {
@@ -71,7 +71,7 @@ const RenderVariant = (
         },
       ],
     },
-  ];
+  ]
 
   const renderDefaultFilter = (asDialog?: boolean, inputButton?: boolean) => (
     <Filter
@@ -88,7 +88,7 @@ const RenderVariant = (
           price: [],
           data: [],
           input: '',
-        });
+        })
       }}
       filterInput={
         <FilterInput
@@ -96,7 +96,7 @@ const RenderVariant = (
           placeholder="Sía eftir leitarorði"
           value={filter.input}
           onChange={(value) => {
-            setFilter({ ...filter, input: value });
+            setFilter({ ...filter, input: value })
           }}
           button={
             inputButton
@@ -116,24 +116,24 @@ const RenderVariant = (
           setFilter({
             ...filter,
             [event.categoryId]: event.selected,
-          });
+          })
         }}
         onClear={(categoryId) => {
           setFilter({
             ...filter,
             [categoryId]: [],
-          });
+          })
         }}
       />
     </Filter>
-  );
+  )
 
   return (
     <Box padding={2} background="blue100">
       {renderDefaultFilter(isMobile, inputButton)}
     </Box>
-  );
-};
+  )
+}
 
 export const Default = () => (
   <>
@@ -145,7 +145,7 @@ export const Default = () => (
       reiciendis fuga!
     </Box>
   </>
-);
+)
 
 export const InputButton = () => (
   <>
@@ -157,7 +157,7 @@ export const InputButton = () => (
       reiciendis fuga!
     </Box>
   </>
-);
+)
 
 export const Popover = () => (
   <Box style={{ height: 800 }}>
@@ -179,4 +179,4 @@ export const Popover = () => (
       </Text>
     </Box>
   </Box>
-);
+)

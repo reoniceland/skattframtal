@@ -1,6 +1,6 @@
-import { spacing, theme, themeUtils } from '@reon-island/ui-theme';
+import { spacing, theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const dropdown = style({
   position: 'fixed',
@@ -18,7 +18,7 @@ export const dropdown = style({
       width: 'auto',
     },
   }),
-});
+})
 
 export const closeButton = style({
   display: 'flex',
@@ -48,7 +48,7 @@ export const closeButton = style({
     outline: 'none',
     borderColor: theme.color.mint200,
   },
-});
+})
 
 export const inner = style({
   position: 'relative',
@@ -61,4 +61,4 @@ export const inner = style({
       width: 310,
     },
   }),
-});
+})

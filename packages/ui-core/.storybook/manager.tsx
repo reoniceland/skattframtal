@@ -1,5 +1,5 @@
-import { addons } from '@storybook/addons';
-import { create } from '@storybook/theming';
+import { addons } from '@storybook/addons'
+import { create } from '@storybook/theming'
 
 const theme = create({
   base: 'light',
@@ -9,6 +9,6 @@ const theme = create({
   fontBase: '"IBM Plex Sans", sans-serif',
 
   brandTitle: 'Ísland.is UI library',
-});
+})
 
-addons.setConfig({ theme });
+addons.setConfig({ theme })

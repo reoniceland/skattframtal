@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import { Box } from '../../Box/Box';
-import { Icon } from '../../Icon/Icon';
-import { Link } from '../../Link/Link';
-import { Text } from '../../Text/Text';
-import { SectionNumberColumn } from '../SectionNumberColumn/SectionNumberColumn';
-import * as styles from './SubSectionItem.css';
+import { Box } from '../../Box/Box'
+import { Icon } from '../../Icon/Icon'
+import { Link } from '../../Link/Link'
+import { Text } from '../../Text/Text'
+import { SectionNumberColumn } from '../SectionNumberColumn/SectionNumberColumn'
+import * as styles from './SubSectionItem.css'
 
 interface SubSectionItemProps {
-  currentState: 'active' | 'previous' | 'next';
-  showIcon?: boolean;
-  href?: string;
-  children: React.ReactNode;
+  currentState: 'active' | 'previous' | 'next'
+  showIcon?: boolean
+  href?: string
+  children: React.ReactNode
 }
 
 export const SubSectionItem: FC<
@@ -29,7 +29,7 @@ export const SubSectionItem: FC<
         {children}
       </Text>
     </Box>
-  );
+  )
 
   return (
     <Box
@@ -55,5 +55,5 @@ export const SubSectionItem: FC<
         renderChildren()
       )}
     </Box>
-  );
-};
+  )
+}

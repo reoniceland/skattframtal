@@ -1,13 +1,13 @@
-import React from 'react';
+import React from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import { styled } from '@storybook/theming';
-import Markdown from 'markdown-to-jsx';
+import { styled } from '@storybook/theming'
+import Markdown from 'markdown-to-jsx'
 
 const markdown = (name = 'this component') => {
-  return `See *${name}* in the [@islandis](https://www.figma.com/@islandis) community Figma. [Desktop](https://www.figma.com/community/file/901454156629060149) — [Mobile](https://www.figma.com/community/file/901454279005592118)`;
-};
+  return `See *${name}* in the [@islandis](https://www.figma.com/@islandis) community Figma. [Desktop](https://www.figma.com/community/file/901454156629060149) — [Mobile](https://www.figma.com/community/file/901454279005592118)`
+}
 
 // Based on internal storybook <P/> and <A/> components
 const P = styled.p(() => ({
@@ -21,7 +21,7 @@ const P = styled.p(() => ({
   padding: '0.75em 1em',
   borderRadius: '6px',
   backgroundColor: '#fff',
-}));
+}))
 
 const A = styled.a(() => ({
   fontFamily: 'inherit',
@@ -32,7 +32,7 @@ const A = styled.a(() => ({
   lineHeight: '24px',
   color: 'rgb(30, 167, 253)',
   textDecoration: 'none',
-}));
+}))
 
 export const DescriptionFigma: FC<
   React.PropsWithChildren<{ name: string }>
@@ -52,10 +52,10 @@ export const DescriptionFigma: FC<
       {markdown(name)}
     </Markdown>
   </P>
-);
+)
 
 export const withFigma = (name: string) => {
   return {
     docs: { description: { component: markdown(name) } },
-  };
-};
+  }
+}

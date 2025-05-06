@@ -1,43 +1,43 @@
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore make web strict
 
-import type { createFilter, GroupBase, Props } from 'react-select';
-import type { Icon as IconTypes } from '../IconRC/iconMap';
-import type { InputBackgroundColor } from '../Input/types';
+import type { createFilter, GroupBase, Props } from 'react-select'
+import type { Icon as IconTypes } from '../IconRC/iconMap'
+import type { InputBackgroundColor } from '../Input/types'
 
 type ArgumentTypes<F extends () => unknown> = F extends (
   ...args: infer A
 ) => unknown
   ? A
-  : never;
+  : never
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore make web strict
-type FilterConfig = ArgumentTypes<typeof createFilter>[0];
+type FilterConfig = ArgumentTypes<typeof createFilter>[0]
 
 export interface AriaError {
-  'aria-invalid': boolean;
-  'aria-describedby': string;
+  'aria-invalid': boolean
+  'aria-describedby': string
 }
 
 export interface PropsBase {
   // Common custom props added for our custom Select
-  backgroundColor?: InputBackgroundColor;
-  errorMessage?: string;
-  filterConfig?: FilterConfig;
-  hasError?: boolean;
-  icon?: IconTypes;
-  isCreatable?: boolean;
-  label?: string;
-  size?: 'xs' | 'sm' | 'md';
+  backgroundColor?: InputBackgroundColor
+  errorMessage?: string
+  filterConfig?: FilterConfig
+  hasError?: boolean
+  icon?: IconTypes
+  isCreatable?: boolean
+  label?: string
+  size?: 'xs' | 'sm' | 'md'
 
   // Added as prop to forward to custom Input component
-  ariaError?: AriaError;
+  ariaError?: AriaError
 
   // Added for CountryCodeSelect to forward prop to custom IndicatorsContainer component
-  inputHasLabel?: boolean;
+  inputHasLabel?: boolean
 
   // Added for test support
-  dataTestId?: string;
+  dataTestId?: string
 }
 
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -59,30 +59,30 @@ export type SelectProps<
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-ignore make web strict
 > = Omit<Props<Option, IsMulti, Group>, 'noOptionsMessage'> & {
-  noOptionsMessage?: string;
-  hideClearIndicator?: boolean;
-} & PropsBase;
+  noOptionsMessage?: string
+  hideClearIndicator?: boolean
+} & PropsBase
 
 // The Option type needs to be generic as the react-select library is generic.
 export interface Option<Value> {
-  label: string;
-  value: Value;
-  description?: string;
-  descriptionTruncated?: boolean;
-  disabled?: boolean;
-  withCheckmark?: boolean;
-  isSelected?: boolean;
-  showClear?: boolean;
+  label: string
+  value: Value
+  description?: string
+  descriptionTruncated?: boolean
+  disabled?: boolean
+  withCheckmark?: boolean
+  isSelected?: boolean
+  showClear?: boolean
 }
 
 // Utility option types
-export type StringOption = Option<string>;
+export type StringOption = Option<string>
 
 export interface OptionTypeNew {
-  value: string;
-  label: string;
+  value: string
+  label: string
 }
 
 export interface CustomSelectProps extends Props<OptionTypeNew> {
-  showClear?: boolean;
+  showClear?: boolean
 }

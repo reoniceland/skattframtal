@@ -1,4 +1,4 @@
-import { dirname, join } from 'path';
+import { dirname, join } from 'path'
 
 /**
  * This function is used to resolve the absolute path of a package. It is needed
@@ -8,14 +8,14 @@ import { dirname, join } from 'path';
  */
 export function getAbsolutePath(value: string) {
   try {
-    const packagePath = require.resolve(join(value, 'package.json'));
-    return dirname(packagePath);
+    const packagePath = require.resolve(join(value, 'package.json'))
+    return dirname(packagePath)
   } catch (error) {
-    console.error(`Failed to resolve the path for: ${value}`, error);
-    throw error;
+    console.error(`Failed to resolve the path for: ${value}`, error)
+    throw error
   }
 }
 
 export function getAbsoluteAssetsPath() {
-  return join(getAbsolutePath('../../../packages/assets'), 'package.json');
+  return join(getAbsolutePath('../../../packages/assets'), 'package.json')
 }

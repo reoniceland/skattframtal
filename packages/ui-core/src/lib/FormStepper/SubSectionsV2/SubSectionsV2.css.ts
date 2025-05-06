@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const subSectionContainer = style({
   marginRight: 30,
@@ -12,7 +12,7 @@ export const subSectionContainer = style({
       marginRight: 0,
     },
   },
-});
+})
 
 export const subSectionContainerHidden = style({
   '@media': {
@@ -20,12 +20,12 @@ export const subSectionContainerHidden = style({
       display: 'none',
     },
   },
-});
+})
 
 export const subSectionInnerContainer = style({
   opacity: 0,
   transition: 'opacity .3s ease-in-out',
-});
+})
 
 export const subSectionList = style({
   display: 'flex',
@@ -36,4 +36,4 @@ export const subSectionList = style({
       flexDirection: 'column',
     },
   },
-});
+})

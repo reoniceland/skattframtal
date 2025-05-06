@@ -1,10 +1,10 @@
-import type { StorybookConfig } from '@storybook/react-webpack5';
+import type { StorybookConfig } from '@storybook/react-webpack5'
 
-import path from 'path';
+import path from 'path'
 
-import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin';
+import { VanillaExtractPlugin } from '@vanilla-extract/webpack-plugin'
 
-const rootDir = (dir: string) => path.resolve(__dirname, dir);
+const rootDir = (dir: string) => path.resolve(__dirname, dir)
 
 const config: StorybookConfig = {
   typescript: {
@@ -41,8 +41,8 @@ const config: StorybookConfig = {
     ],
   }),
   webpackFinal: (config) => {
-    config.plugins?.push(new VanillaExtractPlugin());
-    config.devtool = false;
+    config.plugins?.push(new VanillaExtractPlugin())
+    config.devtool = false
     config.module?.rules?.push({
       test: /\.stories\.(ts|tsx)$/,
       exclude: path.resolve(__dirname, '../../../../node_modules'),
@@ -55,12 +55,12 @@ const config: StorybookConfig = {
           },
         },
       ],
-    });
+    })
     config.resolve = {
       ...config.resolve,
       alias: {},
-    };
-    return config;
+    }
+    return config
   },
   framework: {
     name: '@storybook/react-webpack5',
@@ -69,6 +69,6 @@ const config: StorybookConfig = {
   docs: {
     autodocs: true,
   },
-};
+}
 
-export default config;
+export default config

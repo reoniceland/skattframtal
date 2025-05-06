@@ -1,23 +1,23 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import * as styles from './ProgressMeter.css';
-import { ProgressMeterVariant } from './types';
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
+import * as styles from './ProgressMeter.css'
+import { ProgressMeterVariant } from './types'
 
 type ProgressMeterProps = {
   /**
    * Number from 0 to 1
    */
-  progress: number;
-  variant?: ProgressMeterVariant;
-  className?: string;
-  withLabel?: boolean;
-  labelMin?: number;
-  labelMax?: number;
-};
+  progress: number
+  variant?: ProgressMeterVariant
+  className?: string
+  withLabel?: boolean
+  labelMin?: number
+  labelMax?: number
+}
 
 const colorSchemes = {
   blue: {
@@ -36,7 +36,7 @@ const colorSchemes = {
     outer: 'mint100',
     inner: 'mint600',
   },
-} as const;
+} as const
 
 export const ProgressMeter: React.FC<
   React.PropsWithChildren<ProgressMeterProps>
@@ -84,5 +84,5 @@ export const ProgressMeter: React.FC<
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}

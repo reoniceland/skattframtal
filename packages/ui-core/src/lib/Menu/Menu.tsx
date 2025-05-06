@@ -1,109 +1,109 @@
-'use client';
+'use client'
 
-import React, { ReactElement, ReactNode, useState } from 'react';
+import React, { ReactElement, ReactNode, useState } from 'react'
 
-import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
+import cn from 'classnames'
+import AnimateHeight from 'react-animate-height'
 
-import { Box } from '../Box/Box';
-import { useBoxStyles } from '../Box/useBoxStyles';
-import { Button } from '../Button/Button';
-import { GridColumn } from '../Grid/GridColumn/GridColumn';
-import { GridContainer } from '../Grid/GridContainer/GridContainer';
-import { GridRow } from '../Grid/GridRow/GridRow';
-import { Input } from '../Input/Input';
-import { Logo } from '../Logo/Logo';
-import { ModalBase, ModalBaseProps } from '../ModalBase/ModalBase';
-import { getTextStyles, Text } from '../Text/Text';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
-import Img from './Img';
-import * as styles from './Menu.css';
+import { Box } from '../Box/Box'
+import { useBoxStyles } from '../Box/useBoxStyles'
+import { Button } from '../Button/Button'
+import { GridColumn } from '../Grid/GridColumn/GridColumn'
+import { GridContainer } from '../Grid/GridContainer/GridContainer'
+import { GridRow } from '../Grid/GridRow/GridRow'
+import { Input } from '../Input/Input'
+import { Logo } from '../Logo/Logo'
+import { ModalBase, ModalBaseProps } from '../ModalBase/ModalBase'
+import { getTextStyles, Text } from '../Text/Text'
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden'
+import Img from './Img'
+import * as styles from './Menu.css'
 
 type LinkBase = {
-  text: string;
-  href: any;
-};
+  text: string
+  href: any
+}
 
 type RenderLinkObj = LinkBase & {
-  className: string;
-};
+  className: string
+}
 
-type Link = LinkBase & { dataTestId?: string };
+type Link = LinkBase & { dataTestId?: string }
 
 type LinkWithSub = LinkBase & {
-  sub?: Link[];
-};
+  sub?: Link[]
+}
 
 export interface MenuProps {
   /**
    * Unique ID for accessibility purposes
    */
-  baseId: string;
+  baseId: string
   /**
    * Element that opens the menu.
    * It will be forwarded necessary props for a11y and event handling.
    */
-  menuButton?: ReactElement;
+  menuButton?: ReactElement
   /**
    * Render function for all links, useful for wrapping framework specific routing links
    */
-  renderLink?: (settings: RenderLinkObj, closeModal?: () => void) => ReactNode;
+  renderLink?: (settings: RenderLinkObj, closeModal?: () => void) => ReactNode
   /**
    * Render function for Logo, useful for wrapping framework specific routing links
    */
-  renderLogo?: (logo: ReactNode, closeModal?: () => void) => ReactNode;
+  renderLogo?: (logo: ReactNode, closeModal?: () => void) => ReactNode
   /**
    * Render function search input, useful for rendering custom search
    */
-  renderSearch?: (search?: ReactNode, closeModal?: () => void) => ReactNode;
+  renderSearch?: (search?: ReactNode, closeModal?: () => void) => ReactNode
   /**
    * Render function for my pages button, useful for adding specific logic to my pages button
    */
   renderMyPagesButton?: (
     myPagesButton: ReactNode,
     closeModal?: () => void,
-  ) => ReactNode;
+  ) => ReactNode
   /**
    * Render function for language switch button, useful for adding specific logic to language switch button
    */
   renderLanguageSwitch?: (
     languageSwitch: ReactNode,
     isMobile?: boolean,
-  ) => ReactNode;
+  ) => ReactNode
   /**
    * Logo title for accessibility
    */
-  logoTitle?: string;
-  myPagesText?: string;
-  languageSwitchText?: string;
+  logoTitle?: string
+  myPagesText?: string
+  languageSwitchText?: string
   /**
    * Main section title
    */
-  mainTitle: string;
+  mainTitle: string
   /**
    * Main section links
    */
-  mainLinks: Link[];
+  mainLinks: Link[]
   /**
    * Aside top section links
    */
-  asideTopLinks: LinkWithSub[];
+  asideTopLinks: LinkWithSub[]
   /**
    * Aside bottom section title
    */
-  asideBottomTitle: string;
+  asideBottomTitle: string
   /**
    * Aside bottom section links
    */
-  asideBottomLinks: Link[];
+  asideBottomLinks: Link[]
   /**
    * Optional cb function that is fired when the modal visibility changes
    */
-  onVisibilityChange?: ModalBaseProps['onVisibilityChange'];
-  renderDisclosure?: ModalBaseProps['renderDisclosure'];
-  closeButtonLabel?: string;
-  expandButtonLabel?: string;
-  collapseButtonLabel?: string;
+  onVisibilityChange?: ModalBaseProps['onVisibilityChange']
+  renderDisclosure?: ModalBaseProps['renderDisclosure']
+  closeButtonLabel?: string
+  expandButtonLabel?: string
+  collapseButtonLabel?: string
 }
 
 const defaultRenderLinks = ({ text, href, className }: RenderLinkObj) => {
@@ -111,16 +111,16 @@ const defaultRenderLinks = ({ text, href, className }: RenderLinkObj) => {
     <a href={href} className={className}>
       {text}
     </a>
-  );
-};
+  )
+}
 
-const defaultRenderLogo: MenuProps['renderLogo'] = (logo) => logo;
-const defaultRenderSearch: MenuProps['renderSearch'] = (search) => search;
+const defaultRenderLogo: MenuProps['renderLogo'] = (logo) => logo
+const defaultRenderSearch: MenuProps['renderSearch'] = (search) => search
 const defaultRenderMyPagesButton: MenuProps['renderMyPagesButton'] = (button) =>
-  button;
+  button
 const defaultRenderLanguageSwitch: MenuProps['renderLanguageSwitch'] = (
   languageSwitch,
-) => languageSwitch;
+) => languageSwitch
 
 const AsideTopLinkWithSub = ({
   link,
@@ -129,13 +129,13 @@ const AsideTopLinkWithSub = ({
   expandButtonLabel = 'Expand',
   collapseButtonLabel = 'Collapse',
 }: {
-  link: ReactNode;
-  sub: ReactNode[];
-  id: string | number;
-  expandButtonLabel?: string;
-  collapseButtonLabel?: string;
+  link: ReactNode
+  sub: ReactNode[]
+  id: string | number
+  expandButtonLabel?: string
+  collapseButtonLabel?: string
 }) => {
-  const [isCollapsed, setIsCollapsed] = useState(true);
+  const [isCollapsed, setIsCollapsed] = useState(true)
 
   return (
     <>
@@ -178,8 +178,8 @@ const AsideTopLinkWithSub = ({
         </Box>
       </AnimateHeight>
     </>
-  );
-};
+  )
+}
 
 export const Menu = ({
   baseId,
@@ -203,19 +203,19 @@ export const Menu = ({
   expandButtonLabel = 'Expand',
   collapseButtonLabel = 'Collapse',
 }: MenuProps) => {
-  const [mainLinksCollapsed, setMainLinksCollapsed] = useState(true);
-  const fullHeight = useBoxStyles({ component: 'div', height: 'full' });
+  const [mainLinksCollapsed, setMainLinksCollapsed] = useState(true)
+  const fullHeight = useBoxStyles({ component: 'div', height: 'full' })
   const gridContainerStyles = useBoxStyles({
     component: 'div',
     background: 'white',
     height: 'full',
-  });
+  })
 
   const myPages = renderMyPagesButton(
     <Button variant="utility" icon="person" as="span">
       {myPagesText}
     </Button>,
-  );
+  )
   const mainLinksRender = (closeModal: () => void) =>
     mainLinks.map(({ text, href, dataTestId }, index) => {
       return (
@@ -233,8 +233,8 @@ export const Menu = ({
             closeModal,
           )}
         </div>
-      );
-    });
+      )
+    })
   return (
     <ModalBase
       baseId={baseId}
@@ -505,7 +505,7 @@ export const Menu = ({
         </GridContainer>
       )}
     </ModalBase>
-  );
-};
+  )
+}
 
-export default Menu;
+export default Menu

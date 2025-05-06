@@ -1,4 +1,4 @@
-import * as React from 'react';
+import * as React from 'react'
 
 function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
   return (
@@ -172,7 +172,7 @@ function SvgComponent(props: React.SVGProps<SVGSVGElement>) {
         </linearGradient>
       </defs>
     </svg>
-  );
+  )
 }
 
-export default SvgComponent;
+export default SvgComponent

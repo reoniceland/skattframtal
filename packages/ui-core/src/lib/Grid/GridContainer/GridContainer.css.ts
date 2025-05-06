@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const root = style({
   boxSizing: 'border-box',
@@ -39,4 +39,4 @@ export const root = style({
       },
     },
   },
-});
+})

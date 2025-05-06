@@ -1,13 +1,13 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import * as mixins from '../Input/Input.mixins';
+import * as mixins from '../Input/Input.mixins'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
 export const root = style({
   position: 'relative',
   minWidth: '250px',
-});
+})
 
 export const backgroundBlue = style({
   selectors: {
@@ -15,10 +15,10 @@ export const backgroundBlue = style({
       backgroundColor: `${theme.color.blue100} !important`,
     },
   },
-});
+})
 
-export const small = style({});
-export const extraSmall = style({});
+export const small = style({})
+export const extraSmall = style({})
 
 export const inputContainer = style({
   display: 'flex',
@@ -39,7 +39,7 @@ export const inputContainer = style({
   ':focus': {
     boxShadow: `0 0 0 3px ${theme.color.mint400}`,
   },
-});
+})
 
 export const inputContainerVariants = styleVariants({
   open: {
@@ -55,7 +55,7 @@ export const inputContainerVariants = styleVariants({
       borderColor: theme.color.blue400,
     },
   },
-});
+})
 
 export const hasError = style({
   border: `1px solid ${theme.color.red600}`,
@@ -63,13 +63,13 @@ export const hasError = style({
   ':hover': {
     borderColor: theme.color.blue400,
   },
-});
+})
 
-export const errorMessage = style(mixins.errorMessage);
+export const errorMessage = style(mixins.errorMessage)
 
 export const labelAndPlaceholderContainer = style({
   textAlign: 'left',
-});
+})
 
 export const label = style({
   display: 'block',
@@ -79,19 +79,19 @@ export const label = style({
   fontSize: 14,
   marginBottom: theme.spacing[1],
   transition: 'color 0.1s',
-});
+})
 
 export const requiredStar = style({
   color: theme.color.red600,
-});
+})
 
 export const labelError = style({
   color: theme.color.red600,
-});
+})
 
 export const value = style({
   padding: `0 ${theme.spacing[2]}px`,
-});
+})
 
 export const customHeaderContainer = style({
   display: 'flex',
@@ -111,7 +111,7 @@ export const customHeaderContainer = style({
     right: `-${theme.spacing[3] - 3}px`,
     background: theme.color.blue200,
   },
-});
+})
 
 export const headerSelect = style({
   border: 'none',
@@ -125,7 +125,7 @@ export const headerSelect = style({
       fontSize: 20,
     },
   }),
-});
+})
 
 export const decreaseButton = style({
   outline: 'none',
@@ -135,7 +135,7 @@ export const decreaseButton = style({
   ':focus': {
     boxShadow: `0 0 0 3px ${theme.color.mint400}`,
   },
-});
+})
 
 export const increaseButton = style({
   outline: 'none',
@@ -145,7 +145,7 @@ export const increaseButton = style({
   ':focus': {
     boxShadow: `0 0 0 3px ${theme.color.mint400}`,
   },
-});
+})
 
 export const popper = style({
   marginTop: '0',
@@ -158,7 +158,7 @@ export const popper = style({
       top: '70px !important',
     },
   }),
-});
+})
 
 export const popperXsmall = style({
   top: '51px !important',
@@ -167,7 +167,7 @@ export const popperXsmall = style({
       top: '65px !important',
     },
   }),
-});
+})
 
 export const popperSmall = style({
   top: '51px !important',
@@ -176,7 +176,7 @@ export const popperSmall = style({
       top: '-7px !important',
     },
   }),
-});
+})
 
 export const popperSmallWithoutLabel = style({
   top: '42px !important',
@@ -185,7 +185,7 @@ export const popperSmallWithoutLabel = style({
       top: '42px !important',
     },
   }),
-});
+})
 
 export const popperWithoutLabel = style({
   top: '52px !important',
@@ -194,13 +194,13 @@ export const popperWithoutLabel = style({
       top: '52px !important',
     },
   }),
-});
+})
 
 export const popperInline = style({
   position: `relative !important` as never,
   transform: 'none !important',
   marginBottom: '-7px',
-});
+})
 
 // Overwrite default ReactDatepicker styles
 globalStyle(`${root}.island-ui-datepicker .react-datepicker`, {
@@ -213,11 +213,11 @@ globalStyle(`${root}.island-ui-datepicker .react-datepicker`, {
   border: 'none',
   padding: `${theme.spacing[2]}px ${theme.spacing[3]}px`,
   paddingTop: 0,
-});
+})
 
 globalStyle(`${root}.island-ui-datepicker .react-datepicker-wrapper`, {
   display: 'block',
-});
+})
 
 globalStyle(
   `${root}.island-ui-datepicker${root}.island-ui-datepicker .react-datepicker__header`,
@@ -229,22 +229,22 @@ globalStyle(
     borderBottom: 'none',
     paddingBottom: '0',
   },
-);
+)
 
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__month-container`, {
   float: 'none',
-});
+})
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__month`, {
   margin: `0`,
-});
+})
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__day-names`, {
   marginBottom: '3px',
-});
+})
 
 globalStyle(`${root} .react-datepicker__day-names, .react-datepicker__week`, {
   display: 'flex',
   justifyContent: 'space-between',
-});
+})
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker__day-name, .react-datepicker__day`,
@@ -257,11 +257,11 @@ globalStyle(
     textAlign: 'center',
     color: `${theme.color.dark400}`,
   },
-);
+)
 
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__day--disabled`, {
   color: `${theme.color.dark200} !important`,
-});
+})
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker__day--disabled:hover`,
@@ -269,7 +269,7 @@ globalStyle(
     borderColor: 'transparent !important',
     background: 'transparent !important',
   },
-);
+)
 
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__day`, {
   fontFamily: 'IBM Plex Sans',
@@ -283,12 +283,12 @@ globalStyle(`${root}.island-ui-datepicker .react-datepicker__day`, {
   borderRadius: '5px',
   outline: 'none !important',
   transition: 'border-color 0.3s, color 0.3s',
-});
+})
 
 globalStyle(`${root}.island-ui-datepicker .react-datepicker__day:hover`, {
   background: `${theme.color.blue100}`,
   borderColor: `${theme.color.blue400}`,
-});
+})
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker__day--selected, .react-datepicker__day--selected:hover, .react-datepicker__month-text:hover, .react-datepicker__quarter-text:hover, .react-datepicker__year-text:hover, .react-datepicker__day--keyboard-selected`,
@@ -296,21 +296,21 @@ globalStyle(
     background: `${theme.color.blue400} !important`,
     color: `${theme.color.white} !important`,
   },
-);
+)
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker-popper[data-placement^="top"]`,
   {
     top: '11px !important',
   },
-);
+)
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker-popper[data-placement^="bottom"]`,
   {
     top: '-17px !important',
   },
-);
+)
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker-popper[data-placement^="top"] .react-datepicker`,
@@ -322,14 +322,14 @@ globalStyle(
     borderBottomLeftRadius: '0',
     boxShadow: `inset -3px 0px 0px ${theme.color.mint400}, inset 3px 0px 0px ${theme.color.mint400}, inset -1px 3px 0px ${theme.color.mint400}`,
   },
-);
+)
 
 globalStyle(
   `${root}.island-ui-datepicker .react-datepicker-popper[data-placement^="top"] .react-datepicker__header--custom .date-picker-custom-header`,
   {
     borderTop: 0,
   },
-);
+)
 
 /* Time picker styles */
 
@@ -348,10 +348,10 @@ globalStyle(
     borderRadius: '0.3rem',
     marginLeft: '5px',
   },
-);
+)
 
 globalStyle(`${root} .react-datepicker__input-time-container`, {
   marginTop: '15px',
   float: 'none !important' as any,
   margin: '30px 0px 0px 5px !important',
-});
+})

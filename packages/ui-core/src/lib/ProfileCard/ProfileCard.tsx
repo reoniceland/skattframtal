@@ -1,11 +1,11 @@
-import React, { FC, Fragment } from 'react';
+import React, { FC, Fragment } from 'react'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Link } from '../Link/Link';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-import * as styles from './ProfileCard.css';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Link } from '../Link/Link'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
+import * as styles from './ProfileCard.css'
 
 /**
  * Ideal for employee lists and other profile cards
@@ -14,38 +14,38 @@ export interface ProfileCardProps {
   /**
    * Image will be centered and scale with ratio 159:110
    */
-  image?: string;
+  image?: string
   /**
    * Usually name or important short text
    */
-  title?: string;
+  title?: string
   /**
    * Usually job description
    */
-  description?: string | (string | JSX.Element)[] | JSX.Element;
+  description?: string | (string | JSX.Element)[] | JSX.Element
   /**
    * 100% height
    */
-  heightFull?: boolean;
+  heightFull?: boolean
   /**
    * Size of description and link
    */
-  size?: 'small' | 'default';
+  size?: 'small' | 'default'
   /**
    * Link at the bottom of card
    */
   link?: {
-    url: string;
-    text: string;
-  };
+    url: string
+    text: string
+  }
   /**
    * Choose where to place the title
    */
-  variant?: 'default' | 'title-above';
+  variant?: 'default' | 'title-above'
   /**
    * Is card disabled or not
    */
-  disabled?: boolean;
+  disabled?: boolean
 }
 
 export const ProfileCard: FC<React.PropsWithChildren<ProfileCardProps>> = ({
@@ -58,12 +58,12 @@ export const ProfileCard: FC<React.PropsWithChildren<ProfileCardProps>> = ({
   variant = 'default',
   disabled,
 }) => {
-  const conditionalProps: { height?: 'full' } = {};
+  const conditionalProps: { height?: 'full' } = {}
   if (heightFull) {
-    conditionalProps.height = 'full';
+    conditionalProps.height = 'full'
   }
   const strings =
-    description && Array.isArray(description) ? description : [description];
+    description && Array.isArray(description) ? description : [description]
 
   return (
     <Box
@@ -130,5 +130,5 @@ export const ProfileCard: FC<React.PropsWithChildren<ProfileCardProps>> = ({
         )}
       </Box>
     </Box>
-  );
-};
+  )
+}

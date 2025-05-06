@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import type { ReactNode } from 'react';
-import type { ResponsiveRangeProps } from '../../utils/responsiveRangeProps';
+import type { ReactNode } from 'react'
+import type { ResponsiveRangeProps } from '../../utils/responsiveRangeProps'
 
-import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
-import { Box } from '../Box/Box';
-import * as styleRefs from './Hidden.css';
+import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps'
+import { Box } from '../Box/Box'
+import * as styleRefs from './Hidden.css'
 
 export interface HiddenProps extends ResponsiveRangeProps {
-  children: ReactNode;
-  screen?: boolean;
-  print?: boolean;
-  inline?: boolean;
+  children: ReactNode
+  screen?: boolean
+  print?: boolean
+  inline?: boolean
 }
 
 export const Hidden = ({
@@ -22,13 +22,13 @@ export const Hidden = ({
   print,
   inline,
 }: HiddenProps) => {
-  const hiddenOnScreen = Boolean(screen);
-  const hiddenOnPrint = Boolean(print);
+  const hiddenOnScreen = Boolean(screen)
+  const hiddenOnPrint = Boolean(print)
 
   const [hiddenOnXs, hiddenOnSm, hiddenOnMd, hiddenOnLg, hiddenOnXl] =
-    resolveResponsiveRangeProps({ above, below });
+    resolveResponsiveRangeProps({ above, below })
 
-  const display = inline ? 'inline' : 'block';
+  const display = inline ? 'inline' : 'block'
 
   return (
     <Box
@@ -48,5 +48,5 @@ export const Hidden = ({
     >
       {children}
     </Box>
-  );
-};
+  )
+}

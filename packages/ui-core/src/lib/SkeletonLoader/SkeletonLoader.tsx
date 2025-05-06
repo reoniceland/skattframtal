@@ -1,42 +1,42 @@
-import React from 'react';
+import React from 'react'
 
-import type { BoxProps } from '../Box/types';
+import type { BoxProps } from '../Box/types'
 
-import { Colors } from '@reon-island/ui-theme';
+import { Colors } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Stack, StackProps } from '../Stack/Stack';
-import * as styles from './SkeletonLoader.css';
+import { Box } from '../Box/Box'
+import { Stack, StackProps } from '../Stack/Stack'
+import * as styles from './SkeletonLoader.css'
 
 export interface SkeletonLoaderProps {
   /**
    * Define a fixed width, default skeleton loader will fill remaining space
    */
-  width?: string | number;
+  width?: string | number
   /**
    * Define a fixed height, default skeleton loader will fill remaining space
    */
-  height?: string | number;
+  height?: string | number
   /**
    * Adds multiple lines of skeleton loader, usefull for mimicking block of text
    */
-  repeat?: number;
+  repeat?: number
   /**
    * Define a space between each skeleton loader
    */
-  space?: StackProps['space'];
+  space?: StackProps['space']
   /**
    * Define the border radius of the loader
    */
-  borderRadius?: BoxProps['borderRadius'];
+  borderRadius?: BoxProps['borderRadius']
   /**
    * Change the display style of the loader
    */
-  display?: BoxProps['display'];
+  display?: BoxProps['display']
   /**
    * Background
    */
-  background?: 'purple100' | 'purple200';
+  background?: 'purple100' | 'purple200'
 }
 /**
  * Animated content placeholder to manage user expectations
@@ -65,7 +65,7 @@ export const SkeletonLoader = ({
           ...(width && { width }),
         }}
       />
-    );
+    )
   }
   return (
     <Stack space={space}>
@@ -86,5 +86,5 @@ export const SkeletonLoader = ({
         />
       ))}
     </Stack>
-  );
-};
+  )
+}

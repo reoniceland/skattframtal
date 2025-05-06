@@ -1,9 +1,9 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css'
 
 // this is used to generate uniqe classname for button so we can target empty styles for icon
-export const isEmpty = style({});
+export const isEmpty = style({})
 
 const buttonBase = {
   alignItems: 'center',
@@ -22,7 +22,7 @@ const buttonBase = {
   ':disabled': {
     cursor: 'default',
   },
-};
+}
 
 const textBase = {
   fontWeight: theme.typography.semiBold,
@@ -47,23 +47,23 @@ const textBase = {
       boxShadow: `inset 0 -3px 0 0 ${theme.color.mint400}`,
     },
   },
-};
+}
 
 export const fluid = style({
   width: '100%',
   justifyContent: 'center',
-});
+})
 
 export const nowrap = style({
   whiteSpace: 'nowrap',
-});
+})
 
 export const variants = styleVariants({
   primary: buttonBase,
   ghost: buttonBase,
   text: textBase,
   utility: buttonBase,
-});
+})
 
 export const size = styleVariants({
   default: {
@@ -142,7 +142,7 @@ export const size = styleVariants({
       },
     }),
   },
-});
+})
 
 export const padding = styleVariants({
   text: {
@@ -179,7 +179,7 @@ export const padding = styleVariants({
       },
     }),
   },
-});
+})
 
 export const circleSizes = styleVariants({
   default: {
@@ -210,7 +210,7 @@ export const circleSizes = styleVariants({
       },
     }),
   },
-});
+})
 
 const primaryColors = (
   main: string,
@@ -239,7 +239,7 @@ const primaryColors = (
       color: text,
     },
   },
-});
+})
 const ghostColors = (main: string, hover: string, disabled: string) => ({
   backgroundColor: theme.color.transparent,
   boxShadow: `inset 0 0 0 1px ${main}`,
@@ -262,7 +262,7 @@ const ghostColors = (main: string, hover: string, disabled: string) => ({
       boxShadow: `inset 0 0 0 3px ${theme.color.mint400}`,
     },
   },
-});
+})
 const textColors = (main: string, hover: string, disabled: string) => ({
   backgroundColor: theme.color.transparent,
   boxShadow: `inset 0 -1px 0 0 ${main}`,
@@ -285,7 +285,7 @@ const textColors = (main: string, hover: string, disabled: string) => ({
       boxShadow: `inset 0 -3px 0 0 ${theme.color.mint400}`,
     },
   },
-});
+})
 const utilityColors = (
   text: string,
   border: string,
@@ -317,7 +317,7 @@ const utilityColors = (
       boxShadow: `inset 0 0 0 3px ${theme.color.mint400}`,
     },
   },
-});
+})
 
 export const colors = {
   primary: styleVariants({
@@ -483,14 +483,14 @@ export const colors = {
       theme.color.purple300,
     ),
   }),
-};
+}
 
 export const circle = style({
   alignItems: 'center',
   justifyContent: 'center',
   borderRadius: '50%',
   padding: 0,
-});
+})
 
 const utilityIconColor = (
   scheme: keyof typeof colors.utility,
@@ -506,7 +506,7 @@ const utilityIconColor = (
   [`${variants.utility}${colors.utility[scheme]}:hover &`]: {
     color: hovercolor,
   },
-});
+})
 
 export const iconPostText = style({
   marginLeft: 15,
@@ -519,7 +519,7 @@ export const iconPostText = style({
       marginLeft: 4,
     },
   },
-});
+})
 
 export const iconPreText = style({
   marginRight: 15,
@@ -532,7 +532,7 @@ export const iconPreText = style({
       marginRight: 4,
     },
   },
-});
+})
 
 export const icon = style({
   width: 16,
@@ -576,17 +576,17 @@ export const icon = style({
     ),
     ...utilityIconColor('white', theme.color.blue400, theme.color.blue400),
   },
-});
+})
 
-export const loadingCircle = style({});
+export const loadingCircle = style({})
 
 export const hideContent = style({
   color: 'transparent',
-});
+})
 
 export const loading = style({
   position: 'relative',
-});
+})
 
 export const loader = style({
   position: 'absolute',
@@ -597,7 +597,7 @@ export const loader = style({
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-});
+})
 
 const dotAnimation = keyframes({
   '0%': {
@@ -612,7 +612,7 @@ const dotAnimation = keyframes({
     transform: 'scale(1)',
     opacity: 1,
   },
-});
+})
 
 export const loadingDot = style({
   width: 8,
@@ -639,7 +639,7 @@ export const loadingDot = style({
     },
   },
   animation: `${dotAnimation} 1.4s forwards cubic-bezier(0.59, 0.01, 0.39, 1) infinite`,
-});
+})
 
 export const truncate = style({
   display: 'inline-block',
@@ -647,4 +647,4 @@ export const truncate = style({
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
   overflow: 'hidden',
-});
+})

@@ -1,14 +1,14 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { mapToStyleProperty } from '../../utils/mapToStyleProperty';
+import { mapToStyleProperty } from '../../utils/mapToStyleProperty'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
 export const container = style({
   counterReset: 'section',
-});
+})
 
-export const content = style({});
+export const content = style({})
 
 export const bullet = style({
   display: 'inline-block',
@@ -20,21 +20,21 @@ export const bullet = style({
     counterIncrement: 'section',
     content: 'counter(section)',
   },
-});
+})
 
 export const numberColors = styleVariants(
   mapToStyleProperty(theme.color, 'color'),
-);
+)
 
 export const bulletColors = styleVariants(
   mapToStyleProperty(theme.color, 'backgroundColor'),
-);
+)
 
 export const numbered = style({
   ':before': {
     display: 'inline-block',
   },
-});
+})
 
 export const icon = style({
   position: 'relative',
@@ -50,7 +50,7 @@ export const icon = style({
     backgroundColor: 'inherit',
     borderRadius: '50%',
   },
-});
+})
 
 globalStyle(`${content} a`, {
   cursor: 'pointer',
@@ -59,9 +59,9 @@ globalStyle(`${content} a`, {
   boxShadow: `inset 0 -2px 0 0 currentColor`,
   transition: 'color .2s, box-shadow .2s',
   paddingBottom: 4,
-});
+})
 
 globalStyle(`${content} a:hover`, {
   color: theme.color.blueberry400,
   boxShadow: `inset 0 -2px 0 0 ${theme.color.blueberry400}`,
-});
+})

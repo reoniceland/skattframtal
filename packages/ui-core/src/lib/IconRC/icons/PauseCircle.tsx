@@ -1,5 +1,7 @@
 import * as React from 'react'
+
 import type { SvgProps as SVGRProps } from '../types'
+
 const SvgPauseCircle = ({
   title,
   titleId,

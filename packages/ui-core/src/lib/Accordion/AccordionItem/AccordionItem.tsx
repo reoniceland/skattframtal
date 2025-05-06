@@ -1,63 +1,63 @@
-'use client';
+'use client'
 
-import React, { forwardRef, useContext, useEffect, useState } from 'react';
+import React, { forwardRef, useContext, useEffect, useState } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { TestSupport } from '@reon-island/ui-utils';
-import type { ReactNode } from 'react';
-import type { Height } from 'react-animate-height';
-import type { TextVariants } from '../../Text/Text.css';
+import type { Colors } from '@reon-island/ui-theme'
+import type { TestSupport } from '@reon-island/ui-utils'
+import type { ReactNode } from 'react'
+import type { Height } from 'react-animate-height'
+import type { TextVariants } from '../../Text/Text.css'
 
-import cn from 'classnames';
-import AnimateHeight from 'react-animate-height';
+import cn from 'classnames'
+import AnimateHeight from 'react-animate-height'
 
-import { Box } from '../../Box/Box';
-import { Column } from '../../Column/Column';
-import { Columns } from '../../Columns/Columns';
-import { Icon } from '../../IconRC/Icon';
-import { hideFocusRingsClassName } from '../../private/hideFocusRings/hideFocusRings';
-import { Overlay } from '../../private/Overlay/Overlay';
-import { useVirtualTouchable } from '../../private/touchable/useVirtualTouchable';
-import { Text } from '../../Text/Text';
-import { AccordionContext } from '../Accordion';
-import * as styles from './AccordionItem.css';
+import { Box } from '../../Box/Box'
+import { Column } from '../../Column/Column'
+import { Columns } from '../../Columns/Columns'
+import { Icon } from '../../IconRC/Icon'
+import { hideFocusRingsClassName } from '../../private/hideFocusRings/hideFocusRings'
+import { Overlay } from '../../private/Overlay/Overlay'
+import { useVirtualTouchable } from '../../private/touchable/useVirtualTouchable'
+import { Text } from '../../Text/Text'
+import { AccordionContext } from '../Accordion'
+import * as styles from './AccordionItem.css'
 
-type IconVariantTypes = 'default' | 'small' | 'sidebar';
-type ColorVariants = 'blue' | 'red';
+type IconVariantTypes = 'default' | 'small' | 'sidebar'
+type ColorVariants = 'blue' | 'red'
 
-export type AccordionItemLabelTags = 'p' | 'h2' | 'h3' | 'h4' | 'h5' | 'div';
+export type AccordionItemLabelTags = 'p' | 'h2' | 'h3' | 'h4' | 'h5' | 'div'
 
 interface BaseProps {
-  id: string;
-  label: ReactNode;
-  labelVariant?: TextVariants;
-  labelUse?: AccordionItemLabelTags;
-  labelColor?: Colors;
-  iconVariant?: IconVariantTypes;
-  visibleContent?: ReactNode;
-  children: ReactNode;
-  onBlur?: () => void;
-  onFocus?: () => void;
-  colorVariant?: ColorVariants;
+  id: string
+  label: ReactNode
+  labelVariant?: TextVariants
+  labelUse?: AccordionItemLabelTags
+  labelColor?: Colors
+  iconVariant?: IconVariantTypes
+  visibleContent?: ReactNode
+  children: ReactNode
+  onBlur?: () => void
+  onFocus?: () => void
+  colorVariant?: ColorVariants
 }
 
 type StateProps =
   | {
-      expanded: boolean;
-      onToggle: (expanded: boolean) => void;
-      startExpanded?: never;
-      onClick?: never;
+      expanded: boolean
+      onToggle: (expanded: boolean) => void
+      startExpanded?: never
+      onClick?: never
     }
   | {
-      expanded?: never;
-      onToggle?: never;
-      startExpanded?: boolean;
-      onClick?: () => void;
-    };
+      expanded?: never
+      onToggle?: never
+      startExpanded?: boolean
+      onClick?: () => void
+    }
 
 // ---------------------------------------------------------------------------
 
-export type AccordionItemProps = BaseProps & StateProps;
+export type AccordionItemProps = BaseProps & StateProps
 
 export const AccordionItem = forwardRef<HTMLButtonElement, AccordionItemProps>(
   (
@@ -80,55 +80,55 @@ export const AccordionItem = forwardRef<HTMLButtonElement, AccordionItemProps>(
     },
     forwardedRef,
   ) => {
-    const { toggledId, setToggledId } = useContext(AccordionContext);
-    const [expandedFallback, setExpandedFallback] = useState(false);
-    let expanded = expandedProp ?? expandedFallback;
-    const [height, setHeight] = useState<Height>(expanded ? 'auto' : 0);
+    const { toggledId, setToggledId } = useContext(AccordionContext)
+    const [expandedFallback, setExpandedFallback] = useState(false)
+    let expanded = expandedProp ?? expandedFallback
+    const [height, setHeight] = useState<Height>(expanded ? 'auto' : 0)
 
     if (toggledId && toggledId !== id && expanded) {
-      expanded = false;
+      expanded = false
 
       if (height !== 0) {
-        setHeight(0);
+        setHeight(0)
       }
     }
 
     const handleToggle = () => {
-      const newValue = !expanded;
+      const newValue = !expanded
       if (typeof setToggledId === 'function' && newValue) {
-        setToggledId(id);
+        setToggledId(id)
       }
 
-      setHeight(newValue ? 'auto' : 0);
+      setHeight(newValue ? 'auto' : 0)
 
       if (expandedProp === undefined) {
-        setExpandedFallback(newValue);
+        setExpandedFallback(newValue)
       }
 
       if (typeof onToggle === 'function') {
-        onToggle(newValue);
+        onToggle(newValue)
       }
-    };
+    }
 
     useEffect(() => {
-      setHeight(expanded ? 'auto' : 0);
-    }, [expanded]);
+      setHeight(expanded ? 'auto' : 0)
+    }, [expanded])
 
     useEffect(
       () => {
         if (startExpanded && expandedProp == null) {
-          handleToggle();
+          handleToggle()
         }
       },
       // eslint-disable-next-line react-hooks/exhaustive-deps
       [], // Only run when component mounts!
-    );
+    )
 
     const plusColor = colorVariant
       ? colorVariant
       : iconVariant === 'sidebar'
         ? 'purple'
-        : 'blue';
+        : 'blue'
 
     return (
       <Box>
@@ -217,23 +217,23 @@ export const AccordionItem = forwardRef<HTMLButtonElement, AccordionItemProps>(
           </Box>
         </AnimateHeight>
       </Box>
-    );
+    )
   },
-);
+)
 
 // ---------------------------------------------------------------------------
 
-export type AccordionCardProps = AccordionItemProps & TestSupport;
+export type AccordionCardProps = AccordionItemProps & TestSupport
 
 export const AccordionCard = ({ dataTestId, ...props }: AccordionCardProps) => {
-  const [isFocused, setIsFocused] = useState<boolean>(false);
+  const [isFocused, setIsFocused] = useState<boolean>(false)
 
   const handleFocus = () => {
-    setIsFocused(true);
-  };
+    setIsFocused(true)
+  }
   const handleBlur = () => {
-    setIsFocused(false);
-  };
+    setIsFocused(false)
+  }
 
   return (
     <Box
@@ -250,8 +250,8 @@ export const AccordionCard = ({ dataTestId, ...props }: AccordionCardProps) => {
         {props.children}
       </AccordionItem>
     </Box>
-  );
-};
+  )
+}
 
 // ---------------------------------------------------------------------------
 
@@ -259,12 +259,12 @@ export type SidebarAccordionProps = Omit<
   BaseProps,
   'labelVariant' | 'iconVariant'
 > &
-  StateProps;
+  StateProps
 
 export const SidebarAccordion = (props: SidebarAccordionProps) => {
   return (
     <AccordionItem {...props} labelVariant="default" iconVariant="sidebar">
       {props.children}
     </AccordionItem>
-  );
-};
+  )
+}

@@ -1,36 +1,36 @@
-import React from 'react';
+import React from 'react'
 
-import type { PropsWithChildren } from 'react';
+import type { PropsWithChildren } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { ModalBase } from '../ModalBase/ModalBase';
-import * as styles from './Drawer.css';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { ModalBase } from '../ModalBase/ModalBase'
+import * as styles from './Drawer.css'
 
 interface DrawerProps {
   /**
    * Explain what this drawer is for
    */
-  ariaLabel: string;
+  ariaLabel: string
   /**
    * Unique ID for accessibility purposes
    */
-  baseId: string;
+  baseId: string
   /**
    * Element that opens the drawer.
    * It will be forwarded neccessery props for a11y and event handling.
    */
-  disclosure: React.ReactElement;
+  disclosure: React.ReactElement
   /**
    * Show immediately without clicking the disclosure button
    */
-  initialVisibility?: boolean | undefined;
+  initialVisibility?: boolean | undefined
   /**
    * Position of the drawer
    */
-  position?: 'right' | 'left';
+  position?: 'right' | 'left'
 }
 
 export const Drawer = ({
@@ -70,10 +70,10 @@ export const Drawer = ({
             </Box>
             <Box>{children}</Box>
           </Box>
-        );
+        )
       }}
     </ModalBase>
-  );
-};
+  )
+}
 
-export default Drawer;
+export default Drawer

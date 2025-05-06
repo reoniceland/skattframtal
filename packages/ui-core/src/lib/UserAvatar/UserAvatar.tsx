@@ -1,34 +1,34 @@
-import React, { MouseEventHandler } from 'react';
+import React, { MouseEventHandler } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import * as styles from './UserAvatar.css';
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import * as styles from './UserAvatar.css'
 
 interface UserAvatarProps {
-  username?: string;
-  onClick?: MouseEventHandler;
-  size?: keyof typeof styles.avatarSize;
-  isDelegation?: boolean;
-  ariaLabel?: string;
-  color?: 'purple' | 'blue' | 'darkBlue' | 'darkPurple';
-  dataTestid?: string;
+  username?: string
+  onClick?: MouseEventHandler
+  size?: keyof typeof styles.avatarSize
+  isDelegation?: boolean
+  ariaLabel?: string
+  color?: 'purple' | 'blue' | 'darkBlue' | 'darkPurple'
+  dataTestid?: string
 }
 
 const getInitials = (username?: string) => {
   if (!username) {
-    return '';
+    return ''
   }
 
-  const names = username.split(' ');
-  let initials = names[0].substring(0, 1).toUpperCase();
+  const names = username.split(' ')
+  let initials = names[0].substring(0, 1).toUpperCase()
 
   if (names.length > 1) {
-    initials += names[names.length - 1].substring(0, 1).toUpperCase();
+    initials += names[names.length - 1].substring(0, 1).toUpperCase()
   }
 
-  return initials;
-};
+  return initials
+}
 
 export const UserAvatar = ({
   username,
@@ -66,4 +66,4 @@ export const UserAvatar = ({
       {getInitials(username)}
     </p>
   </FocusableBox>
-);
+)

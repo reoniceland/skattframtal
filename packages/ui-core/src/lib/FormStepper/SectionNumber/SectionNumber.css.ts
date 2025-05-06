@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const number = style({
   width: 32,
@@ -12,7 +12,7 @@ export const number = style({
   borderRadius: '50%',
   top: 0,
   left: 0,
-});
+})
 
 export const progressLine = style({
   display: 'none',
@@ -26,7 +26,7 @@ export const progressLine = style({
       display: 'flex',
     },
   },
-});
+})
 
 export const historyProgressLine = style({
   display: 'flex',
@@ -34,4 +34,4 @@ export const historyProgressLine = style({
   left: '50%',
   marginLeft: '-1px',
   top: '50%',
-});
+})

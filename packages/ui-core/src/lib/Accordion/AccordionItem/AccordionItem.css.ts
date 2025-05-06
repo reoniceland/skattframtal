@@ -1,15 +1,15 @@
-import { recipe } from '@vanilla-extract/recipes';
+import { recipe } from '@vanilla-extract/recipes'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
-export const button = style({});
-export const iconWrap = style({});
+export const button = style({})
+export const iconWrap = style({})
 
 export const iconTilted = style({
   transform: 'rotate(45deg)',
-});
+})
 
 export const focusRing = [
   style({
@@ -25,7 +25,7 @@ export const focusRing = [
     left: -theme.spacing[1],
     right: -theme.spacing[1],
   }),
-];
+]
 
 export const card = recipe({
   base: {
@@ -94,7 +94,7 @@ export const card = recipe({
   defaultVariants: {
     color: 'blue',
   },
-});
+})
 
 export const focused = style({
   '::before': {
@@ -107,13 +107,13 @@ export const focused = style({
   ':hover': {
     borderColor: theme.color.white,
   },
-});
+})
 
 const iconWrapSizes = {
   default: 40,
   small: 24,
   sidebar: 20,
-};
+}
 
 export const plusIconWrap = recipe({
   base: {
@@ -158,36 +158,36 @@ export const plusIconWrap = recipe({
     color: 'blue',
     iconVariant: 'default',
   },
-});
+})
 
 export const icon = style({
   position: 'absolute',
   display: 'flex',
   left: '50%',
-});
+})
 
 export const addIcon = style({
   transform: 'translateX(-50%) rotateZ(0deg)',
   opacity: 1,
   transition: 'opacity 150ms ease, transform 300ms ease',
-});
+})
 
 export const removeIcon = style({
   transform: 'translateX(-50%) rotateZ(-90deg)',
   opacity: 0,
   transition: 'opacity 150ms ease, transform 300ms ease',
-});
+})
 
 export const showRemoveIcon = style({
   transform: 'translateX(-50%) rotateZ(0deg)',
   opacity: 1,
-});
+})
 
 export const hideAddIcon = style({
   transform: 'translateX(-50%) rotateZ(90deg)',
   opacity: 0,
-});
+})
 
 globalStyle(`${button}:focus-visible ${iconWrap}`, {
   boxShadow: `inset 0 0 0 3px ${theme.color.mint400}`,
-});
+})

@@ -1,11 +1,11 @@
-import React from 'react';
+import React from 'react'
 
-import { NewsletterSignup } from './NewsletterSignup';
+import { NewsletterSignup } from './NewsletterSignup'
 
 export default {
   title: 'Components/NewsletterSignup',
   component: NewsletterSignup,
-};
+}
 
 export const Default = () => {
   return (
@@ -24,8 +24,8 @@ export const Default = () => {
       errorMessage="Skráning tókst ekki"
       value=""
     />
-  );
-};
+  )
+}
 
 export const BlueVariant = () => {
   return (
@@ -45,8 +45,8 @@ export const BlueVariant = () => {
       errorMessage="Skráning tókst ekki"
       value=""
     />
-  );
-};
+  )
+}
 
 export const errorState = () => {
   return (
@@ -67,8 +67,8 @@ export const errorState = () => {
       successMessage="Tölvupóstur hefur verið sendur á jon@jonsbakari.is til staðfestingar. Takk fyrir."
       errorMessage="Skráning tókst ekki"
     />
-  );
-};
+  )
+}
 
 export const successState = () => {
   return (
@@ -89,5 +89,5 @@ export const successState = () => {
       successMessage="Tölvupóstur hefur verið sendur á jon@jonsbakari.is til staðfestingar. Takk fyrir."
       errorMessage="Skráning tókst ekki"
     />
-  );
-};
+  )
+}

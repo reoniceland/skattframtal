@@ -1,19 +1,19 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import type { FC } from 'react';
-import type { AsyncSearchOption } from './AsyncSearch';
+import type { FC } from 'react'
+import type { AsyncSearchOption } from './AsyncSearch'
 
-import { withFigma } from '../../utils/withFigma';
-import { Box } from '../Box/Box';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-import { AsyncSearch } from './AsyncSearch';
+import { withFigma } from '../../utils/withFigma'
+import { Box } from '../Box/Box'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
+import { AsyncSearch } from './AsyncSearch'
 
 export default {
   title: 'Components/AsyncSearch',
   component: AsyncSearch,
   parameters: withFigma('AsyncSearch'),
-};
+}
 
 const items: AsyncSearchOption[] = [
   { label: 'Apple', value: 'apple' },
@@ -24,41 +24,41 @@ const items: AsyncSearchOption[] = [
   { label: 'Fæðingarorlof', value: 'faedingarorlof' },
   { label: 'Atvinna', value: 'atvinna' },
   { label: 'Vottorð', value: 'vottord' },
-];
+]
 
-let timer: NodeJS.Timer | null = null;
+let timer: NodeJS.Timer | null = null
 
 export const Features = ({ simulateAsync, colored, large }) => {
-  const [options, setOptions] = useState(items);
-  const [value, setValue] = useState('');
-  const [loading, setLoading] = useState<boolean>(false);
+  const [options, setOptions] = useState(items)
+  const [value, setValue] = useState('')
+  const [loading, setLoading] = useState<boolean>(false)
 
   const update = (value: string) => {
     const newOpts = items.filter(
       (item) => value && item.label.toLowerCase().includes(value.toLowerCase()),
-    );
+    )
 
-    setLoading(false);
+    setLoading(false)
 
     if (!value) {
-      setOptions([]);
-      return false;
+      setOptions([])
+      return false
     }
 
-    setOptions(newOpts);
-  };
+    setOptions(newOpts)
+  }
 
   useEffect(() => {
     if (value !== null) {
       if (simulateAsync) {
-        if (timer !== null) clearTimeout(timer);
-        setLoading(true);
-        timer = setTimeout(() => update(value), 600);
+        if (timer !== null) clearTimeout(timer)
+        setLoading(true)
+        timer = setTimeout(() => update(value), 600)
       } else {
-        update(value);
+        update(value)
       }
     }
-  }, [value, simulateAsync]);
+  }, [value, simulateAsync])
 
   return (
     <Box padding={2}>
@@ -69,20 +69,20 @@ export const Features = ({ simulateAsync, colored, large }) => {
           size={large ? 'large' : 'medium'}
           placeholder="Type in something"
           onInputValueChange={(inputValue) => {
-            setValue(inputValue);
+            setValue(inputValue)
           }}
           loading={loading}
         />
       </Stack>
     </Box>
-  );
-};
+  )
+}
 
 Features.args = {
   simulateAsync: false,
   colored: false,
   large: false,
-};
+}
 
 export const OnSubmit: FC<React.PropsWithChildren> = () => (
   <Box padding={2}>
@@ -90,17 +90,17 @@ export const OnSubmit: FC<React.PropsWithChildren> = () => (
       <AsyncSearch
         filter
         onSubmit={(inputValue, selectedOption) => {
-          window.alert('Submit ' + inputValue || selectedOption?.value + '!');
+          window.alert('Submit ' + inputValue || selectedOption?.value + '!')
         }}
         options={items}
       />
     </Stack>
   </Box>
-);
+)
 
 interface ContainerProps {
-  active?: boolean;
-  colored?: boolean;
+  active?: boolean
+  colored?: boolean
 }
 
 export const CustomItem = ({ colored, large }) => {
@@ -109,8 +109,8 @@ export const CustomItem = ({ colored, large }) => {
     colored,
     children,
   }) => {
-    const activeColor = colored ? 'white' : 'blue100';
-    const inactiveColor = colored ? 'blue100' : 'white';
+    const activeColor = colored ? 'white' : 'blue100'
+    const inactiveColor = colored ? 'blue100' : 'white'
 
     return (
       <Box
@@ -122,8 +122,8 @@ export const CustomItem = ({ colored, large }) => {
       >
         {children}
       </Box>
-    );
-  };
+    )
+  }
 
   const customItems = [
     { label: 'Apple', value: 'apple' },
@@ -182,7 +182,7 @@ export const CustomItem = ({ colored, large }) => {
       ),
     },
     { label: 'Orange', value: 'orange' },
-  ];
+  ]
 
   return (
     <Box padding={2}>
@@ -195,10 +195,10 @@ export const CustomItem = ({ colored, large }) => {
         />
       </Stack>
     </Box>
-  );
-};
+  )
+}
 
 CustomItem.args = {
   colored: false,
   large: false,
-};
+}

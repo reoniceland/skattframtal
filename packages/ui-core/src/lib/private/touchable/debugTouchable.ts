@@ -1,6 +1,6 @@
-import type { StyleRule } from '@vanilla-extract/css';
+import type { StyleRule } from '@vanilla-extract/css'
 
-type SelectorMap = StyleRule['selectors'];
+type SelectorMap = StyleRule['selectors']
 
 export const debugTouchable = ({ after = false } = {}): SelectorMap =>
   process.env.NODE_ENV === 'production'
@@ -10,4 +10,4 @@ export const debugTouchable = ({ after = false } = {}): SelectorMap =>
           background: 'red',
           opacity: 0.2,
         },
-      };
+      }

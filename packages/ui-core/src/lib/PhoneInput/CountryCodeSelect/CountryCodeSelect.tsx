@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 // eslint-disable-next-line @typescript-eslint/ban-ts-comment
 // @ts-ignore make web strict
-import ReactSelect, { GroupBase } from 'react-select';
+import ReactSelect, { GroupBase } from 'react-select'
 
-import { Option as OptionType } from '../../Select/Select.types';
-import { CountryCodeSelectProps } from '../PhoneInput.types';
+import { Option as OptionType } from '../../Select/Select.types'
+import { CountryCodeSelectProps } from '../PhoneInput.types'
 import {
   Control,
   customStyles,
@@ -18,8 +18,8 @@ import {
   Placeholder,
   SingleValue,
   ValueContainer,
-} from './Components';
-import * as styles from './CountryCodeSelect.css';
+} from './Components'
+import * as styles from './CountryCodeSelect.css'
 
 export const CountryCodeSelect = ({
   name,
@@ -85,5 +85,5 @@ export const CountryCodeSelect = ({
         }}
       />
     </div>
-  );
-};
+  )
+}

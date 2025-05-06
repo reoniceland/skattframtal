@@ -1,4 +1,4 @@
-import { color as colorPrimitives } from '../tokens/tokens';
+import { color as colorPrimitives } from '../tokens/tokens'
 
 export const color = {
   primary: {
@@ -67,4 +67,4 @@ export const color = {
       600: colorPrimitives.accent.yellow['600'].$value,
     },
   },
-};
+}

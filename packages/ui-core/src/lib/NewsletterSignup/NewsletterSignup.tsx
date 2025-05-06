@@ -1,44 +1,44 @@
-import * as React from 'react';
+import * as React from 'react'
 
-import { AlertMessage } from '../AlertMessage/AlertMessage';
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Hidden } from '../Hidden/Hidden';
-import { Input } from '../Input/Input';
-import { Text } from '../Text/Text';
-import * as styles from './NewsletterSignup.css';
+import { AlertMessage } from '../AlertMessage/AlertMessage'
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Hidden } from '../Hidden/Hidden'
+import { Input } from '../Input/Input'
+import { Text } from '../Text/Text'
+import * as styles from './NewsletterSignup.css'
 
-type ColorVariant = 'white' | 'blue';
-type State = 'default' | 'error' | 'success';
+type ColorVariant = 'white' | 'blue'
+type State = 'default' | 'error' | 'success'
 
 interface ErrorMessageProps {
-  errorMessage?: string;
+  errorMessage?: string
 }
 
 const ErrorMessage = ({ errorMessage }: ErrorMessageProps) => (
   <Text variant="eyebrow" fontWeight="medium" color="red600" paddingTop={1}>
     {errorMessage}
   </Text>
-);
+)
 
 interface Props {
-  heading: string;
-  text: string;
-  id?: string;
-  name?: string;
-  placeholder: string;
-  label: string;
-  buttonText: string;
-  variant?: ColorVariant;
-  state?: State;
-  errorMessage: string;
-  successTitle: string;
-  successMessage: string;
+  heading: string
+  text: string
+  id?: string
+  name?: string
+  placeholder: string
+  label: string
+  buttonText: string
+  variant?: ColorVariant
+  state?: State
+  errorMessage: string
+  successTitle: string
+  successMessage: string
   onChange: (
     event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
-  ) => void;
-  onSubmit: (event: React.FormEvent<unknown>) => void;
-  value: string;
+  ) => void
+  onSubmit: (event: React.FormEvent<unknown>) => void
+  value: string
 }
 
 export const NewsletterSignup: React.FC<React.PropsWithChildren<Props>> = ({
@@ -114,5 +114,5 @@ export const NewsletterSignup: React.FC<React.PropsWithChildren<Props>> = ({
         {state === 'error' && <ErrorMessage errorMessage={errorMessage} />}
       </Hidden>
     </Box>
-  );
-};
+  )
+}

@@ -1,34 +1,34 @@
-'use client';
+'use client'
 
-import { useState } from 'react';
+import { useState } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { FC } from 'react';
-import type { IconMapIcon } from '../IconRC/types';
+import type { Colors } from '@reon-island/ui-theme'
+import type { FC } from 'react'
+import type { IconMapIcon } from '../IconRC/types'
 
-import { Box } from '../Box/Box';
-import { LinkContext } from '../context/LinkContext/LinkContext';
-import { Icon } from '../IconRC/Icon';
-import { LinkV2 } from '../Link/LinkV2';
-import { Text } from '../Text/Text';
-import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden';
-import * as styles from './AlertBanner.css';
+import { Box } from '../Box/Box'
+import { LinkContext } from '../context/LinkContext/LinkContext'
+import { Icon } from '../IconRC/Icon'
+import { LinkV2 } from '../Link/LinkV2'
+import { Text } from '../Text/Text'
+import { VisuallyHidden } from '../VisuallyHidden/VisuallyHidden'
+import * as styles from './AlertBanner.css'
 
 export type AlertBannerVariants =
   | 'error'
   | 'info'
   | 'success'
   | 'warning'
-  | 'default';
+  | 'default'
 
 interface VariantStyle {
-  background: Colors;
-  borderColor: Colors;
-  iconColor?: Colors;
-  icon?: IconMapIcon;
+  background: Colors
+  borderColor: Colors
+  iconColor?: Colors
+  icon?: IconMapIcon
 }
 
-type VariantStyles = Record<AlertBannerVariants, VariantStyle>;
+type VariantStyles = Record<AlertBannerVariants, VariantStyle>
 
 const variantStyles: VariantStyles = {
   default: {
@@ -59,25 +59,25 @@ const variantStyles: VariantStyles = {
     iconColor: 'yellow600',
     icon: 'warning',
   },
-};
+}
 
 export interface AlertBannerProps {
-  variant?: AlertBannerVariants;
+  variant?: AlertBannerVariants
   /**
    * Adds close button in corner to remove banner
    */
-  dismissable?: boolean;
-  title?: string;
-  description?: string;
+  dismissable?: boolean
+  title?: string
+  description?: string
   link?: {
-    href: string;
-    title: string;
-  };
+    href: string
+    title: string
+  }
   /**
    * Fires when banner gets dismissed, useful for keeping track in storage that the user has dismissed the banner if we don't want it to show up again on page reload
    */
-  onDismiss?: () => void;
-  closeButtonLabel?: string;
+  onDismiss?: () => void
+  closeButtonLabel?: string
 }
 
 export const AlertBanner: FC<React.PropsWithChildren<AlertBannerProps>> = ({
@@ -89,13 +89,13 @@ export const AlertBanner: FC<React.PropsWithChildren<AlertBannerProps>> = ({
   onDismiss,
   closeButtonLabel = 'Close',
 }) => {
-  const [dismissed, setDismissed] = useState(false);
+  const [dismissed, setDismissed] = useState(false)
 
   if (dismissed) {
-    return null;
+    return null
   }
 
-  const variant = variantStyles[variantKey];
+  const variant = variantStyles[variantKey]
   return (
     <Box
       background={variant.background}
@@ -163,9 +163,9 @@ export const AlertBanner: FC<React.PropsWithChildren<AlertBannerProps>> = ({
           <button
             className={styles.closeBtn}
             onClick={() => {
-              setDismissed(true);
+              setDismissed(true)
               if (onDismiss) {
-                onDismiss();
+                onDismiss()
               }
             }}
           >
@@ -175,5 +175,5 @@ export const AlertBanner: FC<React.PropsWithChildren<AlertBannerProps>> = ({
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}

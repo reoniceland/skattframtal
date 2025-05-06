@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { Logo } from '../Logo/Logo';
-import { Text } from '../Text/Text';
-import { Stack } from './Stack';
+import { Box } from '../Box/Box'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { Logo } from '../Logo/Logo'
+import { Text } from '../Text/Text'
+import { Stack } from './Stack'
 
 export default {
   component: Stack,
-};
+}
 
 export const Default = () => (
   <Box paddingY={2}>
@@ -28,4 +28,4 @@ export const Default = () => (
       </Stack>
     </ContentBlock>
   </Box>
-);
+)

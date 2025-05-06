@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const buttonWrap = style({
   '@media': {
@@ -8,11 +8,11 @@ export const buttonWrap = style({
       marginLeft: 'auto',
     },
   },
-});
+})
 
 export const inputWrap = style({
   flex: '0 1 70%',
-});
+})
 
 export const variants = styleVariants({
   white: {
@@ -21,8 +21,8 @@ export const variants = styleVariants({
   blue: {
     backgroundColor: theme.color.blue100,
   },
-});
+})
 
 export const successBox = style({
   maxWidth: 400,
-});
+})

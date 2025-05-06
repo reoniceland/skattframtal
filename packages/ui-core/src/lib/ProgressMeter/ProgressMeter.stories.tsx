@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import { useToggle } from 'react-use';
+import { useToggle } from 'react-use'
 
-import { Button } from '../Button/Button';
-import { Stack } from '../Stack/Stack';
-import { ProgressMeter } from './ProgressMeter';
+import { Button } from '../Button/Button'
+import { Stack } from '../Stack/Stack'
+import { ProgressMeter } from './ProgressMeter'
 
 export default {
   title: 'Components/ProgressMeter',
@@ -17,22 +17,22 @@ export default {
       },
     },
   },
-};
+}
 
 export const Default = () => {
-  return <ProgressMeter progress={0.5} />;
-};
+  return <ProgressMeter progress={0.5} />
+}
 
 export const RedColorScheme = () => {
-  return <ProgressMeter progress={0.4} variant="red" />;
-};
+  return <ProgressMeter progress={0.4} variant="red" />
+}
 
 export const RoseColorScheme = () => {
-  return <ProgressMeter progress={0.3} variant="rose" />;
-};
+  return <ProgressMeter progress={0.3} variant="rose" />
+}
 
 export const AnimatesOnChange = () => {
-  const [on, toggle] = useToggle(true);
+  const [on, toggle] = useToggle(true)
   return (
     <Stack space="gutter">
       <Button onClick={toggle} variant="text">
@@ -40,5 +40,5 @@ export const AnimatesOnChange = () => {
       </Button>
       <ProgressMeter progress={on ? 0.01 : 1} />
     </Stack>
-  );
-};
+  )
+}

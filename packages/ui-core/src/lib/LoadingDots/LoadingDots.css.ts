@@ -1,17 +1,17 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css'
 
-export const single = style({});
+export const single = style({})
 
-export const large = style({});
+export const large = style({})
 
 export const container = style({
   display: 'inline-flex',
   flexWrap: 'nowrap',
   overflow: 'hidden',
   lineHeight: 0,
-});
+})
 
 const gradient = `linear-gradient(135deg,
   #0161FD 0%,
@@ -19,29 +19,29 @@ const gradient = `linear-gradient(135deg,
   #812EA4 50.79%,
   #C21578 77.26%,
   #FD0050 100%
-)`;
+)`
 
 const gradient1 = `linear-gradient(90deg,
   #0161FD 0%,
   #3F46D2 24.57%
-)`;
+)`
 
 const gradient2 = `linear-gradient(90deg,
   #3F46D2 0%,
   #812EA4 100%
-)`;
+)`
 
 const gradient3 = `linear-gradient(90deg,
   #812EA4 0%,
   #C21578 77.26%,
   #FD0050 100%
-)`;
+)`
 
 export const colors = styleVariants({
   blue: {},
   white: {},
   gradient: {},
-});
+})
 
 const dotAnimation = keyframes({
   '0%': {
@@ -56,7 +56,7 @@ const dotAnimation = keyframes({
     transform: 'scale(1)',
     opacity: 1,
   },
-});
+})
 
 export const dot = style({
   width: 8,
@@ -112,4 +112,4 @@ export const dot = style({
     },
   },
   animation: `${dotAnimation} 1.4s forwards cubic-bezier(0.59, 0.01, 0.39, 1) infinite`,
-});
+})

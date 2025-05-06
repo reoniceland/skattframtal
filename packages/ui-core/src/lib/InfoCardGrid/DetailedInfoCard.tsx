@@ -1,4 +1,4 @@
-import { isDefined } from '@reon-island/utils';
+import { isDefined } from '@reon-island/utils'
 
 import {
   Box,
@@ -10,24 +10,24 @@ import {
   Stack,
   Tag,
   Text,
-} from '../..';
-import { ActionCardProps } from '../ActionCard/types';
-import { BaseProps } from './InfoCard';
-import * as styles from './InfoCard.css';
+} from '../..'
+import { ActionCardProps } from '../ActionCard/types'
+import { BaseProps } from './InfoCard'
+import * as styles from './InfoCard.css'
 
-const eyebrowColor = 'blueberry600';
+const eyebrowColor = 'blueberry600'
 
 export type DetailedProps = BaseProps & {
-  logo?: string;
-  logoAlt?: string;
-  subEyebrow?: string;
+  logo?: string
+  logoAlt?: string
+  subEyebrow?: string
   //max 5 lines
   detailLines?: Array<{
-    icon: IconMapIcon;
-    text: string;
-  }>;
-  tags?: Array<ActionCardProps['tag']>;
-};
+    icon: IconMapIcon
+    text: string
+  }>
+  tags?: Array<ActionCardProps['tag']>
+}
 
 export const DetailedInfoCard = ({
   title,
@@ -42,19 +42,19 @@ export const DetailedInfoCard = ({
 }: DetailedProps) => {
   const renderLogo = () => {
     if (!logo) {
-      return null;
+      return null
     }
 
     return (
       <Box style={{ flex: '0 0 48px' }}>
         <img height={48} src={logo} alt={logoAlt} />
       </Box>
-    );
-  };
+    )
+  }
 
   const renderDetails = () => {
     if (!detailLines?.length) {
-      return null;
+      return null
     }
 
     return (
@@ -81,12 +81,12 @@ export const DetailedInfoCard = ({
           ))}
         </Stack>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderTags = () => {
     if (!tags?.length) {
-      return null;
+      return null
     }
 
     return (
@@ -94,7 +94,7 @@ export const DetailedInfoCard = ({
         {tags
           .map((tag, index) => {
             if (!tag) {
-              return null;
+              return null
             }
             return (
               <Tag
@@ -105,12 +105,12 @@ export const DetailedInfoCard = ({
               >
                 {tag.label}
               </Tag>
-            );
+            )
           })
           .filter(isDefined)}
       </Inline>
-    );
-  };
+    )
+  }
 
   const renderHeader = () => {
     return (
@@ -131,8 +131,8 @@ export const DetailedInfoCard = ({
         )}
         {renderLogo()}
       </Box>
-    );
-  };
+    )
+  }
 
   const renderContent = () => {
     if (size === 'large') {
@@ -152,7 +152,7 @@ export const DetailedInfoCard = ({
           </GridColumn>
           <GridColumn span="4/12">{renderDetails()}</GridColumn>
         </GridRow>
-      );
+      )
     }
     return (
       <Box marginTop={2}>
@@ -168,8 +168,8 @@ export const DetailedInfoCard = ({
         )}
         {renderDetails()}
       </Box>
-    );
-  };
+    )
+  }
 
   return (
     <Box
@@ -186,5 +186,5 @@ export const DetailedInfoCard = ({
         {renderTags()}
       </Box>
     </Box>
-  );
-};
+  )
+}

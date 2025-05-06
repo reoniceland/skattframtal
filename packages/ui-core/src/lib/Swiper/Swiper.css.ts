@@ -1,11 +1,11 @@
-import { theme } from '@reon-island/ui-theme';
-import { escapeGrid } from '@reon-island/ui-utils';
+import { theme } from '@reon-island/ui-theme'
+import { escapeGrid } from '@reon-island/ui-utils'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const root = style({
   ...escapeGrid(),
-});
+})
 
 export const container = style({
   marginLeft: 'auto',
@@ -14,7 +14,7 @@ export const container = style({
   overflow: 'hidden',
   padding: 0,
   zIndex: 1,
-});
+})
 
 export const slides = style({
   scrollSnapType: 'x proximity',
@@ -30,7 +30,7 @@ export const slides = style({
       marginRight: theme.spacing[3],
     },
   },
-});
+})
 
 export const slide = style({
   width: '100%',
@@ -43,6 +43,6 @@ export const slide = style({
   // Breathing space for box-shadow etc
   marginTop: theme.spacing[2],
   marginBottom: theme.spacing[2],
-});
+})
 
-export const noMargin = style({ marginLeft: 0 });
+export const noMargin = style({ marginLeft: 0 })

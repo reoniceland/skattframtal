@@ -1,6 +1,6 @@
 /** @type {import('@ianvs/prettier-plugin-sort-imports').PrettierConfig} */
 const config = {
-  semi: true,
+  semi: false,
   singleQuote: true,
   trailingComma: 'all',
   arrowParens: 'always',

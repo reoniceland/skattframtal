@@ -1,11 +1,11 @@
-import type * as CSS from 'csstype';
+import type * as CSS from 'csstype'
 
-import { theme } from '@reon-island/ui-theme';
-import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils';
+import { theme } from '@reon-island/ui-theme'
+import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils'
 
-import { mapToStyleProperty } from '../../utils/mapToStyleProperty';
+import { mapToStyleProperty } from '../../utils/mapToStyleProperty'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
 export type TextVariants =
   | 'default'
@@ -17,53 +17,53 @@ export type TextVariants =
   | 'h4'
   | 'h5'
   | 'intro'
-  | 'eyebrow';
+  | 'eyebrow'
 
 interface ResponsiveProps<T> {
-  xs?: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
+  xs?: T
+  sm?: T
+  md?: T
+  lg?: T
+  xl?: T
 }
 
 type Variants = Record<
   TextVariants,
   CSS.Properties<string | ResponsiveProps<string | number>>
->;
+>
 
-type defaultFontWeights = Record<TextVariants, number>;
+type defaultFontWeights = Record<TextVariants, number>
 
 export const truncate = style({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-});
+})
 
 export const strikethrough = style({
   textDecoration: 'line-through',
-});
+})
 
 export const capitalizeFirstLetter = style({
   ':first-letter': {
     textTransform: 'capitalize',
   },
-});
+})
 
 export const disabledText = style({
   color: theme.color.dark300,
-});
+})
 
 export const base = style({
   ['-webkit-font-smoothing' as any]: 'antialiased',
-});
+})
 
 const fontWeightMap = {
   light: theme.typography.light,
   regular: theme.typography.regular,
   medium: theme.typography.medium,
   semiBold: theme.typography.semiBold,
-};
+}
 
 const availableLineHeights = {
   xs: 1,
@@ -71,7 +71,7 @@ const availableLineHeights = {
   md: 1.5,
   lg: 1.75,
   xl: 2,
-};
+}
 
 const availableFontSizes = {
   xxs: { xs: 12, md: 14 },
@@ -81,7 +81,7 @@ const availableFontSizes = {
   lg: { xs: 20, md: 24 },
   xl: { xs: 26, md: 34 },
   xxl: { xs: 32, md: 42 },
-};
+}
 
 const lineHeightMap = {
   xs: availableLineHeights.xs,
@@ -89,7 +89,7 @@ const lineHeightMap = {
   md: availableLineHeights.md,
   lg: availableLineHeights.lg,
   xl: availableLineHeights.xl,
-};
+}
 
 const defaultFontWeightsMap: defaultFontWeights = {
   default: theme.typography.light,
@@ -102,7 +102,7 @@ const defaultFontWeightsMap: defaultFontWeights = {
   medium: theme.typography.regular,
   intro: theme.typography.light,
   eyebrow: theme.typography.semiBold,
-};
+}
 
 const defaultLineHeightsMap: defaultFontWeights = {
   default: availableLineHeights.md,
@@ -115,23 +115,23 @@ const defaultLineHeightsMap: defaultFontWeights = {
   medium: availableLineHeights.md,
   intro: availableLineHeights.md,
   eyebrow: availableLineHeights.md,
-};
+}
 
 export const fontWeight = styleVariants(
   mapToStyleProperty(fontWeightMap, 'fontWeight'),
-);
+)
 
 export const lineHeight = styleVariants(
   mapToStyleProperty(lineHeightMap, 'lineHeight'),
-);
+)
 
 export const defaultFontWeights = styleVariants(
   mapToStyleProperty(defaultFontWeightsMap, 'fontWeight'),
-);
+)
 
 export const defaultLineHeights = styleVariants(
   mapToStyleProperty(defaultLineHeightsMap, 'lineHeight'),
-);
+)
 
 export const whiteSpace = {
   ...styleVariants(
@@ -145,7 +145,7 @@ export const whiteSpace = {
     },
     'whiteSpace',
   ),
-};
+}
 
 export const textAlign = {
   ...styleVariants(
@@ -157,7 +157,7 @@ export const textAlign = {
     },
     'textAlign',
   ),
-};
+}
 
 export const variants: Variants = {
   default: {
@@ -190,28 +190,28 @@ export const variants: Variants = {
   eyebrow: {
     fontSize: availableFontSizes.xxs,
   },
-};
+}
 
-export const colors = styleVariants(mapToStyleProperty(theme.color, 'color'));
+export const colors = styleVariants(mapToStyleProperty(theme.color, 'color'))
 
 export const variantStyles = (Object.keys(variants) as TextVariants[]).reduce(
   (acc, variantKey) => {
-    acc[variantKey] = responsiveStyleMap(variants[variantKey]);
-    return acc;
+    acc[variantKey] = responsiveStyleMap(variants[variantKey])
+    return acc
   },
   {} as Record<TextVariants, string>,
-);
+)
 
 globalStyle(`${base} em`, {
   fontStyle: 'italic',
-});
+})
 
 globalStyle(`${base} strong`, {
   fontWeight: theme.typography.semiBold,
-});
+})
 
 globalStyle(`${base} mark`, {
   backgroundColor: theme.color.mint400,
   color: theme.color.dark400,
   fontWeight: theme.typography.regular,
-});
+})

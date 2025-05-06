@@ -1,36 +1,36 @@
-import React, { Children } from 'react';
+import React, { Children } from 'react'
 
-import type { ReactNode } from 'react';
-import type { Align } from '../../utils/align';
-import type { ResponsiveProp } from '../../utils/responsiveProp';
-import type { BoxProps } from '../Box/types';
-import type { DividerProps } from '../Divider/Divider';
-import type { HiddenProps } from '../Hidden/Hidden';
-import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
+import type { ReactNode } from 'react'
+import type { Align } from '../../utils/align'
+import type { ResponsiveProp } from '../../utils/responsiveProp'
+import type { BoxProps } from '../Box/types'
+import type { DividerProps } from '../Divider/Divider'
+import type { HiddenProps } from '../Hidden/Hidden'
+import type { ReactNodeNoStrings } from '../private/ReactNodeNoStrings'
 
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from 'react-keyed-flatten-children'
 
-import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin';
-import { alignToFlexAlign } from '../../utils/align';
+import { useNegativeMarginTop } from '../../hooks/useNegativeMargin/useNegativeMargin'
+import { alignToFlexAlign } from '../../utils/align'
 import {
   mapResponsiveProp,
   normaliseResponsiveProp,
-} from '../../utils/responsiveProp';
-import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps';
-import { Box } from '../Box/Box';
-import { Divider } from '../Divider/Divider';
-import { Hidden } from '../Hidden/Hidden';
-import * as hiddenStyleRefs from '../Hidden/Hidden.css';
+} from '../../utils/responsiveProp'
+import { resolveResponsiveRangeProps } from '../../utils/responsiveRangeProps'
+import { Box } from '../Box/Box'
+import { Divider } from '../Divider/Divider'
+import { Hidden } from '../Hidden/Hidden'
+import * as hiddenStyleRefs from '../Hidden/Hidden.css'
 
 const alignToDisplay = {
   left: 'block',
   center: 'flex',
   right: 'flex',
-} as const;
+} as const
 
 interface UseStackItemProps {
-  align: ResponsiveProp<Align>;
-  space: BoxProps['paddingTop'];
+  align: ResponsiveProp<Align>
+  space: BoxProps['paddingTop']
 }
 
 const useStackItem = ({ align, space }: UseStackItemProps) => ({
@@ -44,14 +44,14 @@ const useStackItem = ({ align, space }: UseStackItemProps) => ({
         flexDirection: 'column' as const,
         alignItems: alignToFlexAlign(align),
       }),
-});
+})
 
-const validStackComponents = ['div', 'ol', 'ul'] as const;
+const validStackComponents = ['div', 'ol', 'ul'] as const
 
 const extractHiddenPropsFromChild = (child: ReactNode) =>
   child && typeof child === 'object' && 'type' in child && child.type === Hidden
     ? (child.props as HiddenProps)
-    : null;
+    : null
 
 const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
   screen
@@ -59,7 +59,7 @@ const resolveHiddenProps = ({ screen, above, below }: HiddenProps) =>
     : resolveResponsiveRangeProps({
         above,
         below,
-      });
+      })
 
 const calculateHiddenStackItemProps = (
   stackItemProps: ReturnType<typeof useStackItem>,
@@ -68,7 +68,7 @@ const calculateHiddenStackItemProps = (
   >,
 ) => {
   const [displayXs, displaySm, displayMd, displayLg, displayXl] =
-    normaliseResponsiveProp(stackItemProps.display || 'block');
+    normaliseResponsiveProp(stackItemProps.display || 'block')
 
   return {
     ...stackItemProps,
@@ -79,15 +79,15 @@ const calculateHiddenStackItemProps = (
       hiddenOnLg ? 'none' : displayLg,
       hiddenOnXl ? 'none' : displayXl,
     ] as ResponsiveProp<'block' | 'flex' | 'none' | 'inline' | 'inlineBlock'>,
-  };
-};
+  }
+}
 
 export interface StackProps {
-  component?: (typeof validStackComponents)[number];
-  children: ReactNodeNoStrings;
-  space: BoxProps['paddingTop'];
-  align?: ResponsiveProp<Align>;
-  dividers?: boolean | DividerProps['weight'];
+  component?: (typeof validStackComponents)[number]
+  children: ReactNodeNoStrings
+  space: BoxProps['paddingTop']
+  align?: ResponsiveProp<Align>
+  dividers?: boolean | DividerProps['weight']
 }
 
 export const Stack = ({
@@ -101,21 +101,21 @@ export const Stack = ({
     process.env.NODE_ENV === 'development' &&
     !validStackComponents.includes(component)
   ) {
-    throw new Error(`Invalid Stack component: ${component}`);
+    throw new Error(`Invalid Stack component: ${component}`)
   }
 
-  const hiddenStyles = { ...hiddenStyleRefs };
-  const stackItemProps = useStackItem({ space, align });
-  const stackItems = flattenChildren(children);
-  const isList = component === 'ol' || component === 'ul';
-  const stackItemComponent = isList ? 'li' : 'div';
-  const negativeMarginTop = useNegativeMarginTop(space);
+  const hiddenStyles = { ...hiddenStyleRefs }
+  const stackItemProps = useStackItem({ space, align })
+  const stackItems = flattenChildren(children)
+  const isList = component === 'ol' || component === 'ul'
+  const stackItemComponent = isList ? 'li' : 'div'
+  const negativeMarginTop = useNegativeMarginTop(space)
 
-  let firstItemOnXs: number | null = null;
-  let firstItemOnSm: number | null = null;
-  let firstItemOnMd: number | null = null;
-  let firstItemOnLg: number | null = null;
-  let firstItemOnXl: number | null = null;
+  let firstItemOnXs: number | null = null
+  let firstItemOnSm: number | null = null
+  let firstItemOnMd: number | null = null
+  let firstItemOnLg: number | null = null
+  let firstItemOnXl: number | null = null
 
   return (
     <Box component={component} className={negativeMarginTop}>
@@ -130,34 +130,34 @@ export const Stack = ({
         ) {
           throw new Error(
             'The "inline" prop is invalid on Hidden elements within a Stack',
-          );
+          )
         }
 
-        const hiddenProps = extractHiddenPropsFromChild(child);
+        const hiddenProps = extractHiddenPropsFromChild(child)
         const hidden = hiddenProps
           ? resolveHiddenProps(hiddenProps)
-          : ([false, false, false, false, false] as const);
+          : ([false, false, false, false, false] as const)
         const [hiddenOnXs, hiddenOnSm, hiddenOnMd, hiddenOnLg, hiddenOnXl] =
-          hidden;
+          hidden
 
         if (firstItemOnXs === null && !hiddenOnXs) {
-          firstItemOnXs = index;
+          firstItemOnXs = index
         }
 
         if (firstItemOnSm === null && !hiddenOnSm) {
-          firstItemOnSm = index;
+          firstItemOnSm = index
         }
 
         if (firstItemOnMd === null && !hiddenOnMd) {
-          firstItemOnMd = index;
+          firstItemOnMd = index
         }
 
         if (firstItemOnLg === null && !hiddenOnLg) {
-          firstItemOnLg = index;
+          firstItemOnLg = index
         }
 
         if (firstItemOnXl === null && !hiddenOnXl) {
-          firstItemOnXl = index;
+          firstItemOnXl = index
         }
 
         return (
@@ -193,8 +193,8 @@ export const Stack = ({
             ) : null}
             {hiddenProps ? hiddenProps.children : child}
           </Box>
-        );
+        )
       })}
     </Box>
-  );
-};
+  )
+}

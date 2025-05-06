@@ -1,30 +1,30 @@
-'use client';
+'use client'
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import useComponentSize from '@rehooks/component-size';
-import cn from 'classnames';
-import { useWindowSize } from 'react-use';
+import useComponentSize from '@rehooks/component-size'
+import cn from 'classnames'
+import { useWindowSize } from 'react-use'
 
-import { theme as islandUITheme } from '@reon-island/ui-theme';
+import { theme as islandUITheme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import * as styles from './Section.css';
-import { SectionNumber } from './SectionNumber/SectionNumber';
-import SubSections from './SubSectionsV2/SubSectionsV2';
-import * as types from './types';
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
+import * as styles from './Section.css'
+import { SectionNumber } from './SectionNumber/SectionNumber'
+import SubSections from './SubSectionsV2/SubSectionsV2'
+import * as types from './types'
 
 export const Section: FC<
   React.PropsWithChildren<{
-    theme?: types.FormStepperThemes;
-    section: string;
-    subSections?: React.ReactNode[];
-    sectionIndex: number;
-    isActive?: boolean;
-    isComplete?: boolean;
+    theme?: types.FormStepperThemes
+    section: string
+    subSections?: React.ReactNode[]
+    sectionIndex: number
+    isActive?: boolean
+    isComplete?: boolean
   }>
 > = ({
   theme = types.FormStepperThemes.PURPLE,
@@ -34,30 +34,30 @@ export const Section: FC<
   isActive = false,
   isComplete = false,
 }) => {
-  const containerRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null)
   const { height: activeHeight, width: activeWidth } =
-    useComponentSize(containerRef);
-  const { width } = useWindowSize();
-  const [containerHeight, setContainerHeight] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
-  const isClient = typeof window === 'object';
-  const isSmallScreen = width <= islandUITheme.breakpoints.md;
+    useComponentSize(containerRef)
+  const { width } = useWindowSize()
+  const [containerHeight, setContainerHeight] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(0)
+  const isClient = typeof window === 'object'
+  const isSmallScreen = width <= islandUITheme.breakpoints.md
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient) return
 
     if (containerRef.current) {
-      setContainerHeight(activeHeight);
+      setContainerHeight(activeHeight)
     }
-  }, [isActive, isClient, activeHeight]);
+  }, [isActive, isClient, activeHeight])
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient) return
 
     if (containerRef.current) {
-      setContainerWidth(activeWidth);
+      setContainerWidth(activeWidth)
     }
-  }, [isComplete, isActive, activeWidth, isClient]);
+  }, [isComplete, isActive, activeWidth, isClient])
 
   return (
     <Box
@@ -95,7 +95,7 @@ export const Section: FC<
         <SubSections isActive={isActive} subSections={subSections} />
       )}
     </Box>
-  );
-};
+  )
+}
 
-export default Section;
+export default Section

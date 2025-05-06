@@ -1,62 +1,62 @@
-'use client';
+'use client'
 
-import React, { createContext } from 'react';
+import React, { createContext } from 'react'
 
-import type { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react'
 
-import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog';
-import { Popover, PopoverDisclosure, usePopoverState } from 'reakit/Popover';
+import { Dialog, DialogDisclosure, useDialogState } from 'reakit/Dialog'
+import { Popover, PopoverDisclosure, usePopoverState } from 'reakit/Popover'
 
-import { Box } from '../Box/Box';
-import { Button } from '../Button/Button';
-import { Inline } from '../Inline/Inline';
-import { Stack } from '../Stack/Stack';
-import { Text } from '../Text/Text';
-import * as styles from './Filter.css';
-import { usePreventBodyScroll } from './usePreventBodyScroll';
+import { Box } from '../Box/Box'
+import { Button } from '../Button/Button'
+import { Inline } from '../Inline/Inline'
+import { Stack } from '../Stack/Stack'
+import { Text } from '../Text/Text'
+import * as styles from './Filter.css'
+import { usePreventBodyScroll } from './usePreventBodyScroll'
 
 export interface FilterProps {
   /** Label for the clear all button. Should be used for localization. */
-  labelClearAll: string;
+  labelClearAll: string
 
   /** Label for the clear button. Should be used for localization. */
-  labelClear: string;
+  labelClear: string
 
   /** Lable for open filter button when in mobile version. */
-  labelOpen: string;
+  labelOpen: string
 
   /** Label for close icon to add title to button for screen readers in mobile version. */
-  labelClose?: string;
+  labelClose?: string
 
   /** Label for filter title when expanded in mobile version. */
-  labelTitle?: string;
+  labelTitle?: string
 
   /** Label for show result button in expanded mobile version. */
-  labelResult?: string;
+  labelResult?: string
 
   /** Number of search results to display on the show result button in mobile version*/
-  resultCount?: number;
+  resultCount?: number
 
   /** Filter input component */
-  filterInput?: ReactNode;
+  filterInput?: ReactNode
 
   /** How the filter should be displayed */
-  variant?: 'popover' | 'dialog' | 'default';
+  variant?: 'popover' | 'dialog' | 'default'
 
   /** Align popover button (and input if also applied) to the left or right */
-  align?: 'left' | 'right';
+  align?: 'left' | 'right'
 
   /** Event handler for clear filter event. */
-  onFilterClear: () => void;
+  onFilterClear: () => void
 
   /** Swap input and filter button locations */
-  reverse?: boolean;
+  reverse?: boolean
 
   /** Allow popover to flip upwards */
-  popoverFlip?: boolean;
+  popoverFlip?: boolean
 
   /** Use the popover disclosure button styling */
-  usePopoverDiscloureButtonStyling?: boolean;
+  usePopoverDiscloureButtonStyling?: boolean
 }
 
 /**
@@ -65,12 +65,12 @@ export interface FilterProps {
  * like the `isDialog` state without bloating the childs props.
  */
 interface FilterContextValue {
-  variant?: FilterProps['variant'];
+  variant?: FilterProps['variant']
 }
 
 export const FilterContext = createContext<FilterContextValue>({
   variant: undefined,
-});
+})
 
 export const Filter: FC<React.PropsWithChildren<FilterProps>> = ({
   labelClearAll = '',
@@ -89,16 +89,16 @@ export const Filter: FC<React.PropsWithChildren<FilterProps>> = ({
   popoverFlip = true,
   usePopoverDiscloureButtonStyling,
 }) => {
-  const dialog = useDialogState({ modal: true });
+  const dialog = useDialogState({ modal: true })
   const popover = usePopoverState({
     placement: 'bottom-start',
     unstable_flip: popoverFlip,
     gutter: 8,
-  });
+  })
 
-  const hasFilterInput = !!filterInput;
+  const hasFilterInput = !!filterInput
 
-  usePreventBodyScroll(dialog.visible && variant === 'dialog');
+  usePreventBodyScroll(dialog.visible && variant === 'dialog')
 
   return (
     <FilterContext.Provider value={{ variant }}>
@@ -290,5 +290,5 @@ export const Filter: FC<React.PropsWithChildren<FilterProps>> = ({
         </>
       )}
     </FilterContext.Provider>
-  );
-};
+  )
+}

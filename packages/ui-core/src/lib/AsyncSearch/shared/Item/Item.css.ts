@@ -1,37 +1,37 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const colored = style({
   backgroundColor: theme.color.blue100,
-});
+})
 
 export const plain = style({
   backgroundColor: theme.color.white,
-});
+})
 
 export const selectedColored = style({
   backgroundColor: theme.color.white,
-});
+})
 
 export const selected = style({
   backgroundColor: theme.color.blue100,
-});
+})
 
 export const item = style({
   position: 'relative',
   fontWeight: theme.typography.light,
   padding: 16,
   outline: 0,
-});
+})
 
 export const disabled = style({
   opacity: 0.5,
-});
+})
 
 export const customItem = style({
   position: 'relative',
-});
+})
 
 export const divider = style({
   position: 'absolute',
@@ -47,11 +47,11 @@ export const divider = style({
       opacity: 0,
     },
   },
-});
+})
 
 export const dividerVisible = style({
   opacity: 1,
-});
+})
 
 export const sizes = styleVariants({
   medium: {
@@ -74,4 +74,4 @@ export const sizes = styleVariants({
       },
     }),
   },
-});
+})

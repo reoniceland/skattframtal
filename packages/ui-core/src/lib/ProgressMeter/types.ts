@@ -1,1 +1,1 @@
-export type ProgressMeterVariant = 'blue' | 'red' | 'rose' | 'mint';
+export type ProgressMeterVariant = 'blue' | 'red' | 'rose' | 'mint'

@@ -1,10 +1,10 @@
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const container = style({
   position: 'relative',
   paddingBottom: '56.25%',
   height: 0,
-});
+})
 
 export const iframe = style({
   position: 'absolute',
@@ -12,4 +12,4 @@ export const iframe = style({
   left: 0,
   width: '100%',
   height: '100%',
-});
+})

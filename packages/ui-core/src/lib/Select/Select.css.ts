@@ -1,15 +1,15 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { wrapMedia } from '../../utils/wrapMedia';
-import * as inputMixins from '../Input/Input.mixins';
+import { wrapMedia } from '../../utils/wrapMedia'
+import * as inputMixins from '../Input/Input.mixins'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
-export const wrapper = style({}, 'wrapper');
+export const wrapper = style({}, 'wrapper')
 export const wrapperColor = styleVariants(
   { blue: {}, white: {} },
   'wrapperColor',
-);
+)
 export const valueContainer = style(
   {
     selectors: {
@@ -22,14 +22,14 @@ export const valueContainer = style(
     },
   },
   'valueContainer',
-);
+)
 
 export const multiValueContainer = style(
   {
     maxWidth: '100%',
   },
   'multiValueContainer',
-);
+)
 
 export const multiValue = style(
   {
@@ -40,7 +40,7 @@ export const multiValue = style(
     overflow: 'hidden',
   },
   'multiValue',
-);
+)
 
 export const multiValueLabel = style(
   {
@@ -49,18 +49,18 @@ export const multiValueLabel = style(
     borderRadius: 0,
   },
   'multiValueLabel',
-);
+)
 
 globalStyle(`${wrapper} .island-select__multi-value`, {
   borderRadius: theme.border.radius.large,
-});
+})
 
 globalStyle(
   `${wrapper} .island-select__value-container--is-multi.island-select__value-container--has-value .island-select__input-container`,
   {
     width: 'auto',
   },
-);
+)
 
 globalStyle(`${wrapper} .island-select__multi-value__label`, {
   borderRadius: 0,
@@ -69,7 +69,7 @@ globalStyle(`${wrapper} .island-select__multi-value__label`, {
   paddingTop: '0.33rem',
   paddingRight: 0,
   lineHeight: 1,
-});
+})
 
 globalStyle(`${wrapper} .island-select__multi-value__remove`, {
   borderRadius: 0,
@@ -81,16 +81,16 @@ globalStyle(`${wrapper} .island-select__multi-value__remove`, {
   fontWeight: theme.typography.medium,
   cursor: 'pointer',
   flexShrink: 0,
-});
+})
 
 globalStyle(`${wrapper} .island-select__multi-value__remove:hover`, {
   backgroundColor: theme.color.blue600,
   color: theme.color.white,
-});
+})
 
 globalStyle(`${wrapper} ${valueContainer} .island-select__input-container`, {
   margin: 0,
-});
+})
 
 export const placeholder = style({
   whiteSpace: 'nowrap',
@@ -99,7 +99,7 @@ export const placeholder = style({
   selectors: {
     [`${wrapper} &`]: { ...inputMixins.placeholder },
   },
-});
+})
 export const placeholderPadding = style({
   selectors: {
     [`${wrapper} &`]: {
@@ -107,8 +107,8 @@ export const placeholderPadding = style({
     },
   },
   ...wrapMedia({ '@media': inputMixins.input['@media'] }, `${wrapper} &`),
-});
-export const placeholderSizes = styleVariants(inputMixins.inputSizes);
+})
+export const placeholderSizes = styleVariants(inputMixins.inputSizes)
 
 export const inputContainer = style(
   {
@@ -117,7 +117,7 @@ export const inputContainer = style(
     margin: 0,
   },
   'input-container',
-);
+)
 
 export const input = style(
   {
@@ -130,47 +130,47 @@ export const input = style(
     }),
   },
   'input',
-);
+)
 
-export const errorMessage = style(inputMixins.errorMessage);
-export const hasError = style({});
+export const errorMessage = style(inputMixins.errorMessage)
+export const hasError = style({})
 
 export const containerDisabled = style({
   backgroundColor: 'transparent',
-});
-export const container = style({}, 'container');
-export const containerSizes = styleVariants(inputMixins.containerSizes);
+})
+export const container = style({}, 'container')
+export const containerSizes = styleVariants(inputMixins.containerSizes)
 
 globalStyle(`${wrapper} .css-1g6gooi`, {
   padding: 0,
   margin: 0,
-});
+})
 globalStyle(`${wrapper} .island-select__control${container}`, {
   ...inputMixins.container,
   flexDirection: 'column',
   alignItems: 'flex-start',
   paddingRight: 70,
   border: 0,
-});
+})
 globalStyle(
   `${wrapper}${wrapperColor.blue} .island-select__control${container}`,
   {
     background: theme.color.blue100,
   },
-);
+)
 
 globalStyle(
   `${wrapper} .island-select__control${container}${hasError}`,
   inputMixins.inputErrorState,
-);
+)
 globalStyle(
   `${wrapper} .island-select__control${container}:hover:not(.island-select__control--is-focused):not(${containerDisabled})`,
   inputMixins.containerHover,
-);
+)
 globalStyle(
   `${wrapper} .island-select__control${container}.island-select__control--is-focused`,
   inputMixins.containerFocus,
-);
+)
 globalStyle(
   `${wrapper} .island-select__control${container}.island-select__control--menu-is-open`,
   {
@@ -178,12 +178,12 @@ globalStyle(
     borderBottomLeftRadius: 0,
     borderBottomRightRadius: 0,
   },
-);
+)
 
 globalStyle(`${wrapper}  .island-select__menu-list`, {
   padding: 0,
   maxHeight: '336px',
-});
+})
 
 export const icon = style({
   width: theme.spacing[3],
@@ -194,7 +194,7 @@ export const icon = style({
       height: theme.spacing[4],
     },
   }),
-});
+})
 
 export const iconExtraSmall = style({
   ...themeUtils.responsiveStyle({
@@ -203,18 +203,18 @@ export const iconExtraSmall = style({
       height: theme.spacing[3],
     },
   }),
-});
+})
 
 export const label = style({
   ...inputMixins.label,
   selectors: {
     [`${hasError} &`]: inputMixins.labelErrorState,
   },
-});
+})
 export const labelDisabled = style({
   opacity: 0.5,
-});
-export const labelSizes = styleVariants(inputMixins.labelSizes);
+})
+export const labelSizes = styleVariants(inputMixins.labelSizes)
 export const singleValue = style(
   {
     marginLeft: 0,
@@ -224,7 +224,7 @@ export const singleValue = style(
     color: theme.color.dark400,
   },
   'singleValue',
-);
+)
 export const singleValueSizes = styleVariants(
   {
     xs: wrapMedia(inputMixins.inputSizes.xs, `${wrapper} &`),
@@ -232,7 +232,7 @@ export const singleValueSizes = styleVariants(
     md: wrapMedia(inputMixins.inputSizes.md, `${wrapper} &`),
   },
   'singleValue',
-);
+)
 export const indicatorsContainer = style(
   {
     cursor: 'pointer',
@@ -251,7 +251,7 @@ export const indicatorsContainer = style(
     },
   },
   'indicatorsContainer',
-);
+)
 
 export const indicatorsContainerExtraSmall = style({
   selectors: {
@@ -259,7 +259,7 @@ export const indicatorsContainerExtraSmall = style({
       right: 20,
     },
   },
-});
+})
 
 export const dropdownIndicator = style(
   {
@@ -271,7 +271,7 @@ export const dropdownIndicator = style(
     },
   },
   'dropdownIndicator',
-);
+)
 export const menu = style(
   {
     selectors: {
@@ -292,7 +292,7 @@ export const menu = style(
     },
   },
   'menu',
-);
+)
 
 export const option = style({
   selectors: {
@@ -311,68 +311,68 @@ export const option = style({
       borderTop: `1px solid ${theme.color.blue200}`,
     },
   },
-});
+})
 
 export const optionDescription = style({
   paddingTop: theme.spacing[1],
-});
+})
 
 export const optionDescriptionTruncated = style({
   overflow: 'hidden',
   display: '-webkit-box',
   WebkitLineClamp: 2,
   WebkitBoxOrient: 'vertical',
-});
+})
 
 export const optionSizes = styleVariants({
   xs: wrapMedia(inputMixins.inputSizes.xs, `${wrapper} &`),
   sm: wrapMedia(inputMixins.inputSizes.sm, `${wrapper} &`),
   md: wrapMedia(inputMixins.inputSizes.sm, `${wrapper} &`),
-});
+})
 
 export const optionDescriptionSizes = styleVariants({
   xs: wrapMedia(inputMixins.optionDescriptionSizes.xs, `${wrapper} &`),
   sm: wrapMedia(inputMixins.optionDescriptionSizes.sm, `${wrapper} &`),
   md: wrapMedia(inputMixins.optionDescriptionSizes.sm, `${wrapper} &`),
-});
+})
 
-export const dontRotateIconOnOpen = style({});
+export const dontRotateIconOnOpen = style({})
 
 globalStyle(
   `${wrapper} .island-select__control${container}.island-select__control--menu-is-open ${indicatorsContainer}:not(${dontRotateIconOnOpen})`,
   {
     transform: 'rotateX(180deg)',
   },
-);
+)
 
 globalStyle(
   `${wrapper}${wrapperColor.blue} .island-select__option--is-focused`,
   {
     backgroundColor: theme.color.white,
   },
-);
+)
 globalStyle(
   `${wrapper}${wrapperColor.white} .island-select__option--is-focused`,
   {
     backgroundColor: theme.color.blue100,
   },
-);
+)
 
 globalStyle(`${wrapper} .island-select__option--is-selected`, {
   fontWeight: theme.typography.medium,
   color: theme.color.dark400,
-});
+})
 
 globalStyle(
   `${wrapper} .island-select__option--is-selected:not(.island-select__option--is-focused)`,
   {
     backgroundColor: theme.color.white,
   },
-);
+)
 
 export const isRequiredStar = style({
   color: theme.color.red600,
-});
+})
 
 export const inputCheckbox = style({
   height: theme.spacing[3],
@@ -383,7 +383,7 @@ export const inputCheckbox = style({
   transform: 'translateY(-50%)',
   width: theme.spacing[3],
   cursor: 'pointer',
-});
+})
 
 export const checkbox = style({
   alignItems: 'center',
@@ -398,7 +398,7 @@ export const checkbox = style({
   marginRight: theme.spacing[2],
   transition: 'border-color .1s, shadow .1s, background-color .1s',
   width: theme.spacing[3],
-});
+})
 
 export const checkboxChecked = style({
   selectors: {
@@ -407,4 +407,4 @@ export const checkboxChecked = style({
       borderColor: theme.color.blue400,
     },
   },
-});
+})

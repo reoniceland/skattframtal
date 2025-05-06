@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const focusable = style({
   position: 'relative',
@@ -38,7 +38,7 @@ export const focusable = style({
       outline: 0,
     },
   },
-});
+})
 
 export const colorSchemes = styleVariants({
   purple: {
@@ -113,4 +113,4 @@ export const colorSchemes = styleVariants({
       },
     },
   },
-});
+})

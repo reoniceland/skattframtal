@@ -1,7 +1,7 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Menu } from './Menu';
+import { withFigma } from '../../utils/withFigma'
+import { Menu } from './Menu'
 
 const mainLinks = [
   { text: 'Akstur og bifreiðar', href: '#' },
@@ -22,7 +22,7 @@ const mainLinks = [
   { text: 'Umhverfismál', href: '#' },
   { text: 'Vegabréf, ferðalög og búseta erlendis', href: '#' },
   { text: 'Vörur og þjónusta Ísland.is', href: '#' },
-];
+]
 
 const asideTopLinks = [
   { text: 'Stofnanir', href: '#' },
@@ -47,7 +47,7 @@ const asideTopLinks = [
       },
     ],
   },
-];
+]
 
 const asideBottomLinks = [
   { text: 'Heilsuvera', href: '#' },
@@ -57,17 +57,17 @@ const asideBottomLinks = [
   { text: 'Opin gögn', href: '#' },
   { text: 'Opinber nýsköpun', href: '#' },
   { text: 'Tekjusagan', href: '#' },
-];
+]
 
 export default {
   title: 'Navigation/Menu',
   component: Menu,
   parameters: withFigma('Menu'),
-};
+}
 
-const Template = (args) => <Menu {...args} />;
+const Template = (args) => <Menu {...args} />
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   baseId: 'story',
   myPagesText: 'Mínar síður',
@@ -78,4 +78,4 @@ Default.args = {
   mainTitle: 'Þjónustuflokkar',
   menuButton: <button>Open</button>,
   asideBottomTitle: 'Aðrir opinberir vefir',
-};
+}

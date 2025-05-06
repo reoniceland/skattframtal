@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 const colorScheme = (text: string, hover: string) => ({
   display: 'inline-flex',
@@ -10,7 +10,7 @@ const colorScheme = (text: string, hover: string) => ({
   ':hover': {
     color: hover,
   },
-});
+})
 
 const focusColors = (text: string) => ({
   outline: 'none',
@@ -29,30 +29,30 @@ const focusColors = (text: string) => ({
       color: text,
     },
   },
-});
+})
 
 export const breadcrumb = styleVariants({
   blue400: colorScheme(theme.color.blue400, theme.color.blueberry400),
   white: colorScheme(theme.color.white, theme.color.white),
-});
+})
 
 export const focusable = styleVariants({
   blue400: focusColors(theme.color.dark400),
   white: focusColors(theme.color.white),
-});
+})
 
 export const isTag = style({
   ':hover': {
     textDecoration: 'none',
   },
-});
+})
 
 export const bullet = style({
   height: 4,
   width: 4,
-});
+})
 
 export const color = styleVariants({
   blue400: { backgroundColor: theme.color.blue400 },
   white: { backgroundColor: theme.color.white },
-});
+})

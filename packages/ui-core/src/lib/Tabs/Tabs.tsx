@@ -1,43 +1,43 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { FC, ReactNode } from 'react';
+import type { Colors } from '@reon-island/ui-theme'
+import type { FC, ReactNode } from 'react'
 
-import cn from 'classnames';
-import isNumber from 'lodash/isNumber';
-import { useWindowSize } from 'react-use';
-import { Tab, TabList, TabPanel, useTabState } from 'reakit/Tab';
+import cn from 'classnames'
+import isNumber from 'lodash/isNumber'
+import { useWindowSize } from 'react-use'
+import { Tab, TabList, TabPanel, useTabState } from 'reakit/Tab'
 
-import { theme } from '@reon-island/ui-theme';
-import { isDefined } from '@reon-island/utils';
+import { theme } from '@reon-island/ui-theme'
+import { isDefined } from '@reon-island/utils'
 
-import { Box } from '../Box/Box';
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import { Select } from '../Select/Select';
-import { Text } from '../Text/Text';
-import * as styles from './Tabs.css';
+import { Box } from '../Box/Box'
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import { Select } from '../Select/Select'
+import { Text } from '../Text/Text'
+import * as styles from './Tabs.css'
 
 export interface TabType {
   /**
    * Required when prop onlyRenderSelectedTab is true
    */
-  id?: string;
-  label: string;
-  content: ReactNode | TabType[];
-  disabled?: boolean;
+  id?: string
+  label: string
+  content: ReactNode | TabType[]
+  disabled?: boolean
 }
 
 interface TabInterface {
-  label: string;
-  selected?: string;
-  tabs: TabType[];
-  contentBackground?: Colors;
-  size?: 'xs' | 'sm' | 'md';
-  onChange?(id: string): void;
-  onlyRenderSelectedTab?: boolean;
-  variant?: 'default' | 'alternative';
+  label: string
+  selected?: string
+  tabs: TabType[]
+  contentBackground?: Colors
+  size?: 'xs' | 'sm' | 'md'
+  onChange?(id: string): void
+  onlyRenderSelectedTab?: boolean
+  variant?: 'default' | 'alternative'
 }
 
 export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
@@ -54,73 +54,73 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
   if (onlyRenderSelectedTab && !tabs.every(({ id }) => isDefined(id))) {
     throw new Error(
       'Every tab must have a unique id when onlyRenderSelectedTab is enabled',
-    );
+    )
   }
 
   const { loop, wrap, ...tab } = useTabState({
     selectedId: selected,
-  });
+  })
 
-  const [prevCurrentId, setPrevCurrentId] = useState(tab.currentId);
+  const [prevCurrentId, setPrevCurrentId] = useState(tab.currentId)
 
   const selectOptions = tabs.map(({ label, disabled, id }, index) => {
     return {
       label,
       disabled: disabled,
       value: id ?? index.toString(),
-    };
-  });
+    }
+  })
 
-  const { width } = useWindowSize();
-  const [isMobile, setIsMobile] = useState(false);
+  const { width } = useWindowSize()
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const breakpoint =
-      tabs.length < 3 ? theme.breakpoints.md : theme.breakpoints.lg;
+      tabs.length < 3 ? theme.breakpoints.md : theme.breakpoints.lg
     if (width < breakpoint) {
-      setIsMobile(true);
-      return;
+      setIsMobile(true)
+      return
     }
-    setIsMobile(false);
-  }, [width, tabs.length]);
+    setIsMobile(false)
+  }, [width, tabs.length])
 
   useEffect(() => {
     if (onChangeHandler && tab.currentId && prevCurrentId !== tab.currentId) {
-      onChangeHandler(tab.currentId);
-      setPrevCurrentId(tab.currentId);
+      onChangeHandler(tab.currentId)
+      setPrevCurrentId(tab.currentId)
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [tab.currentId]);
+  }, [tab.currentId])
 
   /**
     Tab value can be either an id or an index.
   */
   const getSelectedTabIndex = (): number => {
-    const id = tab.selectedId;
+    const id = tab.selectedId
 
     if (!id) {
-      return -1;
+      return -1
     }
 
     //Assuming that the id is a string of some kind
-    const tabsIndex = tabs.findIndex((t) => t.id === id);
+    const tabsIndex = tabs.findIndex((t) => t.id === id)
     if (tabsIndex >= 0) {
       //id found, returning index
-      return tabsIndex;
+      return tabsIndex
     }
     //Otherwise, return the index
-    const index = Number.parseInt(id);
+    const index = Number.parseInt(id)
 
     if (Number.isNaN(index)) {
       //Sometting is wrong
-      return -1;
+      return -1
     }
 
-    return index;
-  };
+    return index
+  }
 
   const showDesktopLayout =
-    tabs.length === 2 || (!isMobile && tabs.length > 2 && tabs.length < 7);
+    tabs.length === 2 || (!isMobile && tabs.length > 2 && tabs.length < 7)
 
   return (
     <Box position="relative">
@@ -134,8 +134,8 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
             // eslint-disable-next-line @typescript-eslint/ban-ts-comment
             // @ts-ignore make web strict
             onChange={(opt) => {
-              tab.setCurrentId(opt?.value);
-              tab.move(opt?.value ?? null);
+              tab.setCurrentId(opt?.value)
+              tab.move(opt?.value ?? null)
             }}
             options={selectOptions}
             defaultValue={
@@ -163,12 +163,12 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
           {tabs.map(({ label, disabled, id }, index) => {
             const isTabSelected = id
               ? id === tab.selectedId
-              : index.toString() === tab.selectedId;
+              : index.toString() === tab.selectedId
 
-            const selectedTabIndex = getSelectedTabIndex();
+            const selectedTabIndex = getSelectedTabIndex()
 
-            const isPreviousToSelectedTab = index + 1 === selectedTabIndex;
-            const isNextToSelectedTab = index - 1 === selectedTabIndex;
+            const isPreviousToSelectedTab = index + 1 === selectedTabIndex
+            const isNextToSelectedTab = index - 1 === selectedTabIndex
 
             if (variant === 'alternative') {
               return (
@@ -198,7 +198,7 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
                     {label}
                   </Text>
                 </FocusableBox>
-              );
+              )
             }
 
             return (
@@ -227,11 +227,11 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
                 <span className={styles.squareElement} />
                 <span className={styles.tabText}>{label}</span>
               </FocusableBox>
-            );
+            )
           })}
         </TabList>
         {tabs.map(({ content, id }, index) => {
-          let panelContent;
+          let panelContent
           if (Array.isArray(content)) {
             panelContent = (
               <Box
@@ -246,9 +246,9 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
                   size={size ?? 'xs'}
                 />
               </Box>
-            );
+            )
           } else {
-            panelContent = <Box>{content}</Box>;
+            panelContent = <Box>{content}</Box>
           }
           return (
             <TabPanel {...tab} key={index} className={styles.tabPanel}>
@@ -256,9 +256,9 @@ export const Tabs: FC<React.PropsWithChildren<TabInterface>> = ({
                 ? tab.selectedId === id && <Box>{panelContent}</Box>
                 : panelContent}
             </TabPanel>
-          );
+          )
         })}
       </Box>
     </Box>
-  );
-};
+  )
+}

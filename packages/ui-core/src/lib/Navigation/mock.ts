@@ -48,7 +48,7 @@ export const categories = [
     title: 'Fjármál og skattar',
     href: '#',
   },
-];
+]
 
 export const pages = [
   {
@@ -107,7 +107,7 @@ export const pages = [
       },
     ],
   },
-];
+]
 
 export const pagesWithAccordion = [
   {
@@ -116,4 +116,4 @@ export const pagesWithAccordion = [
     accordion: true,
     items: categories,
   },
-];
+]

@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { Logo } from '../Logo/Logo';
-import { Text } from '../Text/Text';
-import { Inline } from './Inline';
+import { Box } from '../Box/Box'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { Logo } from '../Logo/Logo'
+import { Text } from '../Text/Text'
+import { Inline } from './Inline'
 
 export default {
   title: 'Layout/Inline',
   component: Inline,
-};
+}
 
 export const Default = () => (
   <Box paddingY={2}>
@@ -29,4 +29,4 @@ export const Default = () => (
       </Inline>
     </ContentBlock>
   </Box>
-);
+)

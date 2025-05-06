@@ -1,11 +1,11 @@
-import type { Theme } from '@reon-island/ui-theme';
-import type { ResponsiveProp } from '../../../utils/responsiveProp';
+import type { Theme } from '@reon-island/ui-theme'
+import type { ResponsiveProp } from '../../../utils/responsiveProp'
 
-import mapValues from 'lodash/mapValues';
+import mapValues from 'lodash/mapValues'
 
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 const ColumnRange = [
   '12/12',
@@ -87,29 +87,29 @@ const ColumnRange = [
   '1/2',
   '1/1',
   '0',
-] as const;
-const orderRange = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const;
-export type Order = (typeof orderRange)[number];
-export type GridColumns = (typeof ColumnRange)[number] | '0';
-export type SpanType = ResponsiveProp<GridColumns>;
-type Columns = Record<GridColumns, string>;
-type Orders = Record<Order, string>;
-type Breakpoint = keyof Theme['breakpoints'];
+] as const
+const orderRange = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12] as const
+export type Order = (typeof orderRange)[number]
+export type GridColumns = (typeof ColumnRange)[number] | '0'
+export type SpanType = ResponsiveProp<GridColumns>
+type Columns = Record<GridColumns, string>
+type Orders = Record<Order, string>
+type Breakpoint = keyof Theme['breakpoints']
 const order = orderRange.reduce((acc: Record<string, number>, o) => {
-  acc[o.toString()] = o;
-  return acc;
-}, {});
+  acc[o.toString()] = o
+  return acc
+}, {})
 const columns = ColumnRange.reduce((acc, column) => {
-  const range = column.split('/');
+  const range = column.split('/')
   if (column === '0') {
-    acc[column] = '0';
+    acc[column] = '0'
   }
   if (range.length !== 2 || isNaN(parseInt(range[0]) / parseInt(range[1]))) {
-    return acc;
+    return acc
   }
-  acc[column] = `${(parseInt(range[0]) / parseInt(range[1])) * 100}%`;
-  return acc;
-}, {} as Columns);
+  acc[column] = `${(parseInt(range[0]) / parseInt(range[1])) * 100}%`
+  return acc
+}, {} as Columns)
 
 const makeSpan = (breakpoint: Breakpoint) =>
   styleVariants(
@@ -119,13 +119,13 @@ const makeSpan = (breakpoint: Breakpoint) =>
       }),
     ),
     `span_${breakpoint}`,
-  ) as Columns;
+  ) as Columns
 
-export const spanXs = makeSpan('xs');
-export const spanSm = makeSpan('sm');
-export const spanMd = makeSpan('md');
-export const spanLg = makeSpan('lg');
-export const spanXl = makeSpan('xl');
+export const spanXs = makeSpan('xs')
+export const spanSm = makeSpan('sm')
+export const spanMd = makeSpan('md')
+export const spanLg = makeSpan('lg')
+export const spanXl = makeSpan('xl')
 
 const makeOffset = (breakpoint: Breakpoint) =>
   styleVariants(
@@ -133,13 +133,13 @@ const makeOffset = (breakpoint: Breakpoint) =>
       themeUtils.responsiveStyle({ [breakpoint]: { marginLeft: span } }),
     ),
     `push_${breakpoint}`,
-  ) as Columns;
+  ) as Columns
 
-export const offsetXs = makeOffset('xs');
-export const offsetSm = makeOffset('sm');
-export const offsetMd = makeOffset('md');
-export const offsetLg = makeOffset('lg');
-export const offsetXl = makeOffset('xl');
+export const offsetXs = makeOffset('xs')
+export const offsetSm = makeOffset('sm')
+export const offsetMd = makeOffset('md')
+export const offsetLg = makeOffset('lg')
+export const offsetXl = makeOffset('xl')
 
 const makeOrder = (breakpoint: Breakpoint) =>
   styleVariants(
@@ -147,13 +147,13 @@ const makeOrder = (breakpoint: Breakpoint) =>
       themeUtils.responsiveStyle({ [breakpoint]: { order } }),
     ),
     `order_${breakpoint}`,
-  ) as Orders;
+  ) as Orders
 
-export const orderXs = makeOrder('xs');
-export const orderSm = makeOrder('sm');
-export const orderMd = makeOrder('md');
-export const orderLg = makeOrder('lg');
-export const orderXl = makeOrder('xl');
+export const orderXs = makeOrder('xs')
+export const orderSm = makeOrder('sm')
+export const orderMd = makeOrder('md')
+export const orderLg = makeOrder('lg')
+export const orderXl = makeOrder('xl')
 
 // Vanilla-extract gotcha:
 // The style order matters.
@@ -168,4 +168,4 @@ export const base = style({
       paddingLeft: theme.grid.gutter.desktop / 2,
     },
   },
-});
+})

@@ -1,7 +1,7 @@
-import { debugTouchable } from './debugTouchable';
-import { virtualTouchableRules } from './virtualTouchableRules';
+import { debugTouchable } from './debugTouchable'
+import { virtualTouchableRules } from './virtualTouchableRules'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const virtualTouchable = style({
   position: 'relative',
@@ -15,4 +15,4 @@ export const virtualTouchable = style({
   selectors: {
     ...debugTouchable({ after: true }),
   },
-});
+})

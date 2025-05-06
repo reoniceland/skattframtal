@@ -1,14 +1,14 @@
-import React from 'react';
+import React from 'react'
 
-import type { MenuStateReturn } from 'reakit/Menu';
+import type { MenuStateReturn } from 'reakit/Menu'
 
 interface HoverPropsRefState {
-  hoverCount: number;
+  hoverCount: number
 
-  hideTimeout?: ReturnType<typeof setTimeout>;
+  hideTimeout?: ReturnType<typeof setTimeout>
 }
 
-const MENU_LEAVE_DELAY = 500;
+const MENU_LEAVE_DELAY = 500
 export const useMenuHoverProps = (
   menu: MenuStateReturn,
   openOnHover: boolean,
@@ -16,27 +16,27 @@ export const useMenuHoverProps = (
   const hoverRef = React.useRef<HoverPropsRefState>({
     hoverCount: 0,
     hideTimeout: undefined,
-  });
-  const hoverState = hoverRef.current;
+  })
+  const hoverState = hoverRef.current
 
   return openOnHover
     ? {
         onMouseEnter: () => {
-          hoverState.hoverCount++;
+          hoverState.hoverCount++
           if (hoverState.hoverCount === 1) {
-            clearTimeout(hoverState.hideTimeout);
-            menu.show();
+            clearTimeout(hoverState.hideTimeout)
+            menu.show()
           }
         },
         onMouseLeave: () => {
-          hoverState.hoverCount--;
+          hoverState.hoverCount--
           if (hoverState.hoverCount === 0) {
             hoverState.hideTimeout = setTimeout(() => {
-              menu.hide();
-            }, MENU_LEAVE_DELAY);
+              menu.hide()
+            }, MENU_LEAVE_DELAY)
           }
         },
         unstable_autofocusOnhide: 'false',
       }
-    : undefined;
-};
+    : undefined
+}

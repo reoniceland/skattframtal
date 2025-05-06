@@ -1,11 +1,11 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const variants = styleVariants({
   purple: {},
   blue: {},
-});
+})
 
 export const link = style({
   display: 'inline-block',
@@ -41,7 +41,7 @@ export const link = style({
       margin: '0 4px',
     },
   }),
-});
+})
 
 export const linkCurrent = style({
   fontWeight: 600,
@@ -55,7 +55,7 @@ export const linkCurrent = style({
       color: theme.color.blue400,
     },
   },
-});
+})
 
 export const edge = style({
   margin: 0,
@@ -71,7 +71,7 @@ export const edge = style({
       backgroundColor: theme.color.white,
     },
   },
-});
+})
 
 export const linkDisabled = style({
   margin: 0,
@@ -93,7 +93,7 @@ export const linkDisabled = style({
       backgroundColor: 'transparent',
     },
   },
-});
+})
 
 export const gap = style({
   display: 'inline-block',
@@ -111,4 +111,4 @@ export const gap = style({
       minWidth: 40,
     },
   }),
-});
+})

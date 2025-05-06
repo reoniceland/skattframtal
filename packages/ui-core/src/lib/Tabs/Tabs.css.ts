@@ -1,21 +1,21 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { globalStyle, style } from '@vanilla-extract/css';
+import { globalStyle, style } from '@vanilla-extract/css'
 
 export const centerAbsolute = {
   left: 0,
   right: 0,
   marginLeft: 'auto',
   marginRight: 'auto',
-} as const;
+} as const
 
 export const hidden = style({
   visibility: 'hidden',
-});
+})
 
 export const tabPanel = style({
   outline: 0,
-});
+})
 
 export const bg = style({
   position: 'absolute',
@@ -28,7 +28,7 @@ export const bg = style({
       top: 0,
     },
   }),
-});
+})
 
 export const tabList = style({
   display: 'grid',
@@ -43,7 +43,7 @@ export const tabList = style({
   background: theme.color.blue100,
   position: 'relative',
   zIndex: theme.zIndex.base,
-});
+})
 
 export const tabListAlternative = style({
   display: 'flex',
@@ -54,17 +54,17 @@ export const tabListAlternative = style({
   borderRadius: theme.border.radius.standard,
   borderColor: theme.border.color.blue100,
   borderWidth: theme.border.width.large,
-});
+})
 
 export const tabListVisible = style({
   height: `${theme.spacing[8]}px`,
   overflow: 'initial',
-});
+})
 
 export const tabListAlternativeVisible = style({
   overflow: 'initial',
   height: `${theme.spacing[5]}px`,
-});
+})
 
 export const tab = style({
   flexBasis: 0,
@@ -78,7 +78,7 @@ export const tab = style({
   ':focus': {
     zIndex: 5,
   },
-});
+})
 
 export const tabAlternative = style({
   border: `${theme.border.radius.standard} solid ${theme.color.transparent}`,
@@ -93,7 +93,7 @@ export const tabAlternative = style({
       marginRight: '-3px',
     },
   },
-});
+})
 
 export const tabSelected = style({
   fontWeight: theme.typography.semiBold,
@@ -115,13 +115,13 @@ export const tabSelected = style({
     borderTopLeftRadius: 10,
     pointerEvents: 'none',
   },
-});
+})
 
 export const tabSelectedAlternative = style({
   border: `1px solid ${theme.color.blue200}`,
   borderRadius: theme.border.radius.standard,
   backgroundColor: theme.color.white,
-});
+})
 
 export const tabNotSelected = style({
   color: theme.color.dark400,
@@ -129,14 +129,14 @@ export const tabNotSelected = style({
   ':hover': {
     borderBottomColor: theme.color.blue400,
   },
-});
+})
 
 export const tabNotSelectedAlternative = style({
   ':hover': {
     backgroundColor: 'white',
     borderColor: theme.color.blue100,
   },
-});
+})
 
 export const tabNotSelectedAlternativeWithDivider = style({
   selectors: {
@@ -152,7 +152,7 @@ export const tabNotSelectedAlternativeWithDivider = style({
       zIndex: theme.zIndex.above,
     },
   },
-});
+})
 
 const adjacentTabAfterPseudo = {
   position: 'absolute',
@@ -164,7 +164,7 @@ const adjacentTabAfterPseudo = {
   borderTop: 'none',
   pointerEvents: 'none',
   zIndex: 3,
-} as const;
+} as const
 
 export const tabPreviousToSelectedTab = style({
   ':hover': {
@@ -175,7 +175,7 @@ export const tabPreviousToSelectedTab = style({
     borderBottomRightRadius: 10,
     borderLeft: 'none',
   },
-});
+})
 
 export const tabNextToSelectedTab = style({
   ':hover': {
@@ -186,15 +186,15 @@ export const tabNextToSelectedTab = style({
     borderBottomLeftRadius: 10,
     borderRight: 'none',
   },
-});
+})
 
 export const tabText = style({
   padding: '0 8px',
   zIndex: theme.zIndex.aboveHeader,
   fontSize: '16px',
-});
+})
 
-export const borderElement = style({});
+export const borderElement = style({})
 
 const unselectedTabUnderline = {
   position: 'absolute',
@@ -204,18 +204,18 @@ const unselectedTabUnderline = {
   bottom: -1,
   background: theme.color.blue600,
   zIndex: 5,
-} as const;
+} as const
 
 //Underlines when hovering unselected tabs
 globalStyle(`${tabNextToSelectedTab}:hover ${borderElement}:after`, {
   ...centerAbsolute,
   ...unselectedTabUnderline,
-});
+})
 
 globalStyle(`${tabPreviousToSelectedTab}:hover ${borderElement}:after`, {
   ...centerAbsolute,
   ...unselectedTabUnderline,
-});
+})
 
 globalStyle(
   `${tabPreviousToSelectedTab}:first-of-type:hover ${borderElement}:after`,
@@ -223,7 +223,7 @@ globalStyle(
     ...unselectedTabUnderline,
     left: 0,
   },
-);
+)
 
 globalStyle(
   `${tabNextToSelectedTab}:last-of-type:hover ${borderElement}:after`,
@@ -231,12 +231,12 @@ globalStyle(
     ...unselectedTabUnderline,
     right: 0,
   },
-);
+)
 
 // Globals for styling the corners of the selected tab
 
-export const squareElement = style({});
-export const circleElement = style({});
+export const squareElement = style({})
+export const circleElement = style({})
 
 //For styling edges if selected first or last
 const selectedTabBarEdge = {
@@ -246,7 +246,7 @@ const selectedTabBarEdge = {
   height: 'calc(50% + 1px)',
   width: '1px',
   bottom: 0,
-} as const;
+} as const
 
 const cornerBase = {
   position: 'absolute',
@@ -254,12 +254,12 @@ const cornerBase = {
   width: '10px',
   height: '10px',
   background: theme.color.white,
-} as const;
+} as const
 
 const squareBase = {
   ...cornerBase,
   bottom: 0,
-} as const;
+} as const
 
 //right square
 globalStyle(
@@ -268,7 +268,7 @@ globalStyle(
     ...squareBase,
     right: 0,
   },
-);
+)
 
 //left square
 globalStyle(
@@ -277,7 +277,7 @@ globalStyle(
     ...squareBase,
     left: 0,
   },
-);
+)
 
 const circleBase = {
   ...cornerBase,
@@ -287,7 +287,7 @@ const circleBase = {
   borderRadius: '10px',
   background: theme.color.blue100,
   zIndex: 2,
-} as const;
+} as const
 
 //right circle
 globalStyle(
@@ -296,7 +296,7 @@ globalStyle(
     ...circleBase,
     right: 0,
   },
-);
+)
 
 //left circle
 globalStyle(
@@ -305,28 +305,28 @@ globalStyle(
     ...circleBase,
     left: 0,
   },
-);
+)
 
 globalStyle(`${tabSelected}:first-of-type ${squareElement}:before`, {
   ...selectedTabBarEdge,
   left: -1,
-});
+})
 
 globalStyle(`${tabSelected}:last-of-type ${squareElement}:before`, {
   ...selectedTabBarEdge,
   right: -1,
-});
+})
 
 //Text color change on hover
 const hoverText = {
   color: theme.color.blue600,
-} as const;
+} as const
 
-globalStyle(`${tabNotSelected}:hover ${tabText}`, hoverText);
+globalStyle(`${tabNotSelected}:hover ${tabText}`, hoverText)
 
-globalStyle(`${tabNextToSelectedTab}:hover ${tabText}`, hoverText);
+globalStyle(`${tabNextToSelectedTab}:hover ${tabText}`, hoverText)
 
-globalStyle(`${tabPreviousToSelectedTab}:hover ${tabText}`, hoverText);
+globalStyle(`${tabPreviousToSelectedTab}:hover ${tabText}`, hoverText)
 
 const divider = {
   content: '',
@@ -338,15 +338,15 @@ const divider = {
   bottom: 0,
   right: `-${theme.spacing.smallGutter}px`,
   zIndex: theme.zIndex.above,
-} as const;
+} as const
 
 //Divider between not selected tabs (divider not adjacent to selected tab)
 globalStyle(
   `${tabNotSelected}:not(:last-child) ${circleElement}:after`,
   divider,
-);
+)
 
 globalStyle(
   `${tabNextToSelectedTab}:not(:last-child) ${circleElement}:after`,
   divider,
-);
+)

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { ContentBlock } from '../ContentBlock/ContentBlock';
-import { GridColumn } from '../Grid/GridColumn/GridColumn';
-import { GridContainer } from '../Grid/GridContainer/GridContainer';
-import { GridRow } from '../Grid/GridRow/GridRow';
-import { AlertMessage } from './AlertMessage';
+import { withFigma } from '../../utils/withFigma'
+import { ContentBlock } from '../ContentBlock/ContentBlock'
+import { GridColumn } from '../Grid/GridColumn/GridColumn'
+import { GridContainer } from '../Grid/GridContainer/GridContainer'
+import { GridRow } from '../Grid/GridRow/GridRow'
+import { AlertMessage } from './AlertMessage'
 
 export default {
   title: 'Alerts/AlertMessage',
   component: AlertMessage,
   parameters: withFigma('AlertMessage'),
-};
+}
 
 export const Info = () => (
   <GridContainer>
@@ -33,7 +33,7 @@ export const Info = () => (
       </GridRow>
     </ContentBlock>
   </GridContainer>
-);
+)
 
 export const Error = () => (
   <ContentBlock>
@@ -43,7 +43,7 @@ export const Error = () => (
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus pellentesque amet, id tortor urna faucibus augue sit. Fames dignissim condimentum nibh ut in."
     />
   </ContentBlock>
-);
+)
 
 export const Warning = () => (
   <ContentBlock>
@@ -53,7 +53,7 @@ export const Warning = () => (
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus pellentesque amet, id tortor urna faucibus augue sit. Fames dignissim condimentum nibh ut in."
     />
   </ContentBlock>
-);
+)
 
 export const Success = () => (
   <ContentBlock>
@@ -63,7 +63,7 @@ export const Success = () => (
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus pellentesque amet, id tortor urna faucibus augue sit. Fames dignissim condimentum nibh ut in."
     />
   </ContentBlock>
-);
+)
 
 export const Default = () => (
   <ContentBlock>
@@ -73,4 +73,4 @@ export const Default = () => (
       message="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus pellentesque amet, id tortor urna faucibus augue sit. Fames dignissim condimentum nibh ut in."
     />
   </ContentBlock>
-);
+)

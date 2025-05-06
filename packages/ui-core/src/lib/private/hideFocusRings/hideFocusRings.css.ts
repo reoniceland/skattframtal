@@ -1,6 +1,6 @@
-import { hideFocusRingsDataAttribute } from './hideFocusRingsDataAttribute';
+import { hideFocusRingsDataAttribute } from './hideFocusRingsDataAttribute'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const hideFocusRingsClassName = style({
   selectors: {
@@ -8,4 +8,4 @@ export const hideFocusRingsClassName = style({
       opacity: '0 !important',
     },
   },
-});
+})

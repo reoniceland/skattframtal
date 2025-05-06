@@ -1,14 +1,14 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import type { TagProps } from './types';
+import type { TagProps } from './types'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { shouldLinkOpenInNewWindow } from '@reon-island/utils';
+import { shouldLinkOpenInNewWindow } from '@reon-island/utils'
 
-import { Hyphen } from '../Hyphen/Hyphen';
-import { Text } from '../Text/Text';
-import * as styles from './Tag.css';
+import { Hyphen } from '../Hyphen/Hyphen'
+import { Text } from '../Text/Text'
+import * as styles from './Tag.css'
 
 export const Tag = forwardRef<HTMLButtonElement & HTMLAnchorElement, TagProps>(
   (
@@ -39,31 +39,31 @@ export const Tag = forwardRef<HTMLButtonElement & HTMLAnchorElement, TagProps>(
       [styles.textLeft]: textLeft,
       [styles.disabled]: disabled,
       [styles.whiteBackground]: whiteBackground,
-    });
+    })
 
-    const isExternal = href && shouldLinkOpenInNewWindow(href);
+    const isExternal = href && shouldLinkOpenInNewWindow(href)
 
     const anchorProps = {
       ...(isExternal && { rel: 'noreferrer noopener' }),
-    };
+    }
 
     const sharedProps = {
       className,
       ref,
-    };
+    }
 
     const hyphenated = hyphenate && typeof children === 'string' && (
       <Hyphen>{children}</Hyphen>
-    );
+    )
 
     const content = (
       <Text variant="eyebrow" as="span" truncate={truncate}>
         {!truncate && hyphenate ? hyphenated : children}
       </Text>
-    );
+    )
 
     if (CustomLink) {
-      return <CustomLink {...sharedProps}>{content}</CustomLink>;
+      return <CustomLink {...sharedProps}>{content}</CustomLink>
     }
 
     return href ? (
@@ -84,6 +84,6 @@ export const Tag = forwardRef<HTMLButtonElement & HTMLAnchorElement, TagProps>(
       <span {...sharedProps} {...props}>
         {content}
       </span>
-    );
+    )
   },
-);
+)

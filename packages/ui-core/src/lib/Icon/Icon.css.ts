@@ -1,10 +1,10 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { mapToStyleProperty } from '../../utils/mapToStyleProperty';
+import { mapToStyleProperty } from '../../utils/mapToStyleProperty'
 
-import { keyframes, style, styleVariants } from '@vanilla-extract/css';
+import { keyframes, style, styleVariants } from '@vanilla-extract/css'
 
-export const colors = styleVariants(mapToStyleProperty(theme.color, 'fill'));
+export const colors = styleVariants(mapToStyleProperty(theme.color, 'fill'))
 
 export const spin = style({
   lineHeight: 0,
@@ -19,4 +19,4 @@ export const spin = style({
   animationTimingFunction: 'linear',
   animationIterationCount: 'infinite',
   animationDuration: '1.5s',
-});
+})

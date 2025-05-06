@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../../Box/Box';
-import * as styles from './SectionNumberColumn.css';
+import { Box } from '../../Box/Box'
+import * as styles from './SectionNumberColumn.css'
 
 interface SectionNumberColumnProps {
-  children?: React.ReactNode;
-  type?: 'section' | 'subSection';
+  children?: React.ReactNode
+  type?: 'section' | 'subSection'
 }
 
 export const SectionNumberColumn: FC<
@@ -27,4 +27,4 @@ export const SectionNumberColumn: FC<
   >
     {children}
   </Box>
-);
+)

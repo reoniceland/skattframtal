@@ -1,6 +1,6 @@
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
-export const column = style({});
+export const column = style({})
 
 export const columnContent = style({
   selectors: {
@@ -8,11 +8,11 @@ export const columnContent = style({
       paddingTop: 0,
     },
   },
-});
+})
 
 const getSizeStyle = (scale: number) => ({
   flex: `0 0 ${scale * 100}%`,
-});
+})
 
 export const width = styleVariants({
   '1/2': getSizeStyle(1 / 2),
@@ -35,4 +35,4 @@ export const width = styleVariants({
   '9/12': getSizeStyle(9 / 12),
   '10/12': getSizeStyle(10 / 12),
   '11/12': getSizeStyle(11 / 12),
-});
+})

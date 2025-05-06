@@ -1,54 +1,54 @@
-import React from 'react';
+import React from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { TestSupport } from '@reon-island/ui-utils';
+import { TestSupport } from '@reon-island/ui-utils'
 
-import { Box } from '../Box/Box';
-import { BoxProps } from '../Box/types';
-import { Hidden } from '../Hidden/Hidden';
-import { InputBackgroundColor } from '../Input/types';
-import { Tag } from '../Tag/Tag';
-import { TagVariant } from '../Tag/types';
-import { Text } from '../Text/Text';
-import { Tooltip } from '../Tooltip/Tooltip';
-import * as styles from './RadioButton.css';
+import { Box } from '../Box/Box'
+import { BoxProps } from '../Box/types'
+import { Hidden } from '../Hidden/Hidden'
+import { InputBackgroundColor } from '../Input/types'
+import { Tag } from '../Tag/Tag'
+import { TagVariant } from '../Tag/types'
+import { Text } from '../Text/Text'
+import { Tooltip } from '../Tooltip/Tooltip'
+import * as styles from './RadioButton.css'
 
 export interface RadioButtonProps {
-  name?: string;
-  id?: string;
-  label?: React.ReactNode;
-  value?: string | number;
-  checked?: boolean;
-  disabled?: boolean;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  tooltip?: React.ReactNode;
+  name?: string
+  id?: string
+  label?: React.ReactNode
+  value?: string | number
+  checked?: boolean
+  disabled?: boolean
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
+  tooltip?: React.ReactNode
   tag?: {
-    label: string;
-    variant?: TagVariant;
-    outlined?: boolean;
-  };
-  hasError?: boolean;
-  errorMessage?: string;
-  large?: boolean;
+    label: string
+    variant?: TagVariant
+    outlined?: boolean
+  }
+  hasError?: boolean
+  errorMessage?: string
+  large?: boolean
   /** backgroundColor can only be used if the 'large' prop set to true */
-  backgroundColor?: InputBackgroundColor;
+  backgroundColor?: InputBackgroundColor
   /** subLabel can only be used if the 'large' prop set to true */
-  subLabel?: React.ReactNode;
+  subLabel?: React.ReactNode
   /** illustration can only be used if the 'large' prop set to true */
-  illustration?: React.FC<React.PropsWithChildren<unknown>>;
-  hasIllustration?: boolean;
+  illustration?: React.FC<React.PropsWithChildren<unknown>>
+  hasIllustration?: boolean
 }
 
 interface AriaError {
-  'aria-invalid': boolean;
-  'aria-describedby': string;
+  'aria-invalid': boolean
+  'aria-describedby': string
 }
 
 const backgroundColors: Record<InputBackgroundColor, BoxProps['background']> = {
   white: 'white',
   blue: 'blue100',
-};
+}
 export const RadioButton = ({
   label,
   subLabel,
@@ -68,13 +68,13 @@ export const RadioButton = ({
   backgroundColor,
   hasIllustration,
 }: RadioButtonProps & TestSupport) => {
-  const errorId = `${id}-error`;
+  const errorId = `${id}-error`
   const ariaError = hasError
     ? {
         'aria-invalid': true,
         'aria-describedby': errorId,
       }
-    : {};
+    : {}
 
   return hasIllustration ? (
     <Box
@@ -242,5 +242,5 @@ export const RadioButton = ({
         </div>
       )}
     </Box>
-  );
-};
+  )
+}

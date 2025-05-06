@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const avatarSize = styleVariants({
   default: {
@@ -15,7 +15,7 @@ export const avatarSize = styleVariants({
     width: 32,
     height: 32,
   },
-});
+})
 
 export const avatarColor = styleVariants({
   isDelegation: {
@@ -38,11 +38,11 @@ export const avatarColor = styleVariants({
     backgroundColor: theme.color.purple100,
     color: theme.color.purple400,
   },
-});
+})
 
 export const initials = style({
   fontWeight: 600,
-});
+})
 
 export const initialsSize = styleVariants({
   default: {
@@ -54,4 +54,4 @@ export const initialsSize = styleVariants({
   medium: {
     fontSize: 14,
   },
-});
+})

@@ -1,27 +1,27 @@
-import React, { Children } from 'react';
+import React, { Children } from 'react'
 
-import flattenChildren from 'react-keyed-flatten-children';
+import flattenChildren from 'react-keyed-flatten-children'
 
 import {
   useNegativeMarginLeft,
   useNegativeMarginTop,
-} from '../../hooks/useNegativeMargin/useNegativeMargin';
+} from '../../hooks/useNegativeMargin/useNegativeMargin'
 import {
   normaliseResponsiveProp,
   resolveResponsiveProp,
   ResponsiveProp,
-} from '../../utils/responsiveProp';
-import { Box } from '../Box/Box';
-import { ResponsiveSpace } from '../Box/useBoxStyles';
-import { Divider, DividerProps } from '../Divider/Divider';
-import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings';
-import * as styleRefs from './Tiles.css';
+} from '../../utils/responsiveProp'
+import { Box } from '../Box/Box'
+import { ResponsiveSpace } from '../Box/useBoxStyles'
+import { Divider, DividerProps } from '../Divider/Divider'
+import { ReactNodeNoStrings } from '../private/ReactNodeNoStrings'
+import * as styleRefs from './Tiles.css'
 
 export interface TilesProps {
-  children: ReactNodeNoStrings;
-  space: ResponsiveSpace;
-  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>;
-  dividers?: boolean | DividerProps['weight'];
+  children: ReactNodeNoStrings
+  space: ResponsiveSpace
+  columns: ResponsiveProp<1 | 2 | 3 | 4 | 5 | 6>
+  dividers?: boolean | DividerProps['weight']
 }
 
 export const Tiles = ({
@@ -30,14 +30,14 @@ export const Tiles = ({
   columns = 1,
   dividers = false,
 }: TilesProps) => {
-  const styles = { ...styleRefs };
-  const responsiveSpace = normaliseResponsiveProp(space);
+  const styles = { ...styleRefs }
+  const responsiveSpace = normaliseResponsiveProp(space)
 
   const [xsColumns, smColumns, mdColumns, lgColumns, xlColumns] =
-    normaliseResponsiveProp(columns);
+    normaliseResponsiveProp(columns)
 
-  const negativeMarginTop = useNegativeMarginTop(responsiveSpace);
-  const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace);
+  const negativeMarginTop = useNegativeMarginTop(responsiveSpace)
+  const negativeMarginLeft = useNegativeMarginLeft(responsiveSpace)
 
   return (
     <Box className={negativeMarginTop}>
@@ -84,5 +84,5 @@ export const Tiles = ({
         ))}
       </Box>
     </Box>
-  );
-};
+  )
+}

@@ -1,39 +1,39 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import useComponentSize from '@rehooks/component-size';
-import cn from 'classnames';
-import { useWindowSize } from 'react-use';
+import useComponentSize from '@rehooks/component-size'
+import cn from 'classnames'
+import { useWindowSize } from 'react-use'
 
-import { theme as islandUITheme } from '@reon-island/ui-theme';
+import { theme as islandUITheme } from '@reon-island/ui-theme'
 
-import { Box } from '../Box/Box';
-import { useDeprecatedComponent } from '../private/useDeprecatedComponent';
-import { Text } from '../Text/Text';
-import * as styles from './FormStepperSection.css';
-import { SectionNumber } from './SectionNumber/SectionNumber';
-import { SubSections } from './SubSections/SubSections';
-import * as types from './types';
+import { Box } from '../Box/Box'
+import { useDeprecatedComponent } from '../private/useDeprecatedComponent'
+import { Text } from '../Text/Text'
+import * as styles from './FormStepperSection.css'
+import { SectionNumber } from './SectionNumber/SectionNumber'
+import { SubSections } from './SubSections/SubSections'
+import * as types from './types'
 
 function getSubSectionsInSection(
   section: types.FormStepperSection,
   subSection: string,
 ): types.FormStepperSection[] {
-  return (section.children ?? []).filter((child) => child.type === subSection);
+  return (section.children ?? []).filter((child) => child.type === subSection)
 }
 
 export const FormStepperSection: FC<
   React.PropsWithChildren<{
-    theme?: types.FormStepperThemes;
-    section: types.FormStepperSection;
-    subSection: string;
-    sectionIndex: number;
-    isActive: boolean;
-    isComplete: boolean;
-    isLastSection: boolean;
-    activeSubSection: number;
-    showSubSectionIcon?: boolean;
+    theme?: types.FormStepperThemes
+    section: types.FormStepperSection
+    subSection: string
+    sectionIndex: number
+    isActive: boolean
+    isComplete: boolean
+    isLastSection: boolean
+    activeSubSection: number
+    showSubSectionIcon?: boolean
   }>
 > = ({
   theme = types.FormStepperThemes.PURPLE,
@@ -46,33 +46,33 @@ export const FormStepperSection: FC<
   activeSubSection,
   showSubSectionIcon = false,
 }) => {
-  useDeprecatedComponent('FormStepperSection', 'FormStepperSectionV2');
-  const subSections = getSubSectionsInSection(section, subSection);
-  const hasSubSections = subSections.length > 0;
-  const containerRef = useRef<HTMLDivElement>(null);
+  useDeprecatedComponent('FormStepperSection', 'FormStepperSectionV2')
+  const subSections = getSubSectionsInSection(section, subSection)
+  const hasSubSections = subSections.length > 0
+  const containerRef = useRef<HTMLDivElement>(null)
   const { height: activeHeight, width: activeWidth } =
-    useComponentSize(containerRef);
-  const { width } = useWindowSize();
-  const [containerHeight, setContainerHeight] = useState(0);
-  const [containerWidth, setContainerWidth] = useState(0);
-  const isClient = typeof window === 'object';
-  const isSmallScreen = width <= islandUITheme.breakpoints.md;
+    useComponentSize(containerRef)
+  const { width } = useWindowSize()
+  const [containerHeight, setContainerHeight] = useState(0)
+  const [containerWidth, setContainerWidth] = useState(0)
+  const isClient = typeof window === 'object'
+  const isSmallScreen = width <= islandUITheme.breakpoints.md
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient) return
 
     if (containerRef.current) {
-      setContainerHeight(activeHeight);
+      setContainerHeight(activeHeight)
     }
-  }, [isActive, isClient, activeHeight]);
+  }, [isActive, isClient, activeHeight])
 
   useEffect(() => {
-    if (!isClient) return;
+    if (!isClient) return
 
     if (containerRef.current) {
-      setContainerWidth(activeWidth);
+      setContainerWidth(activeWidth)
     }
-  }, [isComplete, isActive, activeWidth]);
+  }, [isComplete, isActive, activeWidth])
 
   return (
     <Box
@@ -117,5 +117,5 @@ export const FormStepperSection: FC<
         />
       )}
     </Box>
-  );
-};
+  )
+}

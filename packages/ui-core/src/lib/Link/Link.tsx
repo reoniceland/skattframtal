@@ -1,32 +1,32 @@
-import * as React from 'react';
-import NextLink from 'next/link';
+import * as React from 'react'
+import NextLink from 'next/link'
 
-import type { LinkProps as NextLinkProps } from 'next/link';
+import type { LinkProps as NextLinkProps } from 'next/link'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
 import {
   shouldLinkBeAnAnchorTag,
   shouldLinkOpenInNewWindow,
-} from '@reon-island/utils';
+} from '@reon-island/utils'
 
-import { useDeprecatedComponent } from '../private/useDeprecatedComponent';
-import * as styles from './Link.css';
+import { useDeprecatedComponent } from '../private/useDeprecatedComponent'
+import * as styles from './Link.css'
 
-export type LinkColor = 'white' | 'blue400' | 'blue600';
-export type UnderlineVisibility = 'always' | 'hover';
-export type UnderlineVariants = 'normal' | 'small';
+export type LinkColor = 'white' | 'blue400' | 'blue600'
+export type UnderlineVisibility = 'always' | 'hover'
+export type UnderlineVariants = 'normal' | 'small'
 
 export interface LinkProps extends NextLinkProps {
-  color?: LinkColor;
-  dataTestId?: string;
-  className?: string;
-  underline?: UnderlineVariants;
-  underlineVisibility?: UnderlineVisibility;
-  skipTab?: boolean;
-  onClick?: () => void;
-  pureChildren?: boolean;
-  newTab?: boolean;
+  color?: LinkColor
+  dataTestId?: string
+  className?: string
+  underline?: UnderlineVariants
+  underlineVisibility?: UnderlineVisibility
+  skipTab?: boolean
+  onClick?: () => void
+  pureChildren?: boolean
+  newTab?: boolean
 }
 
 // Next link that can handle external urls
@@ -48,8 +48,8 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
   dataTestId = undefined,
   ...linkProps
 }) => {
-  useDeprecatedComponent('Link', 'LinkV2');
-  const isInternal = !shouldLinkOpenInNewWindow(href as string);
+  useDeprecatedComponent('Link', 'LinkV2')
+  const isInternal = !shouldLinkOpenInNewWindow(href as string)
   const classNames = cn(
     styles.link,
     color ? styles.colors[color] : undefined,
@@ -61,18 +61,18 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
     {
       [styles.pointer]: href || linkProps.onClick,
     },
-  );
+  )
 
   if (!href) {
     return (
       <span className={classNames} {...linkProps}>
         {children}
       </span>
-    );
+    )
   }
 
   if (isInternal) {
-    const hrefString = href?.toString();
+    const hrefString = href?.toString()
     if (shouldLinkBeAnAnchorTag(hrefString)) {
       return (
         <a
@@ -85,7 +85,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
         >
           {children}
         </a>
-      );
+      )
     }
     return (
       <NextLink
@@ -112,7 +112,7 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
           </a>
         )}
       </NextLink>
-    );
+    )
   } else {
     return (
       <a
@@ -126,6 +126,6 @@ export const Link: React.FC<React.PropsWithChildren<LinkProps>> = ({
       >
         {children}
       </a>
-    );
+    )
   }
-};
+}

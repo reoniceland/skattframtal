@@ -1,6 +1,6 @@
-'use client';
+'use client'
 
-import { createContext } from 'react';
+import { createContext } from 'react'
 
 export type ColorSchemes =
   | 'blue'
@@ -9,12 +9,12 @@ export type ColorSchemes =
   | 'white'
   | 'blueberry'
   | 'dark'
-  | null;
+  | null
 
 export interface ColorSchemeProps {
-  colorScheme: ColorSchemes;
+  colorScheme: ColorSchemes
 }
 
 export const ColorSchemeContext = createContext<ColorSchemeProps>({
   colorScheme: null,
-});
+})

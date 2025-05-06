@@ -1,11 +1,11 @@
-import type * as CSS from 'csstype';
+import type * as CSS from 'csstype'
 
-import { theme } from '@reon-island/ui-theme';
-import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils';
+import { theme } from '@reon-island/ui-theme'
+import { responsiveStyleMap } from '@reon-island/vanilla-extract-utils'
 
-import { mapToStyleProperty } from '../../utils/mapToStyleProperty';
+import { mapToStyleProperty } from '../../utils/mapToStyleProperty'
 
-import { globalStyle, style, styleVariants } from '@vanilla-extract/css';
+import { globalStyle, style, styleVariants } from '@vanilla-extract/css'
 
 export type VariantTypes =
   | 'p'
@@ -22,39 +22,39 @@ export type VariantTypes =
   | 'cardCategoryTitle'
   | 'sideMenu'
   | 'placeholderText'
-  | 'datepickerHeaderText';
+  | 'datepickerHeaderText'
 
 interface ResponsiveProps<T> {
-  xs?: T;
-  sm?: T;
-  md?: T;
-  lg?: T;
-  xl?: T;
+  xs?: T
+  sm?: T
+  md?: T
+  lg?: T
+  xl?: T
 }
 
 type Variants = Record<
   VariantTypes,
   CSS.Properties<string | ResponsiveProps<string | number>>
->;
+>
 
-type defaultFontWeights = Record<VariantTypes, number>;
+type defaultFontWeights = Record<VariantTypes, number>
 
 export const truncate = style({
   overflow: 'hidden',
   textOverflow: 'ellipsis',
   whiteSpace: 'nowrap',
-});
+})
 
 export const base = style({
   ['-webkit-font-smoothing' as any]: 'antialiased',
-});
+})
 
 const fontWeightMap = {
   light: theme.typography.light,
   regular: theme.typography.regular,
   medium: theme.typography.medium,
   semiBold: theme.typography.semiBold,
-};
+}
 
 const defaultFontWeightsMap: defaultFontWeights = {
   h1: theme.typography.headingsFontWeight,
@@ -72,15 +72,15 @@ const defaultFontWeightsMap: defaultFontWeights = {
   sideMenu: theme.typography.medium,
   placeholderText: theme.typography.light,
   datepickerHeaderText: theme.typography.semiBold,
-};
+}
 
 export const fontWeight = styleVariants(
   mapToStyleProperty(fontWeightMap, 'fontWeight'),
-);
+)
 
 export const defaultFontWeights = styleVariants(
   mapToStyleProperty(defaultFontWeightsMap, 'fontWeight'),
-);
+)
 
 export const variants: Variants = {
   h1: {
@@ -187,40 +187,40 @@ export const variants: Variants = {
     },
     lineHeight: 1.666,
   },
-};
+}
 
 export const links = style({
   cursor: 'pointer',
-});
+})
 
 globalStyle(`${links} a`, {
   color: theme.color.blue400,
   transition: 'color .2s, box-shadow .2s',
   textDecoration: 'none',
   boxShadow: `inset 0 -1px 0 0 ${theme.color.blue400}`,
-});
+})
 
 globalStyle(`${links} a:hover`, {
   color: theme.color.blueberry400,
   boxShadow: `inset 0 -2px 0 0 ${theme.color.blueberry400}`,
   textDecoration: 'none',
-});
+})
 
 globalStyle(`${links} a svg path`, {
   transition: 'fill .2s, box-shadow .2s',
   fill: theme.color.blue400,
-});
+})
 
 globalStyle(`${links} a:hover svg path`, {
   fill: theme.color.blueberry400,
-});
+})
 
-export const colors = styleVariants(mapToStyleProperty(theme.color, 'color'));
+export const colors = styleVariants(mapToStyleProperty(theme.color, 'color'))
 
 export const variantStyles = (Object.keys(variants) as VariantTypes[]).reduce(
   (acc, variantKey) => {
-    acc[variantKey] = responsiveStyleMap(variants[variantKey]);
-    return acc;
+    acc[variantKey] = responsiveStyleMap(variants[variantKey])
+    return acc
   },
   {} as Record<VariantTypes, string>,
-);
+)

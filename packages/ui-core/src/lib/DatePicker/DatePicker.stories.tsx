@@ -1,22 +1,22 @@
-import React from 'react';
+import React from 'react'
 
-import { withFigma } from '../../utils/withFigma';
-import { Text } from '../Text/Text';
-import { DatePicker } from './DatePicker';
+import { withFigma } from '../../utils/withFigma'
+import { Text } from '../Text/Text'
+import { DatePicker } from './DatePicker'
 
 export default {
   title: 'Form/DatePicker',
   component: DatePicker,
   parameters: withFigma('DatePicker'),
-};
+}
 
 const Template = (args) => (
   <Wrap>
     <DatePicker {...args} />
   </Wrap>
-);
+)
 
-export const Default = Template.bind({});
+export const Default = Template.bind({})
 Default.args = {
   label: 'Dagsetning',
   placeholderText: 'Veldu dagsetningu',
@@ -24,13 +24,13 @@ Default.args = {
   required: true,
   appearInline: false,
   handleChange: (date: Date) => {
-    console.log(date);
+    console.log(date)
   },
-};
+}
 
 const Wrap: React.FC<React.PropsWithChildren> = ({ children }) => (
   <div style={{ height: 450 }}>{children}</div>
-);
+)
 
 export const Basic = () => {
   return (
@@ -39,12 +39,12 @@ export const Basic = () => {
         label="Date"
         placeholderText="Pick a date"
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </Wrap>
-  );
-};
+  )
+}
 
 export const WithSelectedDate = () => (
   <Wrap>
@@ -53,11 +53,11 @@ export const WithSelectedDate = () => (
       placeholderText="Pick a date"
       selected={new Date()}
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
     />
   </Wrap>
-);
+)
 
 export const LocaleIS = () => {
   return (
@@ -67,15 +67,15 @@ export const LocaleIS = () => {
         placeholderText="Veldu dagsetningu"
         locale="is"
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </Wrap>
-  );
-};
+  )
+}
 
 export const SelectYear = () => {
-  const toDay = new Date();
+  const toDay = new Date()
   return (
     <Wrap>
       <DatePicker
@@ -84,7 +84,7 @@ export const SelectYear = () => {
         minYear={toDay.getFullYear() - 10}
         maxYear={toDay.getFullYear() + 2}
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
       <Text variant="small" marginTop={3}>
@@ -93,8 +93,8 @@ export const SelectYear = () => {
         <code>minYear</code>
       </Text>
     </Wrap>
-  );
-};
+  )
+}
 
 export const MinimumDate = () => {
   return (
@@ -104,12 +104,12 @@ export const MinimumDate = () => {
         placeholderText="Pick a date"
         minDate={new Date()}
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 export const BlueBackground = () => {
   return (
@@ -119,12 +119,12 @@ export const BlueBackground = () => {
         placeholderText="Pick a date"
         backgroundColor="blue"
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 export const SizeSmall = () => {
   return (
@@ -134,12 +134,12 @@ export const SizeSmall = () => {
         placeholderText="Pick a date"
         size="sm"
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 export const SizeExtraSmall = () => {
   return (
@@ -149,12 +149,12 @@ export const SizeExtraSmall = () => {
         placeholderText="Pick a date"
         size="xs"
         handleChange={(date: Date) => {
-          console.log(date);
+          console.log(date)
         }}
       />
     </div>
-  );
-};
+  )
+}
 
 export const WithErrors = () => (
   <Wrap>
@@ -166,11 +166,11 @@ export const WithErrors = () => (
       hasError
       errorMessage="This date is somewhat incorrect"
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
     />
   </Wrap>
-);
+)
 
 export const Disabled = () => (
   <Wrap>
@@ -179,12 +179,12 @@ export const Disabled = () => (
       placeholderText="Pick a date"
       selected={new Date()}
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
       disabled
     />
   </Wrap>
-);
+)
 
 export const WithoutLabel = () => (
   <Wrap>
@@ -193,11 +193,11 @@ export const WithoutLabel = () => (
       placeholderText="Pick a date"
       selected={new Date()}
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
     />
   </Wrap>
-);
+)
 
 export const SmallWithoutLabel = () => (
   <Wrap>
@@ -207,11 +207,11 @@ export const SmallWithoutLabel = () => (
       placeholderText="Pick a date"
       selected={new Date()}
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
     />
   </Wrap>
-);
+)
 
 export const AppearInline = () => (
   <Wrap>
@@ -219,13 +219,13 @@ export const AppearInline = () => (
       label="Date"
       placeholderText="Pick a date"
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
       appearInline
     />
     <Text variant="intro">This stays below the date picker.</Text>
   </Wrap>
-);
+)
 
 export const WithTime = () => (
   <Wrap>
@@ -233,11 +233,11 @@ export const WithTime = () => (
       label="Date"
       placeholderText="Pick a date"
       handleChange={(date: Date) => {
-        console.log(date);
+        console.log(date)
       }}
       selected={new Date()}
       locale="is"
       showTimeInput
     />
   </Wrap>
-);
+)

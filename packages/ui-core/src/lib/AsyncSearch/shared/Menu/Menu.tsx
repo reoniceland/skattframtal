@@ -1,14 +1,14 @@
-import React, { forwardRef } from 'react';
+import React, { forwardRef } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Menu.css';
+import * as styles from './Menu.css'
 
 export interface MenuProps {
-  comp?: React.ElementType;
-  isOpen: boolean;
-  shouldShowItems?: boolean;
-  colorScheme?: 'default' | 'blue';
+  comp?: React.ElementType
+  isOpen: boolean
+  shouldShowItems?: boolean
+  colorScheme?: 'default' | 'blue'
 }
 
 export const Menu = forwardRef<
@@ -38,4 +38,4 @@ export const Menu = forwardRef<
       {children}
     </Comp>
   ),
-);
+)

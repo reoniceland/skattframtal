@@ -1,6 +1,6 @@
-import React from 'react';
+import React from 'react'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 import type {
   ClearIndicatorProps,
   ControlProps,
@@ -22,15 +22,15 @@ import type {
   SingleValueProps,
   StylesConfig,
   ValueContainerProps,
-} from 'react-select';
-import type { Option as OptionType } from '../Select.types';
+} from 'react-select'
+import type { Option as OptionType } from '../Select.types'
 
-import cn from 'classnames';
-import { components } from 'react-select';
+import cn from 'classnames'
+import { components } from 'react-select'
 
-import { Icon } from '../../IconRC/Icon';
-import { Text } from '../../Text/Text';
-import * as styles from '../Select.css';
+import { Icon } from '../../IconRC/Icon'
+import { Text } from '../../Text/Text'
+import * as styles from '../Select.css'
 
 export const MultiValue = <
   Value,
@@ -43,8 +43,8 @@ export const MultiValue = <
     <components.MultiValue className={styles.multiValue} {...props}>
       {props.children}
     </components.MultiValue>
-  );
-};
+  )
+}
 
 export const MultiValueLabel = <
   Value,
@@ -57,8 +57,8 @@ export const MultiValueLabel = <
     <components.MultiValueLabel {...props}>
       <span className={styles.multiValueLabel}>{props.children}</span>
     </components.MultiValueLabel>
-  );
-};
+  )
+}
 
 export const Menu = <
   Value,
@@ -72,7 +72,7 @@ export const Menu = <
   <components.Menu className={styles.menu} {...props}>
     {props.children}
   </components.Menu>
-);
+)
 
 export const Option = <
   Value,
@@ -83,14 +83,14 @@ export const Option = <
   // @ts-ignore make web strict
   props: OptionProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { size = 'md' } = props.selectProps;
+  const { size = 'md' } = props.selectProps
 
-  const description = props.data.description;
+  const description = props.data.description
   // Truncate description by default
   const descriptionTruncated =
-    !!description && props.data.descriptionTruncated !== false;
+    !!description && props.data.descriptionTruncated !== false
 
-  const showCheckmark = props.data.withCheckmark;
+  const showCheckmark = props.data.withCheckmark
 
   return (
     <components.Option
@@ -143,8 +143,8 @@ export const Option = <
         )}
       </>
     </components.Option>
-  );
-};
+  )
+}
 
 export const IndicatorsContainer = <
   Value,
@@ -153,7 +153,7 @@ export const IndicatorsContainer = <
 >(
   props: IndicatorsContainerProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { icon, size = 'md' } = props.selectProps;
+  const { icon, size = 'md' } = props.selectProps
   return (
     <components.IndicatorsContainer
       className={cn(styles.indicatorsContainer, {
@@ -164,8 +164,8 @@ export const IndicatorsContainer = <
     >
       {props.children}
     </components.IndicatorsContainer>
-  );
-};
+  )
+}
 
 export const DropdownIndicator = <
   Value,
@@ -174,7 +174,7 @@ export const DropdownIndicator = <
 >(
   props: DropdownIndicatorProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { icon = 'chevronDown', hasError, size = 'md' } = props.selectProps;
+  const { icon = 'chevronDown', hasError, size = 'md' } = props.selectProps
 
   return (
     <components.DropdownIndicator
@@ -190,8 +190,8 @@ export const DropdownIndicator = <
         })}
       />
     </components.DropdownIndicator>
-  );
-};
+  )
+}
 
 export const SingleValue = <
   Value,
@@ -202,7 +202,7 @@ export const SingleValue = <
   // @ts-ignore make web strict
   props: SingleValueProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { size = 'md' } = props.selectProps;
+  const { size = 'md' } = props.selectProps
   return (
     <components.SingleValue
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -212,8 +212,8 @@ export const SingleValue = <
     >
       {props.children}
     </components.SingleValue>
-  );
-};
+  )
+}
 
 export const ValueContainer = <
   Value,
@@ -233,7 +233,7 @@ export const ValueContainer = <
   >
     {props.children}
   </components.ValueContainer>
-);
+)
 
 export const Placeholder = <
   Value,
@@ -244,7 +244,7 @@ export const Placeholder = <
   // @ts-ignore make web strict
   props: PlaceholderProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { size = 'md' } = props.selectProps;
+  const { size = 'md' } = props.selectProps
   return (
     <components.Placeholder
       className={cn(
@@ -258,8 +258,8 @@ export const Placeholder = <
     >
       {props.children}
     </components.Placeholder>
-  );
-};
+  )
+}
 
 export const Input = <
   Value,
@@ -270,7 +270,7 @@ export const Input = <
   // @ts-ignore make web strict
   props: InputProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { size = 'md', ariaError } = props.selectProps;
+  const { size = 'md', ariaError } = props.selectProps
   return (
     <components.Input
       className={styles.inputContainer}
@@ -280,8 +280,8 @@ export const Input = <
       data-testid={props.selectProps.dataTestId}
       role="combobox"
     />
-  );
-};
+  )
+}
 export const Control = <
   Value,
   IsMulti extends boolean,
@@ -291,7 +291,7 @@ export const Control = <
   // @ts-ignore make web strict
   props: ControlProps<OptionType<Value>, IsMulti, Group>,
 ) => {
-  const { size = 'md' } = props.selectProps;
+  const { size = 'md' } = props.selectProps
   const label = (
     <label
       htmlFor={props.selectProps.name}
@@ -309,7 +309,7 @@ export const Control = <
         </span>
       )}
     </label>
-  );
+  )
 
   const component = (label?: ReactNode) => {
     return (
@@ -324,18 +324,18 @@ export const Control = <
         {label && label}
         {props.children}
       </components.Control>
-    );
-  };
+    )
+  }
   if (size === 'xs') {
     return (
       <>
         {label} {component()}
       </>
-    );
+    )
   } else {
-    return component(label);
+    return component(label)
   }
-};
+}
 
 export const ClearIndicator = <
   Value,
@@ -348,8 +348,8 @@ export const ClearIndicator = <
     <components.ClearIndicator {...props}>
       <Icon icon="close" color="blue400" />
     </components.ClearIndicator>
-  );
-};
+  )
+}
 
 export const customStyles = <
   Value,
@@ -366,12 +366,12 @@ export const customStyles = <
     background: 'transparent',
     opacity: state.isDisabled ? '0.5' : '1',
   }),
-});
+})
 
 export const NoOptionsMessage = (props: any) => {
   return (
     <components.NoOptionsMessage {...props}>
       <Text>{props.children}</Text>
     </components.NoOptionsMessage>
-  );
-};
+  )
+}

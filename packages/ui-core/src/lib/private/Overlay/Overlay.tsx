@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../../Box/Box';
-import { BoxProps } from '../../Box/types';
-import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings';
+import { Box } from '../../Box/Box'
+import { BoxProps } from '../../Box/types'
+import { hideFocusRingsClassName } from '../hideFocusRings/hideFocusRings'
 
 export interface OverlayProps
   extends Partial<
@@ -16,8 +16,8 @@ export interface OverlayProps
       | 'className'
     >
   > {
-  visible?: boolean;
-  onlyVisibleForKeyboardNavigation?: boolean;
+  visible?: boolean
+  onlyVisibleForKeyboardNavigation?: boolean
 }
 
 export const Overlay = ({
@@ -49,4 +49,4 @@ export const Overlay = ({
   >
     {children}
   </Box>
-);
+)

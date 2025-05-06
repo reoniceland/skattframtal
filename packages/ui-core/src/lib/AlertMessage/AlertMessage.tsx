@@ -1,28 +1,28 @@
-import React, { isValidElement } from 'react';
+import React, { isValidElement } from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { FC, ReactNode } from 'react';
-import type { Icon as IconType } from '../IconRC/iconMap';
+import type { Colors } from '@reon-island/ui-theme'
+import type { FC, ReactNode } from 'react'
+import type { Icon as IconType } from '../IconRC/iconMap'
 
-import { Box } from '../Box/Box';
-import { Icon } from '../IconRC/Icon';
-import { Text } from '../Text/Text';
+import { Box } from '../Box/Box'
+import { Icon } from '../IconRC/Icon'
+import { Text } from '../Text/Text'
 
 export type AlertMessageType =
   | 'error'
   | 'info'
   | 'success'
   | 'warning'
-  | 'default';
+  | 'default'
 
 interface VariantStyle {
-  background: Colors;
-  borderColor: Colors;
-  iconColor?: Colors;
-  icon?: IconType;
+  background: Colors
+  borderColor: Colors
+  iconColor?: Colors
+  icon?: IconType
 }
 
-type VariantStyles = Record<AlertMessageType, VariantStyle>;
+type VariantStyles = Record<AlertMessageType, VariantStyle>
 
 const variantStyles: VariantStyles = {
   error: {
@@ -53,27 +53,27 @@ const variantStyles: VariantStyles = {
     background: 'purple100',
     borderColor: 'purple200',
   },
-};
+}
 
 export interface AlertMessageProps {
-  type: AlertMessageType;
-  testid?: string;
-  action?: ReactNode;
+  type: AlertMessageType
+  testid?: string
+  action?: ReactNode
 }
 
 type TitleAndOrMessage =
   | {
-      title: string | ReactNode;
-      message: string | ReactNode;
+      title: string | ReactNode
+      message: string | ReactNode
     }
   | {
-      title?: never;
-      message: string | ReactNode;
+      title?: never
+      message: string | ReactNode
     }
   | {
-      title: string;
-      message?: never;
-    };
+      title: string
+      message?: never
+    }
 
 export const AlertMessage: FC<AlertMessageProps & TitleAndOrMessage> = ({
   type,
@@ -82,7 +82,7 @@ export const AlertMessage: FC<AlertMessageProps & TitleAndOrMessage> = ({
   testid,
   action,
 }) => {
-  const variant = variantStyles[type];
+  const variant = variantStyles[type]
 
   return (
     <Box
@@ -142,5 +142,5 @@ export const AlertMessage: FC<AlertMessageProps & TitleAndOrMessage> = ({
         </Box>
       </Box>
     </Box>
-  );
-};
+  )
+}

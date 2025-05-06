@@ -1,6 +1,7 @@
 import React from 'react'
-import { HyphenProps, Hyphen } from './Hyphen'
+
 import { Text } from '../Text/Text'
+import { Hyphen, HyphenProps } from './Hyphen'
 
 const container = (Story) => (
   <div

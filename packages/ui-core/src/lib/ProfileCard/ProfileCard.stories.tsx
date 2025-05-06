@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { GridColumn } from '../Grid/GridColumn/GridColumn';
-import { GridContainer } from '../Grid/GridContainer/GridContainer';
-import { GridRow } from '../Grid/GridRow/GridRow';
-import { ProfileCard } from './ProfileCard';
+import { Box } from '../Box/Box'
+import { GridColumn } from '../Grid/GridColumn/GridColumn'
+import { GridContainer } from '../Grid/GridContainer/GridContainer'
+import { GridRow } from '../Grid/GridRow/GridRow'
+import { ProfileCard } from './ProfileCard'
 
 export default {
   title: 'Cards/ProfileCard',
   component: ProfileCard,
-};
+}
 
 export const Default = () => {
   return (
@@ -82,8 +82,8 @@ export const Default = () => {
         </GridRow>
       </GridContainer>
     </Box>
-  );
-};
+  )
+}
 
 export const TitleAbove = () => {
   return (
@@ -177,5 +177,5 @@ export const TitleAbove = () => {
         </GridRow>
       </GridContainer>
     </Box>
-  );
-};
+  )
+}

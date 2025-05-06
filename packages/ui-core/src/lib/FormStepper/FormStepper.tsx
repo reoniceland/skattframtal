@@ -1,17 +1,17 @@
-'use client';
+'use client'
 
-import React from 'react';
+import React from 'react'
 
-import type { FC, ReactNode } from 'react';
+import type { FC, ReactNode } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box } from '../Box/Box';
-import { useDeprecatedComponent } from '../private/useDeprecatedComponent';
-import { Text } from '../Text/Text';
-import * as styles from './FormStepper.css';
-import { FormStepperSection } from './FormStepperSection';
-import * as types from './types';
+import { Box } from '../Box/Box'
+import { useDeprecatedComponent } from '../private/useDeprecatedComponent'
+import { Text } from '../Text/Text'
+import * as styles from './FormStepper.css'
+import { FormStepperSection } from './FormStepperSection'
+import * as types from './types'
 
 /**
  * @deprecated Use FormStepperV2 instead
@@ -20,24 +20,24 @@ import * as types from './types';
  */
 export const FormStepper: FC<
   React.PropsWithChildren<{
-    theme?: types.FormStepperThemes;
-    tag?: ReactNode;
-    formName?: string;
-    formIcon?: string;
+    theme?: types.FormStepperThemes
+    tag?: ReactNode
+    formName?: string
+    formIcon?: string
     /**
      * Index starts at 0 like array indexes.
      */
-    activeSection?: number;
+    activeSection?: number
     /**
      * Index starts at 0 like array indexes.
      */
-    activeSubSection?: number;
-    sections: types.FormStepperSection[];
+    activeSubSection?: number
+    sections: types.FormStepperSection[]
     /**
      * If the sub sections passed down have different types, you can define which one to pick and render
      */
-    subSection?: string;
-    showSubSectionIcons?: boolean;
+    subSection?: string
+    showSubSectionIcons?: boolean
   }>
 > = ({
   theme = types.FormStepperThemes.PURPLE,
@@ -50,11 +50,11 @@ export const FormStepper: FC<
   subSection = 'SUB_SECTION',
   showSubSectionIcons = false,
 }) => {
-  useDeprecatedComponent('FormStepper', 'FormStepperV2');
-  const hasHead = formIcon || formName;
+  useDeprecatedComponent('FormStepper', 'FormStepperV2')
+  const hasHead = formIcon || formName
 
-  const sectionsWithNames = sections.filter((section) => section.name !== '');
-  const hasSectionsToShow = sectionsWithNames.length > 0;
+  const sectionsWithNames = sections.filter((section) => section.name !== '')
+  const hasSectionsToShow = sectionsWithNames.length > 0
 
   return (
     <Box width="full">
@@ -92,10 +92,10 @@ export const FormStepper: FC<
                 activeSubSection={activeSubSection}
                 showSubSectionIcon={showSubSectionIcons}
               />
-            );
+            )
           })}
         </Box>
       )}
     </Box>
-  );
-};
+  )
+}

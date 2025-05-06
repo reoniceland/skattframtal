@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 
-import { Box } from '../Box/Box';
-import { LoadingDots } from './LoadingDots';
+import { Box } from '../Box/Box'
+import { LoadingDots } from './LoadingDots'
 
 export default {
   title: 'Navigation/LoadingDots',
   component: LoadingDots,
-};
+}
 
-export const Blue = () => <LoadingDots />;
-export const BlueLarge = () => <LoadingDots large />;
+export const Blue = () => <LoadingDots />
+export const BlueLarge = () => <LoadingDots large />
 
-export const SingleBlue = () => <LoadingDots single />;
-export const SingleBlueLarge = () => <LoadingDots large single />;
+export const SingleBlue = () => <LoadingDots single />
+export const SingleBlueLarge = () => <LoadingDots large single />
 
-export const GradientLarge = () => <LoadingDots large color="gradient" />;
+export const GradientLarge = () => <LoadingDots large color="gradient" />
 export const SingleGradientLarge = () => (
   <LoadingDots single large color="gradient" />
-);
+)
 
 export const CenteredInsideBox = () => (
   <Box
@@ -29,4 +29,4 @@ export const CenteredInsideBox = () => (
   >
     <LoadingDots large color="white" />
   </Box>
-);
+)

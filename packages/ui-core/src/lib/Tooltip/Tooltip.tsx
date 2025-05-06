@@ -1,40 +1,40 @@
-import React from 'react';
+import React from 'react'
 
-import type { Colors } from '@reon-island/ui-theme';
-import type { ElementType, FC, ReactElement } from 'react';
-import type { Size } from '../IconRC/types';
+import type { Colors } from '@reon-island/ui-theme'
+import type { ElementType, FC, ReactElement } from 'react'
+import type { Size } from '../IconRC/types'
 
-import cn from 'classnames';
+import cn from 'classnames'
 import {
   Tooltip as ReakitTooltip,
   TooltipArrow,
   TooltipReference,
   useTooltipState,
-} from 'reakit';
+} from 'reakit'
 
-import { Icon } from '../IconRC/Icon';
-import * as styles from './Tooltip.css';
+import { Icon } from '../IconRC/Icon'
+import * as styles from './Tooltip.css'
 
-type Placement = 'top' | 'right' | 'bottom' | 'left';
+type Placement = 'top' | 'right' | 'bottom' | 'left'
 
 interface ArrowIconProps {
-  placement: string;
+  placement: string
 }
 
 const ArrowIcon: FC<React.PropsWithChildren<ArrowIconProps>> = ({
   placement,
 }) => {
-  let deg = 0;
+  let deg = 0
 
   if (placement.startsWith('left')) {
-    deg = -90;
+    deg = -90
   } else if (placement.startsWith('right')) {
-    deg = 90;
+    deg = 90
   } else if (placement.startsWith('bottom')) {
-    deg = 180;
+    deg = 180
   }
 
-  const transform = `rotate(${deg}deg)`;
+  const transform = `rotate(${deg}deg)`
 
   return (
     <svg
@@ -53,18 +53,18 @@ const ArrowIcon: FC<React.PropsWithChildren<ArrowIconProps>> = ({
         clipRule="evenodd"
       ></path>
     </svg>
-  );
-};
+  )
+}
 
 interface TooltipProps {
-  placement?: Placement;
-  text: React.ReactNode;
-  iconSize?: Size;
-  color?: Colors;
-  children?: ReactElement;
-  fullWidth?: boolean;
-  renderInPortal?: boolean;
-  as?: ElementType;
+  placement?: Placement
+  text: React.ReactNode
+  iconSize?: Size
+  color?: Colors
+  children?: ReactElement
+  fullWidth?: boolean
+  renderInPortal?: boolean
+  as?: ElementType
 }
 
 export const Tooltip: FC<React.PropsWithChildren<TooltipProps>> = ({
@@ -80,10 +80,10 @@ export const Tooltip: FC<React.PropsWithChildren<TooltipProps>> = ({
   const tooltip = useTooltipState({
     animated: 250,
     ...(placement && { placement }),
-  });
+  })
 
   if (!text) {
-    return null;
+    return null
   }
 
   return (
@@ -112,5 +112,5 @@ export const Tooltip: FC<React.PropsWithChildren<TooltipProps>> = ({
         </div>
       </ReakitTooltip>
     </>
-  );
-};
+  )
+}

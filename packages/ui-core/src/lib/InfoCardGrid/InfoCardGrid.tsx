@@ -1,43 +1,43 @@
-import { useWindowSize } from 'react-use';
+import { useWindowSize } from 'react-use'
 
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { Box, BoxProps, Text } from '../..';
-import { InfoCard, InfoCardProps } from './InfoCard';
-import * as styles from './InfoCard.css';
+import { Box, BoxProps, Text } from '../..'
+import { InfoCard, InfoCardProps } from './InfoCard'
+import * as styles from './InfoCard.css'
 
 export type InfoCardItemProps = Omit<
   InfoCardProps,
   'size' | 'variant' | 'background' | 'padding'
->;
+>
 
 interface Props {
-  cards: Array<InfoCardItemProps>;
-  variant?: 'detailed' | 'simple';
-  columns?: 1 | 2 | 3;
-  cardsBackground?: BoxProps['background'];
-  cardsBorder?: BoxProps['borderColor'];
-  notFoundText?: string;
+  cards: Array<InfoCardItemProps>
+  variant?: 'detailed' | 'simple'
+  columns?: 1 | 2 | 3
+  cardsBackground?: BoxProps['background']
+  cardsBorder?: BoxProps['borderColor']
+  notFoundText?: string
 }
 
-type CardSize = 'small' | 'medium' | 'large';
+type CardSize = 'small' | 'medium' | 'large'
 
 const mapColumnCountToCardSize = (
   columns: Props['columns'],
   isMobile?: boolean,
 ): CardSize => {
   if (isMobile) {
-    return 'large';
+    return 'large'
   }
   switch (columns) {
     case 1:
-      return 'large';
+      return 'large'
     case 2:
-      return 'medium';
+      return 'medium'
     default:
-      return 'small';
+      return 'small'
   }
-};
+}
 
 export const InfoCardGrid = ({
   cards,
@@ -46,10 +46,10 @@ export const InfoCardGrid = ({
   variant,
   columns,
 }: Props) => {
-  const { width } = useWindowSize();
-  const isMobile = width < theme.breakpoints.sm;
+  const { width } = useWindowSize()
+  const isMobile = width < theme.breakpoints.sm
 
-  const cardSize = mapColumnCountToCardSize(columns, isMobile);
+  const cardSize = mapColumnCountToCardSize(columns, isMobile)
 
   return (
     <Box
@@ -74,5 +74,5 @@ export const InfoCardGrid = ({
         />
       ))}
     </Box>
-  );
-};
+  )
+}

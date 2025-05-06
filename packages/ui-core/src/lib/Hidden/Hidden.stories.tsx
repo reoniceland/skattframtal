@@ -1,12 +1,12 @@
-import React from 'react';
+import React from 'react'
 
-import { Typography } from '../Typography/Typography';
-import { Hidden } from './Hidden';
+import { Typography } from '../Typography/Typography'
+import { Hidden } from './Hidden'
 
 export default {
   title: 'Layout/Hidden',
   component: Hidden,
-};
+}
 
 export const Default = () => (
   <>
@@ -24,4 +24,4 @@ export const Default = () => (
       </Typography>
     </Hidden>
   </>
-);
+)

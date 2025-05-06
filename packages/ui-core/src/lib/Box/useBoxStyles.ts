@@ -1,78 +1,78 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 
-import type { theme } from '@reon-island/ui-theme';
-import type { ElementType } from 'react';
-import type { ResponsiveProp } from '../../utils/responsiveProp';
+import type { theme } from '@reon-island/ui-theme'
+import type { ElementType } from 'react'
+import type { ResponsiveProp } from '../../utils/responsiveProp'
 
-import classnames from 'classnames';
+import classnames from 'classnames'
 
-import * as resetStyleRefs from '../../styles/reset.css';
-import { resolveResponsiveProp } from '../../utils/responsiveProp';
-import * as styleRefs from './useBoxStyles.css';
+import * as resetStyleRefs from '../../styles/reset.css'
+import { resolveResponsiveProp } from '../../utils/responsiveProp'
+import * as styleRefs from './useBoxStyles.css'
 
-export type Space = keyof typeof theme.spacing;
-export type ResponsiveSpace = ResponsiveProp<Space>;
+export type Space = keyof typeof theme.spacing
+export type ResponsiveSpace = ResponsiveProp<Space>
 
 export interface UseBoxStylesProps {
-  component: ElementType | null;
-  padding?: ResponsiveSpace;
-  paddingX?: ResponsiveSpace;
-  paddingY?: ResponsiveSpace;
-  paddingTop?: ResponsiveSpace;
-  paddingBottom?: ResponsiveSpace;
-  paddingLeft?: ResponsiveSpace;
-  paddingRight?: ResponsiveSpace;
-  margin?: ResponsiveProp<Space | 'auto'>;
-  marginX?: ResponsiveProp<Space | 'auto'>;
-  marginY?: ResponsiveProp<Space | 'auto'>;
-  marginTop?: ResponsiveProp<Space | 'auto'>;
-  marginBottom?: ResponsiveProp<Space | 'auto'>;
-  marginLeft?: ResponsiveProp<Space | 'auto'>;
-  marginRight?: ResponsiveProp<Space | 'auto'>;
-  display?: ResponsiveProp<keyof typeof styleRefs.display>;
-  flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>;
-  flexWrap?: ResponsiveProp<keyof typeof styleRefs.flexWrap>;
-  flexShrink?: keyof typeof styleRefs.flexShrink;
-  flexGrow?: keyof typeof styleRefs.flexGrow;
-  alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>;
-  alignSelf?: ResponsiveProp<keyof typeof styleRefs.alignSelf>;
-  justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>;
-  textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>;
-  columnGap?: ResponsiveSpace;
-  rowGap?: ResponsiveSpace;
-  border?: keyof typeof styleRefs.border;
-  borderRadius?: keyof typeof styleRefs.borderRadius;
-  background?: ResponsiveProp<keyof typeof styleRefs.background>;
-  backgroundPattern?: keyof typeof styleRefs.backgroundPattern;
-  borderColor?: keyof typeof styleRefs.borderColor;
-  borderWidth?: keyof typeof styleRefs.borderWidth;
-  borderRightWidth?: keyof typeof styleRefs.borderRightWidth;
-  borderTopWidth?: keyof typeof styleRefs.borderTopWidth;
-  borderLeftWidth?: keyof typeof styleRefs.borderLeftWidth;
-  borderBottomWidth?: keyof typeof styleRefs.borderBottomWidth;
-  borderXWidth?: keyof typeof styleRefs.borderXWidth;
-  borderYWidth?: keyof typeof styleRefs.borderYWidth;
-  borderStyle?: keyof typeof styleRefs.borderStyle;
-  boxShadow?: keyof typeof styleRefs.boxShadow;
-  transform?: keyof typeof styleRefs.transform;
-  transition?: keyof typeof styleRefs.transition;
-  height?: keyof typeof styleRefs.height;
-  width?: keyof typeof styleRefs.width;
-  position?: keyof typeof styleRefs.position;
-  cursor?: keyof typeof styleRefs.cursor;
-  pointerEvents?: keyof typeof styleRefs.pointerEvents;
-  overflow?: keyof typeof styleRefs.overflow;
-  minWidth?: keyof typeof styleRefs.minWidth;
-  top?: ResponsiveProp<Space>;
-  bottom?: ResponsiveProp<Space>;
-  left?: ResponsiveProp<Space>;
-  right?: ResponsiveProp<Space>;
-  userSelect?: keyof typeof styleRefs.userSelect;
-  outline?: keyof typeof styleRefs.outline;
-  opacity?: keyof typeof styleRefs.opacity;
-  printHidden?: boolean;
-  className?: Parameters<typeof classnames>[0];
-  zIndex?: keyof typeof styleRefs.zIndex;
+  component: ElementType | null
+  padding?: ResponsiveSpace
+  paddingX?: ResponsiveSpace
+  paddingY?: ResponsiveSpace
+  paddingTop?: ResponsiveSpace
+  paddingBottom?: ResponsiveSpace
+  paddingLeft?: ResponsiveSpace
+  paddingRight?: ResponsiveSpace
+  margin?: ResponsiveProp<Space | 'auto'>
+  marginX?: ResponsiveProp<Space | 'auto'>
+  marginY?: ResponsiveProp<Space | 'auto'>
+  marginTop?: ResponsiveProp<Space | 'auto'>
+  marginBottom?: ResponsiveProp<Space | 'auto'>
+  marginLeft?: ResponsiveProp<Space | 'auto'>
+  marginRight?: ResponsiveProp<Space | 'auto'>
+  display?: ResponsiveProp<keyof typeof styleRefs.display>
+  flexDirection?: ResponsiveProp<keyof typeof styleRefs.flexDirection>
+  flexWrap?: ResponsiveProp<keyof typeof styleRefs.flexWrap>
+  flexShrink?: keyof typeof styleRefs.flexShrink
+  flexGrow?: keyof typeof styleRefs.flexGrow
+  alignItems?: ResponsiveProp<keyof typeof styleRefs.alignItems>
+  alignSelf?: ResponsiveProp<keyof typeof styleRefs.alignSelf>
+  justifyContent?: ResponsiveProp<keyof typeof styleRefs.justifyContent>
+  textAlign?: ResponsiveProp<keyof typeof styleRefs.textAlign>
+  columnGap?: ResponsiveSpace
+  rowGap?: ResponsiveSpace
+  border?: keyof typeof styleRefs.border
+  borderRadius?: keyof typeof styleRefs.borderRadius
+  background?: ResponsiveProp<keyof typeof styleRefs.background>
+  backgroundPattern?: keyof typeof styleRefs.backgroundPattern
+  borderColor?: keyof typeof styleRefs.borderColor
+  borderWidth?: keyof typeof styleRefs.borderWidth
+  borderRightWidth?: keyof typeof styleRefs.borderRightWidth
+  borderTopWidth?: keyof typeof styleRefs.borderTopWidth
+  borderLeftWidth?: keyof typeof styleRefs.borderLeftWidth
+  borderBottomWidth?: keyof typeof styleRefs.borderBottomWidth
+  borderXWidth?: keyof typeof styleRefs.borderXWidth
+  borderYWidth?: keyof typeof styleRefs.borderYWidth
+  borderStyle?: keyof typeof styleRefs.borderStyle
+  boxShadow?: keyof typeof styleRefs.boxShadow
+  transform?: keyof typeof styleRefs.transform
+  transition?: keyof typeof styleRefs.transition
+  height?: keyof typeof styleRefs.height
+  width?: keyof typeof styleRefs.width
+  position?: keyof typeof styleRefs.position
+  cursor?: keyof typeof styleRefs.cursor
+  pointerEvents?: keyof typeof styleRefs.pointerEvents
+  overflow?: keyof typeof styleRefs.overflow
+  minWidth?: keyof typeof styleRefs.minWidth
+  top?: ResponsiveProp<Space>
+  bottom?: ResponsiveProp<Space>
+  left?: ResponsiveProp<Space>
+  right?: ResponsiveProp<Space>
+  userSelect?: keyof typeof styleRefs.userSelect
+  outline?: keyof typeof styleRefs.outline
+  opacity?: keyof typeof styleRefs.opacity
+  printHidden?: boolean
+  className?: Parameters<typeof classnames>[0]
+  zIndex?: keyof typeof styleRefs.zIndex
 }
 
 export const useBoxStyles = ({
@@ -136,18 +136,18 @@ export const useBoxStyles = ({
   className,
   zIndex,
 }: UseBoxStylesProps) => {
-  const resetStyles = { ...resetStyleRefs };
-  const styles = { ...styleRefs };
+  const resetStyles = { ...resetStyleRefs }
+  const styles = { ...styleRefs }
 
-  const resolvedPaddingTop = paddingTop ?? paddingY ?? padding;
-  const resolvedPaddingBottom = paddingBottom ?? paddingY ?? padding;
-  const resolvedPaddingLeft = paddingLeft ?? paddingX ?? padding;
-  const resolvedPaddingRight = paddingRight ?? paddingX ?? padding;
+  const resolvedPaddingTop = paddingTop ?? paddingY ?? padding
+  const resolvedPaddingBottom = paddingBottom ?? paddingY ?? padding
+  const resolvedPaddingLeft = paddingLeft ?? paddingX ?? padding
+  const resolvedPaddingRight = paddingRight ?? paddingX ?? padding
 
-  const resolvedMarginTop = marginTop ?? marginY ?? margin;
-  const resolvedMarginBottom = marginBottom ?? marginY ?? margin;
-  const resolvedMarginLeft = marginLeft ?? marginX ?? margin;
-  const resolvedMarginRight = marginRight ?? marginX ?? margin;
+  const resolvedMarginTop = marginTop ?? marginY ?? margin
+  const resolvedMarginBottom = marginBottom ?? marginY ?? margin
+  const resolvedMarginLeft = marginLeft ?? marginX ?? margin
+  const resolvedMarginRight = marginRight ?? marginX ?? margin
 
   return classnames(
     component !== null && resetStyles.base,
@@ -381,5 +381,5 @@ export const useBoxStyles = ({
     printHidden && styles.printHidden,
     className,
     styles.zIndex[zIndex!],
-  );
-};
+  )
+}

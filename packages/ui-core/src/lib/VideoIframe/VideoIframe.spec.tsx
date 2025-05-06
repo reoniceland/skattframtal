@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { render } from '@testing-library/react';
+import { render } from '@testing-library/react'
 
-import { VideoIframe } from './VideoIframe';
+import { VideoIframe } from './VideoIframe'
 
 describe(' VideoIframe', () => {
   it('should render successfully', () => {
@@ -11,7 +11,7 @@ describe(' VideoIframe', () => {
         src="https://www.youtube.com/embed/JqV0zeeyu9s"
         title="test"
       />,
-    );
-    expect(baseElement).toBeTruthy();
-  });
-});
+    )
+    expect(baseElement).toBeTruthy()
+  })
+})

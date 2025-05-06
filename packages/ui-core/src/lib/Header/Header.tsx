@@ -1,55 +1,55 @@
-import React from 'react';
+import React from 'react'
 
-import type { ReactElement, ReactNode } from 'react';
+import type { ReactElement, ReactNode } from 'react'
 
-import { Box } from '../Box/Box';
-import { Hidden } from '../Hidden/Hidden';
-import { Inline } from '../Inline/Inline';
-import { Logo } from '../Logo/Logo';
-import { Text } from '../Text/Text';
-import * as styles from './Header.css';
-import { UserMenu } from './UserMenu/UserMenu';
+import { Box } from '../Box/Box'
+import { Hidden } from '../Hidden/Hidden'
+import { Inline } from '../Inline/Inline'
+import { Logo } from '../Logo/Logo'
+import { Text } from '../Text/Text'
+import * as styles from './Header.css'
+import { UserMenu } from './UserMenu/UserMenu'
 
 export interface HeaderProps {
   info?: {
-    title: string;
-    description?: string;
-  };
-  logoRender?: (ReactElement: ReactElement) => ReactElement;
-  logoutText?: string;
-  headerItems?: ReactNode;
+    title: string
+    description?: string
+  }
+  logoRender?: (ReactElement: ReactElement) => ReactElement
+  logoutText?: string
+  headerItems?: ReactNode
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  authenticated?: boolean;
+  authenticated?: boolean
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  onLogout?: () => void;
+  onLogout?: () => void
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  switchLanguage?: () => void;
+  switchLanguage?: () => void
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  userLogo?: string;
+  userLogo?: string
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  userName?: string;
+  userName?: string
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  userAsDropdown?: boolean;
+  userAsDropdown?: boolean
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  dropdownItems?: ReactNode;
+  dropdownItems?: ReactNode
   /**
    * @deprecated please pass in a UserMenu or other header items with `headerItems`
    */
-  language?: string;
+  language?: string
 }
 
 const LogoIcon = (
@@ -61,7 +61,7 @@ const LogoIcon = (
       <Logo width={160} />
     </Hidden>
   </>
-);
+)
 
 export const Header = ({
   authenticated,
@@ -76,15 +76,15 @@ export const Header = ({
 }: HeaderProps) => {
   const renderLogo = () => {
     if (logoRender) {
-      return logoRender(LogoIcon);
+      return logoRender(LogoIcon)
     }
 
-    return LogoIcon;
-  };
+    return LogoIcon
+  }
 
   const renderInfo = () => {
     if (!info) {
-      return null;
+      return null
     }
 
     return (
@@ -104,12 +104,12 @@ export const Header = ({
           )}
         </Box>
       </Box>
-    );
-  };
+    )
+  }
 
   const renderOldDropdown = () => {
     if (!userName) {
-      return null;
+      return null
     }
 
     return (
@@ -121,8 +121,8 @@ export const Header = ({
         switchLanguage={switchLanguage}
         onLogout={onLogout}
       />
-    );
-  };
+    )
+  }
 
   return (
     <Box
@@ -140,5 +140,5 @@ export const Header = ({
         {headerItems}
       </Box>
     </Box>
-  );
-};
+  )
+}

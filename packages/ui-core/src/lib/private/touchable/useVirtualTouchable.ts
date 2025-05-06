@@ -1,5 +1,5 @@
-import * as styles from './useVirtualTouchable.css';
+import * as styles from './useVirtualTouchable.css'
 
 export function useVirtualTouchable() {
-  return styles.virtualTouchable;
+  return styles.virtualTouchable
 }

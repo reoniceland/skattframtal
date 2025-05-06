@@ -1,6 +1,6 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const head = style({
   display: 'none',
@@ -10,7 +10,7 @@ export const head = style({
       display: 'flex',
     },
   },
-});
+})
 
 export const tag = style({
   marginLeft: theme.spacing[3],
@@ -21,7 +21,7 @@ export const tag = style({
       marginBottom: theme.spacing[2],
     },
   },
-});
+})
 
 export const list = style({
   display: 'flex',
@@ -41,7 +41,7 @@ export const list = style({
       backgroundColor: 'transparent',
     },
   },
-});
+})
 
 export const historyList = style({
   display: 'flex',
@@ -49,7 +49,7 @@ export const historyList = style({
   padding: 0,
   backgroundColor: 'transparent',
   overflowX: 'hidden',
-});
+})
 
 export const listWithHead = style({
   '@media': {
@@ -57,4 +57,4 @@ export const listWithHead = style({
       marginTop: theme.spacing[4],
     },
   },
-});
+})

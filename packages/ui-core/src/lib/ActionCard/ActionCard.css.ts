@@ -1,6 +1,6 @@
-import { theme, themeUtils } from '@reon-island/ui-theme';
+import { theme, themeUtils } from '@reon-island/ui-theme'
 
-import { style } from '@vanilla-extract/css';
+import { style } from '@vanilla-extract/css'
 
 export const tag = style({
   marginBottom: theme.spacing[1],
@@ -10,7 +10,7 @@ export const tag = style({
       alignSelf: 'flex-start',
     },
   }),
-});
+})
 
 export const avatar = style({
   display: 'none',
@@ -21,7 +21,7 @@ export const avatar = style({
       height: 66,
     },
   }),
-});
+})
 
 export const button = style({
   ...themeUtils.responsiveStyle({
@@ -30,4 +30,4 @@ export const button = style({
       alignItems: 'flex-end',
     },
   }),
-});
+})

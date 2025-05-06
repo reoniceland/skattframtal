@@ -1,26 +1,26 @@
-'use client';
+'use client'
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react'
 
-import type { ReactNode } from 'react';
+import type { ReactNode } from 'react'
 
-import { applyCase } from 'beygla/strict';
+import { applyCase } from 'beygla/strict'
 
-import { Box } from '../../Box/Box';
-import { Button } from '../../Button/Button';
-import { Hidden } from '../../Hidden/Hidden';
-import { UserAvatar } from '../../UserAvatar/UserAvatar';
-import { UserDropdown } from '../UserDropdown/UserDropdown';
+import { Box } from '../../Box/Box'
+import { Button } from '../../Button/Button'
+import { Hidden } from '../../Hidden/Hidden'
+import { UserAvatar } from '../../UserAvatar/UserAvatar'
+import { UserDropdown } from '../UserDropdown/UserDropdown'
 
 interface UserMenuProps {
-  authenticated?: boolean;
-  username?: string;
-  language?: string;
-  isOpen?: boolean;
-  dropdownItems?: ReactNode;
-  switchLanguage?: () => void;
-  onLogout?: () => void;
-  onClick?: () => void;
+  authenticated?: boolean
+  username?: string
+  language?: string
+  isOpen?: boolean
+  dropdownItems?: ReactNode
+  switchLanguage?: () => void
+  onLogout?: () => void
+  onClick?: () => void
 }
 
 export const UserMenu = ({
@@ -35,34 +35,34 @@ export const UserMenu = ({
 }: UserMenuProps) => {
   const [dropdownState, setDropdownState] = useState<'closed' | 'open'>(
     'closed',
-  );
+  )
 
   const handleClick = () => {
     if (onClick) {
-      onClick();
+      onClick()
     }
 
-    setDropdownState(dropdownState === 'open' ? 'closed' : 'open');
-  };
+    setDropdownState(dropdownState === 'open' ? 'closed' : 'open')
+  }
 
   const getAriaLabel = () => {
     if (!username) {
-      return undefined;
+      return undefined
     }
 
     return language === 'is'
       ? `Notendaupplýsingar fyrir ${applyCase('þgf', username)}`
-      : `User information for ${username}`;
-  };
+      : `User information for ${username}`
+  }
 
   useEffect(() => {
     if (isOpen === false) {
-      setDropdownState('closed');
+      setDropdownState('closed')
     }
-  }, [isOpen]);
+  }, [isOpen])
 
   if (!authenticated) {
-    return null;
+    return null
   }
 
   return (
@@ -92,5 +92,5 @@ export const UserMenu = ({
         />
       )}
     </Box>
-  );
-};
+  )
+}

@@ -1,22 +1,22 @@
-import { theme } from '@reon-island/ui-theme';
+import { theme } from '@reon-island/ui-theme'
 
-import { style, styleVariants } from '@vanilla-extract/css';
+import { style, styleVariants } from '@vanilla-extract/css'
 
 export const link = style({
   textDecoration: 'none',
   ':hover': {
     textDecoration: 'none',
   },
-});
+})
 
-const mediumBoxShadow = `inset 0 -2px 0 0 currentColor`;
-const smallBoxShadow = `inset 0 -1px 0 0 currentColor`;
+const mediumBoxShadow = `inset 0 -2px 0 0 currentColor`
+const smallBoxShadow = `inset 0 -1px 0 0 currentColor`
 
 const underline = {
   textDecoration: 'none',
   boxShadow: 'none',
   transition: 'color .2s, box-shadow .2s',
-};
+}
 
 export const underlines = styleVariants({
   normal: {
@@ -27,7 +27,7 @@ export const underlines = styleVariants({
     ...underline,
     paddingBottom: 1,
   },
-});
+})
 
 export const underlineVisibilities = styleVariants({
   always: {
@@ -50,7 +50,7 @@ export const underlineVisibilities = styleVariants({
       },
     },
   },
-});
+})
 
 export const colors = styleVariants({
   blue400: {
@@ -71,8 +71,8 @@ export const colors = styleVariants({
       color: theme.color.white,
     },
   },
-});
+})
 
 export const pointer = style({
   cursor: 'pointer',
-});
+})

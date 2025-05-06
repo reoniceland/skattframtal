@@ -1,8 +1,8 @@
-import React from 'react';
+import React from 'react'
 
-import { fireEvent, render } from '@testing-library/react';
+import { fireEvent, render } from '@testing-library/react'
 
-import DropdownMenu from './DropdownMenu';
+import DropdownMenu from './DropdownMenu'
 
 describe('DropdownMenu', () => {
   it('Dropdown should open and contain a button and a link', () => {
@@ -13,17 +13,17 @@ describe('DropdownMenu', () => {
         menuLabel="innskráning"
         items={[{ title: 'Einstaklingur' }, { title: 'Fyrirtæki', href: '#' }]}
       />,
-    );
-    const menuButton = queryByText('Innskráning');
-    expect(menuButton).toBeTruthy();
+    )
+    const menuButton = queryByText('Innskráning')
+    expect(menuButton).toBeTruthy()
     if (menuButton) {
-      fireEvent.click(menuButton);
+      fireEvent.click(menuButton)
     }
-    const menu = queryByRole('menu');
-    expect(menu).toBeTruthy();
-    const menuItemButton = queryByText('Einstaklingur');
-    const menuItemLink = queryByText('Fyrirtæki');
-    expect(menuItemButton?.tagName).toBe('BUTTON');
-    expect(menuItemLink?.tagName).toBe('A');
-  });
-});
+    const menu = queryByRole('menu')
+    expect(menu).toBeTruthy()
+    const menuItemButton = queryByText('Einstaklingur')
+    const menuItemLink = queryByText('Fyrirtæki')
+    expect(menuItemButton?.tagName).toBe('BUTTON')
+    expect(menuItemLink?.tagName).toBe('A')
+  })
+})

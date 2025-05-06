@@ -1,4 +1,4 @@
-import React, { CSSProperties, forwardRef, ReactNode } from 'react';
+import React, { CSSProperties, forwardRef, ReactNode } from 'react'
 
 const style: CSSProperties = {
   border: 0,
@@ -9,14 +9,14 @@ const style: CSSProperties = {
   position: 'absolute',
   whiteSpace: 'nowrap',
   width: '1px',
-};
+}
 
 interface VisuallyHiddenProps
   extends Pick<
     React.HTMLAttributes<HTMLElement>,
     'aria-labelledby' | 'aria-describedby' | 'id'
   > {
-  children?: ReactNode;
+  children?: ReactNode
 }
 
 const VisuallyHidden = forwardRef<HTMLSpanElement, VisuallyHiddenProps>(
@@ -25,9 +25,9 @@ const VisuallyHidden = forwardRef<HTMLSpanElement, VisuallyHiddenProps>(
       <span ref={ref} style={style} {...restProps}>
         {children}
       </span>
-    );
+    )
   },
-);
+)
 
-export { VisuallyHidden };
-export type { VisuallyHiddenProps };
+export { VisuallyHidden }
+export type { VisuallyHiddenProps }

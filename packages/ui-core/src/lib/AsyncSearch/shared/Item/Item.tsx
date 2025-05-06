@@ -1,20 +1,20 @@
-import React from 'react';
+import React from 'react'
 
-import type { AsyncSearchOption } from '../../AsyncSearch';
+import type { AsyncSearchOption } from '../../AsyncSearch'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import * as styles from './Item.css';
+import * as styles from './Item.css'
 
 interface Props {
-  isSelected: boolean;
-  isActive: boolean;
-  highlightedIndex: number;
-  index: number;
-  colored: boolean;
-  size: 'medium' | 'large';
-  item: AsyncSearchOption;
-  showDividerIfActive?: boolean;
+  isSelected: boolean
+  isActive: boolean
+  highlightedIndex: number
+  index: number
+  colored: boolean
+  size: 'medium' | 'large'
+  item: AsyncSearchOption
+  showDividerIfActive?: boolean
 }
 
 export const Item: React.FC<React.PropsWithChildren<Props>> = ({
@@ -29,12 +29,12 @@ export const Item: React.FC<React.PropsWithChildren<Props>> = ({
   showDividerIfActive,
   ...props
 }) => {
-  const selectedClass = colored ? styles.selectedColored : styles.selected;
-  const colorClass = colored ? styles.colored : styles.plain;
-  const isPrev = index === highlightedIndex - 1;
+  const selectedClass = colored ? styles.selectedColored : styles.selected
+  const colorClass = colored ? styles.colored : styles.plain
+  const isPrev = index === highlightedIndex - 1
 
   if (item.component) {
-    const Cmp = item.component;
+    const Cmp = item.component
 
     return (
       <li className={styles.customItem} {...props}>
@@ -46,7 +46,7 @@ export const Item: React.FC<React.PropsWithChildren<Props>> = ({
           })}
         />
       </li>
-    );
+    )
   }
 
   return (
@@ -64,5 +64,5 @@ export const Item: React.FC<React.PropsWithChildren<Props>> = ({
         })}
       />
     </li>
-  );
-};
+  )
+}

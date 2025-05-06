@@ -1,22 +1,22 @@
-import React, { MouseEventHandler, ReactNode } from 'react';
+import React, { MouseEventHandler, ReactNode } from 'react'
 
-import { Box } from '../Box/Box';
-import { FocusableBox } from '../FocusableBox/FocusableBox';
-import { Link } from '../Link/Link';
-import { Tag } from '../Tag/Tag';
-import { Text } from '../Text/Text';
+import { Box } from '../Box/Box'
+import { FocusableBox } from '../FocusableBox/FocusableBox'
+import { Link } from '../Link/Link'
+import { Tag } from '../Tag/Tag'
+import { Text } from '../Text/Text'
 
-type ColorScheme = 'blue' | 'red';
+type ColorScheme = 'blue' | 'red'
 
-export type TopicCardSize = 'default' | 'small';
+export type TopicCardSize = 'default' | 'small'
 
 interface TopicCardProps {
-  children?: ReactNode;
-  tag?: string;
-  colorScheme?: ColorScheme;
-  href?: string;
-  size?: TopicCardSize;
-  onClick?: MouseEventHandler;
+  children?: ReactNode
+  tag?: string
+  colorScheme?: ColorScheme
+  href?: string
+  size?: TopicCardSize
+  onClick?: MouseEventHandler
 }
 
 const colorSchemes = {
@@ -32,7 +32,7 @@ const colorSchemes = {
     tagVariant: 'red',
     bordered: true,
   },
-} as const;
+} as const
 
 export const TopicCard: React.FC<React.PropsWithChildren<TopicCardProps>> = ({
   children,
@@ -70,5 +70,5 @@ export const TopicCard: React.FC<React.PropsWithChildren<TopicCardProps>> = ({
         </Box>
       )}
     </FocusableBox>
-  );
-};
+  )
+}

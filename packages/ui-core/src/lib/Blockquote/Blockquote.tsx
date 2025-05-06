@@ -1,10 +1,10 @@
-import React from 'react';
+import React from 'react'
 
-import type { FC } from 'react';
+import type { FC } from 'react'
 
-import { Box } from '../Box/Box';
-import { Text } from '../Text/Text';
-import * as styles from './Blockquote.css';
+import { Box } from '../Box/Box'
+import { Text } from '../Text/Text'
+import * as styles from './Blockquote.css'
 
 export const Blockquote: FC<React.PropsWithChildren> = ({ children }) => (
   <Box
@@ -20,4 +20,4 @@ export const Blockquote: FC<React.PropsWithChildren> = ({ children }) => (
       {children}
     </Text>
   </Box>
-);
+)
