@@ -28,9 +28,7 @@ export const RelatedContent = ({ title }) => {
         </Text>
         {relatedLinks.map((link) => (
           <Link key={link.url} href={link.url} underline="normal">
-            <Text key={link.url} as="span">
-              {link.title}
-            </Text>
+            <Text as="span">{link.title}</Text>
           </Link>
         ))}
       </Stack>

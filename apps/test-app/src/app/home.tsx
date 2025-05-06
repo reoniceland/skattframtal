@@ -1,8 +1,10 @@
 'use client'
 
 import React from 'react'
+import { useRouter } from 'next/navigation'
 
 import {
+  ActionCard,
   Box,
   Breadcrumbs,
   Bullet,
@@ -14,13 +16,14 @@ import {
   Text,
 } from '@reon-island/ui-core'
 
-import { ArticleNavigation } from '@/components/ArticleNavigation/ArticleNavigation'
 import InstitutionPanel from '@/components/InstitutionPanel/InstitutionPanel'
 import SidebarLayout from '@/components/Layouts/SidebarLayout'
 import { RelatedContent } from '@/components/RelatedContent/RelatedContent'
 import Sticky from '@/components/Sticky/Sticky'
 
 export function Home() {
+  const router = useRouter()
+
   const category = {
     title: 'Fjármál og Skattar',
     href: 'https://island.is/flokkur/fjarmal-og-skattar',
@@ -125,6 +128,18 @@ export function Home() {
           bönkum, lífeyrissjóðum o.fl., en þú berð ábyrgð á að yfirfara,
           leiðrétta og staðfesta upplýsingarnar.
         </Text>
+        <Box paddingTop={[2, 2, 4]}>
+          <ActionCard
+            heading="Skil á skattframtali"
+            backgroundColor="blue"
+            cta={{
+              label: 'Opna',
+              onClick: () => {
+                router.push('/skattframtal')
+              },
+            }}
+          ></ActionCard>
+        </Box>
         <Text
           variant="h3"
           as="h2"
