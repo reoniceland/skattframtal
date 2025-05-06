@@ -1,9 +1,11 @@
-import { createElement, forwardRef } from 'react'
+'use client';
 
-import type { TestSupport } from '@reon-island/ui-utils'
-import type { BoxProps } from './types'
+import { createElement, forwardRef } from 'react';
 
-import { useBoxStyles } from './useBoxStyles'
+import type { TestSupport } from '@reon-island/ui-utils';
+import type { BoxProps } from './types';
+
+import { useBoxStyles } from './useBoxStyles';
 
 // eslint-disable-next-line react/display-name
 export const Box = forwardRef<HTMLElement, BoxProps & TestSupport>(
@@ -131,13 +133,13 @@ export const Box = forwardRef<HTMLElement, BoxProps & TestSupport>(
       opacity,
       printHidden,
       className,
-    })
+    });
 
     return createElement(component, {
       className: boxStyles,
       'data-testid': dataTestId,
       ...restProps,
       ref,
-    })
+    });
   },
-)
+);
