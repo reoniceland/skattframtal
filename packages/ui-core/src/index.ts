@@ -82,6 +82,7 @@ export * from './lib/IconRC/Icon'
 export * from './lib/IconRC/types'
 export * from './lib/Typography/Typography'
 export * from './lib/Text/Text'
+export * from './lib/Hyphen/Hyphen'
 
 export { Table } from './lib/Table'
 

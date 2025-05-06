@@ -1,0 +1,3 @@
+export const STICKY_NAV_HEIGHT = 64;
+export const STICKY_NAV_MAX_WIDTH_DEFAULT = 230;
+export const STICKY_NAV_MAX_WIDTH_LG = 318;
