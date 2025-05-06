@@ -18,11 +18,6 @@ export const ibmPlexSans = localFont({
       style: 'normal',
     },
     {
-      path: './ibm-plex-sans-v7-latin-300.eot',
-      weight: '300',
-      style: 'normal',
-    },
-    {
       path: './ibm-plex-sans-v7-latin-regular.woff2',
       weight: '400',
       style: 'normal',
@@ -38,11 +33,6 @@ export const ibmPlexSans = localFont({
       style: 'normal',
     },
     {
-      path: './ibm-plex-sans-v7-latin-regular.eot',
-      weight: '400',
-      style: 'normal',
-    },
-    {
       path: './ibm-plex-sans-v7-latin-italic.woff2',
       weight: '400',
       style: 'italic',
@@ -54,11 +44,6 @@ export const ibmPlexSans = localFont({
     },
     {
       path: './ibm-plex-sans-v7-latin-italic.ttf',
-      weight: '400',
-      style: 'italic',
-    },
-    {
-      path: './ibm-plex-sans-v7-latin-italic.eot',
       weight: '400',
       style: 'italic',
     },
@@ -84,11 +69,6 @@ export const ibmPlexSans = localFont({
     },
     {
       path: './ibm-plex-sans-v7-latin-600.ttf',
-      weight: '600',
-      style: 'normal',
-    },
-    {
-      path: './ibm-plex-sans-v7-latin-600.eot',
       weight: '600',
       style: 'normal',
     },
