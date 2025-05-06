@@ -2,9 +2,9 @@ import { ReactNode } from 'react'
 
 import '@reon-island/ui-core/src/styles/global.css'
 
-import { Box, Footer, GridContainer, Header, Page } from '@reon-island/ui-core';
+import { Box, Footer, GridContainer, Header, Page } from '@reon-island/ui-core'
 
-import { ibmPlexSans } from './fonts/fonts';
+import { ibmPlexSans } from './fonts/fonts'
 
 export const metadata = {
   title: 'My App',
