@@ -1,5 +1,3 @@
-'use client';
-
 import { Text } from '@reon-island/ui-core';
 
 export default function Home() {
