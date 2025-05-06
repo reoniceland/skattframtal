@@ -4,9 +4,13 @@ import { BackendService } from './backend.service'
 import { UserModule } from './user/user.module'
 import { DrizzlePGModule } from '@knaadh/nestjs-drizzle-pg'
 import * as schema from './db/schema'
+import { ConfigModule } from '@nestjs/config'
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     DrizzlePGModule.register({
       tag: 'DB_DEV',
       pg: {
