@@ -1,3 +1,5 @@
+'use client'
+
 import React, { forwardRef, useContext } from 'react'
 
 import type { AllHTMLAttributes, ElementType, Ref } from 'react'
