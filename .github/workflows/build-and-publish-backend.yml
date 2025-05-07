@@ -2,17 +2,19 @@ name: Build & Publish Backend Docker Image
 
 on:
   push:
+    branches:
+      - main
     paths:
       - 'apps/backend/**'
   workflow_dispatch:
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      packages: write
 
     steps:
       - name: Checkout code
