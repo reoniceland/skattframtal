@@ -2,6 +2,7 @@ import { Inject, Injectable } from '@nestjs/common'
 import { NodePgDatabase } from 'drizzle-orm/node-postgres'
 import * as schema from '../db/schema'
 import { User } from './user.model'
+import { UserDto } from './user.dto'
 
 @Injectable()
 export class UserService {
@@ -25,8 +26,16 @@ export class UserService {
    * @param id - The user's ID
    * @throws NotFoundException if no user is found
    */
-  async findById(id: string): Promise<User | undefined> {
+  async findById(id: string): Promise<UserDto | undefined> {
     return this.db.query.users.findFirst({
+      columns: {
+        id: true,
+        kennitala: true,
+        fullName: true,
+        address: true,
+        email: true,
+        phoneNumber: true,
+      },
       where: (user, { eq }) => eq(user.id, id),
     })
   }
