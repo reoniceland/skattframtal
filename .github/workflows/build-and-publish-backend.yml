@@ -43,4 +43,6 @@ jobs:
           SAMPLE_DIGEST: ${{ steps.push.outputs.digest }}
           GHCR_CREDENTIALS: ${{ secrets.GHCR_CREDENTIALS }}
         with:
+          project_id: ${{ secrets.DO_APP_ID }}
           token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+          app_name: 'skattframtal'
