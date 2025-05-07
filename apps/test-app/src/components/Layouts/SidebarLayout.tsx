@@ -1,23 +1,23 @@
-import React from 'react';
+import React from 'react'
 
-import type { BoxProps, ResponsiveSpace } from '@reon-island/ui-core';
-import type { FC, ReactNode } from 'react';
+import type { BoxProps, ResponsiveSpace } from '@reon-island/ui-core'
+import type { FC, ReactNode } from 'react'
 
-import cn from 'classnames';
+import cn from 'classnames'
 
-import { Box, GridColumn, GridContainer, GridRow } from '@reon-island/ui-core';
+import { Box, GridColumn, GridContainer, GridRow } from '@reon-island/ui-core'
 
-import * as styles from './SidebarLayout.css';
+import * as styles from './SidebarLayout.css'
 
 interface SidebarLayoutProps {
-  sidebarContent: ReactNode;
-  isSticky?: boolean;
-  hiddenOnTablet?: boolean;
-  fullWidthContent?: boolean;
-  paddingTop?: ResponsiveSpace;
-  paddingBottom?: ResponsiveSpace;
-  contentId?: string;
-  flexDirection?: BoxProps['flexDirection'];
+  sidebarContent: ReactNode
+  isSticky?: boolean
+  hiddenOnTablet?: boolean
+  fullWidthContent?: boolean
+  paddingTop?: ResponsiveSpace
+  paddingBottom?: ResponsiveSpace
+  contentId?: string
+  flexDirection?: BoxProps['flexDirection']
 }
 
 export const SidebarLayout: FC<React.PropsWithChildren<SidebarLayoutProps>> = ({
@@ -76,7 +76,7 @@ export const SidebarLayout: FC<React.PropsWithChildren<SidebarLayoutProps>> = ({
         </Box>
       </GridContainer>
     </Box>
-  );
-};
+  )
+}
 
-export default SidebarLayout;
+export default SidebarLayout
