@@ -42,3 +42,12 @@ USER skattmann
 COPY --from=installer /app ./
 
 ENTRYPOINT ["node_modules/.bin/tsx", "apps/backend/dist/src/main.js"]
+
+EXPOSE 3000
+
+HEALTHCHECK \
+  --interval=30s \
+  --timeout=5s   \
+  --start-period=10s \
+  --retries=3     \
+  CMD curl -f http://localhost:3000/health || exit 1
