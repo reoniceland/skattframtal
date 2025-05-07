@@ -10,6 +10,7 @@ interface FormWrapperProps {
   onAddItem?: () => void
   addItemText?: string
   addItemHeading?: string
+  buttonText?: string
 }
 
 export function FormWrapper({
@@ -20,6 +21,7 @@ export function FormWrapper({
   onAddItem,
   addItemText = 'Bæta við',
   addItemHeading = 'Vantar eitthvað hingað inn?',
+  buttonText = 'Vista',
 }: FormWrapperProps) {
   return (
     <form onSubmit={onSubmit}>
@@ -47,7 +49,7 @@ export function FormWrapper({
 
       <Box display="flex" justifyContent="flexEnd" paddingY={6}>
         <Button type="submit" icon="checkmark">
-          Vista
+          {buttonText}
         </Button>
       </Box>
     </form>

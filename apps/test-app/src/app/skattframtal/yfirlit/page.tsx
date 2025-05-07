@@ -28,7 +28,6 @@ export default function Overview() {
         }
         heading="Tekjur"
         text="Heildartekjur þínar árið 2024 voru 10.585.000 kr., þar af 10.260.000 kr. í laun."
-        colorScheme="blue"
       />
       <CategoryCard
         icon={

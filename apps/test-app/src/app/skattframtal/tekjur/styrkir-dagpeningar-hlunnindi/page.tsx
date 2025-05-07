@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
-import { FormWrapper } from '../../../../components/FormWrapper'
+import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
 
 const AllowanceSchema = z.object({
   amount: z.string().min(1, 'Fjárhæð er nauðsynleg'),

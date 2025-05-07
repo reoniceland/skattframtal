@@ -3,7 +3,7 @@ import type { ReactNode } from 'react'
 import { Box, Button, Link, Stack } from '@reon-island/ui-core'
 
 interface StepWrapperProps {
-  buttonLink: string
+  buttonLink?: string
   buttonText?: string
   children: ReactNode
 }
@@ -19,11 +19,13 @@ export const StepWrapper = ({
         <Stack space={4}>
           {children}
           <Box display="flex" justifyContent="flexEnd">
-            <Link href={buttonLink}>
-              <Button icon="arrowForward" variant="primary">
-                {buttonText}
-              </Button>
-            </Link>
+            {!!buttonLink && (
+              <Link href={buttonLink}>
+                <Button icon="arrowForward" variant="primary">
+                  {buttonText}
+                </Button>
+              </Link>
+            )}
           </Box>
         </Stack>
       </Box>
