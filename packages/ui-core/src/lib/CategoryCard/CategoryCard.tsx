@@ -51,6 +51,7 @@ export interface CategoryCardProps {
   hyphenate?: boolean
   to?: string
   component?: ElementType
+  background?: 'white' | 'blue100' | 'purple100'
 }
 
 const colorSchemes = {
@@ -111,6 +112,7 @@ const Component = forwardRef<
       hyphenate = false,
       tagOptions,
       autoStack,
+      background = 'white',
       ...rest
     },
     ref,
@@ -137,7 +139,7 @@ const Component = forwardRef<
         borderWidth="standard"
         height="full"
         width="full"
-        background="white"
+        background={background}
         color={colorScheme}
         {...rest}
       >

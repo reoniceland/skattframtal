@@ -4,9 +4,9 @@ import { ActionCard, Box, Text } from '@reon-island/ui-core'
 
 import { StepWrapper } from '../components/StepWrapper'
 
-export default function Tekjur() {
+export default function Income() {
   return (
-    <StepWrapper buttonLink="/skattframtal/fradrattur">
+    <StepWrapper buttonLink="/skattframtal/eignir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Tekjur

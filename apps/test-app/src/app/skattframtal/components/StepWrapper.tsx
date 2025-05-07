@@ -15,7 +15,7 @@ export const StepWrapper = ({
 }: StepWrapperProps) => {
   return (
     <Box paddingBottom={4}>
-      <Box justifyContent="flexEnd" display="flex">
+      <Box>
         <Stack space={4}>
           {children}
           <Box display="flex" justifyContent="flexEnd">

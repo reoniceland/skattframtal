@@ -10,7 +10,7 @@ import {
   Section,
 } from '@reon-island/ui-core'
 
-import Sticky from '@/components/Sticky/Sticky'
+import Sticky from '@/app/components/Sticky/Sticky'
 
 const steps = [
   {
@@ -24,8 +24,8 @@ const steps = [
     theme: FormStepperThemes.PURPLE,
   },
   {
-    label: 'Frádráttur',
-    href: '/skattframtal/fradrattur',
+    label: 'Skuldir',
+    href: '/skattframtal/skuldir',
     theme: FormStepperThemes.PURPLE,
   },
   {
@@ -34,8 +34,8 @@ const steps = [
     theme: FormStepperThemes.PURPLE,
   },
   {
-    label: 'Skuldir',
-    href: '/skattframtal/skuldir',
+    label: 'Yfirferð',
+    href: '/skattframtal/yfirferd',
     theme: FormStepperThemes.PURPLE,
   },
 ]
