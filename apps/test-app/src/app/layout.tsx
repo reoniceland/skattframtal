@@ -15,17 +15,15 @@ export default function RootLayout({ children }: { children: ReactNode }) {
     <html lang="en" className={ibmPlexSans.className}>
       <body className={ibmPlexSans.className}>
         <Page>
-          <GridContainer>
-            <Box paddingX={[2, 4, 6]}>
-              <Header
-                info={{
-                  title: 'Skatturinn',
-                  description: 'Skattframtal',
-                }}
-              />
-            </Box>
-            <main>{children}</main>
-          </GridContainer>
+          <Box paddingX={[2, 4, 6]}>
+            <Header
+              info={{
+                title: 'Skatturinn',
+                description: 'Skattframtal',
+              }}
+            />
+          </Box>
+          <main>{children}</main>
         </Page>
       </body>
     </html>
