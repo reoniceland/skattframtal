@@ -1,6 +1,6 @@
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common'
 import { UserService } from './user.service'
-import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger'
+import { ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger'
 import { UserDto } from './user.dto'
 
 @ApiTags('user')
@@ -8,22 +8,15 @@ import { UserDto } from './user.dto'
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get(':kennitala')
-  @ApiOperation({ summary: 'Get a user by kennitala' })
-  @ApiParam({
-    name: 'kennitala',
-    description: '10-digit Icelandic ID (kennitala)',
-    type: String,
-  })
-  @ApiResponse({ status: 200, description: 'User found', type: UserDto })
-  @ApiResponse({ status: 404, description: 'User not found' })
-  async getUserByKennitala(
-    @Param('kennitala') kennitala: string,
-  ): Promise<UserDto> {
-    const user = await this.userService.findByKennitala(kennitala)
+  @Get(':id')
+  @ApiOperation({ summary: 'Get a user by their unique ID' })
+  @ApiParam({ name: 'id', type: String, description: 'The user ID' })
+  @ApiOkResponse({ description: 'The user details', type: UserDto })
+  async getUserById(@Param('id') id: string): Promise<UserDto> {
+    const user = await this.userService.findById(id)
     if (!user) {
-      throw new NotFoundException(`User with kennitala ${kennitala} not found`)
+      throw new NotFoundException(`User not found`)
     }
-    return user as UserDto;
+    return user
   }
 }
