@@ -1,17 +1,18 @@
 'use client'
 
-import { CategoryCard, Icon, Text } from '@reon-island/ui-core'
+import { Box, CategoryCard, Icon, Text } from '@reon-island/ui-core'
 
 import { StepWrapper } from '../components/StepWrapper'
 
-export default function Overview() {
+export default function Income() {
   return (
-    <StepWrapper buttonLink="/skattframtal/tekjur" buttonText="Hefja yfirferð">
-      <Text variant="h2">Hæ Jökull</Text>
-      <Text variant="default">
-        Hér er einhver texti sem útskýrir að þetta sé yfirlitið yfir skattamálin
-        þín 2024 sem við ætlum að fara yfir í þessu framtali..
-      </Text>
+    <StepWrapper buttonLink="/mottekid" buttonText="Senda framtal">
+      <Box>
+        <Text variant="h2" paddingBottom={2}>
+          Förum yfir þetta saman
+        </Text>
+        <Text>Hér er einhver texti</Text>
+      </Box>
       <CategoryCard
         heading="Jökull"
         text="120389-4569
@@ -28,7 +29,8 @@ export default function Overview() {
         }
         heading="Tekjur"
         text="Heildartekjur þínar árið 2024 voru 10.585.000 kr., þar af 10.260.000 kr. í laun."
-        colorScheme="blue"
+        background="blue100"
+        tags={[{ label: 'Yfirfarið' }]}
       />
       <CategoryCard
         icon={
@@ -41,7 +43,8 @@ export default function Overview() {
         }
         heading="Eignir"
         text="Heildareignir þínar í lok árs 2024 voru 55.530.000 kr., þar af 1 fasteign og 2 bifreiðar."
-        colorScheme="blue"
+        background="blue100"
+        tags={[{ label: 'Yfirfarið' }]}
       />
       <CategoryCard
         icon={
@@ -54,7 +57,8 @@ export default function Overview() {
         }
         heading="Skuldir"
         text="Heildarskuldir þínar í lok árs 2024 voru 29.801.594 kr."
-        colorScheme="blue"
+        background="blue100"
+        tags={[{ label: 'Yfirfarið' }]}
       />
     </StepWrapper>
   )

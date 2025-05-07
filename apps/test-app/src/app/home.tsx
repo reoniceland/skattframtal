@@ -17,10 +17,10 @@ import {
   Text,
 } from '@reon-island/ui-core'
 
-import InstitutionPanel from '@/components/InstitutionPanel/InstitutionPanel'
-import SidebarLayout from '@/components/Layouts/SidebarLayout'
-import { RelatedContent } from '@/components/RelatedContent/RelatedContent'
-import Sticky from '@/components/Sticky/Sticky'
+import InstitutionPanel from '@/app/components/InstitutionPanel/InstitutionPanel'
+import SidebarLayout from '@/app/components/Layouts/SidebarLayout'
+import { RelatedContent } from '@/app/components/RelatedContent/RelatedContent'
+import Sticky from '@/app/components/Sticky/Sticky'
 
 export function Home() {
   const router = useRouter()

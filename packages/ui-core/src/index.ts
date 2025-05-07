@@ -128,6 +128,10 @@ export type { ResponsiveProp } from './utils/responsiveProp'
 export type { GridColumns } from './lib/Grid/GridColumn/GridColumn.css'
 export type { TagProps, TagVariant } from './lib/Tag/types'
 export type { ButtonProps, ButtonSizes, ButtonTypes } from './lib/Button/types'
+export type {
+  CategoryCardProps,
+  CategoryCardImage,
+} from './lib/CategoryCard/CategoryCard'
 
 // Styles
 export * as linkStyles from './lib/Link/Link.css'

@@ -2,7 +2,7 @@ import type { ReactNode } from 'react'
 
 import '@reon-island/ui-core/src/styles/global.css'
 
-import { Box, Footer, GridContainer, Header, Page } from '@reon-island/ui-core'
+import { Box, Header, Page } from '@reon-island/ui-core'
 
 import { ibmPlexSans } from './fonts/fonts'
 
