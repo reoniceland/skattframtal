@@ -1,10 +1,10 @@
 'use client'
 
-import Link from 'next/link'
-
 import type { IconMapIcon } from '@reon-island/ui-core'
 
-import { Button, CategoryCard, Icon, Stack, Text } from '@reon-island/ui-core'
+import { CategoryCard, Icon, Text } from '@reon-island/ui-core'
+
+import { StepWrapper } from '../components/StepWrapper'
 
 export default function Yfirlit() {
   const handleIcon = (icon: IconMapIcon) => {
@@ -13,13 +13,12 @@ export default function Yfirlit() {
     )
   }
   return (
-    <Stack space={4}>
+    <StepWrapper buttonLink="/skattframtal/tekjur" buttonText="Fara í yfirlit">
       <Text variant="h2">Hæ Jökull</Text>
       <Text variant="default">
         Hér er einhver texti sem útskýrir að þetta sé yfirlitið yfir skattamálin
         þín 2024 sem við ætlum að fara yfir í þessu framtali..
       </Text>
-
       <CategoryCard
         heading="Jökull"
         text="120389-4569
@@ -40,11 +39,6 @@ export default function Yfirlit() {
         heading="Skuldir"
         text="Heildarskuldir þínar í lok árs 2024 voru 29.801.594 kr."
       />
-      <div>
-        <Button>
-          <Link href="/skattframtal/tekjur">Hefja yfirferð →</Link>
-        </Button>
-      </div>
-    </Stack>
+    </StepWrapper>
   )
 }
