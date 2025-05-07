@@ -19,4 +19,15 @@ export class UserService {
       where: (user, { eq }) => eq(user.kennitala, kennitala),
     })
   }
+
+  /**
+   * Find a user by their unique ID.
+   * @param id - The user's ID
+   * @throws NotFoundException if no user is found
+   */
+  async findById(id: string): Promise<User | undefined> {
+    return this.db.query.users.findFirst({
+      where: (user, { eq }) => eq(user.id, id),
+    })
+  }
 }
