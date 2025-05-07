@@ -1,12 +1,15 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { ActionCard, Box, Text } from '@reon-island/ui-core'
 
 import { StepWrapper } from '../components/StepWrapper'
 
 export default function Income() {
+  const router = useRouter()
   return (
-    <StepWrapper buttonLink="/skattframtal/eignir">
+    <StepWrapper buttonLink="/skattframtal/skuldir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Tekjur
@@ -17,6 +20,12 @@ export default function Income() {
         eyebrow="Laun"
         heading="10.260.000 kr."
         text="Þar af 9.360.000 kr. frá Norðurljós Software ehf. og 900.000 kr. frá Mús & Merki ehf."
+        cta={{
+          label: 'Opna',
+          onClick: () => {
+            router.push('/skattframtal/laun')
+          },
+        }}
       ></ActionCard>
       <ActionCard
         eyebrow="Styrkir, dagpeningar & hlunnindi"
