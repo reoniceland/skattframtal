@@ -1,10 +1,13 @@
 'use client'
 
+import { useRouter } from 'next/navigation'
+
 import { ActionCard, Box, Text } from '@reon-island/ui-core'
 
 import { StepWrapper } from '../components/StepWrapper'
 
 export default function Assets() {
+  const router = useRouter()
   return (
     <StepWrapper buttonLink="/skattframtal/yfirferd">
       <Box>
@@ -14,19 +17,30 @@ export default function Assets() {
         <Text>Hér geturðu slegið inn upplýsingar um eignir.</Text>
       </Box>
       <ActionCard
-        eyebrow="Fasteign"
+        eyebrow="Fasteignir"
         heading="Bláfjallagata 12, 105 Reykjavík"
         text="Fasteignamat er 52.000.000 kr. og fastanúmer 210-9876"
+        cta={{
+          label: 'Breyta',
+          variant: 'text',
+          icon: 'pencil',
+          onClick: () => {
+            router.push('/skattframtal/eignir/fasteignir')
+          },
+        }}
       ></ActionCard>
       <ActionCard
-        eyebrow="Bifreið"
-        heading="Toyota Corolla, KB-521"
-        text="Keyptur fyrir 3.100.000 kr. árið 2021"
-      ></ActionCard>
-      <ActionCard
-        eyebrow="Bifreið"
-        heading="Skoda 120, JU-329"
-        text="Keyptur fyrir 430.000 kr. árið 2012"
+        eyebrow="Bifreiðir"
+        heading="3.530.000 kr."
+        text="Toyota Corolla (KB-521), Skoda 120 (JU-329)"
+        cta={{
+          label: 'Breyta',
+          variant: 'text',
+          icon: 'pencil',
+          onClick: () => {
+            router.push('/skattframtal/eignir/bifreidir')
+          },
+        }}
       ></ActionCard>
     </StepWrapper>
   )
