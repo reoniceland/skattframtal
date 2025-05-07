@@ -1,10 +1,11 @@
 import { sql } from 'drizzle-orm'
-import { check, pgTable, text, varchar } from 'drizzle-orm/pg-core'
+import { check, pgTable, text, uuid, varchar } from 'drizzle-orm/pg-core'
 
 export const users = pgTable(
   'users',
   {
-    kennitala: varchar('kennitala', { length: 10 }).primaryKey(),
+    id: uuid().defaultRandom().primaryKey(),
+    kennitala: varchar('kennitala', { length: 10 }).notNull().unique(),
     full_name: text('full_name').notNull(),
     address: text('address').notNull(),
     email: text('email').notNull().unique(),
