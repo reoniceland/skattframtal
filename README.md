@@ -4,6 +4,13 @@
 
 ## 📦 Uppsetning
 
+📌 Við notum **Node.js v20.15.0**  
+💡 Mælt er með að nota [`nvm`](https://github.com/nvm-sh/nvm):  
+```bash
+ nvm use
+```
+
+
 ```bash
 pnpm install
 ```
