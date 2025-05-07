@@ -1,15 +1,24 @@
 import { sql } from 'drizzle-orm'
-import { check, pgTable, text, uuid, varchar } from 'drizzle-orm/pg-core'
+import {
+  check,
+  pgTable,
+  text,
+  timestamp,
+  uuid,
+  varchar,
+} from 'drizzle-orm/pg-core'
 
 export const users = pgTable(
   'users',
   {
     id: uuid().defaultRandom().primaryKey(),
     kennitala: varchar('kennitala', { length: 10 }).notNull().unique(),
-    full_name: text('full_name').notNull(),
+    fullName: text('full_name').notNull(),
     address: text('address').notNull(),
     email: text('email').notNull().unique(),
-    phone_number: text('phone_number').notNull(),
+    phoneNumber: text('phone_number').notNull(),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
   },
   (table) => [
     // Enforce exactly 10 digits on kennitala
