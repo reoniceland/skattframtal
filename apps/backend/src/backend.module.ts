@@ -6,6 +6,7 @@ import { DrizzlePGModule } from '@knaadh/nestjs-drizzle-pg'
 import * as schema from './db/schema'
 import { ConfigModule } from '@nestjs/config'
 import { HealthModule } from './health/health.module'
+import { AuthModule } from './auth/auth.module'
 
 @Module({
   imports: [
@@ -26,6 +27,7 @@ import { HealthModule } from './health/health.module'
     }),
     UserModule,
     HealthModule,
+    AuthModule,
   ],
   controllers: [BackendController],
   providers: [BackendService],

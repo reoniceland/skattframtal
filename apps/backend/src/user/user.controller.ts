@@ -1,7 +1,7 @@
 import { Controller, Get, NotFoundException, Param } from '@nestjs/common'
 import { UserService } from './user.service'
 import { ApiOperation, ApiParam, ApiResponse, ApiTags } from '@nestjs/swagger'
-import { UserDto } from './dto/user.dto'
+import { UserDto } from './user.dto'
 
 @ApiTags('user')
 @Controller('user')
@@ -24,6 +24,6 @@ export class UserController {
     if (!user) {
       throw new NotFoundException(`User with kennitala ${kennitala} not found`)
     }
-    return user
+    return user as UserDto;
   }
 }
