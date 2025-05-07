@@ -7,11 +7,11 @@ import { TaxFormStepper } from './components/taxform-layout'
 export default function TaxFormLayout({ children }: { children: ReactNode }) {
   return (
     <GridContainer>
-      <GridRow>
+      <GridRow align="spaceBetween">
         <GridColumn>
           <TaxFormStepper />
         </GridColumn>
-        <GridColumn>{children}</GridColumn>
+        <GridColumn paddingTop={4}>{children}</GridColumn>
       </GridRow>
     </GridContainer>
   )
