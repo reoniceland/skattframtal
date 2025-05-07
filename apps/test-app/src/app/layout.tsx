@@ -1,4 +1,4 @@
-import { ReactNode } from 'react'
+import type { ReactNode } from 'react'
 
 import '@reon-island/ui-core/src/styles/global.css'
 
@@ -23,14 +23,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
                   description: 'Skattframtal',
                 }}
               />
-              <Box paddingY={[2, 4, 6]}>
-                <main>{children}</main>
-              </Box>
             </Box>
+            <main>{children}</main>
           </GridContainer>
-          <Box paddingX={[2, 4, 6]} as="footer" background={'blue100'}>
-            <Footer />
-          </Box>
         </Page>
       </body>
     </html>
