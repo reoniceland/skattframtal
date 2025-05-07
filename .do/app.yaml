@@ -1,0 +1,19 @@
+services:
+  - name: reoniceland-skattback
+    dockerfile_path: apps/backend/Dockerfile
+    http_port: 3000
+
+    image:
+      registry: reoniceland
+      registry_type: GHCR
+      repository: skattback
+      tag: latest
+
+    health_check:
+      http_path: /health
+      port: 3000
+      initial_delay_seconds: 10
+      period_seconds: 30
+      timeout_seconds: 5
+      success_threshold: 2
+      failure_threshold: 3
