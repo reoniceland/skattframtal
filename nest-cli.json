@@ -1,0 +1,29 @@
+{
+  "monorepo": true,
+  "root": "apps/reon-island-test",
+  "sourceRoot": "apps/reon-island-test/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/reon-island-test/tsconfig.app.json"
+  },
+  "projects": {
+    "backend": {
+      "type": "application",
+      "root": "apps/backend",
+      "entryFile": "main",
+      "sourceRoot": "apps/backend/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/backend/tsconfig.app.json"
+      }
+    },
+    "reon-island-test": {
+      "type": "application",
+      "root": "apps/reon-island-test",
+      "entryFile": "main",
+      "sourceRoot": "apps/reon-island-test/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/reon-island-test/tsconfig.app.json"
+      }
+    }
+  }
+}
