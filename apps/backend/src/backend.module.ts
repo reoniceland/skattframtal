@@ -1,5 +1,4 @@
 import { Module } from '@nestjs/common'
-import { BackendController } from './backend.controller'
 import { BackendService } from './backend.service'
 import { UserModule } from './user/user.module'
 import { DrizzlePGModule } from '@knaadh/nestjs-drizzle-pg'
@@ -7,6 +6,7 @@ import * as schema from './db/schema'
 import { ConfigModule } from '@nestjs/config'
 import { HealthModule } from './health/health.module'
 import { AuthModule } from './auth/auth.module'
+import { TaxReturnsModule } from './tax-returns/tax-returns.module';
 
 @Module({
   imports: [
@@ -28,8 +28,9 @@ import { AuthModule } from './auth/auth.module'
     UserModule,
     HealthModule,
     AuthModule,
+    TaxReturnsModule,
   ],
-  controllers: [BackendController],
+  controllers: [],
   providers: [BackendService],
 })
 export class BackendModule {}
