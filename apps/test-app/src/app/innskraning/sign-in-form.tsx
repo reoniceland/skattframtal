@@ -9,6 +9,7 @@ import {
   Checkbox,
   GridColumn,
   GridRow,
+  Input,
   Link,
   Logo,
   PhoneInput,
@@ -16,22 +17,37 @@ import {
   Text,
 } from '@reon-island/ui-core'
 
+import { loginWithKennitala } from './auth'
 import { AuthFrame } from './components/AuthFrame/AuthFrame'
 
 export const SignInForm = () => {
   const router = useRouter()
-  const [phone, setPhone] = useState('')
+  const [kennitala, setKennitala] = useState('')
   const [remember, setRemember] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState<string | null>(null)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    if (remember) {
-      localStorage.setItem('phone', phone)
+    setError(null)
+    setLoading(true)
+    try {
+      await loginWithKennitala(kennitala)
+      if (remember) {
+        localStorage.setItem('phone', kennitala)
+      }
+      router.push('/skattframtal')
+    } catch (err: any) {
+      setError(err.message || 'Unknown error')
+    } finally {
+      setLoading(false)
     }
-    router.push('/skattframtal')
   }
-  const handlePhoneChange = (values) => {
-    setPhone(values.value)
+
+  const handleKennitalaChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
+  ) => {
+    setKennitala(e.target.value)
   }
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
@@ -59,16 +75,14 @@ export const SignInForm = () => {
             </Stack>
 
             <Stack space={4}>
-              <PhoneInput
-                label="Símanúmer"
-                placeholder="000-0000"
-                value={phone}
-                onValueChange={handlePhoneChange}
+              <Input
+                label="Kennitala"
+                placeholder="000000-0000"
+                value={kennitala}
+                onChange={handleKennitalaChange}
                 required
-                format="###-####"
-                name="phone"
+                name="kennitala"
               />
-
               <Checkbox
                 label="Muna símanúmer"
                 checked={remember}
@@ -78,9 +92,14 @@ export const SignInForm = () => {
               />
             </Stack>
 
-            <Button type="submit" fluid>
-              Auðkenna
+            <Button type="submit" fluid disabled={loading}>
+              {loading ? 'Innskráning…' : 'Auðkenna'}
             </Button>
+            {error && (
+              <Text color="red600" variant="small">
+                {error}
+              </Text>
+            )}
 
             <Text variant="small">Eða skráðu þig inn með</Text>
 
