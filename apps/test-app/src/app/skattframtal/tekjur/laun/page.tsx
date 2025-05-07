@@ -8,6 +8,8 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
+import { FormWrapper } from '../../../../components/FormWrapper'
+
 const EmployerSchema = z.object({
   employerName: z.string().min(1, 'Nafn er nauðsynlegt'),
   employerSsn: z
@@ -22,7 +24,7 @@ const FormSchema = z.object({
 
 type FormData = z.infer<typeof FormSchema>
 
-export default function LaunPage() {
+export default function SalaryPage() {
   const router = useRouter()
 
   const {
@@ -60,18 +62,22 @@ export default function LaunPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <Box paddingY={4}>
-        <Text variant="h2" paddingBottom={2}>
-          Laun
-        </Text>
-        <Text>
-          Hér geturðu breytt eða bætt við launum frá hverjum launagreiðanda.
-        </Text>
-      </Box>
-
+    <FormWrapper
+      title="Laun"
+      description="Hér geturðu breytt eða bætt við launum frá hverjum launagreiðanda."
+      onSubmit={handleSubmit(onSubmit)}
+      onAddItem={() => {
+        append({
+          employerName: '',
+          employerSsn: '',
+          employerAmount: '',
+        })
+      }}
+      addItemText="Skrá laun"
+      addItemHeading="Vantar einhver laun hingað inn?"
+    >
       {fields.map((field, idx) => (
-        <Box key={field.id} marginBottom={6} padding={4} borderRadius="md">
+        <Box key={field.id} marginBottom={6}>
           <Box
             display="flex"
             justifyContent="spaceBetween"
@@ -79,7 +85,13 @@ export default function LaunPage() {
             marginBottom={4}
           >
             <Text variant="h3">{field.employerName || `Laun ${idx + 1}`}</Text>
-            <Button variant="ghost" type="button" onClick={() => remove(idx)}>
+            <Button
+              variant="ghost"
+              type="button"
+              onClick={() => {
+                remove(idx)
+              }}
+            >
               Eyða
             </Button>
           </Box>
@@ -120,34 +132,6 @@ export default function LaunPage() {
           </Box>
         </Box>
       ))}
-
-      <Box
-        background="blue300"
-        padding={4}
-        borderRadius="md"
-        display="flex"
-        justifyContent="spaceBetween"
-        alignItems="center"
-        marginBottom={6}
-      >
-        <Text>Vantar einhver laun hingað inn?</Text>
-        <Button
-          type="button"
-          onClick={() =>
-            append({
-              employerName: '',
-              employerSsn: '',
-              employerAmount: '',
-            })
-          }
-        >
-          Skrá laun
-        </Button>
-      </Box>
-
-      <Box textAlign="right">
-        <Button type="submit">Vista og halda áfram</Button>
-      </Box>
-    </form>
+    </FormWrapper>
   )
 }

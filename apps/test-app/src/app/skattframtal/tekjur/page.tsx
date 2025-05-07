@@ -21,9 +21,11 @@ export default function Income() {
         heading="10.260.000 kr."
         text="Þar af 9.360.000 kr. frá Norðurljós Software ehf. og 900.000 kr. frá Mús & Merki ehf."
         cta={{
-          label: 'Opna',
+          label: 'Breyta',
+          variant: 'text',
+          icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/laun')
+            router.push('/skattframtal/tekjur/laun')
           },
         }}
       ></ActionCard>
@@ -31,11 +33,29 @@ export default function Income() {
         eyebrow="Styrkir, dagpeningar & hlunnindi"
         heading="120.000 kr."
         text="Í formi dagpeninga"
+        cta={{
+          label: 'Breyta',
+          variant: 'text',
+          icon: 'pencil',
+          onClick: () => {
+            router.push('/skattframtal/tekjur/styrkir-dagpeningar-hlunnindi')
+          },
+        }}
       ></ActionCard>
       <ActionCard
         eyebrow="Lífeyrisgreiðslur og aðrar bætur"
         heading="205.000 kr."
         text="Þar af 75.000 kr. í formi Íþróttastyrks frá Norðurljós Software ehf. og 130.000 kr. í Starfsmenntastyrk frá VR."
+        cta={{
+          label: 'Breyta',
+          variant: 'text',
+          icon: 'pencil',
+          onClick: () => {
+            router.push(
+              '/skattframtal/tekjur/lifeyrisgreidslur-og-adrar-baetur',
+            )
+          },
+        }}
       ></ActionCard>
     </StepWrapper>
   )
