@@ -1,18 +1,33 @@
-import { CategoryCard, Text } from '@reon-island/ui-core'
+'use client'
+
+import { ActionCard, Box, Text } from '@reon-island/ui-core'
+
+import { StepWrapper } from '../components/StepWrapper'
 
 export default function Tekjur() {
   return (
-    <div>
-      <Text variant="h2" paddingBottom={2}>
-        Tekjur
-      </Text>
-      <Text paddingBottom={2}>
-        Hér geturðu slegið inn upplýsingar um tekjur.
-      </Text>
-      <CategoryCard
-        heading="Jökull"
-        text="120389-4569B Bláfjallagata 12, 105 Reykjavíkjokull. thordarson@email. is772-8391"
-      ></CategoryCard>
-    </div>
+    <StepWrapper buttonLink="/skattframtal/fradrattur">
+      <Box>
+        <Text variant="h2" paddingBottom={2}>
+          Tekjur
+        </Text>
+        <Text>Hér geturðu slegið inn upplýsingar um tekjur.</Text>
+      </Box>
+      <ActionCard
+        eyebrow="Laun"
+        heading="10.260.000 kr."
+        text="Þar af 9.360.000 kr. frá Norðurljós Software ehf. og 900.000 kr. frá Mús & Merki ehf."
+      ></ActionCard>
+      <ActionCard
+        eyebrow="Styrkir, dagpeningar & hlunnindi"
+        heading="120.000 kr."
+        text="Í formi dagpeninga"
+      ></ActionCard>
+      <ActionCard
+        eyebrow="Lífeyrisgreiðslur og aðrar bætur"
+        heading="205.000 kr."
+        text="Þar af 75.000 kr. í formi Íþróttastyrks frá Norðurljós Software ehf. og 130.000 kr. í Starfsmenntastyrk frá VR."
+      ></ActionCard>
+    </StepWrapper>
   )
 }
