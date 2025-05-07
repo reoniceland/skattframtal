@@ -8,7 +8,7 @@ export class UserDto {
   kennitala!: string
 
   @ApiProperty({ example: 'Jóna Jónsdóttir' })
-  full_name!: string
+  fullName!: string
 
   @ApiProperty({ example: 'Laugavegur 1, Reykjavík' })
   address!: string
@@ -17,5 +17,5 @@ export class UserDto {
   email!: string
 
   @ApiProperty({ example: '+354-123-4567' })
-  phone_number!: string
+  phoneNumber!: string
 }
