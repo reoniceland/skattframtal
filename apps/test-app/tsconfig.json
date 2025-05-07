@@ -26,6 +26,7 @@
     "**/*.cjs",
     "**/*.cjsx",
     "**/*.mjs",
-    "**/*.mjsx"
+    "**/*.mjsx",
+    "src/app/components/PageLayout"
   ]
 }

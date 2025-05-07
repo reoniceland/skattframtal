@@ -63,14 +63,6 @@
     "typescript",
     "typescriptreact"
   ],
-
-  "files.associations": {
-    "*.css": "tailwindcss"
-  },
-  "tailwindCSS.experimental.classRegex": [
-    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"],
-    ["cx\\(([^)]*)\\)", "(?:'|\"|`)([^']*)(?:'|\"|`)"]
-  ],
   "liveServer.settings.port": 5501,
   "prettier.requireConfig": true
 }

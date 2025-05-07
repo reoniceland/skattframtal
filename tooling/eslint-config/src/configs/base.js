@@ -1,15 +1,15 @@
-import comments from '@eslint-community/eslint-plugin-eslint-comments/configs';
-import { fixupConfigRules } from '@eslint/compat';
-import js from '@eslint/js';
-import prettierConfig from 'eslint-config-prettier';
-import noSecrets from 'eslint-plugin-no-secrets';
-import * as regexpPlugin from 'eslint-plugin-regexp';
-import pluginSecurity from 'eslint-plugin-security';
-import turboPlugin from 'eslint-plugin-turbo';
-import globals from 'globals';
-import tseslint from 'typescript-eslint';
+import comments from '@eslint-community/eslint-plugin-eslint-comments/configs'
+import { fixupConfigRules } from '@eslint/compat'
+import js from '@eslint/js'
+import prettierConfig from 'eslint-config-prettier'
+import noSecrets from 'eslint-plugin-no-secrets'
+import * as regexpPlugin from 'eslint-plugin-regexp'
+import pluginSecurity from 'eslint-plugin-security'
+import turboPlugin from 'eslint-plugin-turbo'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
 
-import { compat, defineConfig } from '../utils.js';
+import { compat, defineConfig } from '../utils.js'
 
 export const base = defineConfig(
   {
@@ -50,9 +50,6 @@ export const base = defineConfig(
     },
   },
 
-  // Tailwind plugin
-  ...fixupConfigRules(compat.extends('plugin:tailwindcss/recommended')),
-
   // Prettier config to disable conflicting rules
   prettierConfig,
 
@@ -74,11 +71,6 @@ export const base = defineConfig(
       globals: {
         ...globals.browser,
         ...globals.node,
-      },
-    },
-    settings: {
-      tailwindcss: {
-        callees: ['classnames', 'clsx', 'ctl', 'cn', 'cva'],
       },
     },
     rules: {
@@ -137,4 +129,4 @@ export const base = defineConfig(
       '@eslint-community/eslint-comments/disable-enable-pair': ['warn'],
     },
   },
-);
+)
