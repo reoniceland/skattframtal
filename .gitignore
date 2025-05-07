@@ -40,3 +40,6 @@ tsconfig.build.tsbuildinfo
 tsconfig.tsbuildinfo
 
 playwright-report/
+
+#jetbrains
+.idea/
