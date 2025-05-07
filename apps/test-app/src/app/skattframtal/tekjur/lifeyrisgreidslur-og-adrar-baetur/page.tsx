@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
-import { FormWrapper } from '../../../../components/FormWrapper'
+import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
 
 const GrantSchema = z.object({
   company: z.string().min(1, 'Nafn er nauðsynlegt'),

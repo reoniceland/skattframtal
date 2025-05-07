@@ -1,12 +1,52 @@
 'use client'
 
-import { Box, CategoryCard, Icon, Text } from '@reon-island/ui-core'
+import { useRouter } from 'next/navigation'
+
+import { zodResolver } from '@hookform/resolvers/zod'
+import { useForm } from 'react-hook-form'
+import { z } from 'zod'
+
+import { Box, CategoryCard, Icon, Input, Text } from '@reon-island/ui-core'
+
+import { FormWrapper } from '@/app/components/FormWrapper/FormWrapper'
 
 import { StepWrapper } from '../components/StepWrapper'
 
+const ContactFormSchema = z.object({
+  userInfo: z.object({
+    phoneNumber: z.string().min(1, 'Símanúmer er nauðsynlegt'),
+    email: z.string().email('Ógilt netfang').optional().or(z.literal('')),
+    accountNumber: z.string().min(1, 'Bankareikningur er nauðsynlegur'),
+  }),
+})
+
+type FormData = z.infer<typeof ContactFormSchema>
+
 export default function Income() {
+  const router = useRouter()
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<FormData>({
+    resolver: zodResolver(ContactFormSchema),
+    defaultValues: {
+      userInfo: {
+        phoneNumber: '',
+        email: '',
+        accountNumber: '',
+      },
+    },
+  })
+
+  const onSubmit = (data: FormData) => {
+    // TODO: send to your API…
+    router.push('/mottekid')
+  }
+
   return (
-    <StepWrapper buttonLink="/mottekid" buttonText="Senda framtal">
+    <StepWrapper>
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Förum yfir þetta saman
@@ -60,6 +100,52 @@ export default function Income() {
         background="blue100"
         tags={[{ label: 'Yfirfarið' }]}
       />
+      <FormWrapper
+        title="Hvernig náum við í þig?"
+        description="Svo við getum sent þér afrit af framtalinu, látið þig vita þegar
+          útreikningar eru tilbúnir, eða ef einhverjar upplýsingar vanta."
+        onSubmit={handleSubmit(onSubmit)}
+        buttonText="Skila framtali"
+      >
+        <Input
+          label="Símanúmer"
+          placeholder="t.d. 555-1234"
+          {...register('userInfo.phoneNumber')}
+          hasError={!!errors.userInfo?.phoneNumber}
+          errorMessage={errors.userInfo?.phoneNumber?.message}
+          size="md"
+        />
+
+        <Box marginTop={4}>
+          <Input
+            label="Netfang (valfrjálst)"
+            placeholder="notandi@example.com"
+            {...register('userInfo.email')}
+            hasError={!!errors.userInfo?.email}
+            errorMessage={errors.userInfo?.email?.message}
+            size="md"
+          />
+        </Box>
+
+        <Box marginTop={4}>
+          <Text variant="h3">Bankaupplýsingar</Text>
+          <Text marginTop={1}>
+            Inneignir og endurgreiðslur eru lagðar inn á þennan reikning. Aðeins
+            er leyfilegt að skrá bankareikning sem er í þinni eigu.
+          </Text>
+        </Box>
+
+        <Box marginTop={4}>
+          <Input
+            label="Bankareikningur"
+            placeholder="t.d. 0123-26-123456"
+            {...register('userInfo.accountNumber')}
+            hasError={!!errors.userInfo?.accountNumber}
+            errorMessage={errors.userInfo?.accountNumber?.message}
+            size="md"
+          />
+        </Box>
+      </FormWrapper>
     </StepWrapper>
   )
 }
