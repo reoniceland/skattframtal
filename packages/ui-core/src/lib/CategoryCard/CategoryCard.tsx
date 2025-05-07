@@ -128,7 +128,6 @@ const Component = forwardRef<
 
     return (
       <FocusableBox
-        href={!hasNestedHref ? href : undefined}
         position="relative"
         display="flex"
         flexDirection="row"
@@ -209,7 +208,6 @@ const Component = forwardRef<
                       disabled={tag.disabled}
                       outlined={!tag.href}
                       variant={tagVariant}
-                      href={tag.href}
                       onClick={tag.onClick}
                       {...tagOptions}
                     >
