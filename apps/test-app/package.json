@@ -10,6 +10,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@hookform/resolvers": "5.0.1",
     "@reon-island/ui-core": "workspace:*",
     "@reon-island/ui-theme": "workspace:*",
     "@reon-island/ui-utils": "workspace:*",
@@ -19,7 +20,9 @@
     "classnames": "2.5.1",
     "next": "14.2.25",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "react-hook-form": "7.56.2",
+    "zod": "3.24.4"
   },
   "devDependencies": {
     "@reon-island/eslint-config": "workspace:*",
