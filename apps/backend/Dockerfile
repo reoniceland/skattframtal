@@ -35,10 +35,10 @@ RUN pnpm exec turbo run build --filter=backend...
 FROM base AS runner
 WORKDIR /app
 
-RUN addgroup --system --gid 1001 fastify
-RUN adduser --system --uid 1001 fastify
-USER fastify
+RUN addgroup --system --gid 1001 skattmann
+RUN adduser --system --uid 1001 skattmann
+USER skattmann
 
 COPY --from=installer /app ./
 
-CMD node_modules/.bin/tsx apps/backend/dist/src/main.js
+ENTRYPOINT ["node_modules/.bin/tsx", "apps/backend/dist/src/main.js"]
