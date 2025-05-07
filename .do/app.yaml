@@ -3,6 +3,10 @@ services:
     dockerfile_path: apps/backend/Dockerfile
     http_port: 3000
 
+    envs:
+      - key: PORT
+        value: "3000"
+
     image:
       registry: reoniceland
       registry_type: GHCR
@@ -10,6 +14,7 @@ services:
       tag: latest
 
     health_check:
+      protocol: HTTP
       http_path: /health
       port: 3000
       initial_delay_seconds: 10
