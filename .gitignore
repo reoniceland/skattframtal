@@ -38,3 +38,5 @@ yarn-error.log*
 
 tsconfig.build.tsbuildinfo
 tsconfig.tsbuildinfo
+
+playwright-report/
