@@ -1,22 +1,26 @@
-import { Controller, Get, NotFoundException, Param } from '@nestjs/common'
+import { Controller, Get, Req, UseGuards } from '@nestjs/common'
 import { UserService } from './user.service'
-import { ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger'
+import {
+  ApiBearerAuth,
+  ApiOkResponse,
+  ApiOperation,
+  ApiTags,
+} from '@nestjs/swagger'
 import { UserDto } from './user.dto'
+import { AuthGuard } from '../auth/auth.guard'
 
-@ApiTags('user')
-@Controller('user')
+@ApiTags('users')
+@ApiBearerAuth()
+@Controller('users')
+@UseGuards(AuthGuard)
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  @Get(':id')
-  @ApiOperation({ summary: 'Get a user by their unique ID' })
-  @ApiParam({ name: 'id', type: String, description: 'The user ID' })
-  @ApiOkResponse({ description: 'The user details', type: UserDto })
-  async getUserById(@Param('id') id: string): Promise<UserDto> {
-    const user = await this.userService.findById(id)
-    if (!user) {
-      throw new NotFoundException(`User not found`)
-    }
-    return user
+  @Get('me')
+  @ApiOperation({ summary: 'Get the current authenticated user' })
+  @ApiOkResponse({ description: 'The current user details', type: UserDto })
+  getProfile(@Req() req): UserDto {
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
+    return (req).user as UserDto
   }
 }
