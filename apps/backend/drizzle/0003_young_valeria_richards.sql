@@ -1,7 +1,7 @@
 CREATE TABLE "salaries" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
 	"tax_return_id" uuid NOT NULL,
-	"amount" numeric(12, 2) NOT NULL,
+	"amount" integer NOT NULL,
 	"employer_name" text NOT NULL,
 	"employerKennitala" text NOT NULL
 );
