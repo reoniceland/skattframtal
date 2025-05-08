@@ -42,7 +42,7 @@ export default function Income() {
 
   const onSubmit = (data: FormData) => {
     // TODO: send to your API…
-    router.push('/mottekid')
+    router.push('/skattframtal/mottekid')
   }
 
   return (

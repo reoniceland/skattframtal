@@ -1,17 +1,15 @@
 import { useCallback, useEffect, useState } from 'react'
 
-import type { TaxReturns } from '@/types/TaxReturns'
-
-import { set } from 'date-fns'
+import type { TaxReturn } from '@/types/TaxReturn'
 
 import { useUser } from './use-user'
 
 export function useTaxReturns() {
   const { token } = useUser()
-  const [taxReturns, setTaxReturns] = useState<TaxReturns | null>(null)
+  const [taxReturn, setTaxReturn] = useState<TaxReturn | null>(null)
   const [error, setError] = useState<string | null>(null)
 
-  const fetchTaxReturns = useCallback(async () => {
+  const fetchTaxReturn = useCallback(async () => {
     if (!token) {
       throw new Error('Not authenticated')
     }
@@ -29,15 +27,15 @@ export function useTaxReturns() {
       throw new Error(text || 'Mistókst að sækja skattframtal')
     }
 
-    const data = (await res.json()) as TaxReturns
-    setTaxReturns(data)
+    const data = (await res.json()) as TaxReturn
+    setTaxReturn(data)
     return data
   }, [token])
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        await fetchTaxReturns()
+        await fetchTaxReturn()
       } catch (error) {
         console.error(error)
         setError(
@@ -47,14 +45,14 @@ export function useTaxReturns() {
         )
       }
     }
-    if (taxReturns === null) {
+    if (taxReturn === null) {
       void fetchData()
     }
-  }, [fetchTaxReturns, taxReturns])
+  }, [fetchTaxReturn, taxReturn])
 
   return {
-    taxReturns,
-    fetchTaxReturns,
+    taxReturn,
+    fetchTaxReturn,
     error,
   }
 }

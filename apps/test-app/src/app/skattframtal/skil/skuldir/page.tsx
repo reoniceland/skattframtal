@@ -9,7 +9,7 @@ import { StepWrapper } from '../components/StepWrapper'
 export default function Income() {
   const router = useRouter()
   return (
-    <StepWrapper buttonLink="/skattframtal/yfirferd">
+    <StepWrapper buttonLink="/skattframtal/skil/yfirferd">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Skuldir
@@ -25,7 +25,7 @@ export default function Income() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/skuldir/husnaedislan')
+            router.push('/skattframtal/skil/skuldir/husnaedislan')
           },
         }}
       ></ActionCard>
@@ -38,7 +38,7 @@ export default function Income() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/skuldir/adrar-skuldir')
+            router.push('/skattframtal/skil/skuldir/adrar-skuldir')
           },
         }}
       ></ActionCard>

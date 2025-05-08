@@ -15,27 +15,27 @@ import Sticky from '@/app/components/Sticky/Sticky'
 const steps = [
   {
     label: 'Yfirlit',
-    href: '/skattframtal/yfirlit',
+    href: '/skattframtal/skil/yfirlit',
     theme: FormStepperThemes.PURPLE,
   },
   {
     label: 'Tekjur',
-    href: '/skattframtal/tekjur',
+    href: '/skattframtal/skil/tekjur',
     theme: FormStepperThemes.PURPLE,
   },
   {
     label: 'Eignir',
-    href: '/skattframtal/eignir',
+    href: '/skattframtal/skil/eignir',
     theme: FormStepperThemes.PURPLE,
   },
   {
     label: 'Skuldir',
-    href: '/skattframtal/skuldir',
+    href: '/skattframtal/skil/skuldir',
     theme: FormStepperThemes.PURPLE,
   },
   {
     label: 'Yfirferð',
-    href: '/skattframtal/yfirferd',
+    href: '/skattframtal/skil/yfirferd',
     theme: FormStepperThemes.PURPLE,
   },
 ]
