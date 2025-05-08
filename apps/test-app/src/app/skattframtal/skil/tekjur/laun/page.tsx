@@ -11,7 +11,7 @@ import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
 import { useSalaries } from '@/hooks/use-salaries'
 
-import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
+import { FormWrapper } from '../../../../components/FormWrapper/FormWrapper'
 
 const SalarySchema = z.object({
   id: z.string().optional(),
@@ -76,7 +76,7 @@ export default function SalaryPage() {
   const onSubmit = async (data: FormData) => {
     // Skip processing if no changes were made to the form
     if (!isDirty) {
-      router.push('/skattframtal/tekjur')
+      router.push('/skattframtal/skil/tekjur')
       return
     }
 
@@ -108,7 +108,7 @@ export default function SalaryPage() {
         }
       }
 
-      router.push('/skattframtal/tekjur')
+      router.push('/skattframtal/skil/tekjur')
     } catch (error) {
       console.error('Error saving salaries:', error)
       // Handle error

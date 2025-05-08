@@ -9,7 +9,7 @@ import { StepWrapper } from '../components/StepWrapper'
 export default function Assets() {
   const router = useRouter()
   return (
-    <StepWrapper buttonLink="/skattframtal/skuldir">
+    <StepWrapper buttonLink="/skattframtal/skil/skuldir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Skuldir
@@ -25,7 +25,7 @@ export default function Assets() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/eignir/fasteignir')
+            router.push('/skattframtal/skil/eignir/fasteignir')
           },
         }}
       ></ActionCard>
@@ -38,7 +38,7 @@ export default function Assets() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/eignir/bifreidir')
+            router.push('/skattframtal/skil/eignir/bifreidir')
           },
         }}
       ></ActionCard>

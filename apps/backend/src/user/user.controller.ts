@@ -13,7 +13,6 @@ import { AuthGuard } from '../auth/auth.guard'
 @Controller('users')
 @UseGuards(AuthGuard)
 export class UserController {
-
   @Get('me')
   @ApiOperation({ summary: 'Get the current authenticated user' })
   @ApiOkResponse({ description: 'The current user details', type: UserDto })

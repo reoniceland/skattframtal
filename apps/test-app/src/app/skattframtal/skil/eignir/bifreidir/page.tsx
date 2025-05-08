@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
-import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
+import { FormWrapper } from '@/app/components/FormWrapper/FormWrapper'
 
 const CarSchema = z.object({
   number: z.string().min(1, 'Bílnúmer er nauðsynlegt'),
@@ -51,7 +51,7 @@ export default function CarsPage() {
   const onSubmit = (data: FormData) => {
     console.log('✔️ submitting', data)
     // TODO: send to your API…
-    router.push('/skattframtal/eignir')
+    router.push('/skattframtal/skil/eignir')
   }
 
   return (

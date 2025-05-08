@@ -8,7 +8,7 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
-import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
+import { FormWrapper } from '@/app/components/FormWrapper/FormWrapper'
 
 const mortgageschema = z.object({
   purchaseYear: z.string().min(1, 'Kaupár er nauðsynlegt'),
@@ -71,7 +71,7 @@ export default function MortgagePage() {
   const onSubmit = (data: FormData) => {
     console.log('✔️ submitting', data)
     // TODO: send to your API…
-    router.push('/skattframtal/skuldir')
+    router.push('/skattframtal/skil/skuldir')
   }
 
   return (

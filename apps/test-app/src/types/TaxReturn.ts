@@ -1,4 +1,4 @@
-export interface TaxReturns {
+export interface TaxReturn {
   createdAt: string
   id: string
   status: string

@@ -7,7 +7,7 @@ interface PageProps {
 }
 
 export default function SignIn({ searchParams }: PageProps) {
-  const redirectTo = searchParams.redirectTo ?? '/skattframtal'
+  const redirectTo = searchParams.redirectTo ?? '/skattframtal/stada'
 
   return (
     <>

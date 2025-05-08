@@ -2,7 +2,7 @@
 
 import { ActionCard, Box, Stack, Text } from '@reon-island/ui-core'
 
-import { PageLayout } from '../components/Layouts/PageLayout'
+import { PageLayout } from '../../components/Layouts/PageLayout'
 
 export default function Received() {
   return (

@@ -14,7 +14,7 @@ export default function Income() {
   const { sumOfSalaries, employerNames } = useSalaries()
 
   return (
-    <StepWrapper buttonLink="/skattframtal/eignir">
+    <StepWrapper buttonLink="/skattframtal/skil/eignir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Tekjur
@@ -30,7 +30,7 @@ export default function Income() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/tekjur/laun')
+            router.push('/skattframtal/skil/tekjur/laun')
           },
         }}
       ></ActionCard>
@@ -43,7 +43,9 @@ export default function Income() {
           variant: 'text',
           icon: 'pencil',
           onClick: () => {
-            router.push('/skattframtal/tekjur/styrkir-dagpeningar-hlunnindi')
+            router.push(
+              '/skattframtal/skil/tekjur/styrkir-dagpeningar-hlunnindi',
+            )
           },
         }}
       ></ActionCard>
@@ -57,7 +59,7 @@ export default function Income() {
           icon: 'pencil',
           onClick: () => {
             router.push(
-              '/skattframtal/tekjur/lifeyrisgreidslur-og-adrar-baetur',
+              '/skattframtal/skil/tekjur/lifeyrisgreidslur-og-adrar-baetur',
             )
           },
         }}
