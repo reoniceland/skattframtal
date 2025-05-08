@@ -26,7 +26,6 @@ import { Salary } from './salary.model'
 import { CreateSalaryDto } from './dto/create-salary.dto'
 import { SalaryResponseDto } from './dto/salary-response.dto'
 import { UpdateSalaryDto } from './dto/update-salary.dto'
-import { isUserDto, UserDto } from '../user/user.dto'
 
 @ApiTags('salaries')
 @ApiBearerAuth()
@@ -104,7 +103,7 @@ export class SalaryController {
 
   @Delete(':salaryId')
   @ApiOperation({
-    summary: "Delete a salary from the user's newest tax return",
+    summary: "Delete a salary from the user%27s newest tax return",
   })
   @ApiParam({
     name: 'salaryId',
