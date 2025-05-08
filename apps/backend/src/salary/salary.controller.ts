@@ -103,7 +103,7 @@ export class SalaryController {
 
   @Delete(':salaryId')
   @ApiOperation({
-    summary: "Delete a salary from the user%27s newest tax return",
+    summary: "Delete a salary from the user's newest tax return",
   })
   @ApiParam({
     name: 'salaryId',
