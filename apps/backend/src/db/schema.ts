@@ -58,7 +58,7 @@ export const salaries = pgTable(
       .references(() => taxReturns.id, { onDelete: 'cascade' }),
     amount: integer('amount').notNull(),
     employerName: text('employer_name').notNull(),
-    employerKennitala: varchar('employerKennitala', { length: 10 }).notNull(),
+    employerKennitala: varchar('employer_kennitala', { length: 10 }).notNull(),
   },
   (table) => [
     uniqueIndex('employer_tax_return_idx').on(
@@ -106,8 +106,8 @@ export const grants = pgTable(
       .references(() => taxReturns.id, { onDelete: 'cascade' }),
     type: grantTypesEnum('type').notNull(),
     amount: integer('amount').notNull(),
-    providerName: varchar('provider', { length: 200 }),
-    providerKennitala: varchar('providerKennitala', { length: 10 }).notNull(),
+    providerName: varchar('provider_name', { length: 200 }),
+    providerKennitala: varchar('provider_kennitala', { length: 10 }).notNull(),
     notes: text('notes'),
   },
   (table) => [

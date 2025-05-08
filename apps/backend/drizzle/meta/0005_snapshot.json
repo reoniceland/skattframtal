@@ -1,5 +1,5 @@
 {
-  "id": "ab58958d-1ec7-4c8f-b57c-df59313dedc9",
+  "id": "e913a25f-1c3e-4e4d-a3a4-996d7f293063",
   "prevId": "937db097-1dba-44c1-b06c-fb133c99e836",
   "version": "7",
   "dialect": "postgresql",
@@ -34,14 +34,14 @@
           "primaryKey": false,
           "notNull": true
         },
-        "provider": {
-          "name": "provider",
+        "provider_name": {
+          "name": "provider_name",
           "type": "varchar(200)",
           "primaryKey": false,
           "notNull": false
         },
-        "providerKennitala": {
-          "name": "providerKennitala",
+        "provider_kennitala": {
+          "name": "provider_kennitala",
           "type": "varchar(10)",
           "primaryKey": false,
           "notNull": true
@@ -64,7 +64,7 @@
               "nulls": "last"
             },
             {
-              "expression": "providerKennitala",
+              "expression": "provider_kennitala",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -97,7 +97,7 @@
       "checkConstraints": {
         "kennitala_format": {
           "name": "kennitala_format",
-          "value": "\"grants\".\"providerKennitala\"\n      ~ '^[0-9]{10}$'"
+          "value": "\"grants\".\"provider_kennitala\"\n      ~ '^[0-9]{10}$'"
         }
       },
       "isRLSEnabled": false
@@ -131,8 +131,8 @@
           "primaryKey": false,
           "notNull": true
         },
-        "employerKennitala": {
-          "name": "employerKennitala",
+        "employer_kennitala": {
+          "name": "employer_kennitala",
           "type": "varchar(10)",
           "primaryKey": false,
           "notNull": true
@@ -149,7 +149,7 @@
               "nulls": "last"
             },
             {
-              "expression": "employerKennitala",
+              "expression": "employer_kennitala",
               "isExpression": false,
               "asc": true,
               "nulls": "last"
@@ -182,7 +182,7 @@
       "checkConstraints": {
         "kennitala_format": {
           "name": "kennitala_format",
-          "value": "\"salaries\".\"employerKennitala\"\n      ~ '^[0-9]{10}$'"
+          "value": "\"salaries\".\"employer_kennitala\"\n      ~ '^[0-9]{10}$'"
         }
       },
       "isRLSEnabled": false
