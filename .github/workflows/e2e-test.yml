@@ -7,8 +7,9 @@ on:
 jobs:
   e2e:
     runs-on: ubuntu-latest
+
     container:
-      image: mcr.microsoft.com/playwright:latest
+      image: mcr.microsoft.com/playwright:v1.49.1-noble
       options: --ipc=host
     env:
       WEB_BASE_URL: ${{ secrets.WEB_BASE_URL }}
