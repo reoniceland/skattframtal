@@ -75,7 +75,9 @@ export function useUser() {
         // Fetch user after successful login
         try {
           await fetchUser(token)
-        } catch (err) {}
+        } catch (err: any) {
+          throw new Error(err || 'Mistókst að sækja notanda eftir innskráningu')
+        }
         return { success: true, token }
       } catch (err) {
         const errorMessage =

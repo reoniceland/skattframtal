@@ -110,11 +110,9 @@ export function Home() {
             </Link>
           </Box>
           <Box minWidth={0}>
-            <Link href="" skipTab>
-              <Tag variant="purple" truncate>
-                Skatturinn
-              </Tag>
-            </Link>
+            <Tag variant="purple" truncate>
+              Skatturinn
+            </Tag>
           </Box>
         </Box>
         <Box>
