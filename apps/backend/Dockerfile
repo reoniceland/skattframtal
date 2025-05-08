@@ -35,6 +35,8 @@ RUN pnpm exec turbo run build --filter=backend...
 FROM base AS runner
 WORKDIR /app
 
+RUN chown -R 1001:1001 /app
+
 RUN addgroup --system --gid 1001 skattmann
 RUN adduser --system --uid 1001 skattmann
 USER skattmann
