@@ -20,8 +20,13 @@ import { useUser } from '@/hooks/use-user'
 
 import { AuthFrame } from './components/AuthFrame/AuthFrame'
 
-export const SignInForm = () => {
+interface SignInFormProps {
+  redirectTo: string
+}
+
+export const SignInForm = ({ redirectTo }: SignInFormProps) => {
   const router = useRouter()
+
   const { loginWithKennitala, loading, error, clearError } = useUser()
   const [kennitala, setKennitala] = useState('')
   const [remember, setRemember] = useState(false)
@@ -34,9 +39,11 @@ export const SignInForm = () => {
 
     if (result.success) {
       if (remember) {
-        localStorage.setItem('phone', kennitala)
+        localStorage.setItem('kennitala', kennitala)
       }
+
       router.push('/skattframtal')
+      window.location.href = redirectTo
     }
   }
 
