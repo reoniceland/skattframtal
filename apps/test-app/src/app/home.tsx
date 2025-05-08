@@ -136,7 +136,7 @@ export function Home() {
               cta={{
                 label: 'Opna',
                 onClick: () => {
-                  router.push('/skattframtal')
+                  router.push('/skattframtal/stada')
                 },
               }}
             ></ActionCard>

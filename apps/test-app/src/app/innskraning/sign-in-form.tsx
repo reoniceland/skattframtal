@@ -42,7 +42,7 @@ export const SignInForm = ({ redirectTo }: SignInFormProps) => {
         localStorage.setItem('kennitala', kennitala)
       }
 
-      router.push('/skattframtal')
+      router.push('/skattframtal/stada')
       window.location.href = redirectTo
     }
   }
