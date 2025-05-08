@@ -1,0 +1,1 @@
+CREATE UNIQUE INDEX "employer_tax_return_idx" ON "salaries" USING btree ("tax_return_id","employerKennitala");

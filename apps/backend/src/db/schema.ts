@@ -1,7 +1,7 @@
 import { sql } from 'drizzle-orm'
 import {
   check,
-  integer, numeric,
+  integer,
   pgTable,
   text,
   timestamp,
@@ -45,15 +45,24 @@ export const taxReturns = pgTable(
     createdAt: timestamp('created_at').defaultNow().notNull(),
     updatedAt: timestamp('updated_at').defaultNow().notNull(),
   },
-  (table) => ({
-    uniqueUserYear: uniqueIndex('users_year_idx').on(table.userId, table.year),
-  }),
+  (table) => [uniqueIndex('users_year_idx').on(table.userId, table.year)],
 )
 
-export const salaries = pgTable('salaries', {
-  id: uuid('id').defaultRandom().primaryKey(),
-  taxReturnId: uuid('tax_return_id').notNull().references(() => taxReturns.id, { onDelete: 'cascade' }),
-  amount: integer('amount').notNull(),
-  employerName: text('employer_name').notNull(),
-  employerKennitala: text('employerKennitala').notNull(),
-})
+export const salaries = pgTable(
+  'salaries',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    taxReturnId: uuid('tax_return_id')
+      .notNull()
+      .references(() => taxReturns.id, { onDelete: 'cascade' }),
+    amount: integer('amount').notNull(),
+    employerName: text('employer_name').notNull(),
+    employerKennitala: text('employerKennitala').notNull(),
+  },
+  (table) => [
+    uniqueIndex('employer_tax_return_idx').on(
+      table.taxReturnId,
+      table.employerKennitala,
+    ),
+  ],
+)

@@ -29,6 +29,13 @@
       "when": 1746668702787,
       "tag": "0003_young_valeria_richards",
       "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1746670565048,
+      "tag": "0004_right_komodo",
+      "breakpoints": true
     }
   ]
 }
