@@ -1,9 +1,11 @@
 import { sql } from 'drizzle-orm'
 import {
   check,
+  integer,
   pgTable,
   text,
   timestamp,
+  uniqueIndex,
   uuid,
   varchar,
 } from 'drizzle-orm/pg-core'
@@ -28,4 +30,22 @@ export const users = pgTable(
       ~ '^[0-9]{10}$'`,
     ),
   ],
+)
+
+export const taxReturns = pgTable(
+  'tax_returns',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    userId: uuid('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    year: integer('year').notNull(),
+    status: varchar('status', { length: 20 }).notNull().default('draft'),
+    submittedAt: timestamp('submitted_at'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  },
+  (table) => ({
+    uniqueUserYear: uniqueIndex('users_year_idx').on(table.userId, table.year),
+  }),
 )
