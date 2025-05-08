@@ -4,12 +4,17 @@ import { useRouter } from 'next/navigation'
 
 import { ActionCard, Box, Text } from '@reon-island/ui-core'
 
+import { useSalaries } from '@/hooks/use-salaries'
+import { formatNumber } from '@/utils/number'
+
 import { StepWrapper } from '../components/StepWrapper'
 
 export default function Income() {
   const router = useRouter()
+  const { sumOfSalaries, employerNames } = useSalaries()
+
   return (
-    <StepWrapper buttonLink="/skattframtal/skuldir">
+    <StepWrapper buttonLink="/skattframtal/eignir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Tekjur
@@ -18,8 +23,8 @@ export default function Income() {
       </Box>
       <ActionCard
         eyebrow="Laun"
-        heading="10.260.000 kr."
-        text="Þar af 9.360.000 kr. frá Norðurljós Software ehf. og 900.000 kr. frá Mús & Merki ehf."
+        heading={`${formatNumber(sumOfSalaries ?? 0)} kr.`}
+        text={employerNames}
         cta={{
           label: 'Breyta',
           variant: 'text',

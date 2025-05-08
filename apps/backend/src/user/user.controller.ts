@@ -19,6 +19,6 @@ export class UserController {
   @ApiOkResponse({ description: 'The current user details', type: UserDto })
   getProfile(@Req() req): UserDto {
     // eslint-disable-next-line @typescript-eslint/no-unsafe-member-access
-    return (req).user as UserDto
+    return req.user as UserDto
   }
 }

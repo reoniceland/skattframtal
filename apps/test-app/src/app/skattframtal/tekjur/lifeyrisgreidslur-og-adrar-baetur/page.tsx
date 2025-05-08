@@ -8,6 +8,8 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
+import { useGrants } from '@/hooks/use-grants'
+
 import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
 
 const GrantSchema = z.object({
@@ -25,6 +27,7 @@ type FormData = z.infer<typeof FormSchema>
 
 export default function PensionAndBenefitsPage() {
   const router = useRouter()
+  const { grants } = useGrants()
 
   const {
     control,
@@ -34,16 +37,7 @@ export default function PensionAndBenefitsPage() {
   } = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      sportsGrants: [
-        {
-          company: 'Norðurljós Software ehf.',
-          amount: '75.000 kr.',
-        },
-        {
-          company: 'VR',
-          amount: '130.000 kr.',
-        },
-      ],
+      sportsGrants: grants,
     },
   })
 

@@ -24,13 +24,13 @@ const steps = [
     theme: FormStepperThemes.PURPLE,
   },
   {
-    label: 'Skuldir',
-    href: '/skattframtal/skuldir',
+    label: 'Eignir',
+    href: '/skattframtal/eignir',
     theme: FormStepperThemes.PURPLE,
   },
   {
-    label: 'Eignir',
-    href: '/skattframtal/eignir',
+    label: 'Skuldir',
+    href: '/skattframtal/skuldir',
     theme: FormStepperThemes.PURPLE,
   },
   {

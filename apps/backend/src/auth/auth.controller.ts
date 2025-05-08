@@ -1,4 +1,10 @@
-import { Body, Controller, Post, UsePipes, ValidationPipe } from '@nestjs/common'
+import {
+  Body,
+  Controller,
+  Post,
+  UsePipes,
+  ValidationPipe,
+} from '@nestjs/common'
 import { AuthService } from './auth.service'
 import { LoginDto } from './auth.dto'
 import { ApiBody, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger'
@@ -17,7 +23,10 @@ export class AuthController {
     description: 'Returns a token containing the user UUID',
     schema: {
       properties: {
-        token: { type: 'string', example: '550e8400-e29b-41d4-a716-446655440000' },
+        token: {
+          type: 'string',
+          example: '550e8400-e29b-41d4-a716-446655440000',
+        },
       },
     },
   })
