@@ -4,7 +4,7 @@ import React from 'react'
 
 import type { BoxProps, HyphenProps, LinkProps } from '@reon-island/ui-core'
 
-import { Box, Hyphen, LinkV2 as Link, Text } from '@reon-island/ui-core'
+import { Box, Hyphen, Link, Text } from '@reon-island/ui-core'
 
 interface InstitutionPanelProps {
   img?: string

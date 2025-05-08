@@ -1,4 +1,4 @@
-import { Box, LinkV2 as Link, Stack, Text } from '@reon-island/ui-core'
+import { Box, Link, Stack, Text } from '@reon-island/ui-core'
 
 const relatedLinks = [
   {

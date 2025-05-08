@@ -10,7 +10,7 @@ import {
   GridColumn,
   GridRow,
   Input,
-  LinkV2 as Link,
+  Link,
   Logo,
   Stack,
   Text,

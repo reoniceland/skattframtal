@@ -11,7 +11,7 @@ import {
   BulletList,
   Button,
   Footer,
-  LinkV2 as Link,
+  Link,
   Stack,
   Tag,
   Text,
@@ -22,30 +22,31 @@ import SidebarLayout from '@/app/components/Layouts/SidebarLayout'
 import { RelatedContent } from '@/app/components/RelatedContent/RelatedContent'
 import Sticky from '@/app/components/Sticky/Sticky'
 
+const category = {
+  title: 'Fjármál og Skattar',
+  href: 'https://island.is/flokkur/fjarmal-og-skattar',
+}
+const breadcrumbItems = [
+  {
+    title: 'Ísland.is',
+    typename: 'homepage',
+    href: 'https://www.island.is',
+  },
+  {
+    title: 'Fjármál og Skattar',
+    href: 'https://island.is/flokkur/fjarmal-og-skattar',
+  },
+  {
+    title: 'Skattframtal',
+    href: '/',
+    isCurrentPage: true,
+    isTag: true,
+  },
+]
+
 export function Home() {
   const router = useRouter()
 
-  const category = {
-    title: 'Fjármál og Skattar',
-    href: 'https://island.is/flokkur/fjarmal-og-skattar',
-  }
-  const breadcrumbItems = [
-    {
-      title: 'Ísland.is',
-      typename: 'homepage',
-      href: 'https://www.island.is',
-    },
-    {
-      title: 'Fjármál og Skattar',
-      href: 'https://island.is/flokkur/fjarmal-og-skattar',
-    },
-    {
-      title: 'Skattframtal',
-      href: '/',
-      isCurrentPage: true,
-      isTag: true,
-    },
-  ]
   return (
     <>
       <SidebarLayout
