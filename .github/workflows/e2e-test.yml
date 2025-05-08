@@ -4,7 +4,7 @@ on:
   pull_request:
     paths:
       - '../../apps/test-app/**'
-      - '.,/../test/test-app-tests/**'
+      - '../../test/test-app-tests/**'
 jobs:
   e2e:
     runs-on: ubuntu-latest
