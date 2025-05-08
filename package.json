@@ -5,6 +5,7 @@
     "build": "turbo run build",
     "check-types": "turbo run check-types",
     "dev": "turbo run dev",
+    "e2e:playwright-test": "pnpm --filter test-app-tests e2e:test",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "nuke:node_modules": "rimraf --glob '**/node_modules'",
