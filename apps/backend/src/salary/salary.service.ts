@@ -1,29 +1,32 @@
-import { Inject, Injectable, NotFoundException } from '@nestjs/common'
+import {
+  ConflictException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
 import { NodePgDatabase } from 'drizzle-orm/node-postgres'
 import * as schema from '../db/schema'
-import { salaries, taxReturns } from '../db/schema'
+import { salaries } from '../db/schema'
 import { Salary } from './salary.model'
-import { desc, eq } from 'drizzle-orm'
+import { and, eq } from 'drizzle-orm'
 import { CreateSalaryDto } from './dto/create-salary.dto'
+import { UpdateSalaryDto } from './dto/update-salary.dto'
+import { TaxReturnService } from '../tax-return/tax-return.service'
 
 @Injectable()
 export class SalaryService {
   constructor(
     @Inject('DB_DEV') private readonly db: NodePgDatabase<typeof schema>,
+    private readonly taxReturnService: TaxReturnService,
   ) {}
 
-  async findAllForUser(userId: string): Promise<Salary[]> {
+  async findAllForNewestTaxReturn(userId: string): Promise<Salary[]> {
+    const latestReturn = await this.taxReturnService.getOrCreateLastYear(userId)
+
     return this.db
-      .select({
-        id: salaries.id,
-        taxReturnId: salaries.taxReturnId,
-        amount: salaries.amount,
-        employerName: salaries.employerName,
-        employerKennitala: salaries.employerKennitala,
-      })
+      .select()
       .from(salaries)
-      .innerJoin(taxReturns, eq(salaries.taxReturnId, taxReturns.id))
-      .where(eq(taxReturns.userId, userId))
+      .where(and(eq(salaries.taxReturnId, latestReturn.id)))
   }
 
   /**
@@ -31,27 +34,93 @@ export class SalaryService {
    * @throws NotFoundException if the user has no tax returns.
    */
   async addToNewestTaxReturn(userId: string, dto: CreateSalaryDto) {
-    const [latestReturn] = await this.db
+    const latestReturn = await this.taxReturnService.getOrCreateLastYear(userId)
+
+    try {
+      const [newSalary] = await this.db
+        .insert(salaries)
+        .values({
+          taxReturnId: latestReturn.id,
+          amount: dto.amount,
+          employerName: dto.employerName,
+          employerKennitala: dto.employerKennitala,
+        })
+        .returning()
+
+      return newSalary
+    } catch (err) {
+      if (
+        err.code === '23505' &&
+        err.constraint === 'employer_tax_return_idx'
+      ) {
+        throw new ConflictException(
+          `A salary for employer ${dto.employerName} (${dto.employerKennitala}) already exists on the latest tax return.`,
+        )
+      }
+      throw err
+    }
+  }
+
+  async updateForNewestTaxReturn(
+    userId: string,
+    salaryId: string,
+    dto: UpdateSalaryDto,
+  ) {
+    const latestReturn = await this.taxReturnService.getOrCreateLastYear(userId)
+
+    const found = await this.db
       .select()
-      .from(taxReturns)
-      .where(eq(taxReturns.userId, userId))
-      .orderBy(desc(taxReturns.year))
+      .from(salaries)
+      .where(
+        and(
+          eq(salaries.id, salaryId),
+          eq(salaries.taxReturnId, latestReturn.id),
+        ),
+      )
       .limit(1)
 
-    if (!latestReturn) {
-      throw new NotFoundException(`No tax return found for user ${userId}`)
+    if (!found.length) {
+      throw new NotFoundException(
+        `Salary ${salaryId} not found on newest tax return`,
+      )
     }
 
-    const [newSalary] = await this.db
-      .insert(salaries)
-      .values({
-        taxReturnId: latestReturn.id,
-        amount: dto.amount,
-        employerName: dto.employerName,
-        employerKennitala: dto.employerKennitala,
+    const [updated] = await this.db
+      .update(salaries)
+      .set({
+        ...(dto.amount !== undefined && { amount: dto.amount }),
+        ...(dto.employerName !== undefined && {
+          employerName: dto.employerName,
+        }),
+        ...(dto.employerKennitala !== undefined && {
+          employerKennitala: dto.employerKennitala,
+        }),
       })
+      .where(eq(salaries.id, salaryId))
       .returning()
 
-    return newSalary
+    return updated
+  }
+
+  /**
+   * Delete a salary under the user's newest tax return.
+   * Throws 404 if no tax returns or salary not found.
+   */
+  async deleteForNewestTaxReturn(userId: string, salaryId: string) {
+    const latestReturn = await this.taxReturnService.getOrCreateLastYear(userId)
+
+    const { rowCount } = await this.db
+      .delete(salaries)
+      .where(
+        and(
+          eq(salaries.id, salaryId),
+          eq(salaries.taxReturnId, latestReturn.id),
+        ),
+      )
+    if (rowCount === 0) {
+      throw new NotFoundException(
+        `Salary ${salaryId} not found on newest tax return`,
+      )
+    }
   }
 }
