@@ -3,8 +3,8 @@ name: Playwright E2E Tests
 on:
   pull_request:
     paths:
-      - 'apps/test-app/**'
-      - 'test/test-app-tests/**'
+      - '../../apps/test-app/**'
+      - '.,/../test/test-app-tests/**'
 jobs:
   e2e:
     runs-on: ubuntu-latest
