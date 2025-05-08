@@ -1,8 +1,14 @@
-import { Inject, Injectable } from '@nestjs/common'
+import {
+  ForbiddenException,
+  Inject,
+  Injectable,
+  NotFoundException,
+} from '@nestjs/common'
 import { NodePgDatabase } from 'drizzle-orm/node-postgres'
 import * as schema from '../db/schema'
 import { taxReturns } from '../db/schema'
 import { and, eq } from 'drizzle-orm'
+import { UpdateTaxReturnInput } from './dto/update-tax-return.input'
 
 @Injectable()
 export class TaxReturnService {
@@ -32,5 +38,39 @@ export class TaxReturnService {
       .returning()
 
     return inserted
+  }
+
+  async findAll(userId?: string) {
+    const query = this.db.select().from(taxReturns)
+    if (userId) {
+      query.where(eq(taxReturns.userId, userId))
+    }
+    return query
+  }
+
+  async update(id: string, input: UpdateTaxReturnInput, actorId: string) {
+    const [existing] = await this.db
+      .select()
+      .from(taxReturns)
+      .where(eq(taxReturns.id, id))
+      .limit(1)
+
+    if (!existing) {
+      throw new NotFoundException(`TaxReturn with id ${id} not found`)
+    }
+    if (existing.userId !== actorId) {
+      throw new ForbiddenException(
+        `You do not have permission to update this tax return`,
+      )
+    }
+
+    const { id: _omit, ...updateData } = input as any
+    const [updated] = await this.db
+      .update(taxReturns)
+      .set(updateData)
+      .where(eq(taxReturns.id, id))
+      .returning()
+
+    return updated
   }
 }
