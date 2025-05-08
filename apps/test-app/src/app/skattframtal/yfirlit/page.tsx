@@ -2,20 +2,22 @@
 
 import { CategoryCard, Icon, Text } from '@reon-island/ui-core'
 
+import { useUser } from '@/hooks/use-user'
+
 import { StepWrapper } from '../components/StepWrapper'
 
 export default function Overview() {
+  const { user } = useUser()
   return (
     <StepWrapper buttonLink="/skattframtal/tekjur" buttonText="Hefja yfirferð">
-      <Text variant="h2">Hæ Jökull</Text>
+      <Text variant="h2">Hæ {user?.fullName.split(' ')[0]}</Text>
       <Text variant="default">
         Hér er einhver texti sem útskýrir að þetta sé yfirlitið yfir skattamálin
-        þín 2024 sem við ætlum að fara yfir í þessu framtali..
+        þín 2024 sem við ætlum að fara yfir í þessu framtali.
       </Text>
       <CategoryCard
-        heading="Jökull"
-        text="120389-4569
-        Bláfjallagata 12, 105 Reykjavík"
+        heading={user?.fullName ?? ''}
+        text={`${user?.kennitala ?? ''} ${user?.address ?? ''}`}
       />
       <CategoryCard
         icon={

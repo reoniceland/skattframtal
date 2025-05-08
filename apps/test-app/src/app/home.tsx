@@ -11,7 +11,7 @@ import {
   BulletList,
   Button,
   Footer,
-  Link,
+  LinkV2 as Link,
   Stack,
   Tag,
   Text,

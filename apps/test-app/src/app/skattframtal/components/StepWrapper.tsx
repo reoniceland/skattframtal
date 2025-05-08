@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-import { Box, Button, Link, Stack } from '@reon-island/ui-core'
+import { Box, Button, LinkV2 as Link, Stack } from '@reon-island/ui-core'
 
 interface StepWrapperProps {
   buttonLink?: string
