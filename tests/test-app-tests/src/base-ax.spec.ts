@@ -2,7 +2,7 @@ import AxeBuilder from '@axe-core/playwright'
 import { expect, test } from '@playwright/test'
 
 test('homepage WCAG 2.0 A & AA compliance', async ({ page }) => {
-  await page.goto('http://localhost:3000/')
+  await page.goto(`${process.env.WEB_BASE_URL}`)
 
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa'])
