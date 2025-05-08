@@ -1,9 +1,17 @@
 import { SignInForm } from './sign-in-form'
 
-export default function SignIn() {
+export const dynamic = 'force-dynamic'
+
+interface PageProps {
+  searchParams: { redirectTo?: string }
+}
+
+export default function SignIn({ searchParams }: PageProps) {
+  const redirectTo = searchParams.redirectTo ?? '/skattframtal'
+
   return (
     <>
-      <SignInForm />
+      <SignInForm redirectTo={redirectTo} />
     </>
   )
 }

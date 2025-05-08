@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter, useSearchParams } from 'next/navigation'
+import { useRouter } from 'next/navigation'
 
 import {
   Box,
@@ -20,10 +20,13 @@ import { useUser } from '@/hooks/use-user'
 
 import { AuthFrame } from './components/AuthFrame/AuthFrame'
 
-export const SignInForm = () => {
+interface SignInFormProps {
+  redirectTo: string
+}
+
+export const SignInForm = ({ redirectTo }: SignInFormProps) => {
   const router = useRouter()
-  const searchParams = useSearchParams()
-  const redirectTo = searchParams.get('redirectTo') || '/skattframtal'
+
   const { loginWithKennitala, loading, error, clearError } = useUser()
   const [kennitala, setKennitala] = useState('')
   const [remember, setRemember] = useState(false)
