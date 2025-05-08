@@ -17,14 +17,39 @@ A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date
 """
 scalar DateTime
 
+type Salary {
+  id: ID!
+  taxReturnId: ID!
+  amount: Int!
+  employerName: String!
+  employerKennitala: String!
+}
+
 type Query {
+  salaries: [Salary!]!
   currentTaxReturn: TaxReturn!
   taxReturns(userId: String): [TaxReturn!]!
   healthCheck: String!
 }
 
 type Mutation {
+  addSalary(input: CreateSalaryInput!): Salary!
+  updateSalary(input: UpdateSalaryInput!): Salary!
+  deleteSalary(id: ID!): Boolean!
   updateTaxReturn(input: UpdateTaxReturnInput!): TaxReturn!
+}
+
+input CreateSalaryInput {
+  amount: Int!
+  employerName: String!
+  employerKennitala: String!
+}
+
+input UpdateSalaryInput {
+  id: ID!
+  amount: Int
+  employerName: String
+  employerKennitala: String
 }
 
 input UpdateTaxReturnInput {
