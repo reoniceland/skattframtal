@@ -1,41 +1,36 @@
 name: Playwright E2E Tests
 
-# 1. Trigger on pull requests only
 on:
   pull_request:
-
+    paths:
+      - 'apps/test-app/**'
+      - 'test/test-app-tests/**'
 jobs:
   e2e:
-    # 2. Run inside the official Playwright container
     runs-on: ubuntu-latest
     container:
       image: mcr.microsoft.com/playwright:latest
-      options: --ipc=host # improves Chromium stability in Docker :contentReference[oaicite:4]{index=4}
+      options: --ipc=host
     env:
       WEB_BASE_URL: ${{ secrets.WEB_BASE_URL }}
 
     steps:
-      # 3a. Check out the repository
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # 3b. Set up Node.js (LTS) for pnpm
       - name: Set up Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 'lts/*'
 
-      # 3c. Install pnpm and dependencies
       - name: Install dependencies
         run: |
           npm install -g pnpm      # install pnpm globally
           pnpm install             # install project deps
 
-      # 3d. Run your Playwright tests
       - name: Run Playwright tests
         run: pnpm e2e:playwright-test
 
-      # 4. Upload the HTML report for review
       - name: Upload Playwright report
         if: ${{ always() }}
         uses: actions/upload-artifact@v4
