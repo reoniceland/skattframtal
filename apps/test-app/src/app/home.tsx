@@ -125,7 +125,7 @@ export function Home() {
           <Text>
             Skattframtal er árleg skýrsla þín til Skattsins þar sem þú
             staðfestir tekjur, eignir, skuldir og frádrátt fyrir tekjuárið sem
-            var að líða. Skattframtalið byggir á for­uppfylltum gögnum frá
+            var að líða. Skattframtalið byggir á útfylltum gögnum frá
             atvinnurekendum, bönkum, lífeyrissjóðum o.fl., en þú berð ábyrgð á
             að yfirfara, leiðrétta og staðfesta upplýsingarnar.
           </Text>
@@ -151,7 +151,7 @@ export function Home() {
           </Text>
           <BulletList type="ul">
             <Bullet>
-              Allir einstaklingar sem búa eða dvelja skatt­skyldir á Íslandi
+              Allir einstaklingar sem búa eða dvelja skattskyldir á Íslandi
               hluta árs eða allt árið.
             </Bullet>
             <Bullet>
@@ -163,8 +163,8 @@ export function Home() {
               tekjuárinu.
             </Bullet>
             <Bullet>
-              Lág­tekju­nemar og atvinnulausir: Þótt engar tekjur séu, þarf samt
-              að staðfesta foruppfyllt framtal.
+              Nemar undir skattleysismörkum og atvinnulausir: Þótt engar tekjur
+              séu, þarf samt að staðfesta framtal.
             </Bullet>
           </BulletList>
           <Text
@@ -181,8 +181,8 @@ export function Home() {
               þjónustugátt Skattsins
             </Bullet>
             <Bullet>
-              <strong>10. mars 2025:</strong> Síðasti dagur til að óska eftir
-              aðskilnaði hjóna
+              <strong>10. mars 2025:</strong> Síðasti dagur til að óska eftir að
+              hjón séu ekki samsköttuð
             </Bullet>
             <Bullet>
               <strong>18. mars 2025:</strong> Frestur fyrir lögaðila (fyrirtæki)
@@ -192,7 +192,7 @@ export function Home() {
               einstaklinga* (hægt er að sækja um 15 daga framlengingu áður)
             </Bullet>
             <Bullet>
-              <strong>15. apríl 2025:</strong> Útsvar og tekjuskatts­reikningur
+              <strong>15. apríl 2025:</strong> Útsvar og úreikningur tekjuskatts
               birtist (áætlað)
             </Bullet>
           </BulletList>
@@ -208,13 +208,14 @@ export function Home() {
           </Text>
           <BulletList type="ul">
             <Bullet>Rafræn skilríki (síma- eða auðkennis­app)</Bullet>
-            <Bullet>Launaseðla ársins ef tekjur vantar eða eru rangar</Bullet>
+            <Bullet>Launaseðla ársins (ef tekjur vantar eða eru rangar)</Bullet>
             <Bullet>
               Kvittanir vegna frádráttar (t.d. stéttarfélagsgjöld, gjafafé til
               góðgerðarmála, náms- og ferðakostnaður)
             </Bullet>
             <Bullet>
-              Staðfestingu á fjárfestingum (hlutabréf, crypto, húsnæði erlendis)
+              Staðfestingu á fjárfestingum (t.d. hlutabréf, rafmyntkaup, húsnæði
+              erlendis)
             </Bullet>
             <Bullet>Viðbótarlífeyrissamninga og yfirlit bankareikninga</Bullet>
           </BulletList>
@@ -262,8 +263,8 @@ export function Home() {
               eftir álagningu
             </Bullet>
             <Bullet>
-              Frestur: Sérstakar aðstæður? Sæktu um framlengingu með stuttri
-              rök­greiningu í gáttinni
+              Frestur: Sérstakar aðstæður? Sæktu um framlengingu með stuttum
+              rökstuðningi í gáttinni
             </Bullet>
           </BulletList>
 
@@ -282,7 +283,7 @@ export function Home() {
               yfir 2 millj. kr. eru skattskyldar; skráðu í lið 4.4.
             </Bullet>
             <Bullet>
-              Hvað með rafmynt? – Sala eða skipti á crypto eru skattskyld;
+              Hvað með rafmynt? – Sala eða skipti á rafmynt eru skattskyld;
               skráðu söluhagnað/-tap í lið 3.21.
             </Bullet>
             <Bullet>
@@ -290,8 +291,8 @@ export function Home() {
               greiddar afborganir sjálf/ur í lið 8.3.
             </Bullet>
             <Bullet>
-              Hvernig fæ ég staðfestingu? – Framtalskvittun fer í pósthólfið,
-              auk þess sem þú getur sótt PDF á „Mín framtöl“.
+              Hvernig fæ ég staðfestingu á framtalsskilum? – Framtalskvittun fer
+              í pósthólfið, auk þess sem þú getur sótt PDF á „Mín framtöl“.
             </Bullet>
           </BulletList>
 
@@ -306,9 +307,10 @@ export function Home() {
           </Text>
           <BulletList type="ul">
             <Bullet>
-              Spjallbotn Skattsins (vinstri neðst á síðunni) er opinn 24/7
+              Spjallmenni Skattsins (vinstri neðst á síðunni) er opinn allan
+              sólarhringinn
             </Bullet>
-            <Bullet>Sími þjónustuverks: 442 1000 (mán.–föst. kl. 9–15)</Bullet>
+            <Bullet>Sími þjónustuvers: 442 1000 (mán.–föst. kl. 9–15)</Bullet>
             <Bullet>Skattar.is/framtal — ítarleg lög og reglugerðir</Bullet>
             <Bullet>
               Ráðgjöf: Endurskoðendur og bókarar geta aðstoðað við flóknari
@@ -319,7 +321,7 @@ export function Home() {
           {/* ATHUGASEMD */}
           <Text variant="small" marginTop={[4, 4, 6]}>
             Athugið: Reglur og dagsetningar geta breyst. Skoðið alltaf nýjustu
-            tilkynningar á island.is og Skatturinn.is áður en þú skilar.
+            tilkynningar á island.is og Skatturinn.is áður en þið skilið.
           </Text>
         </Box>
       </SidebarLayout>
