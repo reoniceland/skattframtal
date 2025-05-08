@@ -115,7 +115,7 @@ export function useSalaries() {
 
   const sumOfSalaries = salaries?.reduce((acc, salary) => {
     if (typeof salary.amount === 'string') {
-      return acc + parseFloat(salary.amount)
+      return acc + salary.amount
     }
     return acc + salary.amount
   }, 0)

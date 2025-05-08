@@ -45,10 +45,7 @@ export default function SalaryPage() {
       incomes:
         salaries?.map((salary) => ({
           ...salary,
-          amount:
-            typeof salary.amount === 'string'
-              ? parseFloat(salary.amount) || 0
-              : salary.amount,
+          amount: salary.amount,
         })) ?? [],
     },
   })
@@ -59,10 +56,7 @@ export default function SalaryPage() {
       reset({
         incomes: salaries.map((salary) => ({
           ...salary,
-          amount:
-            typeof salary.amount === 'string'
-              ? parseFloat(salary.amount) || 0
-              : salary.amount,
+          amount: salary.amount,
         })),
       })
     }
