@@ -3,9 +3,10 @@ import { SalaryService } from './salary.service'
 import { SalaryController } from './salary.controller'
 import { UserService } from '../user/user.service'
 import { TaxReturnService } from '../tax-return/tax-return.service'
+import { SalaryResolver } from './salary.resolver'
 
 @Module({
-  providers: [SalaryService, UserService, TaxReturnService],
+  providers: [SalaryService, UserService, TaxReturnService, SalaryResolver],
   controllers: [SalaryController],
 })
 // eslint-disable-next-line @typescript-eslint/no-extraneous-class

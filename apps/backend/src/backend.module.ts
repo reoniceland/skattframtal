@@ -33,7 +33,7 @@ import { join } from 'path'
     GraphQLModule.forRoot<ApolloDriverConfig>({
       driver: ApolloDriver,
       autoSchemaFile: join(process.cwd(), 'schema.gql'),
-      include: [HealthModule, TaxReturnModule],
+      include: [HealthModule, TaxReturnModule, SalaryModule],
     }),
     UserModule,
     HealthModule,
