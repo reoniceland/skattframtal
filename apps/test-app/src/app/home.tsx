@@ -22,30 +22,31 @@ import SidebarLayout from '@/app/components/Layouts/SidebarLayout'
 import { RelatedContent } from '@/app/components/RelatedContent/RelatedContent'
 import Sticky from '@/app/components/Sticky/Sticky'
 
+const category = {
+  title: 'Fjármál og Skattar',
+  href: 'https://island.is/flokkur/fjarmal-og-skattar',
+}
+const breadcrumbItems = [
+  {
+    title: 'Ísland.is',
+    typename: 'homepage',
+    href: 'https://www.island.is',
+  },
+  {
+    title: 'Fjármál og Skattar',
+    href: 'https://island.is/flokkur/fjarmal-og-skattar',
+  },
+  {
+    title: 'Skattframtal',
+    href: '/',
+    isCurrentPage: true,
+    isTag: true,
+  },
+]
+
 export function Home() {
   const router = useRouter()
 
-  const category = {
-    title: 'Fjármál og Skattar',
-    href: 'https://island.is/flokkur/fjarmal-og-skattar',
-  }
-  const breadcrumbItems = [
-    {
-      title: 'Ísland.is',
-      typename: 'homepage',
-      href: 'https://www.island.is',
-    },
-    {
-      title: 'Fjármál og Skattar',
-      href: 'https://island.is/flokkur/fjarmal-og-skattar',
-    },
-    {
-      title: 'Skattframtal',
-      href: '/',
-      isCurrentPage: true,
-      isTag: true,
-    },
-  ]
   return (
     <>
       <SidebarLayout
@@ -110,11 +111,9 @@ export function Home() {
             </Link>
           </Box>
           <Box minWidth={0}>
-            <Link href="" skipTab>
-              <Tag variant="purple" truncate>
-                Skatturinn
-              </Tag>
-            </Link>
+            <Tag variant="purple" truncate>
+              Skatturinn
+            </Tag>
           </Box>
         </Box>
         <Box>

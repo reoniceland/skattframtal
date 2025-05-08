@@ -12,35 +12,31 @@ import {
   Input,
   Link,
   Logo,
-  PhoneInput,
   Stack,
   Text,
 } from '@reon-island/ui-core'
 
-import { loginWithKennitala } from './auth'
+import { useUser } from '@/hooks/use-user'
+
 import { AuthFrame } from './components/AuthFrame/AuthFrame'
 
 export const SignInForm = () => {
   const router = useRouter()
+  const { loginWithKennitala, loading, error, clearError } = useUser()
   const [kennitala, setKennitala] = useState('')
   const [remember, setRemember] = useState(false)
-  const [loading, setLoading] = useState(false)
-  const [error, setError] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setError(null)
-    setLoading(true)
-    try {
-      await loginWithKennitala(kennitala)
+    clearError()
+
+    const result = await loginWithKennitala(kennitala)
+
+    if (result.success) {
       if (remember) {
         localStorage.setItem('phone', kennitala)
       }
       router.push('/skattframtal')
-    } catch (err: any) {
-      setError(err.message || 'Unknown error')
-    } finally {
-      setLoading(false)
     }
   }
 
@@ -48,7 +44,9 @@ export const SignInForm = () => {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => {
     setKennitala(e.target.value)
+    if (error) clearError()
   }
+
   return (
     <Box display="flex" justifyContent="center" alignItems="center">
       <form onSubmit={handleSubmit}>
@@ -84,7 +82,7 @@ export const SignInForm = () => {
                 name="kennitala"
               />
               <Checkbox
-                label="Muna símanúmer"
+                label="Muna kennitölu"
                 checked={remember}
                 onChange={(event) => {
                   setRemember(event.target.checked)
