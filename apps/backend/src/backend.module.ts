@@ -8,6 +8,7 @@ import { HealthModule } from './health/health.module'
 import { AuthModule } from './auth/auth.module'
 import { TaxReturnModule } from './tax-return/tax-return.module';
 import { SalaryModule } from './salary/salary.module';
+import { GrantModule } from './grant/grant.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { SalaryModule } from './salary/salary.module';
     AuthModule,
     TaxReturnModule,
     SalaryModule,
+    GrantModule,
   ],
   controllers: [],
   providers: [BackendService],

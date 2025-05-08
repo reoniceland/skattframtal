@@ -2,6 +2,7 @@ import { sql } from 'drizzle-orm'
 import {
   check,
   integer,
+  pgEnum,
   pgTable,
   text,
   timestamp,
@@ -57,12 +58,68 @@ export const salaries = pgTable(
       .references(() => taxReturns.id, { onDelete: 'cascade' }),
     amount: integer('amount').notNull(),
     employerName: text('employer_name').notNull(),
-    employerKennitala: text('employerKennitala').notNull(),
+    employerKennitala: varchar('employerKennitala', { length: 10 }).notNull(),
   },
   (table) => [
     uniqueIndex('employer_tax_return_idx').on(
       table.taxReturnId,
       table.employerKennitala,
+    ),
+    // Enforce exactly 10 digits on kennitala
+    check(
+      'kennitala_format',
+      sql`${table.employerKennitala}
+      ~ '^[0-9]{10}$'`,
+    ),
+  ],
+)
+
+// prettier-ignore
+export const grantTypesEnum = pgEnum('grant_type_enum', [
+  'SURVIVOR_BENEFITS',                // Dánarbætur
+  'OLD_AGE_PENSION',                  // Ellilífeyrir
+  'REHABILITATION_PENSION',           // Endurhæfingarlífeyrir
+  'PARENTAL_BENEFITS',                // Foreldragreiðslur (fjárhagsaðstoð/grunngreiðslur)
+  'HOUSING_SUPPLEMENT',               // Heimilisuppbót
+  'SPOUSAL_AND_CARE_ALLOWANCES',      // Maka- og umönnunarbætur
+  'MATERNITY_PATERNITY_PAY',          // Mæðra- og feðralaun
+  'HOLIDAY_DECEMBER_SUPPLEMENT',      // Orlofs- og desemberuppbætur
+  'DISPOSABLE_FUNDS',                 // Ráðstöfunarfé
+  'INCOME_GUARANTEE',                 // Tekjutrygging
+  'COST_OF_LIVING_ADJUSTMENT',        // Uppbætur á lífeyri vegna kostnaðar
+  'DISABILITY_PENSION',               // Örorkulífeyrir
+  'DISABILITY_GRANT',                 // Örorkustyrkur
+  'ACCIDENT_DISABILITY_PENSION',      // Örorkulífeyrir vegna slysa
+  'PRIVATE_PENSION_PAYMENT',          // Lífeyrisgreiðslur úr séreignarsjóðum
+  'UNEMPLOYMENT_BENEFITS',            // Atvinnuleysisbætur
+  'MUNICIPAL_GRANTS',                 // Styrkir og bætur frá sveitarfélögum
+  'EDUCATION_RESEARCH_GRANT',         // Styrkir til náms, rannsóknar- og vísindastarfa
+])
+// prettier-ignore-end
+
+export const grants = pgTable(
+  'grants',
+  {
+    id: uuid('id').defaultRandom().primaryKey(),
+    taxReturnId: uuid('tax_return_id')
+      .notNull()
+      .references(() => taxReturns.id, { onDelete: 'cascade' }),
+    type: grantTypesEnum('type').notNull(),
+    amount: integer('amount').notNull(),
+    providerName: varchar('provider', { length: 200 }),
+    providerKennitala: varchar('providerKennitala', { length: 10 }).notNull(),
+    notes: text('notes'),
+  },
+  (table) => [
+    uniqueIndex('provider_tax_return_idx').on(
+      table.taxReturnId,
+      table.providerKennitala,
+    ),
+    // Enforce exactly 10 digits on kennitala
+    check(
+      'kennitala_format',
+      sql`${table.providerKennitala}
+      ~ '^[0-9]{10}$'`,
     ),
   ],
 )

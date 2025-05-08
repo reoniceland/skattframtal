@@ -12,6 +12,7 @@ import { and, eq } from 'drizzle-orm'
 import { CreateSalaryDto } from './dto/create-salary.dto'
 import { UpdateSalaryDto } from './dto/update-salary.dto'
 import { TaxReturnService } from '../tax-return/tax-return.service'
+import { isPostgresError } from '../common/utils/db-error.util'
 
 @Injectable()
 export class SalaryService {
@@ -26,7 +27,7 @@ export class SalaryService {
     return this.db
       .select()
       .from(salaries)
-      .where(and(eq(salaries.taxReturnId, latestReturn.id)))
+      .where(eq(salaries.taxReturnId, latestReturn.id))
   }
 
   /**
@@ -48,16 +49,17 @@ export class SalaryService {
         .returning()
 
       return newSalary
-    } catch (err) {
+    } catch (error: unknown) {
       if (
-        err.code === '23505' &&
-        err.constraint === 'employer_tax_return_idx'
+        isPostgresError(error) &&
+        error.code === '23505' &&
+        error.constraint === 'employer_tax_return_idx'
       ) {
         throw new ConflictException(
           `A salary for employer ${dto.employerName} (${dto.employerKennitala}) already exists on the latest tax return.`,
         )
       }
-      throw err
+      throw error
     }
   }
 
