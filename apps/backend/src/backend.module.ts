@@ -6,7 +6,8 @@ import * as schema from './db/schema'
 import { ConfigModule } from '@nestjs/config'
 import { HealthModule } from './health/health.module'
 import { AuthModule } from './auth/auth.module'
-import { TaxReturnsModule } from './tax-returns/tax-returns.module';
+import { TaxReturnModule } from './tax-return/tax-return.module';
+import { SalaryModule } from './salary/salary.module';
 
 @Module({
   imports: [
@@ -28,9 +29,11 @@ import { TaxReturnsModule } from './tax-returns/tax-returns.module';
     UserModule,
     HealthModule,
     AuthModule,
-    TaxReturnsModule,
+    TaxReturnModule,
+    SalaryModule,
   ],
   controllers: [],
   providers: [BackendService],
 })
+// eslint-disable-next-line @typescript-eslint/no-extraneous-class
 export class BackendModule {}

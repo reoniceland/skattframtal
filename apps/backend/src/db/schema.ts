@@ -1,7 +1,7 @@
 import { sql } from 'drizzle-orm'
 import {
   check,
-  integer,
+  integer, numeric,
   pgTable,
   text,
   timestamp,
@@ -49,3 +49,11 @@ export const taxReturns = pgTable(
     uniqueUserYear: uniqueIndex('users_year_idx').on(table.userId, table.year),
   }),
 )
+
+export const salaries = pgTable('salaries', {
+  id: uuid('id').defaultRandom().primaryKey(),
+  taxReturnId: uuid('tax_return_id').notNull().references(() => taxReturns.id, { onDelete: 'cascade' }),
+  amount: integer('amount').notNull(),
+  employerName: text('employer_name').notNull(),
+  employerKennitala: text('employerKennitala').notNull(),
+})

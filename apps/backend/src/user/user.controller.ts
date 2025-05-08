@@ -1,5 +1,4 @@
 import { Controller, Get, Req, UseGuards } from '@nestjs/common'
-import { UserService } from './user.service'
 import {
   ApiBearerAuth,
   ApiOkResponse,
@@ -14,7 +13,6 @@ import { AuthGuard } from '../auth/auth.guard'
 @Controller('users')
 @UseGuards(AuthGuard)
 export class UserController {
-  constructor(private readonly userService: UserService) {}
 
   @Get('me')
   @ApiOperation({ summary: 'Get the current authenticated user' })

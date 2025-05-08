@@ -5,7 +5,7 @@ import { taxReturns } from '../db/schema'
 import { and, eq } from 'drizzle-orm'
 
 @Injectable()
-export class TaxReturnsService {
+export class TaxReturnService {
   constructor(
     @Inject('DB_DEV') private readonly db: NodePgDatabase<typeof schema>,
   ) {}

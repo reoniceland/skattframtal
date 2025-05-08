@@ -115,6 +115,7 @@ export const base = defineConfig(
       '@typescript-eslint/no-redundant-type-constituents': ['warn'],
       '@typescript-eslint/no-confusing-void-expression': ['warn'],
       '@typescript-eslint/no-deprecated': ['warn'],
+      '@typescript-eslint/no-extraneous-class': ['warn'],
       '@typescript-eslint/no-unnecessary-type-arguments': ['warn'],
       '@typescript-eslint/consistent-indexed-object-style': ['warn'],
       '@typescript-eslint/unbound-method': ['warn'],
