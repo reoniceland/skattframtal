@@ -29,7 +29,7 @@ jobs:
           pnpm install             # install project deps
 
       - name: Install Playwright browsers
-        run: npx playwright install --with-deps
+        run: pnpm playwright:install
       - name: Run Playwright tests
         run: pnpm e2e:playwright-test
 

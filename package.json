@@ -9,6 +9,7 @@
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "nuke:node_modules": "rimraf --glob '**/node_modules'",
+    "playwright:install": "pnpm --filter test-app-tests playwright:install",
     "storybook": "pnpm --filter @reon-island/ui-core storybook",
     "typecheck": "turbo run typecheck"
   },

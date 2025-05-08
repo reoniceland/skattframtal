@@ -6,7 +6,7 @@
     "e2e:playwright-test": "playwright test src",
     "e2e:test": "start-server-and-test \"cd ../../apps/test-app && pnpm start\" http://localhost:3000 \"playwright test\"",
     "playwright:codegen": "playwright codegen",
-    "playwright:install": "playwright install"
+    "playwright:install": "playwright install --with-deps"
   },
   "dependencies": {
     "dotenv": "16.5.0",
