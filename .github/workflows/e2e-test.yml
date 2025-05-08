@@ -11,6 +11,8 @@ jobs:
     container:
       image: mcr.microsoft.com/playwright:latest
       options: --ipc=host # improves Chromium stability in Docker :contentReference[oaicite:4]{index=4}
+    env:
+      WEB_BASE_URL: ${{ secrets.WEB_BASE_URL }}
 
     steps:
       # 3a. Check out the repository
