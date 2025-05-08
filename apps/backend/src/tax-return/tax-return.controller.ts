@@ -3,7 +3,6 @@ import { TaxReturnService } from './tax-return.service'
 import { ApiBearerAuth, ApiOperation, ApiTags } from '@nestjs/swagger'
 import { AuthGuard } from '../auth/auth.guard'
 
-
 @ApiTags('tax-returns')
 @ApiBearerAuth()
 @Controller('tax-returns')
@@ -16,5 +15,4 @@ export class TaxReturnController {
   getCurrent(@Req() req) {
     return this.taxReturnService.getOrCreateLastYear(req.user.id)
   }
-
 }
