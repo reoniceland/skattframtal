@@ -23,7 +23,6 @@ export default defineConfig({
     // Base URL to use in actions like `await page.goto('/')`.
     baseURL: process.env.WEB_BASE_URL || 'http://localhost:3000',
 
-    // Collect trace when retrying the failed test.
     trace: 'on-first-retry',
   },
 

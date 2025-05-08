@@ -2,6 +2,7 @@ name: Playwright E2E Tests
 
 on:
   pull_request:
+    types: [opened, synchronize, reopened]
     paths:
       - './apps/test-app/**'
       - './test/test-app-tests/**'
