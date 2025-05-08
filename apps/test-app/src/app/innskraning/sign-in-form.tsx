@@ -1,7 +1,7 @@
 'use client'
 
 import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 
 import {
   Box,
@@ -22,6 +22,8 @@ import { AuthFrame } from './components/AuthFrame/AuthFrame'
 
 export const SignInForm = () => {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const redirectTo = searchParams.get('redirectTo') || '/skattframtal'
   const { loginWithKennitala, loading, error, clearError } = useUser()
   const [kennitala, setKennitala] = useState('')
   const [remember, setRemember] = useState(false)
@@ -34,9 +36,11 @@ export const SignInForm = () => {
 
     if (result.success) {
       if (remember) {
-        localStorage.setItem('phone', kennitala)
+        localStorage.setItem('kennitala', kennitala)
       }
+
       router.push('/skattframtal')
+      window.location.href = redirectTo
     }
   }
 
