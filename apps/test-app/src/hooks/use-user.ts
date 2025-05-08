@@ -6,6 +6,7 @@ export function useUser() {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
   const [error, setError] = useState<string | null>(null)
+  const [token, setToken] = useState<string | null>(null)
 
   const fetchUser = useCallback(async (token: string) => {
     try {
@@ -78,6 +79,7 @@ export function useUser() {
         } catch (err: any) {
           throw new Error(err || 'Mistókst að sækja notanda eftir innskráningu')
         }
+        setToken(token)
         return { success: true, token }
       } catch (err) {
         const errorMessage =
@@ -106,6 +108,7 @@ export function useUser() {
         .find((row) => row.startsWith('token='))
         ?.split('=')[1] ?? ''
     if (token) {
+      setToken(token)
       fetchUser(token).catch(() => {
         // Error is already handled in fetchUser
       })
@@ -121,6 +124,7 @@ export function useUser() {
     loginWithKennitala,
     fetchUser,
     logout,
+    token,
     isLoggedIn: !!user,
     clearError: () => {
       setError(null)

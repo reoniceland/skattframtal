@@ -9,7 +9,7 @@ import { StepWrapper } from '../components/StepWrapper'
 export default function Assets() {
   const router = useRouter()
   return (
-    <StepWrapper buttonLink="/skattframtal/yfirferd">
+    <StepWrapper buttonLink="/skattframtal/skuldir">
       <Box>
         <Text variant="h2" paddingBottom={2}>
           Skuldir

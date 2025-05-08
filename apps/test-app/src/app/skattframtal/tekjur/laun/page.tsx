@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 
 import { zodResolver } from '@hookform/resolvers/zod'
@@ -8,57 +9,110 @@ import { z } from 'zod'
 
 import { Box, Button, Input, Text } from '@reon-island/ui-core'
 
+import { useSalaries } from '@/hooks/use-salaries'
+
 import { FormWrapper } from '../../../components/FormWrapper/FormWrapper'
 
-const EmployerSchema = z.object({
+const SalarySchema = z.object({
+  id: z.string().optional(),
   employerName: z.string().min(1, 'Nafn er nauðsynlegt'),
-  employerSsn: z
+  employerKennitala: z
     .string()
-    .regex(/^\d{6}-\d{4}$/, 'Kennitala verður að vera á formi 000000-0000'),
-  employerAmount: z.string().min(1, 'Fjárhæð er nauðsynleg'),
+    .min(1, 'Kennitala er nauðsynleg')
+    .length(10, 'Kennitala verður að vera 10 stafir'),
+  amount: z.number().min(0, 'Fjárhæð er nauðsynleg'),
 })
 
 const FormSchema = z.object({
-  incomes: z.array(EmployerSchema).min(1, 'Þú verður að skrá a.m.k. eitt laun'),
+  incomes: z.array(SalarySchema).min(1, 'Þú verður að skrá a.m.k. eitt laun'),
 })
 
 type FormData = z.infer<typeof FormSchema>
 
 export default function SalaryPage() {
   const router = useRouter()
+  const { salaries, addSalary, updateSalary, error } = useSalaries()
 
   const {
     control,
     register,
     handleSubmit,
-    formState: { errors },
+    formState: { errors, isDirty },
+    reset,
   } = useForm<FormData>({
     resolver: zodResolver(FormSchema),
     defaultValues: {
-      incomes: [
-        {
-          employerName: 'Norðurljós Software ehf.',
-          employerSsn: '000000-0000',
-          employerAmount: '9.360.000 kr.',
-        },
-        {
-          employerName: 'Mús & Merki ehf.',
-          employerSsn: '000000-0000',
-          employerAmount: '900.000 kr.',
-        },
-      ],
+      incomes:
+        salaries?.map((salary) => ({
+          ...salary,
+          amount:
+            typeof salary.amount === 'string'
+              ? parseFloat(salary.amount) || 0
+              : salary.amount,
+        })) ?? [],
     },
   })
+
+  // Update form when salaries data changes
+  useEffect(() => {
+    if (salaries && salaries.length > 0) {
+      reset({
+        incomes: salaries.map((salary) => ({
+          ...salary,
+          amount:
+            typeof salary.amount === 'string'
+              ? parseFloat(salary.amount) || 0
+              : salary.amount,
+        })),
+      })
+    }
+  }, [salaries, reset])
 
   const { fields, append, remove } = useFieldArray({
     name: 'incomes',
     control,
   })
 
-  const onSubmit = (data: FormData) => {
-    console.log('✔️ submitting', data)
-    // TODO: send to your API…
-    router.push('/skattframtal/tekjur')
+  const onSubmit = async (data: FormData) => {
+    // Skip processing if no changes were made to the form
+    if (!isDirty) {
+      router.push('/skattframtal/tekjur')
+      return
+    }
+
+    try {
+      // Separate new and existing items
+      const newSalaries = data.incomes.filter((income) => !income.id)
+      const existingSalaries = data.incomes.filter((income) => income.id)
+
+      // Process new salaries
+      if (newSalaries.length > 0) {
+        try {
+          // Wait for all new salaries to be added
+          await Promise.all(newSalaries.map((salary) => addSalary(salary)))
+        } catch (error) {
+          console.error('Error adding new salaries:', error)
+          throw error // Re-throw to be caught by the outer try-catch
+        }
+      }
+
+      if (existingSalaries.length > 0) {
+        try {
+          // Wait for all new salaries to be added
+          await Promise.all(
+            existingSalaries.map((salary) => updateSalary(salary)),
+          )
+        } catch (error) {
+          console.error('Error updating salaries:', error)
+          throw error // Re-throw to be caught by the outer try-catch
+        }
+      }
+
+      router.push('/skattframtal/tekjur')
+    } catch (error) {
+      console.error('Error saving salaries:', error)
+      // Handle error
+    }
   }
 
   return (
@@ -68,9 +122,10 @@ export default function SalaryPage() {
       onSubmit={handleSubmit(onSubmit)}
       onAddItem={() => {
         append({
+          id: undefined,
           employerName: '',
-          employerSsn: '',
-          employerAmount: '',
+          employerKennitala: '',
+          amount: 0,
         })
       }}
       addItemText="Skrá laun"
@@ -109,27 +164,35 @@ export default function SalaryPage() {
           <Box marginTop={4}>
             <Input
               label="Kennitala launagreiðanda"
-              placeholder="000000-0000"
-              defaultValue={field.employerSsn}
-              {...register(`incomes.${idx}.employerSsn` as const)}
-              hasError={!!errors.incomes?.[idx]?.employerSsn}
-              errorMessage={errors.incomes?.[idx]?.employerSsn?.message}
+              placeholder="Sláðu inn kennitölu"
+              defaultValue={field.employerKennitala}
+              {...register(`incomes.${idx}.employerKennitala` as const)}
+              hasError={!!errors.incomes?.[idx]?.employerKennitala}
+              errorMessage={errors.incomes?.[idx]?.employerKennitala?.message}
               size="md"
-              type="tel"
             />
           </Box>
 
           <Box marginTop={4}>
             <Input
               label="Launafjárhæð"
-              placeholder="t.d. 9.360.000 kr."
-              defaultValue={field.employerAmount}
-              {...register(`incomes.${idx}.employerAmount` as const)}
-              hasError={!!errors.incomes?.[idx]?.employerAmount}
-              errorMessage={errors.incomes?.[idx]?.employerAmount?.message}
+              placeholder="t.d. 9360000"
+              type="number"
+              defaultValue={field.amount}
+              {...register(`incomes.${idx}.amount` as const, {
+                valueAsNumber: true,
+              })}
+              hasError={!!errors.incomes?.[idx]?.amount}
+              errorMessage={errors.incomes?.[idx]?.amount?.message}
               size="md"
             />
           </Box>
+
+          {error && (
+            <Text color="red600" variant="small">
+              {error}
+            </Text>
+          )}
         </Box>
       ))}
     </FormWrapper>
